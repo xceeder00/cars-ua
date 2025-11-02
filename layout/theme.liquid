@@ -26,12 +26,14 @@
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
-
+    <link rel="stylesheet" href="{{ 'swiper-bundle.min.css' | asset_url }}"/>
+    {{ 'update.css' | asset_url | stylesheet_tag }}
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
 
     {{ content_for_header }}
+    
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -65,5 +67,6 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+    <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
   </body>
 </html>

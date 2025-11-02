@@ -1,4 +1,4 @@
-<script
+{% comment %} <script
   type="module"
   src="{{ 'cart-icon.js' | asset_url }}"
   fetchpriority="low"
@@ -268,4 +268,6 @@
   .cart-bubble--animating .cart-bubble__text {
     animation: cartBubbleSlideIn var(--animation-speed) var(--animation-easing);
   }
-{% endstylesheet %}
+{% endstylesheet %} {% endcomment %}
+
+<button class="header-actions__cta button button--primary" type="button" aria-label="Відстежити авто">Відстежити авто</button>
