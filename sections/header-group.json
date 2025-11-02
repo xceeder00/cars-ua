@@ -80,17 +80,6 @@
         "collection_color_scheme": "default"
       }
     },
-    "custom_liquid_NbTHd9": {
-      "type": "custom-liquid",
-      "name": "t:names.custom_liquid",
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "header_announcements_9pX4ir": {
       "type": "header-announcements",
       "blocks": {
@@ -124,7 +113,6 @@
   },
   "order": [
     "header_section",
-    "custom_liquid_NbTHd9",
     "header_announcements_9pX4ir"
   ]
 }
