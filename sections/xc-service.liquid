@@ -1,0 +1,95 @@
+{{ 'xc-service.css' | asset_url | stylesheet_tag }}
+<div class="xc-service__content">
+    <h2 class="subtitle">{{ section.settings.title }}</h2>
+    <div class="xc-service__list">
+        {% for block in section.blocks %}
+            <a href="{{ block.settings.button_link | default: '#' }}" class="xc-service__item" {{ block.shopify_attributes }}>
+                {% if block.settings.image %}
+                {{ block.settings.image | image_url: width: 800 | image_tag: class: 'xc-service__item-image', alt: block.settings.title, loading: 'lazy' }}
+                {% endif %}
+                <div class="xc-service__info">
+                    <h5 class="xc-service__item-title">{{ block.settings.title }}</h5>
+                    <span class="circle-btn">
+                        {%- render 'icon', icon: 'chevron-right' -%}
+                    </span>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% schema %}
+{
+    "name": "XC Service",
+    "tag": "section",
+    "class": "xc-service padding-section section section--page-width",
+    "settings": [
+        {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "послуги"
+        }
+    ],
+    "blocks": [
+        {
+        "type": "service",
+        "name": "Service",
+        "settings": [
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+            },
+
+            {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+            },
+            {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+            }
+        ]
+        }
+    ],
+    "presets": [
+        {
+          "name": "XC Service",
+          "blocks": [
+            {
+              "type": "service",
+              "settings": {
+                "title": "Підбір авто"
+              }
+            },
+            {
+              "type": "service",
+              "settings": {
+                "title": "Дилерські послуги"
+              }
+            },
+            {
+              "type": "service",
+              "settings": {
+                "title": "Брокерські послуги"
+              }
+            },
+            {
+              "type": "service",
+              "settings": {
+                "title": "Кредитування"
+              }
+            },
+            {
+              "type": "service",
+              "settings": {
+                "title": "Сертифікація"
+              }
+            }
+          ]
+        }
+    ]
+}
+{% endschema %}

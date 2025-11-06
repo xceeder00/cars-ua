@@ -1,0 +1,118 @@
+@import 'main';
+.shopify-section-group-footer-group{
+    margin-inline: 24px;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+    overflow: hidden;
+}
+body .shopify-section-group-footer-group .menu__heading{
+    padding: 0;
+    margin-bottom: 16px;
+}
+body .shopify-section-group-footer-group .menu__heading .menu__heading__default{
+color: rgba(38, 38, 38, 0.50);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    /* 22.4px */
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+.logo-block__image-wrapper{
+    align-items: flex-start;
+}
+.shopify-section-group-footer-group .details-content{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.padding-section{
+    padding-block: 40px;
+}
+.homepage-form{
+    background: #fff;
+    border-radius: 24px;
+    background: #FFF;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+   
+}
+.homepage-acc{
+    .accordion{
+        flex-direction: column;
+        display: flex;
+        gap: 8px;
+    }
+
+    accordion-custom{
+        border-radius: 16px;
+        background: #E8E9E8;
+        padding: 24px;
+        display: block;
+        details{
+            border-block-start: none!important;
+        }
+        .details__header{
+            padding: 0!important;
+            min-height: auto!important;
+        }
+        .details-content{
+            padding-block-end: 0!important;
+            padding-block-start: 16px!important;
+        }
+        .details-content p{
+            color: #262626CC!important;
+        }
+    }
+}
+
+.subtitle{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%; /* 24px */
+    text-transform: uppercase;
+}
+.btn{
+    display: inline-flex;
+    height: 56px;
+    padding: 10px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 32px;
+    &--primary{
+        background-color: $c-accent;
+        color: $c-main;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 140%;
+        letter-spacing: 0.28px;
+        border: none;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        width: fit-content;
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(128, 255, 0, 0.3);
+        }
+    }
+}
+.circle-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $c-accent;
+    flex-shrink: 0;
+    transition: transform 0.4s ease;
+    
+    svg{
+        width: 20px;
+        height: 20px;
+        color: $c-main;
+    }
+}

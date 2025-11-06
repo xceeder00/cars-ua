@@ -1,35 +1,35 @@
 {{ 'footer-blocks.css' | asset_url | stylesheet_tag }}
 
-<div class="footer-blocks-section">
-  <div class="footer-blocks-container">
-    <div class="swiper footer-blocks-swiper">
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          <div class="swiper-slide">
-            <div class="footer-block-card">
-              {% if block.settings.icon != blank %}
-                <div class="footer-block-icon">
-                  {{ block.settings.icon }}
-                </div>
-              {% endif %}
-              
-              {% if block.settings.title != blank %}
-                <h3 class="footer-block-title">{{ block.settings.title }}</h3>
-              {% endif %}
-              
-              {% if block.settings.description != blank %}
-                <p class="footer-block-description">{{ block.settings.description }}</p>
-              {% endif %}
+
+<div class="section section--page-width">
+        <div class="swiper footer-blocks-swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide">
+                        <div class="footer-block-card" style="background-color: {{ section.settings.card_background }};">
+                        {% if block.settings.icon != blank %}
+                            <div class="footer-block-icon">
+                            {{ block.settings.icon }}
+                            </div>
+                        {% endif %}
+                        
+                        {% if block.settings.title != blank %}
+                            <h3 class="footer-block-title" style="color: {{ section.settings.accent_color }};">{{ block.settings.title }}</h3>
+                        {% endif %}
+                        
+                        {% if block.settings.description != blank %}
+                            <p class="footer-block-description" style="color: {{ section.settings.text_color }};">{{ block.settings.description }}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-          </div>
-        {% endfor %}
-      </div>
-      
-      <!-- Pagination -->
-      <div class="swiper-pagination footer-blocks-pagination"></div>
+        
+        <!-- Pagination -->
+        <div class="swiper-pagination footer-blocks-pagination"></div>
     </div>
-  </div>
 </div>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -57,6 +57,8 @@
 {% schema %}
 {
   "name": "Footer Blocks Slider",
+  "class": "padding-section footer-blocks-section",
+  "tag": "section",
   "settings": [
     {
       "type": "header",

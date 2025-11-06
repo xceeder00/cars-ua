@@ -1,0 +1,90 @@
+{{ 'xc-block.css' | asset_url | stylesheet_tag }}
+
+
+  <div class="section section--page-width">
+    <div class="xc-block__content">
+      <div class="xc-block__left">
+        {% if section.settings.label != blank %}
+          <div class="xc-block__label subtitle">{{ section.settings.label }}</div>
+        {% endif %}
+        
+        {% if section.settings.heading != blank %}
+          <h3 class="xc-block__heading">
+            {{ section.settings.heading }}
+          </h3>
+        {% endif %}
+      </div>
+
+      <div class="xc-block__right">
+        {% if section.settings.description != blank %}
+          <div class="xc-block__description">{{ section.settings.description }}</div>
+        {% endif %}
+        
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="xc-block__button btn--primary btn">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+{% schema %}
+{
+  "name": "XC Block",
+  "tag": "section",
+  "class": "xc-block padding-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label Text",
+      "default": "ВСЕ ВКЛЮЧЕНО"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#80FF00"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>"
+    },
+    
+
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Text",
+      "default": "Комплексний супровід без зайвих турбот. Ваше авто мрії - швидко та безпечно."
+    },
+
+
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Замовити дзвінок"
+    },
+
+  ],
+  "presets": [
+    {
+      "name": "XC Block"
+    }
+  ]
+}
+{% endschema %}
+

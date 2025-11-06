@@ -1,0 +1,31 @@
+@mixin mobile {
+	@media(max-width: 699px) {
+		@content;
+	}
+}
+@mixin tablet {
+	@media(max-width: 999px) {
+		@content;
+	}
+}
+@mixin notebook {
+	@media(max-width: 1440px) {
+		@content;
+	}
+}
+@mixin laptop {
+	@media(max-width: 1280px) {
+		@content;
+	}
+}
+
+
+$c-main: #262626;
+$c-text: #262626CC;
+$c-grey: rgba(246, 246, 246, 0.80);
+$c-light: #F6F6F6;
+$br: 16px;
+$br-small: 8px;
+$c-bg: #F0EFFC;
+$c-accent: #90F209;
+
