@@ -1,0 +1,142 @@
+{{ 'xc-slider.css' | asset_url | stylesheet_tag }}
+<div class="section section--page-width">
+    <div class="slider-info__content">
+        <div class="slider-info__right">
+            {% if section.settings.title != blank %}
+                <h2 class="slider-info__title h3">{{ section.settings.title }}</h2>
+            {% endif %}
+            {% if section.settings.description != blank %}
+                <div class="slider-info__description">{{ section.settings.description }}</div>
+            {% endif %}
+            {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_url }}" class="slider-info__button btn--primary btn">{{ section.settings.button_text }}</a>
+            {% endif %}
+        </div>
+        <div class="slider-info__left">
+            <div class="swiper slider-info-swiper" data-swiper="slider-info-{{ section.id }}">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        <div class="swiper-slide">
+                            <div class="slider-info__item">
+                                <div class="slider-info__item-image">
+                                    {% if block.settings.image %}
+                                        {{ block.settings.image | image_url: width: 800 | image_tag: class: 'slider-info__item-image-img', alt: block.settings.title, loading: 'lazy' }}
+                                    {% endif %}
+                                </div>
+                                <div class="slider-info__item-info">
+                                   
+                                    <h4>{{ block.settings.title }}</h4>
+                                    <div class="slider-info__item-bottom">
+                                        {{ block.settings.description }}
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-main-pagination">
+                    <button class="swiper-btn swiper-btn--prev circle-btn" type="button">
+                        {%- render 'icon', icon: 'chevron-left' -%}
+                    </button>
+                    <div class="swiper-pagination"></div>
+                    <button class="swiper-btn swiper-btn--next circle-btn" type="button">
+                        {%- render 'icon', icon: 'chevron-right' -%}
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.slider-info-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.slider-info-swiper .swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            navigation: {
+                nextEl: '.slider-info-swiper .swiper-btn--next',
+                prevEl: '.slider-info-swiper .swiper-btn--prev',
+            }
+        });
+    });
+</script>
+{% schema %}
+    {
+        "name": "XC slider-info",
+        "class": "slider-info padding-section",
+        "tag": "section",
+        "settings": [
+            {
+              "type": "header",
+              "content": "main content"
+            },
+            {
+                "type": "richtext",
+                "id": "title",
+                "label": "Heading",
+                "default": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>"
+                },
+            {
+              "type": "textarea",
+              "id": "description",
+              "label": "Description",
+              "default": "Повний супровід від підбору авто до сертифікації - швидко, безпечно, вигідно."
+            },
+            {
+              "type": "text",
+              "id": "button_text",
+              "label": "Button Text",
+              "default": "Замовити дзвінок"
+            },
+            {
+              "type": "url",
+              "id": "button_url",
+              "label": "Button URL"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "slide",
+                "name": "Slide",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title",
+                        "default": "Пошук та повна перевірка авто"
+                    },
+                    
+                    {
+                        "type": "text",
+                        "id": "description",
+                        "label": "Description",
+                        "default": "Review"
+                    },
+                    {
+                      "type": "image_picker",
+                      "id": "image",
+                      "label": "Image"
+                    }
+                    
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "XC slider-info"
+            }
+        ]
+    }
+{% endschema %}
+

@@ -28,6 +28,7 @@
     {%- render 'color-schemes' -%}
     <link rel="stylesheet" href="{{ 'swiper-bundle.min.css' | asset_url }}"/>
     {{ 'update.css' | asset_url | stylesheet_tag }}
+    {{ 'shopify-forms.css' | asset_url | stylesheet_tag }}
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}

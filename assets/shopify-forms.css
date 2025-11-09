@@ -1,0 +1,261 @@
+.shopify-forms,
+.customer-form,
+[data-app-id*=forms] {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+}
+@media (max-width: 699px) {
+  .shopify-forms,
+  .customer-form,
+  [data-app-id*=forms] {
+    padding: 16px;
+  }
+}
+
+.shopify-forms__heading,
+.customer-form__heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.shopify-forms__description,
+.customer-form__description {
+  color: rgba(38, 38, 38, 0.8);
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.shopify-forms__fields,
+.customer-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shopify-forms__field,
+.customer-form__field,
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shopify-forms__label,
+.customer-form__label,
+.field__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #262626;
+  display: block;
+}
+.shopify-forms__label::after,
+.customer-form__label::after,
+.field__label::after {
+  content: " *";
+  color: #dc2626;
+}
+.shopify-forms__label:not([required])::after,
+.customer-form__label:not([required])::after,
+.field__label:not([required])::after {
+  content: "";
+}
+
+.shopify-forms__input,
+.customer-form__input,
+.field__input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #262626;
+  background: white;
+  transition: all 0.2s ease;
+}
+.shopify-forms__input:focus,
+.customer-form__input:focus,
+.field__input:focus {
+  outline: none;
+  border-color: #90F209;
+  box-shadow: 0 0 0 3px rgba(144, 242, 9, 0.1);
+}
+.shopify-forms__input::-moz-placeholder, .customer-form__input::-moz-placeholder, .field__input::-moz-placeholder {
+  color: #a3a3a3;
+}
+.shopify-forms__input::placeholder,
+.customer-form__input::placeholder,
+.field__input::placeholder {
+  color: #a3a3a3;
+}
+.shopify-forms__input[type=email], .shopify-forms__input[type=text], .shopify-forms__input[type=tel], .shopify-forms__input[type=number],
+.customer-form__input[type=email],
+.customer-form__input[type=text],
+.customer-form__input[type=tel],
+.customer-form__input[type=number],
+.field__input[type=email],
+.field__input[type=text],
+.field__input[type=tel],
+.field__input[type=number] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+
+textarea.shopify-forms__input,
+textarea.customer-form__input,
+textarea.field__input {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+select.shopify-forms__input,
+select.customer-form__input,
+select.field__input {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23262626' d='M1.41 0L6 4.59L10.59 0L12 1.41l-6 6l-6-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.shopify-forms__checkbox,
+.shopify-forms__radio,
+.customer-form__checkbox,
+.customer-form__radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.shopify-forms__checkbox input[type=checkbox],
+.shopify-forms__checkbox input[type=radio],
+.shopify-forms__radio input[type=checkbox],
+.shopify-forms__radio input[type=radio],
+.customer-form__checkbox input[type=checkbox],
+.customer-form__checkbox input[type=radio],
+.customer-form__radio input[type=checkbox],
+.customer-form__radio input[type=radio] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #90F209;
+}
+.shopify-forms__checkbox label,
+.shopify-forms__radio label,
+.customer-form__checkbox label,
+.customer-form__radio label {
+  font-size: 14px;
+  color: #262626;
+  cursor: pointer;
+  margin: 0;
+}
+
+.shopify-forms__error,
+.customer-form__error,
+.field__error {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.shopify-forms__input--error,
+.customer-form__input--error,
+.field__input--error {
+  border-color: #dc2626;
+}
+.shopify-forms__input--error:focus,
+.customer-form__input--error:focus,
+.field__input--error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.shopify-forms__button,
+.customer-form__button,
+.button[type=submit] {
+  width: 100%;
+  padding: 14px 24px;
+  background: #262626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+.shopify-forms__button:hover,
+.customer-form__button:hover,
+.button[type=submit]:hover {
+  background: rgb(63.5, 63.5, 63.5);
+  transform: translateY(-1px);
+}
+.shopify-forms__button:active,
+.customer-form__button:active,
+.button[type=submit]:active {
+  transform: translateY(0);
+}
+.shopify-forms__button:disabled,
+.customer-form__button:disabled,
+.button[type=submit]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.shopify-forms__success,
+.customer-form__success {
+  background: #dcfce7;
+  color: #166534;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #bbf7d0;
+  margin-bottom: 16px;
+}
+.shopify-forms__success svg,
+.customer-form__success svg {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.shopify-forms__discount,
+.customer-form__discount {
+  background: #F0EFFC;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 16px;
+}
+.shopify-forms__discount-code,
+.customer-form__discount-code {
+  font-size: 20px;
+  font-weight: 700;
+  color: #262626;
+  font-family: monospace;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.shopify-forms__loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@media (max-width: 699px) {
+  .shopify-forms,
+  .customer-form {
+    border-radius: 0;
+  }
+}

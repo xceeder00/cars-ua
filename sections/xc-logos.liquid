@@ -1,0 +1,44 @@
+{{ 'xc-logos.css' | asset_url | stylesheet_tag }}
+<div class="section section--page-width">
+    <h2 class="logos__title">{{ section.settings.title }}</h2>
+    <div class="logos__wrapper">
+        {% for block in section.blocks %}
+            <div class="logos__item">
+                <img src="{{ block.settings.logo | image_url }}" alt="{{ block.settings.logo.alt }}" class="logos__item-image">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "Xc logo",
+        "class": "logos padding-section",
+        "tag": "section",
+        "settings": [
+            {
+                "id": "title",
+                "type": "text",
+                "label": "Title",
+                "default": "Доступ та акредитація на кращих аукціонах"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "logo",
+                "name": "Logo",
+                "settings": [
+                    {
+                        "id": "logo",
+                        "type": "image_picker",
+                        "label": "Logo"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Xc logo"
+            }
+        ]
+    }
+{% endschema %}

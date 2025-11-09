@@ -1,0 +1,97 @@
+{{ 'xc-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="hero__wrapper swiper" data-swiper="hero">
+    <div class="hero__slides swiper-wrapper">
+        {% for block in section.blocks %}
+            <div class="hero__slide swiper-slide">
+                <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="hero__slide-image">
+                <div class="hero__slide-content">
+                    <h2 class="hero__slide-title">{{ block.settings.title }}</h2>
+                    <p class="hero__slide-text">{{ block.settings.text }}</p>
+                    <div class="hero__slide-buttons">
+                       
+                        <a href="{{ block.settings.button_link }}" class="hero__slide-button btn btn--primary">{{ block.settings.button_text }}</a>
+                         <div class="hero__slide-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M16.4838 6.01655C16.7278 6.26063 16.7278 6.65636 16.4838 6.90044L8.5671 14.8171C8.32303 15.0612 7.9273 15.0612 7.68322 14.8171L3.51655 10.6504C3.27248 10.4064 3.27248 10.0106 3.51655 9.76655C3.76063 9.52248 4.15636 9.52248 4.40044 9.76655L8.12516 13.4913L15.5999 6.01655C15.844 5.77248 16.2397 5.77248 16.4838 6.01655Z" fill="#90F209"/>
+                            </svg>
+                            {{ block.settings.label }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="hero__pagination swiper-pagination-dots"></div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.hero__wrapper', {
+            slidesPerView: 1,
+            pagination: {
+                el: '.hero__pagination',
+                clickable: true
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            loop: true
+        });
+    });
+</script>
+{% schema %}
+    {
+        "name": "Xc hero",
+        "class": "hero",
+        "tag": "section",
+        "blocks": [
+            {
+                "type": "slide",
+                "name": "Slide",
+                "settings": [
+                    {
+                        "id": "title",
+                        "type": "richtext",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "text",
+                        "type": "textarea",
+                        "label": "Description"
+                    },
+                    {
+                        "id": "image",
+                        "type": "image_picker",
+                        "label": "Image"
+                    },
+                    {
+                      "type": "image_picker",
+                      "id": "mobile_image",
+                      "label": "Mobile Image"
+                    },
+                    {
+                        "id": "button_text",
+                        "type": "text",
+                        "label": "Button Text"
+                    },
+                    {
+                        "id": "button_link",
+                        "type": "url",
+                        "label": "Button Link"
+                    },
+                    {
+                      "type": "text",
+                      "id": "label",
+                      "label": "Label"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Xc hero"
+            }
+        ]
+    }
+{% endschema %}

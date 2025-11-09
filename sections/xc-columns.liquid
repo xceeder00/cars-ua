@@ -1,0 +1,47 @@
+{{ 'xc-columns.css' | asset_url | stylesheet_tag }}
+
+    <div class="columns__wrapper">
+        {% for block in section.blocks %}
+            <a href="{{ block.settings.link }}" class="columns__item">
+                <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="columns__item-image">
+                 <span class="columns__item-title">{{ block.settings.title }}
+                    {%- render 'icon', icon: 'chevron-right' -%}
+                 </span>
+            </a>
+        {% endfor %}
+    </div>
+{% schema %}
+    {
+        "name": "Xc columns",
+        "class": "columns",
+        "tag": "section",
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Column",
+                "settings": [
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                      "type": "image_picker",
+                      "id": "image",
+                      "label": "Image"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Xc columns"
+            }
+        ]
+    }
+{% endschema %}
