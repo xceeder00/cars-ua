@@ -70,6 +70,7 @@
     "currency_code_enabled_product_pages": false,
     "currency_code_enabled_product_cards": false,
     "currency_code_enabled_cart_items": false,
+    "quick_add": false,
     "product_corner_radius": 0,
     "card_corner_radius": 4,
     "show_variant_image": false,
@@ -83,7 +84,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#ffffff",
+          "background": "#f6f6f6",
           "foreground_heading": "#262626",
           "foreground": "#262626",
           "primary": "#262626",
@@ -279,14 +280,14 @@
       "scheme-6": {
         "settings": {
           "background": "rgba(0,0,0,0)",
-          "foreground_heading": "#ffffff",
-          "foreground": "#ffffff",
+          "foreground_heading": "#ffffffc7",
+          "foreground": "#ffffffc7",
           "primary": "#ffffff",
           "primary_hover": "#ffffffb0",
           "border": "#e6e6e6",
           "shadow": "#000000",
-          "primary_button_background": "#ffffff",
-          "primary_button_text": "#000000",
+          "primary_button_background": "#90f209",
+          "primary_button_text": "#000b02",
           "primary_button_border": "#ffffff",
           "primary_button_hover_background": "#000000",
           "primary_button_hover_text": "#ffffff",
@@ -640,7 +641,8 @@
       ".scheme2-footer {}",
       ".scheme3-topbar {}",
       ".scheme4-footer {}",
-      ".sheme-homepage-acc-contant {}"
+      ".sheme5-homepage-acc-contant {}",
+      ".sheme6-homepage-hero {}"
     ]
   }
 }

@@ -9,81 +9,211 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "xc_hero_PiFqYR": {
+      "type": "xc-hero",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "slide_EpxNBn": {
+          "type": "slide",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "title": "<p>Авто твоєї мрії з <br/><strong>гарантією якості</strong> та прозорістю угоди</p>",
+            "text": "Допоможемо підібрати автомобіль з фіксованою ціною, супроводом і доставкою прямо до тебе.",
+            "image": "shopify://shop_images/Slide_1_Image.png",
+            "mobile_image": "shopify://shop_images/image_2.png",
+            "button_text": "Підібрати авто",
+            "button_link": "#",
+            "label": "Гарантія фіксованої вартості"
+          }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "slide_9gcBNw": {
+          "type": "slide",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "title": "<p>Авто в Наявності</p>",
+            "text": "Готові до продажу автомобілі, які вже пройшли  всі етапи імпорту, перевірок і підготовки. Обирай, переглядай, купуй.",
+            "image": "shopify://shop_images/Slide_2.png",
+            "mobile_image": "shopify://shop_images/image_3.png",
+            "button_text": "Вибрати авто",
+            "button_link": "#",
+            "label": "Наявність торгу"
+          }
+        },
+        "slide_VfpicD": {
+          "type": "slide",
+          "settings": {
+            "title": "<p>Дилерські послуги</p>",
+            "text": "Ми здійснюємо повний цикл імпорту та продажу автомобілів, включно з перевіркою історії, доставкою, митним оформленням і сертифікацією. Авто під ключ без зайвих клопотів.",
+            "image": "shopify://shop_images/Slide_6.png",
+            "mobile_image": "shopify://shop_images/image_4.png",
+            "button_text": "Дізнатись більше",
+            "button_link": "#",
+            "label": ""
+          }
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "slide_EpxNBn",
+        "slide_9gcBNw",
+        "slide_VfpicD"
       ],
-      "name": "t:names.hero",
+      "name": "Xc hero",
+      "settings": {}
+    },
+    "xc_columns_H9d8nw": {
+      "type": "xc-columns",
+      "blocks": {
+        "column_GDFJFj": {
+          "type": "column",
+          "settings": {
+            "title": "Авто в наявності",
+            "image": "shopify://shop_images/Frame_138.png",
+            "link": "#"
+          }
+        },
+        "column_FmezWm": {
+          "type": "column",
+          "settings": {
+            "title": "Авто в дорозі",
+            "image": "shopify://shop_images/Frame_138_1.png",
+            "link": "#"
+          }
+        },
+        "column_QqYwJa": {
+          "type": "column",
+          "settings": {
+            "title": "Калькулятор",
+            "image": "shopify://shop_images/Frame_138_2.png",
+            "link": "#"
+          }
+        },
+        "column_ircUCV": {
+          "type": "column",
+          "settings": {
+            "title": "Послуги",
+            "image": "shopify://shop_images/Frame_138_3.png",
+            "link": "#"
+          }
+        },
+        "column_JxPpaD": {
+          "type": "column",
+          "settings": {
+            "title": "Відслідкувати авто",
+            "image": "shopify://shop_images/Frame_138_4.png",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "column_GDFJFj",
+        "column_FmezWm",
+        "column_QqYwJa",
+        "column_ircUCV",
+        "column_JxPpaD"
+      ],
+      "name": "Xc columns",
+      "settings": {}
+    },
+    "xc_logos_A3aamL": {
+      "type": "xc-logos",
+      "blocks": {
+        "logo_Fht9h6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/manheim-logo-freelogovectors_net_-1_svg.png"
+          }
+        },
+        "logo_cHLQyQ": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/copartlogo-40th-desktop-1.svg_fill.png"
+          }
+        },
+        "logo_G7qex7": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/happy-car-service-auctiond-1.svg_fill.png"
+          }
+        },
+        "logo_XXXxyn": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/iaa-insurance-auto-auctions-inc-logo-75c4ef61ae-seeklogo-1_svg.png"
+          }
+        },
+        "logo_jrherJ": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/bca-marketplace4758-depositphotos-bgremover-1_svg.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_Fht9h6",
+        "logo_cHLQyQ",
+        "logo_G7qex7",
+        "logo_XXXxyn",
+        "logo_jrherJ"
+      ],
+      "name": "Xc logo",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "title": "Доступ та акредитація на кращих аукціонах"
+      }
+    },
+    "xc_slider_qqGCi6": {
+      "type": "xc-slider",
+      "blocks": {
+        "slide_cT7Lrj": {
+          "type": "slide",
+          "settings": {
+            "title": "Пошук та повна перевірка авто",
+            "description": "Детальна перевірка через CARFAX і AutoCheck. Ви отримуєте достовірну інформацію про пробіг, стан і історію авто - без сюрпризів та ризиків.",
+            "image": "shopify://shop_images/4576155_2_1.png"
+          }
+        },
+        "slide_XUN99x": {
+          "type": "slide",
+          "settings": {
+            "title": "Купівля авто у страхових компаній",
+            "description": "Ми обираємо лише ті варіанти, які після відновлення повністю відповідають стандартам безпеки та якості.",
+            "image": "shopify://shop_images/f60951ab2ccf3883e9226b0837cd30396b11ac77.jpg"
+          }
+        },
+        "slide_HHxCMw": {
+          "type": "slide",
+          "settings": {
+            "title": "Швидка та безпечна доставка",
+            "description": "Ми забезпечуємо повний контроль за транспортуванням авто до України. Тільки перевірені перевізники, чіткі терміни та постійне відстеження.",
+            "image": "shopify://shop_images/690259ef310d26d65ee0224212c82594eecc57df.jpg"
+          }
+        },
+        "slide_TdHwQT": {
+          "type": "slide",
+          "settings": {
+            "title": "Якісний ремонт в найкоротші терміни",
+            "description": "Atlas Auto співпрацює лише з перевіреними сервісами та сертифікованими майстрами. Ви отримаєте ідеально відновлене авто у найкоротші терміни.",
+            "image": "shopify://shop_images/e5223766cdcd5648be3eeeec9ec3de1760ed63b6.jpg"
+          }
+        },
+        "slide_RWENYp": {
+          "type": "slide",
+          "settings": {
+            "title": "Сертифікація та постановка на облік",
+            "description": "Після доставки автомобіля в Україну ми проводимо перевірку технічного стану, оформлення сертифікату, українських документів і постановку на облік.",
+            "image": "shopify://shop_images/e1ace8769068358bcd27f2decb4d361c5bfe751e.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "slide_cT7Lrj",
+        "slide_XUN99x",
+        "slide_HHxCMw",
+        "slide_TdHwQT",
+        "slide_RWENYp"
+      ],
+      "name": "XC slider-info",
+      "settings": {
+        "title": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>",
+        "description": "Повний супровід від підбору авто до сертифікації - швидко, безпечно, вигідно.",
+        "button_text": "Замовити дзвінок",
+        "button_url": ""
       }
     },
     "product_list_fa6P9H": {
@@ -97,7 +227,7 @@
             "content_direction": "row",
             "vertical_on_mobile": false,
             "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
+            "vertical_alignment": "center",
             "align_baseline": true,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
@@ -131,7 +261,7 @@
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "",
                 "line_height": "normal",
@@ -153,9 +283,9 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
+                "label": "Переглянути всі",
+                "open_in_new_tab": true,
+                "style_class": "button-secondary",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -191,11 +321,11 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 0,
+                "border_radius": 12,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -261,749 +391,148 @@
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "all",
+        "collection": "авто-в-наявності",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
-        "max_products": 8,
+        "max_products": 6,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 8,
+        "columns_gap": 40,
         "rows_gap": 24,
-        "icons_style": "arrow",
+        "icons_style": "none",
         "icons_shape": "none",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 28,
+        "gap": 38,
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     },
-    "section_yYHpG8": {
-      "type": "section",
+    "xc_reviews_aUyqDJ": {
+      "type": "xc-reviews",
       "blocks": {
-        "group_fkpGKB": {
-          "type": "group",
-          "name": "Column",
+        "review_JLqjbM": {
+          "type": "review",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "image_f4k8Fh": {
-              "type": "image",
-              "name": "t:names.image",
-              "settings": {
-                "link": "",
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_47DGFz": {
-              "type": "text",
-              "name": "Description",
-              "settings": {
-                "text": "<p>We create with intention. Our products solve real problems with clean design and honest materials.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "image_f4k8Fh",
-            "text_47DGFz"
-          ]
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1.png",
+            "description": "Дякую менеджеру Олегу та всій команді за їх працю. Отримав авто на тиждень раніше запланої дати і не переклатив ні копійки від ціни на сайті. Дякую!",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
         },
-        "group_7q4j8d": {
-          "type": "group",
-          "name": "Column",
+        "review_hg4FQP": {
+          "type": "review",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "image_geimrC": {
-              "type": "image",
-              "name": "t:names.image",
-              "settings": {
-                "link": "",
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_DcRzYn": {
-              "type": "text",
-              "name": "Description",
-              "settings": {
-                "text": "<p>We create with intention. Our products solve real problems with clean design and honest materials.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "image_geimrC",
-            "text_DcRzYn"
-          ]
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_1.png",
+            "description": "Дякую компанії АтласАвто та окремо менеджеру Олегу. Це було моє перше авто із Америки. Задоволений результатом, рекомендую.",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
         },
-        "group_yD4R9E": {
-          "type": "group",
-          "name": "Column",
+        "review_cBkmKQ": {
+          "type": "review",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "image_8Rwdtp": {
-              "type": "image",
-              "name": "t:names.image",
-              "settings": {
-                "link": "",
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_mPmnAx": {
-              "type": "text",
-              "name": "Description",
-              "settings": {
-                "text": "<p>We create with intention. Our products solve real problems with clean design and honest materials.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "image_8Rwdtp",
-            "text_mPmnAx"
-          ]
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_2.png",
+            "description": "Дякую за ваш сервіс, я був проінформований про кожен етап та отримував постійні оновлення. Це справді та компанія з якою можна бути спокійно.",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
         },
-        "group_RHcQcc": {
-          "type": "group",
-          "name": "Column",
+        "review_DUyKEp": {
+          "type": "review",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_Qb3WYU": {
-              "type": "text",
-              "name": "Heading",
-              "settings": {
-                "text": "<h2>Quality first</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_rpdN6G": {
-              "type": "text",
-              "name": "Description",
-              "settings": {
-                "text": "<p>We obsess over the details and strive to deliver the best products at the best prices, every time.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_Qb3WYU",
-            "text_rpdN6G"
-          ]
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_3.png",
+            "description": "Вітаю! Дякую Сашку та команді Атлас, ці хлопці справжні професіонали. Стан авто супер, а ціна вийшла нижче ринку.",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
         },
-        "group_nYGb6R": {
-          "type": "group",
-          "name": "Column",
+        "review_C483Wq": {
+          "type": "review",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_4NnE4f": {
-              "type": "text",
-              "name": "Heading",
-              "settings": {
-                "text": "<h2>Customer care</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_c48izE": {
-              "type": "text",
-              "name": "Description",
-              "settings": {
-                "text": "<p>We're always on your side: keeping our loyal customers happy is our top priority and number one goal.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_4NnE4f",
-            "text_c48izE"
-          ]
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_4.png",
+            "description": "Вражений рівнем сервісу та прозорістю! Все чітко, без прихованих платежів. Авто прийшло в чудовому стані. Дякуую за професіоналізм!",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
         }
       },
       "block_order": [
-        "group_fkpGKB",
-        "group_7q4j8d",
-        "group_yD4R9E",
-        "group_RHcQcc",
-        "group_nYGb6R"
+        "review_JLqjbM",
+        "review_hg4FQP",
+        "review_cBkmKQ",
+        "review_DUyKEp",
+        "review_C483Wq"
       ],
-      "name": "t:names.multicolumn",
+      "name": "XC Reviews",
       "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "flex-start",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "title": "Відгуки тих, хто вже оновив своє авто",
+        "description": "Ми допомагаємо кожному клієнту знайти ідеальне авто без стресу, ризиків і зайвих переплат. Сотні задоволених власників уже насолоджуються своїми машинами, отриманими з нашою допомогою. Ти можеш стати наступним!<br><br>Обери комфорт, надійність і чесний сервіс — довір свій вибір професіоналам.",
+        "button_text": "Залишити відгук",
+        "button_url": "#"
       }
     },
-    "section_MQ6mRB": {
-      "type": "section",
+    "xc_choose_YPtk9t": {
+      "type": "xc-choose",
       "blocks": {
-        "group_VtFnnW": {
-          "type": "group",
+        "step_1_wqA76x": {
+          "type": "step_1",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "icon_emMMRP": {
-              "type": "icon",
-              "settings": {
-                "icon": "eye",
-                "width": 32,
-                "link": "",
-                "open_in_new_tab": false
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon_emMMRP"
-          ]
+            "title": "Седан",
+            "image": "shopify://shop_images/Frame_138_5.png"
+          }
         },
-        "group_ERbhaC": {
-          "type": "group",
+        "step_1_ExKPj8": {
+          "type": "step_1",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "icon_xU3beR": {
-              "type": "icon",
-              "settings": {
-                "icon": "heart",
-                "width": 32,
-                "link": "",
-                "open_in_new_tab": false
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon_xU3beR"
-          ]
+            "title": "Кросовер",
+            "image": "shopify://shop_images/Frame_138_6.png"
+          }
         },
-        "group_eEfFBV": {
-          "type": "group",
+        "step_1_ccCVJk": {
+          "type": "step_1",
           "settings": {
-            "class_name": "",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "icon_HxX84P": {
-              "type": "icon",
-              "settings": {
-                "icon": "silhouette",
-                "width": 32,
-                "link": "",
-                "open_in_new_tab": false
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon_HxX84P"
-          ]
+            "title": "Хетчбек",
+            "image": "shopify://shop_images/Frame_138_7.png"
+          }
+        },
+        "step_1_KNwaK3": {
+          "type": "step_1",
+          "settings": {
+            "title": "Пікап",
+            "image": "shopify://shop_images/Frame_138_8.png"
+          }
         }
       },
       "block_order": [
-        "group_VtFnnW",
-        "group_ERbhaC",
-        "group_eEfFBV"
+        "step_1_wqA76x",
+        "step_1_ExKPj8",
+        "step_1_ccCVJk",
+        "step_1_KNwaK3"
       ],
-      "name": "t:names.icons_with_text",
+      "name": "Choose",
       "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "title": "Швидкий підбір авто",
+        "next_btn_label": "Продовжити",
+        "send_btn_label": "Надіслати",
+        "step_1_title": "Крок 1",
+        "step_1_description": "Оберіть тип кузову",
+        "step_2_title": "Крок 2",
+        "step_2_description": "Бюджет",
+        "step_2_form_title": "Який ваш загальний бюджет?",
+        "step_2_form_description": "Сума, на яку ви розраховуєте при роботі “під ключ”.",
+        "step_2_form_min": 8000,
+        "step_2_form_max": 100000,
+        "step_3_title": "Крок 3",
+        "step_3_description": "Заявка",
+        "step_3_form_title": "Ми зв’яжемось із Вами з найкращими варіантами."
       }
     },
     "xc_service_NQ7Gkt": {
@@ -1013,6 +542,7 @@
           "type": "service",
           "settings": {
             "title": "Підбір авто",
+            "image": "shopify://shop_images/Rectangle_11924.png",
             "button_link": "shopify://pages/послуги"
           }
         },
@@ -1020,6 +550,7 @@
           "type": "service",
           "settings": {
             "title": "Дилерські послуги",
+            "image": "shopify://shop_images/Rectangle_11925.png",
             "button_link": "shopify://pages/послуги"
           }
         },
@@ -1027,6 +558,7 @@
           "type": "service",
           "settings": {
             "title": "Брокерські послуги",
+            "image": "shopify://shop_images/Rectangle_11926.png",
             "button_link": "shopify://pages/послуги"
           }
         },
@@ -1034,13 +566,15 @@
           "type": "service",
           "settings": {
             "title": "Кредитування",
+            "image": "shopify://shop_images/Rectangle_11927.png",
             "button_link": "shopify://pages/послуги"
           }
         },
         "service_L83pGW": {
           "type": "service",
           "settings": {
-            "title": "Кредитування",
+            "title": "Сертифікація",
+            "image": "shopify://shop_images/Rectangle_11928.png",
             "button_link": "shopify://pages/послуги"
           }
         }
@@ -1517,15 +1051,133 @@
         "padding-block-start": 40,
         "padding-block-end": 0
       }
+    },
+    "section_mD6wtf": {
+      "type": "section",
+      "blocks": {
+        "text_YGMQNr": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Subscribe to our emails</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_XWenaP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and special offers. </p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "email_signup_8bacj4": {
+          "type": "email-signup",
+          "settings": {
+            "width": "custom",
+            "custom_width": 50,
+            "inherit_color_scheme": true,
+            "heading": "",
+            "heading_preset": "h3",
+            "color_scheme": "",
+            "border_style": "all",
+            "border_width": 1,
+            "border_radius": 100,
+            "input_type_preset": "paragraph",
+            "style_class": "button-unstyled",
+            "display_type": "arrow",
+            "label": "Sign up",
+            "integrated_button": true,
+            "button_type_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YGMQNr",
+        "text_XWenaP",
+        "email_signup_8bacj4"
+      ],
+      "name": "t:names.email_signup",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-2",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
-    "hero_jVaWmY",
+    "xc_hero_PiFqYR",
+    "xc_columns_H9d8nw",
+    "xc_logos_A3aamL",
+    "xc_slider_qqGCi6",
     "product_list_fa6P9H",
-    "section_yYHpG8",
-    "section_MQ6mRB",
+    "xc_reviews_aUyqDJ",
+    "xc_choose_YPtk9t",
     "xc_service_NQ7Gkt",
     "xc_block_jczidM",
-    "section_CEXRPW"
+    "section_CEXRPW",
+    "section_mD6wtf"
   ]
 }
