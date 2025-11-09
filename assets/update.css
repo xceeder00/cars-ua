@@ -106,6 +106,7 @@ body .shopify-section-group-footer-group .menu__heading .menu__heading__default 
 
 .circle-btn {
   display: flex;
+  border: none;
   align-items: center;
   justify-content: center;
   width: 40px;

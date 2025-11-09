@@ -1,0 +1,396 @@
+{{ 'xc-choose.css' | asset_url | stylesheet_tag }}
+{% assign slider_min = section.settings.step_2_form_min | default: 0 %}
+{% assign slider_max = section.settings.step_2_form_max | default: 100000 %}
+{% assign slider_default = slider_min %}
+{% assign slider_min_money = slider_min | times: 100 %}
+{% assign slider_max_money = slider_max | times: 100 %}
+<div
+  class="choose__container"
+  data-choose-section="{{ section.id }}"
+  data-current-step="1"
+  data-locale="{{ request.locale.iso_code | default: shop.locale }}"
+  data-currency="{{ cart.currency.iso_code | default: shop.currency }}"
+  data-currency-symbol="{{ cart.currency.symbol | default: '$' | escape }}"
+>
+  <div class="choose__steps">
+    <div class="choose__steps-header">
+      <h2 class="choose__steps-title h3">{{ section.settings.title }}</h2>
+      <div class="choose__steps-pagination">
+        <span class="choose__steps-pagination-button is-active" data-step-btn="1" aria-label="Крок 1"></span>
+        <span class="choose__steps-pagination-button" data-step-btn="2" aria-label="Крок 2"></span>
+        <span class="choose__steps-pagination-button" data-step-btn="3" aria-label="Крок 3"></span>
+      </div>
+    </div>
+    <hr>
+    {% form 'customer', id: 'choose__step-form-3', class: 'choose__form' %}
+      {% if form.errors %}
+        <div data-choose-initial-step="3"></div>
+      {% elsif form.posted_successfully? %}
+        <div data-choose-initial-step="3"></div>
+      {% endif %}
+      <input type="hidden" name="form_type" value="choose-step-form">
+      <div class="choose__steps-body">
+        <div class="choose__step is-active" data-step="1">
+          <div class="choose__step-header">
+            <h5 class="choose__step-title">{{ section.settings.step_1_title }}</h5>
+            <p class="choose__step-description">{{ section.settings.step_1_description }}</p>
+          </div>
+          <div class="choose__step-list">
+            {% for block in section.blocks %}
+              <label class="choose__step-list-item" for="choose__type-{{ block.id }}">
+                <input
+                  type="radio"
+                  name="contact[body_type]"
+                  id="choose__type-{{ block.id }}"
+                  value="{{ block.settings.title | escape }}"
+                  {% if forloop.first %}checked{% endif %}
+                >
+                {% if block.settings.image != blank %}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 800 }}"
+                    alt="{{ block.settings.title | escape }}"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+                <h6 class="choose__step-list-item-title">{{ block.settings.title }}</h6>
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="choose__step" data-step="2">
+          <div class="choose__step-header">
+            <h5 class="choose__step-title">{{ section.settings.step_2_title }}</h5>
+            <p class="choose__step-description">{{ section.settings.step_2_description }}</p>
+          </div>
+          <div class="choose__step-content">
+            <div class="choose__form-card">
+              <div class="choose__form-card-text">
+                <p class="choose__form-card-title">{{ section.settings.step_2_form_title }}</p>
+                <p class="choose__form-card-description">{{ section.settings.step_2_form_description }}</p>
+              </div>
+              <div class="choose__slider" data-choose-slider>
+                
+                <input
+                  type="range"
+                  class="choose__slider-input"
+                  name="contact[budget]"
+                  min="{{ slider_min }}"
+                  max="{{ slider_max }}"
+                  step="1000"
+                  value="{{ slider_default }}"
+                  aria-label="{{ section.settings.step_2_form_title }}"
+                >
+                <div class="choose__slider-labels">
+                  <span class="choose__slider-label">{{ 'До ' }}{{ slider_min_money | money_without_trailing_zeros }}</span>
+                   <output class="choose__slider-value">{{ slider_default }}</output>
+                  <span class="choose__slider-label">{{ slider_max_money | money_without_trailing_zeros }}+</span>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+          <div class="choose__step-footer">
+            <button class="choose__step-footer-button circle-btn" type="button" data-step-btn="1" aria-label="Попередній крок">
+              {% render 'icon', icon: 'chevron-left' %}
+            </button>
+            <button class="choose__step-footer-button btn btn--primary" type="button" data-step-btn="3">
+              {{ section.settings.next_btn_label }}
+            </button>
+          </div>
+        </div>
+        <div class="choose__step" data-step="3">
+          <div class="choose__step-header">
+            <h5 class="choose__step-title">{{ section.settings.step_3_title }}</h5>
+            <p class="choose__step-description">{{ section.settings.step_3_description }}</p>
+          </div>
+          <div class="choose__step-content">
+            <div class="choose__form-card">
+              <div class="choose__form-card-text">
+                <p class="choose__form-card-title">
+                  {{ section.settings.step_3_form_title }}
+                </p>
+              </div>
+              <div class="choose__form-card-body">
+                {% if form.errors %}
+                  <div class="choose__form-status choose__form-status--error" role="alert">
+                    {% for field in form.errors %}
+                      <p>{{ form.errors.translated_fields[field] | default: field | capitalize }}: {{ form.errors.messages[field] }}</p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                {% if form.posted_successfully? %}
+                  <div class="choose__form-status choose__form-status--success" role="status">
+                    <span class="svg-wrapper icon-success">
+                      {{ 'icon-checkmark.svg' | inline_asset_content }}
+                    </span>
+                    <p>Дякуємо! Ми вже обробляємо вашу заявку.</p>
+                  </div>
+                {% endif %}
+                <div class="choose__form-fields">
+                  <label class="choose__form-field" for="ChooseName-{{ section.id }}">
+                    <span class="choose__form-label">Введіть імʼя</span>
+                    <input
+                      id="ChooseName-{{ section.id }}"
+                      class="choose__form-input"
+                      type="text"
+                      name="contact[first_name]"
+                      placeholder="Микола Київський"
+                      required
+                    >
+                  </label>
+                  <label class="choose__form-field" for="ChoosePhone-{{ section.id }}">
+                    <span class="choose__form-label">Введіть Ваш телефон</span>
+                    <input
+                      id="ChoosePhone-{{ section.id }}"
+                      class="choose__form-input"
+                      type="tel"
+                      name="contact[phone]"
+                      placeholder="+380 | XXX XX XX"
+                      required
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="choose__step-footer">
+            <button class="choose__step-footer-button circle-btn" type="button" data-step-btn="2" aria-label="Попередній крок">
+              {% render 'icon', icon: 'chevron-left' %}
+            </button>
+            <button class="choose__step-footer-button btn btn--primary" type="submit">
+              {{ section.settings.send_btn_label }}
+            </button>
+          </div>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('[data-choose-section="{{ section.id }}"]');
+    if (!section) return;
+
+    const stepsBody = section.querySelector('.choose__steps-body');
+    const steps = Array.from(section.querySelectorAll('.choose__step'));
+    const paginationButtons = Array.from(section.querySelectorAll('.choose__steps-pagination-button'));
+    const sliderWrapper = section.querySelector('[data-choose-slider]');
+    const sliderInput = sliderWrapper && sliderWrapper.querySelector('.choose__slider-input');
+    const sliderOutput = sliderWrapper && sliderWrapper.querySelector('.choose__slider-value');
+    const typeInputs = section.querySelectorAll('input[name="contact[body_type]"]');
+    const stateMarker = section.querySelector('[data-choose-initial-step]');
+    const locale = section.dataset.locale || undefined;
+    const currency = section.dataset.currency || undefined;
+    let currentStep = parseInt(section.dataset.currentStep || '1', 10);
+    if (stateMarker) {
+      const markerStep = parseInt(stateMarker.getAttribute('data-choose-initial-step'), 10);
+      if (!Number.isNaN(markerStep)) {
+        currentStep = markerStep;
+      }
+      stateMarker.remove();
+    }
+    section.dataset.currentStep = String(currentStep);
+
+    const currencySymbol = (section.dataset.currencySymbol || '').trim();
+    const numberFormatter = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+    const setActiveStep = (targetStep) => {
+      if (targetStep < 1 || targetStep > steps.length) return;
+      currentStep = targetStep;
+      section.dataset.currentStep = String(currentStep);
+      steps.forEach((stepEl) => {
+        const stepIndex = parseInt(stepEl.dataset.step, 10);
+        const isActive = stepIndex === currentStep;
+        stepEl.classList.toggle('is-active', isActive);
+        stepEl.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+      paginationButtons.forEach((button) => {
+        const stepIndex = parseInt(button.dataset.stepBtn, 10);
+        button.classList.toggle('is-active', stepIndex === currentStep);
+      });
+      stepsBody.style.height = '';
+    };
+
+    const accentColor = (getComputedStyle(section).getPropertyValue('--choose-accent') || '').trim() || '#7ED321';
+    const sliderTrackColor = (getComputedStyle(section).getPropertyValue('--choose-slider-track') || '').trim() || '#d9d9d9';
+
+    const updateSliderValue = (value) => {
+      if (!sliderOutput) return;
+      const formattedNumber = numberFormatter.format(Number(value));
+      sliderOutput.textContent = currencySymbol ? `${formattedNumber} ${currencySymbol}` : formattedNumber;
+    };
+
+    const updateSliderTrack = (value) => {
+      if (!sliderInput) return;
+      const min = Number(sliderInput.min || 0);
+      const max = Number(sliderInput.max || 100);
+      const numericValue = Number(value);
+      const range = max - min;
+      const percent = range === 0 ? 0 : ((numericValue - min) / range) * 100;
+      sliderInput.style.background = `linear-gradient(90deg, ${accentColor} 0%, ${accentColor} ${percent}%, ${sliderTrackColor} ${percent}%, ${sliderTrackColor} 100%)`;
+    };
+
+    paginationButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const stepIndex = parseInt(button.dataset.stepBtn, 10);
+        setActiveStep(stepIndex);
+      });
+    });
+
+    section.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-step-btn]');
+      if (!trigger) return;
+      event.preventDefault();
+      const targetStep = parseInt(trigger.dataset.stepBtn, 10);
+      setActiveStep(targetStep);
+    });
+
+    typeInputs.forEach((input) => {
+      input.addEventListener('change', () => {
+        setActiveStep(2);
+      });
+    });
+
+    if (sliderInput) {
+      updateSliderValue(sliderInput.value);
+      updateSliderTrack(sliderInput.value);
+      sliderInput.addEventListener('input', (event) => {
+        updateSliderValue(event.target.value);
+        updateSliderTrack(event.target.value);
+      });
+      sliderInput.addEventListener('change', (event) => {
+        updateSliderValue(event.target.value);
+        updateSliderTrack(event.target.value);
+      });
+    }
+
+    setActiveStep(currentStep);
+  });
+</script>
+{% schema %}
+{
+    "name": "Choose",
+    "tag": "section",
+    "class": "choose section-padding",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "next_btn_label",
+          "label": "Next Button Label",
+          "default": "Продовжити"
+        },
+        {
+          "type": "text",
+          "id": "send_btn_label",
+          "label": "Send Button Label",
+          "default": "Надіслати"
+        },
+        {
+          "type": "header",
+          "content": "Step 1"
+        },
+        {
+          "type": "text",
+          "id": "step_1_title",
+          "label": "step 1 Title",
+          "default": "Крок 1"
+        },
+        {
+          "type": "text",
+          "id": "step_1_description",
+          "label": "Оберіть тип кузову"
+        },
+        {
+            "type": "header",
+            "content": "Step 2"
+        },
+        {
+          "type": "text",
+          "id": "step_2_title",
+          "label": "step 2 Title",
+          "default": "Крок 2"
+        },
+        {
+          "type": "text",
+          "id": "step_2_description",
+          "label": "Бюджет"
+        },
+        {
+          "type": "text",
+          "id": "step_2_form_title",
+          "label": "Form Title",
+          "default": "Який ваш загальний бюджет?"
+        },
+        {
+          "type": "text",
+          "id": "step_2_form_description",
+          "label": "Form Description",
+          "default": "Сума, на яку ви розраховуєте при роботі “під ключ”."
+        },
+        {
+          "type": "number",
+          "id": "step_2_form_min",
+          "label": "Min",
+          "default": 8000
+        },
+        {
+          "type": "number",
+          "id": "step_2_form_max",
+          "label": "Max",
+          "default": 100000
+        },
+          
+        {
+            "type": "header",
+            "content": "Step 3"
+        },
+        {
+          "type": "text",
+          "id": "step_3_title",
+          "label": "step 3 Title",
+          "default": "Крок 3"
+        },
+        {
+          "type": "text",
+          "id": "step_3_description",
+          "label": "Заявка"
+        },
+        {
+          "type": "text",
+          "id": "step_3_form_title",
+          "label": "Form Title",
+          "default": "Ми зв’яжемось із Вами <br>з найкращими варіантами."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "step_1",
+            "name": "Step 1",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Choose"
+        }
+    ]
+}
+{% endschema %}
