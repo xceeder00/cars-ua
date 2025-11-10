@@ -44,6 +44,38 @@
   >
     {% content_for 'blocks' %}
   </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-top">
+            <div class="footer-bottom-social">
+                {% if section.settings.insta-link != blank %}
+                    <a href="{{ section.settings.insta-link }}" target="_blank">
+                     <img src="{{ 'logoInstagram.png' | asset_url }}" alt="{{ block.settings.title }}"  width="24" height="24">
+                      Instagram
+                    </a>
+                {% endif %}
+                {% if section.settings.facebook-link != blank %}
+                    <a href="{{ section.settings.facebook-link }}" target="_blank">
+                        <img src="{{ 'logoFacebook.png' | asset_url }}" alt="{{ block.settings.title }}"  width="24" height="24">
+                        Facebook
+                    </a>
+                {% endif %}
+            </div>
+            {% if section.settings.menu_legal != blank %}
+            <div class="footer-bottom-legal">
+               
+                <ul class="list-unstyled">
+                    {% for link in section.settings.menu_legal.links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul>
+              
+            </div>
+            {% endif %}
+        </div>
+        <div class="footer-bottom-bottom">
+             &copy; {{ 'now' | date: '%Y' }}  {{ shop.name | link_to: routes.root_url -}} &nbsp; | &nbsp;{{ section.settings.copyright }}
+        </div>
+    </div>
 </div>
 
 {% stylesheet %}
@@ -191,6 +223,35 @@
       "step": 1,
       "unit": "px",
       "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "insta-link",
+      "label": "Instagram Link",
+      "info": "Enter the Instagram link"
+    },
+    {
+        "type": "text",
+        "id": "facebook-link",
+        "label": "Facebook Link",
+        "info": "Enter the Facebook link"
+    },
+    {
+        "type": "text",
+        "id": "copyright",
+        "label": "Copyright Text",
+        "default": "Усі права захищені",
+        "info": "Enter the Copyright Text"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_legal",
+      "label": "Menu",
+      "info": "Select the menu to display in the footer"
     }
   ],
   "presets": [

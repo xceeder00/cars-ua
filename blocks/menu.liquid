@@ -57,7 +57,12 @@
             {% for link in menu.links %}
               <li class="menu__item {{ block_settings.link_preset }}">
                 <a href="{{ link.url }}">
-                  {{ link.title }}
+                    {% if link.url contains 'mailto' %}
+                        {% render 'icon', icon: 'email' %}
+                      {% elsif link.url contains 'tel' %}
+                          {% render 'icon', icon: 'phone' %}
+                      {% endif %}
+                      <span>{{ link.title }}</span>
                 </a>
               </li>
             {% endfor %}

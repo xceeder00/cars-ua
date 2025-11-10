@@ -1,16 +1,34 @@
-.shopify-section-group-footer-group {
+body .shopify-section-group-footer-group {
   margin-inline: 24px;
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
   overflow: hidden;
 }
-
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group {
+    margin-inline: 10px;
+  }
+}
 body .shopify-section-group-footer-group .menu__heading {
   padding: 0;
   margin-bottom: 16px;
 }
-
-body .shopify-section-group-footer-group .menu__heading .menu__heading__default {
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .menu__heading {
+    margin-bottom: 0px;
+  }
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .menu__heading__accordion {
+    color: rgba(38, 38, 38, 0.5);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 160%; /* 22.4px */
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+}
+body .shopify-section-group-footer-group .menu__heading__default {
   color: rgba(38, 38, 38, 0.5);
   font-size: 14px;
   font-style: normal;
@@ -20,15 +38,122 @@ body .shopify-section-group-footer-group .menu__heading .menu__heading__default 
   letter-spacing: 0.7px;
   text-transform: uppercase;
 }
-
-.logo-block__image-wrapper {
-  align-items: flex-start;
+body .shopify-section-group-footer-group .menu__item {
+  transition: opacity 0.3s ease;
 }
-
-.shopify-section-group-footer-group .details-content {
+body .shopify-section-group-footer-group .menu__item:hover {
+  opacity: 0.6;
+}
+body .shopify-section-group-footer-group .menu__item a {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .menu__details {
+    padding: 16px 0;
+    border-block-start: 1px solid rgba(38, 38, 38, 0.12);
+  }
+}
+body .shopify-section-group-footer-group .details-content {
+  display: flex;
+  gap: 4px;
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .details-content {
+    margin-block-start: 16px !important;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+  body .shopify-section-group-footer-group .logo-block {
+    grid-column: span 5;
+  }
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .logo-block {
+    margin-bottom: 8px;
+  }
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .footer-content {
+    padding-block: 32px;
+    padding-inline: 10px;
+    row-gap: 0;
+  }
+}
+body .shopify-section-group-footer-group .logo-block__image-wrapper {
+  align-items: flex-start !important;
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .logo-block__image-wrapper {
+    margin-bottom: 24px !important;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+  body .shopify-section-group-footer-group .footer-content--isolated-grid-item-tablet > :last-child {
+    grid-column: unset;
+  }
+}
+body .shopify-section-group-footer-group .footer-bottom {
+  border-top: 1px solid rgba(38, 38, 38, 0.12);
+  padding-top: 40px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .footer-bottom {
+    padding: 8px 10px 32px;
+    border: none;
+  }
+}
+body .shopify-section-group-footer-group .footer-bottom-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .footer-bottom-top {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+body .shopify-section-group-footer-group .footer-bottom-social {
+  display: flex;
+  gap: 32px;
+}
+body .shopify-section-group-footer-group .footer-bottom-social a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #262626;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+body .shopify-section-group-footer-group .footer-bottom-social a:hover {
+  opacity: 0.6;
+}
+body .shopify-section-group-footer-group .footer-bottom-social a img {
+  width: 24px;
+  height: 24px;
+}
+body .shopify-section-group-footer-group .footer-bottom-legal a {
+  transition: opacity 0.3s ease;
+  color: rgba(38, 38, 38, 0.5);
+  color: #262626;
+  opacity: 0.5;
+  text-decoration: none;
+}
+body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
+  opacity: 1;
+}
+@media (max-width: 750px) {
+  body .shopify-section-group-footer-group .footer-bottom .menu--accordion:not(:first-child) details {
+    border-block-start: 1px solid rgba(38, 38, 38, 0.12);
+  }
 }
 
 .padding-section, .section-padding {

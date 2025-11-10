@@ -7,7 +7,7 @@
   background: white;
   border-radius: 16px;
 }
-@media (max-width: 699px) {
+@media (max-width: 750px) {
   .shopify-forms,
   .customer-form,
   [data-app-id*=forms] {
@@ -253,7 +253,7 @@ select.field__input {
   pointer-events: none;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 750px) {
   .shopify-forms,
   .customer-form {
     border-radius: 0;
