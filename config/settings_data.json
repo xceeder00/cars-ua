@@ -7,14 +7,13 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- 
 {
   "current": {
-    "logo": "shopify://shop_images/logo-white.png",
-    "logo_inverse": "shopify://shop_images/logo-black.png",
+    "logo": "shopify://shop_images/Frame_365.svg",
+    "logo_inverse": "shopify://shop_images/Frame_445.svg",
     "logo_height": 32,
     "logo_height_mobile": 20,
-    "favicon": "shopify://shop_images/logo-white.png",
+    "favicon": "shopify://shop_images/favicon-128x128.png",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
