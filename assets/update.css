@@ -156,8 +156,33 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   }
 }
 
+@media (max-width: 750px) {
+  h3, .h3 {
+    font-size: 28px !important;
+    line-height: 120% !important;
+  }
+}
+
 .padding-section, .section-padding {
   padding-block: 40px;
+}
+@media (max-width: 750px) {
+  .padding-section, .section-padding {
+    padding-block: 24px;
+  }
+}
+
+@media (max-width: 999px) {
+  .shopify-section-group-header-group:has(.header-top) {
+    --padding-block-start: 10px;
+    --padding-block-end: 10px;
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 750px) {
+  .shopify-section-group-header-group:has(.header-top) {
+    display: none;
+  }
 }
 
 .homepage-form {
@@ -165,6 +190,15 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   border-radius: 24px;
   background: #FFF;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 750px) {
+  .homepage-form {
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    padding-inline: 24px;
+    padding-block: 0;
+  }
 }
 
 .homepage-acc .accordion {
@@ -178,12 +212,23 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   padding: 24px;
   display: block;
 }
+@media (max-width: 750px) {
+  .homepage-acc accordion-custom {
+    border-radius: 12px;
+  }
+}
 .homepage-acc accordion-custom details {
   border-block-start: none !important;
 }
 .homepage-acc accordion-custom .details__header {
   padding: 0 !important;
   min-height: auto !important;
+  gap: 16px;
+}
+@media (max-width: 750px) {
+  .homepage-acc accordion-custom .details__header {
+    font-size: 16px;
+  }
 }
 .homepage-acc accordion-custom .details-content {
   padding-block-end: 0 !important;
@@ -199,6 +244,12 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   line-height: 120%; /* 24px */
   text-transform: uppercase;
 }
+@media (max-width: 750px) {
+  .subtitle {
+    font-size: 16px;
+    line-height: 120%;
+  }
+}
 
 .btn {
   display: inline-flex;
@@ -208,6 +259,13 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   align-items: center;
   gap: 10px;
   border-radius: 32px;
+}
+@media (max-width: 750px) {
+  .btn {
+    height: 48px;
+    padding: 10px 32px;
+    border-radius: 32px;
+  }
 }
 .btn--primary {
   background-color: #90F209;

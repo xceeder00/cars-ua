@@ -9,10 +9,23 @@
   --choose-accent: #90F209;
   --choose-slider-track: #d9d9d9;
 }
+@media (max-width: 750px) {
+  .choose__container {
+    max-width: 100%;
+    box-shadow: none;
+    margin-inline: 16px;
+    padding: 36px 20px;
+  }
+}
 .choose__steps {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+@media (max-width: 750px) {
+  .choose__steps {
+    gap: 12px;
+  }
 }
 .choose__steps-header {
   display: flex;
@@ -20,6 +33,18 @@
   align-items: center;
   padding-inline: 12px;
   padding-top: 12px;
+}
+@media (max-width: 750px) {
+  .choose__steps-header {
+    flex-direction: column;
+    padding: 0;
+  }
+}
+@media (max-width: 750px) {
+  .choose__steps-title {
+    text-align: center;
+    font-size: 28px;
+  }
 }
 .choose__steps-pagination {
   display: flex;
@@ -48,6 +73,11 @@
   flex-direction: column;
   gap: 24px;
 }
+@media (max-width: 750px) {
+  .choose__step {
+    gap: 16px;
+  }
+}
 .choose__step.is-active {
   display: flex;
   animation: choose-step-fade 0.35s ease forwards;
@@ -58,12 +88,24 @@
   align-items: center;
   gap: 16px;
 }
+@media (max-width: 750px) {
+  .choose__step-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
 .choose__step-title {
   margin: 0;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
+}
+@media (max-width: 750px) {
+  .choose__step-title {
+    font-size: 18px;
+  }
 }
 .choose__step-description {
   margin: 0;
@@ -72,6 +114,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: 160%;
+}
+@media (max-width: 750px) {
+  .choose__step-description {
+    font-size: 14px;
+  }
 }
 .choose__step-content {
   display: flex;
@@ -103,7 +150,6 @@
   gap: 16px;
   cursor: pointer;
   transition: background 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid transparent;
 }
 .choose__step-list-item input {
   position: absolute;
@@ -130,12 +176,22 @@
   text-align: center;
   margin: 0;
 }
+@media (max-width: 750px) {
+  .choose__step-list-item-title {
+    font-size: 12px;
+  }
+}
 .choose__step-list-item:hover, .choose__step-list-item:has(input:checked) {
   background: #E2F5C7;
 }
 .choose hr {
   color: #D9D9D9;
   width: 100%;
+}
+@media (max-width: 750px) {
+  .choose hr {
+    display: none;
+  }
 }
 .choose .h-captcha {
   display: none;
@@ -158,11 +214,22 @@
   flex-direction: column;
   gap: 32px;
 }
+@media (max-width: 750px) {
+  .choose__form-card {
+    padding: 24px 16px;
+    gap: 24px;
+  }
+}
 .choose__form-card-text {
   display: flex;
   flex-direction: column;
   gap: 12px;
   text-align: center;
+}
+@media (max-width: 750px) {
+  .choose__form-card-text {
+    gap: 8px;
+  }
 }
 .choose__form-card-title {
   margin: 0;
@@ -173,6 +240,11 @@
   font-weight: 400;
   line-height: 140%;
 }
+@media (max-width: 750px) {
+  .choose__form-card-title {
+    font-size: 16px;
+  }
+}
 .choose__form-card-description {
   margin: 0;
   color: rgba(38, 38, 38, 0.5);
@@ -181,6 +253,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: 160%;
+}
+@media (max-width: 750px) {
+  .choose__form-card-description {
+    font-size: 12px;
+  }
 }
 .choose__form-card-body {
   display: flex;
@@ -199,6 +276,12 @@
   font-weight: 500;
   color: rgba(38, 38, 38, 0.7);
 }
+@media (max-width: 750px) {
+  .choose__slider-labels {
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+}
 .choose__slider-value {
   align-self: center;
   padding: 8px 16px;
@@ -209,6 +292,15 @@
   font-style: normal;
   font-weight: 600;
   line-height: 160%;
+}
+@media (max-width: 750px) {
+  .choose__slider-value {
+    order: 2;
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+  }
 }
 .choose__slider-input {
   width: 100%;
@@ -252,6 +344,12 @@
   font-style: normal;
   font-weight: 400;
   line-height: 160%;
+}
+@media (max-width: 750px) {
+  .choose__slider-label {
+    font-size: 14px;
+    order: 1;
+  }
 }
 .choose__form-fields {
   display: flex;
@@ -305,34 +403,6 @@
   min-width: 180px;
 }
 
-@media (max-width: 768px) {
-  .choose__container {
-    padding: 32px 24px;
-  }
-  .choose__steps {
-    gap: 24px;
-  }
-  .choose__step-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .choose__step-list {
-    grid-template-columns: 1fr;
-  }
-  .choose__form-card {
-    padding: 24px 20px;
-  }
-  .choose__step-footer {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .choose__step-footer .btn {
-    width: 100%;
-  }
-  .choose__slider-value {
-    font-size: 18px;
-  }
-}
 @keyframes choose-step-fade {
   from {
     opacity: 0;

@@ -11,15 +11,26 @@
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 40px;
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 24px;
+        }
     }
     &__right{
         border-radius: 24px;
         background-color: $c-grey-bg;
         overflow: hidden;
         padding: 80px;
+        @include tablet {
+           order: -1;
+           padding: 48px 32px;
+        }
     }
     &__title{
         margin-bottom: 24px;
+        @include tablet {
+            margin-bottom: 16px;
+        }
     }
     &__description{
         margin-bottom: 40px;
@@ -27,11 +38,17 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 160%;
+        @include tablet {
+            margin-bottom: 32px;
+        }
     }
     &__item{
         box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
         border-radius: 24px;
         overflow: hidden;
+        @include tablet {
+            border-radius: 12px;
+        }
         &-info{
             padding: 24px 32px;
             display: grid;
@@ -41,16 +58,45 @@
             grid-template-rows: 30px 1fr;
             align-items: center;
             background: #fff;
+            @include tablet {
+                grid-template-columns: 48px 1fr;
+                grid-template-rows: 50px 1fr;
+                padding: 24px;
+                column-gap: 16px;
+            }
         }
         &-avatar{
             grid-row: span 2;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            @include tablet {
+                grid-row: 1;
+                grid-column: 1;
+                width: 48px;
+                height: 48px;
+            }
         }
         &-top{
             display: flex;
             align-items: center;
             gap: 8px;
             justify-content: space-between;
+            @include tablet {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+                grid-column: 2;
+                grid-row: 1;
+            }
         }
+
         &-name{
             display: flex;
             align-items: center;
@@ -69,6 +115,17 @@
         &-rating{
             display: flex;
             align-items: center;
+        }
+        &-bottom{
+            @include tablet {
+                grid-column: span 2;
+                grid-row: 2;
+            }
+        }
+    }
+    &__button{
+        @include tablet {
+            width: 100%;
         }
     }
 }

@@ -1,14 +1,5 @@
 @import 'main';
 .xc-block {
- 
-  
-    @media (max-width: 768px) {
-        padding: 40px 0;
-        margin: 40px auto;
-        border-radius: 8px;
-    }
-
-
 
     &__content {
         border-radius: 24px;
@@ -18,9 +9,13 @@
         padding: 80px;
         align-items: center;
         background: linear-gradient(258deg, #141D16 3.37%, #212923 27.21%, #000B02 101.49%);
-        @media (max-width: 968px) {
+        @media (max-width: 999px) {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 24px;
+        }
+        @include mobile{
+            border-radius: 12px;
+            padding: 48px 32px;
         }
     }
 
@@ -28,6 +23,9 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
+        @include mobile{
+            gap: 16px;
+        }
     }
 
     &__right {
@@ -36,9 +34,7 @@
         align-items: flex-start;
         gap: 32px;
 
-        @media (max-width: 968px) {
-        gap: 24px;
-        }
+        
     }
     &__label {
         color: $c-accent;
@@ -49,6 +45,10 @@
         line-height: 1.2;
         margin: 0;
         color: #F6F6F6;
+        @include mobile{
+            font-size: 28px;
+            line-height: 115%;
+        }
         strong{
             font-weight: 700;
             color: rgba(246, 246, 246, 0.50);
@@ -62,10 +62,19 @@
         line-height: 1.6;
         white-space: pre-line;
         color: $c-grey;
+        @include mobile{
+            font-size: 16px;
+            line-height: 160%;
+        }
         // @media (max-width: 768px) {
         // font-size: 16px;
         // line-height: 1.5;
         // }
+    }
+    &__button{
+        @include mobile{
+           width: 100%;
+        }
     }
 
 //   &__button {

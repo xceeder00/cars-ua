@@ -2,6 +2,7 @@
 
 
 <div class="section section--page-width">
+    <div>
         <div class="swiper footer-blocks-swiper">
             <div class="swiper-wrapper">
                 {% for block in section.blocks %}
@@ -23,13 +24,14 @@
                         </div>
                     </div>
                 {% endfor %}
+                
             </div>
         
         <!-- Pagination -->
-        <div class="swiper-pagination footer-blocks-pagination"></div>
+        <div class="footer-blocks-pagination swiper-pagination-dots"></div>
     </div>
 </div>
-
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -37,8 +39,9 @@
       slidesPerView: 1,
       spaceBetween: 16,
       pagination: {
-        el: '.footer-blocks-pagination',
+        el: '.footer-blocks-swiper .footer-blocks-pagination',
         clickable: true,
+        type: 'bullets',
       },
       breakpoints: {
         768: {

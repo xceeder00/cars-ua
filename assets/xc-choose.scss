@@ -10,17 +10,38 @@
         position: relative;
         --choose-accent: #{$c-accent};
         --choose-slider-track: #d9d9d9;
+        @include mobile{
+            max-width: 100%;
+            box-shadow: none;
+            margin-inline: 16px;
+            padding: 36px 20px;
+        }
     }
+
+
     &__steps{
         display: flex;
         flex-direction: column;
         gap: 32px;
+        @include mobile{
+            gap: 12px;
+        }
         &-header{
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-inline: 12px;
             padding-top: 12px;
+            @include mobile{
+               flex-direction: column;
+               padding: 0;
+            }
+        }
+        &-title{
+            @include mobile{
+                text-align: center;
+                font-size: 28px;
+            }
         }
         &-pagination{
             display: flex;
@@ -43,12 +64,16 @@
             position: relative;
             overflow: hidden;
             padding: 12px;
+            
         }
     }
     &__step{
         display: none;
         flex-direction: column;
         gap: 24px;
+        @include mobile{
+            gap: 16px;
+        }
         &.is-active{
             display: flex;
             animation: choose-step-fade 0.35s ease forwards;
@@ -58,6 +83,11 @@
             justify-content: space-between;
             align-items: center;
             gap: 16px;
+            @include mobile{
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
         }
         &-title{
             margin: 0;
@@ -65,6 +95,9 @@
             font-style: normal;
             font-weight: 600;
             line-height: 120%;
+            @include mobile{
+                font-size: 18px;
+            }
         }
         &-description{
             margin: 0;
@@ -73,7 +106,9 @@
             font-style: normal;
             font-weight: 400;
             line-height: 160%;
-
+            @include mobile{
+                font-size: 14px;
+            }
         }
         &-content{
             display: flex;
@@ -104,7 +139,6 @@
                 gap: 16px;
                 cursor: pointer;
                 transition: background 0.3s ease, box-shadow 0.3s ease;
-                border: 1px solid transparent;
                 input{
                     position: absolute;
                     inset: 0;
@@ -127,6 +161,9 @@
                     letter-spacing: 0.28px;
                     text-align: center;
                     margin: 0;
+                    @include mobile{
+                        font-size: 12px;
+                    }
                 }
                 &:hover, &:has(input:checked){
                     background: #E2F5C7;
@@ -134,10 +171,15 @@
             }
         }
     }
+
     hr{
        color: #D9D9D9; 
        width: 100%;
+       @include mobile{
+        display: none;
+       }
     }
+
     .h-captcha{
         display: none;
     }
@@ -158,11 +200,19 @@
         padding: 32px;
         flex-direction: column;
         gap: 32px;
+        @include mobile{
+            padding: 24px 16px;
+            gap: 24px;
+            
+        }
         &-text{
             display: flex;
             flex-direction: column;
             gap: 12px;
             text-align: center;
+            @include mobile{
+                gap: 8px;
+            }
         }
         &-title{
             margin: 0;
@@ -172,6 +222,9 @@
             font-style: normal;
             font-weight: 400;
             line-height: 140%;
+            @include mobile{
+                font-size: 16px;
+            }
         }
 
         &-description{
@@ -182,6 +235,9 @@
             font-style: normal;
             font-weight: 400;
             line-height: 160%;
+            @include mobile{
+                font-size: 12px;
+            }
         }
         &-body{
             display: flex;
@@ -199,7 +255,12 @@
             font-size: 14px;
             font-weight: 500;
             color: rgba(38, 38, 38, 0.7);
+            @include mobile{
+               flex-wrap: wrap;
+               row-gap: 16px;
+            }
         }
+
         &-value{
             align-self: center;
             padding: 8px 16px;
@@ -210,6 +271,13 @@
             font-style: normal;
             font-weight: 600;
             line-height: 160%;
+            @include mobile{
+                order: 2;
+                width: 100%;
+                text-align: center;
+                justify-self: center;
+                align-self: center;
+            }
         }
         &-input{
             width: 100%;
@@ -254,8 +322,12 @@
             font-style: normal;
             font-weight: 400;
             line-height: 160%;
+            @include mobile{
+                font-size: 14px;
+                order: 1;
+            }
+            
         }
-
     }
     &__form-fields{
         display: flex;
@@ -312,38 +384,6 @@
     }
 }
 
-@media (max-width: 768px){
-    .choose{
-        &__container{
-            padding: 32px 24px;
-        }
-        &__steps{
-            gap: 24px;
-        }
-        &__step{
-            &-header{
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            &-list{
-                grid-template-columns: 1fr;
-            }
-        }
-        &__form-card{
-            padding: 24px 20px;
-        }
-        &__step-footer{
-            flex-direction: column;
-            align-items: stretch;
-            .btn{
-                width: 100%;
-            }
-        }
-        &__slider-value{
-            font-size: 18px;
-        }
-    }
-}
 
 @keyframes choose-step-fade{
     from{

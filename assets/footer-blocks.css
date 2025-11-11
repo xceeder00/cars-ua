@@ -72,59 +72,51 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 32px;
+  margin-top: 16px;
+  position: relative!important;
+  bottom: unset!important;
 }
 
 .footer-blocks-pagination .swiper-pagination-bullet {
-  width: 32px;
-  height: 8px;
-  border-radius: 4px;
-  background-color: #D9D9D9;
+  width: 100%;
+  background: rgba(38, 38, 38, 0.16)!important;
   opacity: 1;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .footer-blocks-pagination .swiper-pagination-bullet-active {
-  background-color: #A0FF00;
-  width: 40px;
+  background: #B3F929!important;
 }
 
 
 
 
 /* Mobile Styles (max 767px) */
-@media screen and (max-width: 767px) {
-
+@media screen and (max-width: 750px) {
+    .footer-blocks-section {
+        margin-bottom: 24px;
+    }
 
   .footer-block-card {
-    padding: 35px 25px;
-    min-height: 260px;
-    border-radius: 20px;
+    padding: 32px;
+    min-height: 188px;
+    border-radius: 12px;
   }
 
   .footer-block-icon {
-    width: 56px;
-    height: 56px;
-    margin-bottom: 20px;
+    width: 32px;
+    height:32px;
+    margin-bottom: 8px;
   }
 
   .footer-block-title {
-    font-size: 22px;
-    margin-bottom: 14px;
+    font-size: 20px;
+    margin-bottom: 16px;
   }
 
   .footer-block-description {
-    font-size: 15px;
-  }
-
-  .footer-blocks-pagination .swiper-pagination-bullet {
-    width: 28px;
-    height: 6px;
-  }
-
-  .footer-blocks-pagination .swiper-pagination-bullet-active {
-    width: 36px;
+    font-size: 14px;
   }
 }
 

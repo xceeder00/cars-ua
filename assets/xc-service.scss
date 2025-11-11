@@ -3,12 +3,16 @@
 .xc-service{
    
     &__content{
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 24px;
         h2{
             color: rgba(38, 38, 38, 0.50);
             margin-bottom: 0;
+        }
+
+        @include mobile{
+           
         }
     }
     &__list{
@@ -17,13 +21,35 @@
         grid-template-rows: repeat(2, 1fr);
         gap: 24px;
         min-height: 400px;
+        
 
-        @media (max-width: 968px) {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-            min-height: auto;
+       @include mobile {
+            min-height: 188px;
+            grid-template-columns: unset;
+            grid-template-rows: unset;
+            grid:  auto / auto-flow 310px;
+            gap: 16px;
+            overflow-x: scroll;
+            padding-bottom: 16px;
+            scroll-snap-stop: always;
+            scroll-snap-type: x mandatory;
+            user-select: none;
+            scrollbar-color: $c-main;
+            // scrollbar-width: 6px;
+            scrollbar-gutter: 16px;
+            scroll-snap-align: start;
+            
+           
         }
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        
+        
     }
+    
+    
     &__item{
         position: relative;
         display: flex;
@@ -33,11 +59,21 @@
         overflow: hidden;
         min-height: 180px;
         text-decoration: none;
-        background: linear-gradient(0deg, rgba(38, 38, 38, 0.40) 0%, rgba(38, 38, 38, 0.40) 100%);
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(38, 38, 38, 0.40) 0%, rgba(38, 38, 38, 0.40) 100%);
+        }
 
 
 
-        @media (max-width: 968px) {
+       @include mobile {
             min-height: 240px;
         }
 
@@ -57,9 +93,14 @@
            grid-column: 1 / 3;
            grid-row: 1 / 3;
            
-           @media (max-width: 968px) {
+           
+          @include mobile {
                grid-column: 1;
                grid-row: auto;
+           }
+           @include mobile{
+            grid-column: unset;
+            grid-row: auto;
            }
         }
         
@@ -68,8 +109,12 @@
             grid-column: 3 / 4;
             grid-row: 1 / 2;
 
-            @media (max-width: 968px) {
+           @include mobile {
                 grid-column: 1;
+                grid-row: auto;
+            }
+            @include mobile{
+                grid-column: unset;
                 grid-row: auto;
             }
         }
@@ -79,8 +124,12 @@
             grid-column: 4 / 5;
             grid-row: 1 / 2;
 
-            @media (max-width: 968px) {
+           @include mobile {
                 grid-column: 1;
+                grid-row: auto;
+            }
+            @include mobile{
+                grid-column: unset;
                 grid-row: auto;
             }
         }
@@ -90,8 +139,12 @@
             grid-column: 3 / 4;
             grid-row: 2 / 3;
 
-            @media (max-width: 968px) {
+           @include mobile {
                 grid-column: 1;
+                grid-row: auto;
+            }
+            @include mobile{
+                grid-column: unset;
                 grid-row: auto;
             }
         }
@@ -101,10 +154,18 @@
             grid-column: 4 / 5;
             grid-row: 2 / 3;
 
-            @media (max-width: 968px) {
+           @include mobile {
                 grid-column: 1;
                 grid-row: auto;
             }
+            @include mobile{
+                grid-column: unset;
+                grid-row: auto;
+            }
+        }
+        @include mobile{
+            min-height: 188px;
+            max-height: 188px;
         }
     }
     
@@ -126,7 +187,6 @@
         justify-content: space-between;
         align-items: center;
         padding: 24px;
-        // background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 100%);
     }
     
     &__item-title{
@@ -134,6 +194,15 @@
         font-size: 20px;
         font-weight: 500;
         margin: 0;
+        @include mobile{
+            font-size: 18px;
+        }
+    }
+    .circle-btn{
+        @include mobile{
+            width: 32px;
+            height: 32px;
+        }
     }
 
 }
