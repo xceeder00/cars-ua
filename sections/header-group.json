@@ -18,6 +18,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "class_name": "header-left",
             "content_direction": "row",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -58,6 +59,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "class_name": "header-top",
                 "content_direction": "row",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -142,6 +144,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "class_name": "",
                 "content_direction": "row",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -232,6 +235,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
+            "class_name": "",
             "content_direction": "row",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-end",
@@ -272,6 +276,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "class_name": "",
                 "content_direction": "row",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -356,6 +361,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "class_name": "",
                 "content_direction": "row",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -440,6 +446,7 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
+                "class_name": "",
                 "content_direction": "row",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
