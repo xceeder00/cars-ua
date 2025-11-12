@@ -3,6 +3,9 @@
 .columns{
     padding-bottom: 40px;
     margin-inline: 24px;
+    @include mobile{
+        margin-inline: 16px;
+    }
     &__wrapper{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -35,6 +38,9 @@
         padding: 24px;
         background: #FFF;
         box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+        @include mobile{
+            padding: 16px;
+        }
         &:hover{
             svg path{
                 fill: $c-main;

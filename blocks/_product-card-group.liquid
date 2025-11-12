@@ -4,7 +4,7 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+{% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes, class_name: block.settings.class_name %}
 
 {% schema %}
 {
@@ -43,6 +43,11 @@
     {
       "type": "header",
       "content": "t:content.layout"
+    },
+    {
+      "type": "text",
+      "id": "class_name",
+      "label": "Custom class"
     },
     {
       "type": "select",

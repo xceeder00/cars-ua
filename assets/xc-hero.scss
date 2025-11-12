@@ -2,10 +2,16 @@
 
 .hero{
     margin: 24px;
+    @include mobile{
+        margin: 16px;
+    }
     &__wrapper{
         border-radius: 24px;
         overflow: hidden;
         position: relative;
+        @include mobile{
+            border-radius: 12px;
+        }
     }
     &__slide{
         position: relative;
@@ -16,6 +22,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        @include mobile{
+           min-height: unset;
+           justify-content: flex-start;
+           padding: 0;
+        }
         &-image{
             width: 100%;
             height: 100%;
@@ -25,6 +36,15 @@
             left: 0;
             right: 0;
             bottom: 0;
+            @include mobile{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                background: linear-gradient(180deg, rgba(20, 29, 22, 0.00) 55.21%, #141D16 100%);
+                aspect-ratio: 370/210;
+
+        }
         }
         &-content{
             max-width: 590px;
@@ -34,6 +54,14 @@
             align-items: flex-start;
             gap: 24px;
             z-index: 2;
+            @include mobile{
+                max-width: 100%;
+                background: #141D16;
+                padding: 0 32px 70px 32px;
+                align-items: center;
+                text-align: center;
+                flex: 1;
+            }
         }
         &-title{
             color: $c-light;
@@ -42,6 +70,7 @@
                 color: rgba(232, 235, 232, 0.50);
             }
         }
+        
 
         &-text{
             color: $c-grey;
@@ -53,6 +82,19 @@
             justify-content: center;
             align-items: flex-start;
             gap: 16px;
+            @include mobile{
+                flex-direction: column;
+                justify-content: center;
+                
+                gap: 12px;
+                margin-top: 0;
+                width: 100%;
+            }
+            .btn{
+                @include mobile{
+                    width: 100%;
+                }
+            }
         }
         &-label{
             border-radius: 32px;
@@ -67,7 +109,13 @@
             font-size: 14px;
             font-weight: 600;
             line-height: 140%;
-            
+            @include mobile{
+                height: auto;
+                background: transparent;
+                justify-content: center;
+                width: 100%;
+                padding: 0;
+            }
         }
     }
     &__pagination{

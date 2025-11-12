@@ -11,12 +11,20 @@
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 40px;
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 24px;
+        }
     }
     &__right{
         border-radius: 24px;
         background: linear-gradient(258deg, #141D16 3.37%, #212923 27.21%, #000B02 101.49%);
         overflow: hidden;
         padding: 80px;
+        @include tablet {
+           order: -1;
+           padding: 48px 32px;
+        }
     }
     &__title{
         margin-bottom: 24px!important;
@@ -30,6 +38,9 @@
             color: rgba(246, 246, 246, 0.50)!important;
             
         }
+        @include tablet {
+            margin-bottom: 16px;
+        }
     }
     &__description{
         margin-bottom: 40px;
@@ -37,18 +48,39 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 160%;
+        @include tablet {
+            margin-bottom: 32px;
+        }
     }
     &__item{
         box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
         border-radius: 24px;
         overflow: hidden;
+        @include tablet {
+            border-radius: 12px;
+        }
         &-info{
             padding: 24px 32px;
-          
+            @include tablet {
+                padding: 24px;
+                row-gap: 16px;
+            }
+            h4{
+                @include mobile{
+                    margin-bottom: 16px!important;
+                }
+            }
            
+        }
+        &-bottom{
+            color: rgba(38, 38, 38, 0.80);
+
         }
         &-image{
             aspect-ratio: 636/252;
+            @include tablet {
+                aspect-ratio: 358/200;
+            }
             img{
                 width: 100%;
                 height: 100%;

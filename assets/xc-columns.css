@@ -2,6 +2,11 @@
   padding-bottom: 40px;
   margin-inline: 24px;
 }
+@media (max-width: 750px) {
+  .columns {
+    margin-inline: 16px;
+  }
+}
 .columns__wrapper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -35,6 +40,11 @@
   padding: 24px;
   background: #FFF;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 750px) {
+  .columns__item {
+    padding: 16px;
+  }
 }
 .columns__item:hover svg path {
   fill: #262626;

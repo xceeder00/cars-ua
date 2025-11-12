@@ -10,11 +10,48 @@
             line-height: 160%;
             letter-spacing: 1.4px;
             text-transform: uppercase;
+            @include tablet {
+                margin-bottom: 24px;
+                font-size: 12px!important;
+            }
+    }
+    &__item{
+        @include tablet {
+            min-height: 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            img{
+                height: 40px;
+                width: auto;
+            }
+        }
     }
     &__wrapper{
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 80px;
+        @include tablet {
+          display: grid;
+          
+            grid-template-columns: unset;
+            grid-template-rows: unset;
+            grid:  auto / auto-flow 100px;
+            gap: 48px;
+
+            overflow-x: scroll;
+            padding-bottom: 16px;
+            scroll-snap-stop: always;
+            scroll-snap-type: x mandatory;
+            user-select: none;
+            scrollbar-color: $c-main;
+            // scrollbar-width: 6px;
+            scrollbar-gutter: 16px;
+            scroll-snap-align: start;
+            
+           
+        
+        }
     }
 }

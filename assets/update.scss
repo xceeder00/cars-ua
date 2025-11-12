@@ -162,9 +162,27 @@ body .shopify-section-group-footer-group  {
     }
 }
 
+h2, .h2{
+    @include mobile{
+        font-size: 30px!important;
+        line-height: 110%!important;
+    }
+}
 h3, .h3{
     @include mobile{
         font-size: 28px!important;
+        line-height: 120%!important;
+    }
+    p{
+        @include mobile{
+            font-size: 28px!important;
+            line-height: 120%!important;
+        }
+    }
+}
+h4{
+    @include mobile{
+        font-size: 20px!important;
         line-height: 120%!important;
     }
 }
@@ -280,6 +298,7 @@ h3, .h3{
         }
     }
 }
+
 .circle-btn{
     display: flex;
     border: none;
@@ -298,9 +317,11 @@ h3, .h3{
         color: $c-main;
     }
 }
+
 #form-container-ref{
     display: flex!important;
 }
+
 .swiper{
     
     &-main-pagination{
@@ -380,4 +401,109 @@ h3, .h3{
             cursor: default;
         }
     }
+}
+
+.product-card-bottom {
+    color: #262626;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 160%;
+    product-price{
+        flex: unset!important;
+        .price{
+            color: #262626;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 160%;
+            @include mobile{
+               text-align: left!important;
+            }
+        }   
+    }
+    [ref="priceContainer"]{
+        @include mobile{
+            text-align: left!important;
+        }
+    }
+}
+
+slideshow-slides {
+    @include mobile{
+        gap: 24px!important;
+        scrollbar-color: $c-main $c-accent!important;
+        scrollbar-width: auto;
+        scrollbar-gutter: stable;
+        scrollbar-track-color: $c-accent;
+        &::-webkit-scrollbar {
+            width: 20px;
+            height: 20px;
+        }
+        &::-webkit-scrollbar-track {
+            background: #000000;
+            border-radius: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 10px;
+        }
+    }
+}
+
+.h-featured-mobile{
+    display: none;
+    @include mobile{
+        display: block;
+    }
+}
+
+.ui-test-product-list .section-resource-list__header a.button{
+    color: #262626;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0.28px;
+    @include mobile{
+        display: none;
+    }
+}
+
+
+//header
+
+.header-actions__cta{
+    border: 1.5px solid rgba(144, 242, 9, 0.24);
+    svg{
+        display: none;
+        @include mobile{
+            display: block;
+        }
+    }
+    span{
+        @include mobile{
+            display: none;
+        }
+
+    }
+    @include mobile{
+        border: none;
+        border-radius: 8px;
+        background: rgba(144, 242, 9, 0.10);
+        padding: 4px;
+    }
+}
+
+
+.header__row{
+     border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+.header__columns{
+   
+    @include mobile{
+        padding-inline: 16px!important;
+    }
+}
+
+header-menu .menu-list{
+
 }
