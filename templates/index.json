@@ -225,7 +225,7 @@
           "settings": {
             "class_name": "h-featured-mobile",
             "label": "Переглянути всі",
-            "link": "shopify://collections/авто-в-наявності",
+            "link": "shopify://collections/stock",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
@@ -524,7 +524,7 @@
       ],
       "name": "Featured collection",
       "settings": {
-        "collection": "авто-в-наявності",
+        "collection": "stock",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
         "max_products": 6,
@@ -676,7 +676,7 @@
           "settings": {
             "title": "Підбір авто",
             "image": "shopify://shop_images/Rectangle_11924.png",
-            "button_link": "shopify://pages/послуги"
+            "button_link": "shopify://pages/services"
           }
         },
         "service_XpiYFK": {
@@ -684,7 +684,7 @@
           "settings": {
             "title": "Дилерські послуги",
             "image": "shopify://shop_images/Rectangle_11925.png",
-            "button_link": "shopify://pages/послуги"
+            "button_link": "shopify://pages/services"
           }
         },
         "service_Ya38H6": {
@@ -692,7 +692,7 @@
           "settings": {
             "title": "Брокерські послуги",
             "image": "shopify://shop_images/Rectangle_11926.png",
-            "button_link": "shopify://pages/послуги"
+            "button_link": "shopify://pages/services"
           }
         },
         "service_3zGLhf": {
@@ -700,7 +700,7 @@
           "settings": {
             "title": "Кредитування",
             "image": "shopify://shop_images/Rectangle_11927.png",
-            "button_link": "shopify://pages/послуги"
+            "button_link": "shopify://pages/services"
           }
         },
         "service_L83pGW": {
@@ -708,7 +708,7 @@
           "settings": {
             "title": "Сертифікація",
             "image": "shopify://shop_images/Rectangle_11928.png",
-            "button_link": "shopify://pages/послуги"
+            "button_link": "shopify://pages/services"
           }
         }
       },

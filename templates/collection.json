@@ -6,8 +6,18 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
+    "xc_page_head_JEKEXc": {
+      "type": "xc-page-head",
+      "name": "XC Page Head",
+      "settings": {
+        "title": "{{ collection.title }}",
+        "description": "{{ collection.description }}",
+        "image": "{{ collection.image }}"
+      }
+    },
     "section": {
       "type": "section",
       "blocks": {
@@ -68,6 +78,7 @@
         "text_tqQTNE",
         "text_twGGkJ"
       ],
+      "disabled": true,
       "name": "Collection heading",
       "settings": {
         "content_direction": "column",
@@ -105,14 +116,14 @@
           "static": true,
           "settings": {
             "enable_filtering": true,
-            "filter_style": "horizontal",
+            "filter_style": "vertical",
             "filter_width": "centered",
             "text_label_case": "default",
             "show_swatch_label": false,
             "show_filter_label": false,
-            "enable_sorting": true,
-            "enable_grid_density": true,
-            "inherit_color_scheme": true,
+            "enable_sorting": false,
+            "enable_grid_density": false,
+            "inherit_color_scheme": false,
             "color_scheme": "",
             "padding-block-start": 8,
             "padding-block-end": 8,
@@ -155,7 +166,7 @@
               },
               "blocks": {}
             },
-            "product_title_4nY4eT": {
+            "product_title_6UmngL": {
               "type": "product-title",
               "name": "t:names.product_title",
               "settings": {
@@ -180,7 +191,7 @@
               },
               "blocks": {}
             },
-            "price_EzJzMm": {
+            "price_Hx9UET": {
               "type": "price",
               "settings": {
                 "show_sale_price_first": true,
@@ -201,12 +212,54 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "product_card_group_NkHzyM": {
+              "type": "_product-card-group",
+              "name": "t:names.group",
+              "settings": {
+                "class_name": "",
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "card-gallery",
-            "product_title_4nY4eT",
-            "price_EzJzMm"
+            "product_title_6UmngL",
+            "price_Hx9UET",
+            "product_card_group_NkHzyM"
           ]
         }
       },
@@ -214,6 +267,8 @@
         "layout_type": "grid",
         "product_card_size": "medium",
         "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
         "product_grid_width": "centered",
         "full_width_on_mobile": true,
         "columns_gap_horizontal": 16,
@@ -227,6 +282,7 @@
     }
   },
   "order": [
+    "xc_page_head_JEKEXc",
     "section",
     "main"
   ]
