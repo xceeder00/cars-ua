@@ -23,9 +23,17 @@
     </div>
     <hr>
     {% form 'customer', id: 'choose__step-form-3', class: 'choose__form' %}
+        <input
+            type="hidden"
+            name="customer[email]"
+            data-xc-contact-email
+            value="pending@example.invalid"
+            />
       {% if form.errors %}
         <div data-choose-initial-step="3"></div>
+        ne success
       {% elsif form.posted_successfully? %}
+        success
         <div data-choose-initial-step="3"></div>
       {% endif %}
       <input type="hidden" name="form_type" value="choose-step-form">
@@ -151,7 +159,7 @@
                       required
                     >
                   </label>
-                  <input type="hidden" name="contact[email]" value="1@1.com">
+                  
                   <input type="hidden" name="contact[tags]" value="newsletter">
                 </div>
               </div>

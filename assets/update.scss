@@ -467,6 +467,31 @@ slideshow-slides {
     }
 }
 
+.page-width-content{
+    --page-content-width: 1200px;
+    h2{
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 140%;
+    }
+    h3{
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 140%;
+    }
+    h4{
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 140%;
+    }
+    p{
+        color: #262626;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%;
+    }
+}
 
 //header
 

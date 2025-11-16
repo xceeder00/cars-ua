@@ -474,6 +474,32 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   }
 }
 
+.page-width-content {
+  --page-content-width: 1200px;
+}
+.page-width-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.page-width-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.page-width-content h4 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.page-width-content p {
+  color: #262626;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+
 .header-actions__cta {
   border: 1.5px solid rgba(144, 242, 9, 0.24);
 }

@@ -1,0 +1,280 @@
+<div class="xc-contact">
+  <div class="xc-contact__inner">
+    <div class="xc-contact__header">
+      <h4 class="xc-contact__title">Не знайшли відповідь?</h4>
+      <p class="xc-contact__subtitle">Залишились питання? Наші експерти на зв’язку!</p>
+    </div>
+
+    {% form 'contact', id: 'xc-contact-form' %}
+      <input type="hidden" name="contact[tags]" value="xc-contact-form">
+        <input
+            type="hidden"
+            name="contact[email]"
+            data-xc-contact-email
+            value="pending@example.invalid"
+            />
+      {% if form.posted_successfully? %}
+        <div class="xc-contact__status xc-contact__status--success">
+          Менеджер зв'яжеться з вами найближчим часом!
+        </div>
+      {% elsif form.errors %}
+        <div class="xc-contact__status xc-contact__status--error">
+          {{ form.errors | default_errors }}
+        </div>
+      {% endif %}
+
+      <div class="xc-contact__grid">
+        <label class="xc-contact__field">
+          <span class="xc-contact__label">Введіть Ім’я</span>
+          <input
+            class="xc-contact__input"
+            type="text"
+            name="contact[name]"
+            autocomplete="name"
+            required
+          >
+        </label>
+
+        <label class="xc-contact__field">
+          <span class="xc-contact__label">Введіть Ваш телефон</span>
+          <input
+            class="xc-contact__input"
+            type="tel"
+            name="contact[phone]"
+            inputmode="tel"
+            placeholder="+380 (__) ___ __ __"
+            required
+            pattern="^\+380\s\(\d{2}\)\s\d{3}\s\d{2}\s\d{2}$"
+            title="+380 (__) ___ __ __"
+          >
+        </label>
+      </div>
+
+      <label class="xc-contact__field xc-contact__field--full">
+        <span class="xc-contact__label">Запитайте нас</span>
+        <textarea
+          class="xc-contact__textarea"
+          name="contact[body]"
+          rows="4"
+          required
+        ></textarea>
+      </label>
+
+      <button class="xc-contact__submit" type="submit">
+        Надіслати
+      </button>
+    {% endform %}
+  </div>
+</div>
+
+<style>
+  .xc-contact {
+    font-family: inherit;
+    color: #202020;
+  }
+
+  .xc-contact__inner {
+    background: #fefefe;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 520px;
+  }
+
+  .xc-contact__header {
+    margin-bottom: 24px;
+  }
+
+  .xc-contact__title {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .xc-contact__subtitle {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(32, 32, 32, 0.8);
+  }
+
+  .xc-contact__status {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .xc-contact__status--success {
+    background: rgba(42, 199, 89, 0.12);
+    color: #15803d;
+  }
+
+  .xc-contact__status--error {
+    background: rgba(224, 34, 41, 0.12);
+    color: #be123c;
+  }
+
+  .xc-contact__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .xc-contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .xc-contact__field--full {
+    margin-bottom: 24px;
+  }
+
+  .xc-contact__label {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(32, 32, 32, 0.75);
+  }
+
+  .xc-contact__input,
+  .xc-contact__textarea {
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+  }
+
+  .xc-contact__input:focus,
+  .xc-contact__textarea:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+    outline: none;
+  }
+
+  .xc-contact__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .xc-contact__submit {
+    appearance: none;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 34px;
+    font-size: 15px;
+    font-weight: 600;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+  }
+
+  .xc-contact__submit:hover,
+  .xc-contact__submit:focus-visible {
+    opacity: 0.85;
+  }
+
+  .xc-contact__submit:active {
+    transform: scale(0.98);
+  }
+
+  @media screen and (max-width: 640px) {
+    .xc-contact__inner {
+      padding: 24px;
+    }
+
+    .xc-contact__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .xc-contact__submit {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('xc-contact-form');
+    if (!form) return;
+
+    const phoneInput = form.querySelector('input[name="contact[phone]"]');
+    if (!phoneInput) return;
+
+    const formatPhone = function (value) {
+      let digits = value.replace(/\D/g, '');
+
+      if (!digits.startsWith('380')) {
+        if (digits.startsWith('80')) {
+          digits = '3' + digits;
+        } else if (digits.startsWith('0')) {
+          digits = '38' + digits;
+        } else {
+          digits = '380' + digits;
+        }
+      }
+
+      digits = digits.substring(0, 12);
+
+      const parts = [
+        digits.substring(0, 3),
+        digits.substring(3, 5),
+        digits.substring(5, 8),
+        digits.substring(8, 10),
+        digits.substring(10, 12)
+      ];
+
+      let formatted = '';
+      if (parts[0]) formatted += '+' + parts[0];
+      if (parts[1]) formatted += ' (' + parts[1] + (parts[1].length === 2 ? ')' : '');
+      if (parts[2]) formatted += ' ' + parts[2];
+      if (parts[3]) formatted += ' ' + parts[3];
+      if (parts[4]) formatted += ' ' + parts[4];
+
+      return formatted;
+    };
+
+    const pattern = /^\+380\s\(\d{2}\)\s\d{3}\s\d{2}\s\d{2}$/;
+
+    phoneInput.addEventListener('input', function (event) {
+      const cursorPosition = event.target.selectionStart;
+      const previousLength = event.target.value.length;
+      event.target.value = formatPhone(event.target.value);
+
+      const newLength = event.target.value.length;
+      const adjustment = newLength - previousLength;
+      event.target.setSelectionRange(cursorPosition + adjustment, cursorPosition + adjustment);
+    });
+
+    phoneInput.addEventListener('blur', function (event) {
+      event.target.value = formatPhone(event.target.value);
+    });
+
+    form.addEventListener('submit', function (event) {
+      const formatted = formatPhone(phoneInput.value);
+      phoneInput.value = formatted;
+
+      if (!pattern.test(formatted)) {
+        event.preventDefault();
+        phoneInput.setCustomValidity('Введіть номер у форматі +380 (XX) XXX XX XX');
+        phoneInput.reportValidity();
+        return;
+      }
+
+      phoneInput.setCustomValidity('');
+    });
+  });
+</script>
+
