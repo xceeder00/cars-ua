@@ -175,8 +175,8 @@
     "inventory_in_stock": "В наявності",
     "inventory_out_of_stock": "Немає в наявності",
     "item_count": {
-      "one": "{{ count }} товар",
-      "other": "{{ count }} товарів"
+      "one": "{{ count }} авто",
+      "other": "{{ count }} авто"
     },
     "language": "Мова",
     "localization_region_and_language": "Регіон та мова",

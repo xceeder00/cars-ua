@@ -21,7 +21,7 @@
     );
   }
 {% endjavascript %}
-
+{{ 'xc-pc.css' | asset_url | stylesheet_tag }}
 {% comment %} We always render this full-width, as the child blocks have width: page/full settings {% endcomment %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <results-list
@@ -35,6 +35,10 @@
   <div
     class="collection-wrapper grid gap-style"
   >
+    <div class="facets-collection">
+        <a href="/collections/stock" title="Авто в наявності" class="btn btn--secondary btn--small {% if collection.handle == 'stock' %}active{% endif %}">Авто в наявності</a>
+        <a href="/collections/shipping" title="Авто в дорозі" class="btn btn--secondary btn--small {% if collection.handle == 'shipping' %}active{% endif %}">Авто в дорозі</a>
+      </div>
     {% content_for 'block',
       type: 'filters',
       id: 'filters',
@@ -58,9 +62,11 @@
             data-product-id="{{ product.id }}"
             ref="cards[]"
           >
-            {% # theme-check-disable %}
+
+            {% render 'product-card-horizontal', product: product %}
+            {% comment %} {% # theme-check-disable %}
             {% content_for 'block', type: '_product-card', id: 'product-card', closest.product: product %}
-            {% # theme-check-enable %}
+            {% # theme-check-enable %} {% endcomment %}
           </li>
         {% endfor %}
       {% endcapture %}

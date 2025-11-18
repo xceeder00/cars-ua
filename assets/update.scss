@@ -297,7 +297,30 @@ h4{
             box-shadow: 0 8px 20px rgba(128, 255, 0, 0.3);
         }
     }
+    &--small{
+         padding: 12px 24px;
+         height: 48px;
+    }
+
+    &--secondary{
+        border: 1px solid rgba(38, 38, 38, 0.24);
+        color: rgba(38, 38, 38, 0.50);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%; /* 19.6px */
+        letter-spacing: 0.28px;
+        text-decoration: none;
+        transition: color 0.3s ease, border 0.3s ease;
+        &.active, &:hover{
+            color: #262626;
+            border: 1px solid #262626;
+        }
+    }
 }
+
+
+
 
 .circle-btn{
     display: flex;
@@ -522,13 +545,46 @@ slideshow-slides {
      border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
+.header__row:has([aria-expanded="true"]){
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
 .header__columns{
-   
+    padding-block: 16px!important;
     @include mobile{
         padding-inline: 16px!important;
+        padding-block: 0!important;
     }
 }
 
-header-menu .menu-list{
 
+.menu-list__link{
+            font-size: var(--menu-top-level-font-size-desktop);
+    
 }
+.overflow-menu::part(list){
+   gap: 40px!important;
+}
+.overflow-menu::after{
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: none!important;
+}
+.overflow-menu::part(overflow){
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+header-menu .menu-list__link{
+    padding-inline: 10px!important;
+}
+.header__columns {
+    &:has(.header__column--center header-menu) {
+        --header-center:1fr!important;
+        --header-left: 200px!important;
+        --header-right: 200px!important;
+    }
+}
+
