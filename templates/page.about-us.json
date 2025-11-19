@@ -18,6 +18,210 @@
         "image": "shopify://shop_images/35471392547b86295dbb8bd73a9301e2cbab223b.png"
       }
     },
+    "xc_numbers_3Wgx6T": {
+      "type": "xc-numbers",
+      "blocks": {
+        "xc_number_YWzXK6": {
+          "type": "xc_number",
+          "settings": {
+            "number": "1000",
+            "description": "Щасливих власників нових автівок"
+          }
+        },
+        "xc_number_YrT6rC": {
+          "type": "xc_number",
+          "settings": {
+            "number": "30",
+            "description": "Підібраних авто щомісяця для найвибагливіших клієнтів"
+          }
+        },
+        "xc_number_cMLTJJ": {
+          "type": "xc_number",
+          "settings": {
+            "number": "5",
+            "description": "Років командної та результативної роботи"
+          }
+        },
+        "xc_number_MFr6Je": {
+          "type": "xc_number",
+          "settings": {
+            "number": "500",
+            "description": "Автівок доставлено швидше запланових дат"
+          }
+        }
+      },
+      "block_order": [
+        "xc_number_YWzXK6",
+        "xc_number_YrT6rC",
+        "xc_number_cMLTJJ",
+        "xc_number_MFr6Je"
+      ],
+      "name": "XC Numbers",
+      "settings": {
+        "logo": "shopify://shop_images/Group_2607387.png"
+      }
+    },
+    "xc_quote_czGCKK": {
+      "type": "xc-quote",
+      "name": "XC Quote",
+      "settings": {
+        "quote": "<p><strong>Наш пріоритет </strong>- довіра і результат, яким можна пишатися.<br/>Ми цінуємо час наших клієнтів і завжди доводимо справу до кінця.</p>",
+        "author": "Імя ти Прізвище",
+        "author_position": "Засновник",
+        "image": "shopify://shop_images/Ellipse_1_0e5a756e-0b00-4b11-9c6b-2da8dbd7d11f.png"
+      }
+    },
+    "xc_about_mqXmhb": {
+      "type": "xc-about",
+      "blocks": {
+        "item_GmhYHL": {
+          "type": "item",
+          "settings": {
+            "title": "Чому Ми",
+            "description": "Ми об’єднали фахівців, які щодня допомагають клієнтам знайти ідеальний автомобіль без стресу та переплат.<br>Для нас важливо не просто доставити авто — ми прагнемо зробити увесь процес комфортним, зрозумілим і приємним."
+          }
+        },
+        "item_z3emaU": {
+          "type": "item",
+          "settings": {
+            "title": "Наш підхід",
+            "description": "Ми віримо, що прозорість, професіоналізм і людяність — це основа успішної співпраці. Команда Atlas Auto — це люди, які живуть своєю справою і завжди доводять кожен проєкт до ідеалу."
+          }
+        }
+      },
+      "block_order": [
+        "item_GmhYHL",
+        "item_z3emaU"
+      ],
+      "name": "XC About",
+      "settings": {}
+    },
+    "xc_logos_jfrzLx": {
+      "type": "xc-logos",
+      "blocks": {
+        "logo_HycjUD": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/manheim-logo-freelogovectors_net_-1_svg.png"
+          }
+        },
+        "logo_9mcn7h": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/copartlogo-40th-desktop-1.svg_fill.png"
+          }
+        },
+        "logo_BK3B4D": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/happy-car-service-auctiond-1.svg_fill.png"
+          }
+        },
+        "logo_9GX8jb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/iaa-insurance-auto-auctions-inc-logo-75c4ef61ae-seeklogo-1_svg.png"
+          }
+        },
+        "logo_NgJzcV": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/bca-marketplace4758-depositphotos-bgremover-1_svg.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_HycjUD",
+        "logo_9mcn7h",
+        "logo_BK3B4D",
+        "logo_9GX8jb",
+        "logo_NgJzcV"
+      ],
+      "name": "Xc logo",
+      "settings": {
+        "title": "Доступ та акредитація на кращих аукціонах"
+      }
+    },
+    "xc_block_pEyAgi": {
+      "type": "xc-block",
+      "name": "XC Block",
+      "settings": {
+        "label": "ВСЕ ВКЛЮЧЕНО",
+        "label_color": "#80ff00",
+        "heading": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>",
+        "description": "Комплексний супровід без зайвих турбот. Ваше авто мрії - швидко та безпечно.",
+        "button_text": "Замовити дзвінок"
+      }
+    },
+    "xc_reviews_bRYfjD": {
+      "type": "xc-reviews",
+      "blocks": {
+        "review_E7GcaL": {
+          "type": "review",
+          "settings": {
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1.png",
+            "description": "Дякую менеджеру Олегу та всій команді за їх працю. Отримав авто на тиждень раніше запланої дати і не переклатив ні копійки від ціни на сайті. Дякую!",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
+        },
+        "review_ezf8XN": {
+          "type": "review",
+          "settings": {
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_1.png",
+            "description": "Дякую компанії АтласАвто та окремо менеджеру Олегу. Це було моє перше авто із Америки. Задоволений результатом, рекомендую.",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
+        },
+        "review_AmH8Fb": {
+          "type": "review",
+          "settings": {
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_2.png",
+            "description": "Дякую за ваш сервіс, я був проінформований про кожен етап та отримував постійні оновлення. Це справді та компанія з якою можна бути спокійно.",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
+        },
+        "review_JEJqhj": {
+          "type": "review",
+          "settings": {
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_3.png",
+            "description": "Вітаю! Дякую Сашку та команді Атлас, ці хлопці справжні професіонали. Стан авто супер, а ціна вийшла нижче ринку.",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
+        },
+        "review_tqnrym": {
+          "type": "review",
+          "settings": {
+            "title": "Павло Олінік",
+            "avatar": "shopify://shop_images/Ellipse_1_4.png",
+            "description": "Вражений рівнем сервісу та прозорістю! Все чітко, без прихованих платежів. Авто прийшло в чудовому стані. Дякуую за професіоналізм!",
+            "image": "shopify://shop_images/4576155_2.png",
+            "rating": "5"
+          }
+        }
+      },
+      "block_order": [
+        "review_E7GcaL",
+        "review_ezf8XN",
+        "review_AmH8Fb",
+        "review_JEJqhj",
+        "review_tqnrym"
+      ],
+      "name": "XC Reviews",
+      "settings": {
+        "title": "Відгуки тих, хто вже оновив своє авто",
+        "description": "Ми допомагаємо кожному клієнту знайти ідеальне авто без стресу, ризиків і зайвих переплат. Сотні задоволених власників уже насолоджуються своїми машинами, отриманими з нашою допомогою. Ти можеш стати наступним!<br><br>Обери комфорт, надійність і чесний сервіс — довір свій вибір професіоналам.",
+        "button_text": "Залишити відгук",
+        "button_url": "#"
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -71,6 +275,12 @@
   },
   "order": [
     "xc_page_head_UiLHpV",
+    "xc_numbers_3Wgx6T",
+    "xc_quote_czGCKK",
+    "xc_about_mqXmhb",
+    "xc_logos_jfrzLx",
+    "xc_block_pEyAgi",
+    "xc_reviews_bRYfjD",
     "main"
   ]
 }

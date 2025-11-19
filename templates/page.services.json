@@ -18,6 +18,151 @@
         "image": "shopify://shop_images/afb8c85b21651c74112c37ad5fb6396aae48ebbd.jpg"
       }
     },
+    "xc_info_gJbrWh": {
+      "type": "xc-info",
+      "blocks": {
+        "usp_kq3xFV": {
+          "type": "usp",
+          "settings": {
+            "text": "Повна перевірка історії авто"
+          }
+        },
+        "usp_6RaKQP": {
+          "type": "usp",
+          "settings": {
+            "text": "Супровід до моменту доставки"
+          }
+        },
+        "usp_NP33ih": {
+          "type": "usp",
+          "settings": {
+            "text": "Гарантія фіксованої вартості"
+          }
+        }
+      },
+      "block_order": [
+        "usp_kq3xFV",
+        "usp_6RaKQP",
+        "usp_NP33ih"
+      ],
+      "name": "XC Info",
+      "settings": {
+        "image": "shopify://shop_images/f96721f030cd991c8533128758c93d407c1d0e0a.jpg",
+        "image_position": "right",
+        "title": "Підбір авто",
+        "description": "<p>Підберемо для вас ідеальний автомобіль за технічним станом, пробігом та бюджетом. Наші експерти аналізують тисячі лотів, перевіряють кожне авто через Carfax і підбирають лише найкращі варіанти.</p>",
+        "button_text": "Дізнатися більше",
+        "button_url": "#"
+      }
+    },
+    "xc_info_jr7Wmz": {
+      "type": "xc-info",
+      "blocks": {
+        "usp_YmhzRb": {
+          "type": "usp",
+          "settings": {
+            "text": "Мінімізація митних ризиків"
+          }
+        },
+        "usp_mFyxzp": {
+          "type": "usp",
+          "settings": {
+            "text": "Юридична безпека угоди"
+          }
+        }
+      },
+      "block_order": [
+        "usp_YmhzRb",
+        "usp_mFyxzp"
+      ],
+      "name": "XC Info",
+      "settings": {
+        "image": "shopify://shop_images/Rectangle_11926.png",
+        "image_position": "left",
+        "title": "Брокерські послуги",
+        "description": "<p>Багаторічний досвід наших ліцензованих брокерів гарантує швидке та безпечне митне оформлення автомобіля. Ми забезпечуємо повний супровід на всіх етапах.</p>",
+        "button_text": "Дізнатися більше",
+        "button_url": "#"
+      }
+    },
+    "xc_block_XdfngJ": {
+      "type": "xc-block",
+      "name": "XC Block",
+      "settings": {
+        "label": "ВСЕ ВКЛЮЧЕНО",
+        "label_color": "#80ff00",
+        "heading": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>",
+        "description": "Комплексний супровід без зайвих турбот. Ваше авто мрії - швидко та безпечно.",
+        "button_text": "Замовити дзвінок"
+      }
+    },
+    "xc_info_weazcY": {
+      "type": "xc-info",
+      "blocks": {
+        "usp_CkpFJ7": {
+          "type": "usp",
+          "settings": {
+            "text": "Прямі поставки з офіційних аукціонів"
+          }
+        },
+        "usp_Wrzw8a": {
+          "type": "usp",
+          "settings": {
+            "text": "Повне документальне супроводження"
+          }
+        },
+        "usp_bQwjrh": {
+          "type": "usp",
+          "settings": {
+            "text": "Контроль якості та походження авто"
+          }
+        }
+      },
+      "block_order": [
+        "usp_CkpFJ7",
+        "usp_Wrzw8a",
+        "usp_bQwjrh"
+      ],
+      "name": "XC Info",
+      "settings": {
+        "image": "shopify://shop_images/a61d9c9f859f1f3d36fc8c266f6d7cbbeab699fb.jpg",
+        "image_position": "right",
+        "title": "Дилерські послуги",
+        "description": "<p>Ми здійснюємо повний цикл імпорту та продажу автомобілів, включно з перевіркою історії, доставкою, митним оформленням і сертифікацією. Авто під ключ без зайвих клопотів.<br/><br/></p>",
+        "button_text": "Дізнатися більше",
+        "button_url": "#"
+      }
+    },
+    "xc_info_E3Fbei": {
+      "type": "xc-info",
+      "blocks": {
+        "usp_KNFgnE": {
+          "type": "usp",
+          "settings": {
+            "text": "Офіційні документи державного зразка"
+          }
+        },
+        "usp_yVGCkw": {
+          "type": "usp",
+          "settings": {
+            "text": "Повна підготовка до реєстрації авто"
+          }
+        }
+      },
+      "block_order": [
+        "usp_KNFgnE",
+        "usp_yVGCkw"
+      ],
+      "name": "XC Info",
+      "settings": {
+        "image": "shopify://shop_images/59b17652122b177bd53e1dbc744b5aa3f91c2bfc.jpg",
+        "image_position": "right",
+        "title": "Сертифікація",
+        "description": "<p>Після доставки автомобіля, важливим етапом є його сертифікація. Atlas Auto забезпечує повне оформлення сертифіката відповідності, який необхідний для реєстрації авто в сервісному центрі МВС. </p>",
+        "button_text": "Дізнатися більше",
+        "button_url": "#"
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -69,6 +214,11 @@
   },
   "order": [
     "xc_page_head_fEpQpP",
+    "xc_info_gJbrWh",
+    "xc_info_jr7Wmz",
+    "xc_block_XdfngJ",
+    "xc_info_weazcY",
+    "xc_info_E3Fbei",
     "main"
   ]
 }

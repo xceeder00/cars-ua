@@ -1,0 +1,551 @@
+{% doc %}
+  @prompt
+    https://i.imgur.com/DOcwTl4.png
+    
+    Generate me this section with 4 blocks whic have 4 logos and title which would be a number and starts from zero to the entered number. Also this block should have a description. This should be equal blocks on desktop and it shopuld be a slider on mobile with pagination
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-stats-counter-{{ ai_gen_id }} {
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-stats-counter-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-stats-counter-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .ai-stats-counter-item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .ai-stats-counter-logo-{{ ai_gen_id }} {
+    width: {{ block.settings.logo_size }}px;
+    height: {{ block.settings.logo_size }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-stats-counter-logo-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ai-stats-counter-logo-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .ai-stats-counter-logo-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-stats-counter-number-{{ ai_gen_id }} {
+    font-size: {{ block.settings.number_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.number_color }};
+    line-height: 1.2;
+  }
+
+  .ai-stats-counter-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-stats-counter-grid-{{ ai_gen_id }} {
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-stats-counter-slider-{{ ai_gen_id }} {
+      display: flex;
+      transition: transform 0.3s ease;
+      gap: 20px;
+    }
+
+    .ai-stats-counter-item-{{ ai_gen_id }} {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+
+    .ai-stats-counter-pagination-{{ ai_gen_id }} {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .ai-stats-counter-dot-{{ ai_gen_id }} {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: {{ block.settings.pagination_color }};
+      opacity: 0.3;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .ai-stats-counter-dot-{{ ai_gen_id }}.active {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-stats-counter-pagination-{{ ai_gen_id }} {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+<stats-counter-{{ ai_gen_id }}
+  class="ai-stats-counter-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-stats-counter-container-{{ ai_gen_id }}">
+    <div class="ai-stats-counter-grid-{{ ai_gen_id }}">
+      <div class="ai-stats-counter-slider-{{ ai_gen_id }}">
+        {% if block.settings.stat_1_enabled %}
+          <div class="ai-stats-counter-item-{{ ai_gen_id }}" data-target="{{ block.settings.stat_1_number }}">
+            <div class="ai-stats-counter-logo-{{ ai_gen_id }}">
+              {% if block.settings.stat_1_logo %}
+                <img
+                  src="{{ block.settings.stat_1_logo | image_url: width: 200 }}"
+                  alt="{{ block.settings.stat_1_description | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                >
+              {% else %}
+                <div class="ai-stats-counter-logo-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="ai-stats-counter-number-{{ ai_gen_id }}" data-counter>0</div>
+            <div class="ai-stats-counter-description-{{ ai_gen_id }}">{{ block.settings.stat_1_description }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.stat_2_enabled %}
+          <div class="ai-stats-counter-item-{{ ai_gen_id }}" data-target="{{ block.settings.stat_2_number }}">
+            <div class="ai-stats-counter-logo-{{ ai_gen_id }}">
+              {% if block.settings.stat_2_logo %}
+                <img
+                  src="{{ block.settings.stat_2_logo | image_url: width: 200 }}"
+                  alt="{{ block.settings.stat_2_description | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                >
+              {% else %}
+                <div class="ai-stats-counter-logo-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="ai-stats-counter-number-{{ ai_gen_id }}" data-counter>0</div>
+            <div class="ai-stats-counter-description-{{ ai_gen_id }}">{{ block.settings.stat_2_description }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.stat_3_enabled %}
+          <div class="ai-stats-counter-item-{{ ai_gen_id }}" data-target="{{ block.settings.stat_3_number }}">
+            <div class="ai-stats-counter-logo-{{ ai_gen_id }}">
+              {% if block.settings.stat_3_logo %}
+                <img
+                  src="{{ block.settings.stat_3_logo | image_url: width: 200 }}"
+                  alt="{{ block.settings.stat_3_description | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                >
+              {% else %}
+                <div class="ai-stats-counter-logo-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="ai-stats-counter-number-{{ ai_gen_id }}" data-counter>0</div>
+            <div class="ai-stats-counter-description-{{ ai_gen_id }}">{{ block.settings.stat_3_description }}</div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.stat_4_enabled %}
+          <div class="ai-stats-counter-item-{{ ai_gen_id }}" data-target="{{ block.settings.stat_4_number }}">
+            <div class="ai-stats-counter-logo-{{ ai_gen_id }}">
+              {% if block.settings.stat_4_logo %}
+                <img
+                  src="{{ block.settings.stat_4_logo | image_url: width: 200 }}"
+                  alt="{{ block.settings.stat_4_description | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                >
+              {% else %}
+                <div class="ai-stats-counter-logo-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="ai-stats-counter-number-{{ ai_gen_id }}" data-counter>0</div>
+            <div class="ai-stats-counter-description-{{ ai_gen_id }}">{{ block.settings.stat_4_description }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ai-stats-counter-pagination-{{ ai_gen_id }}">
+      {% if block.settings.stat_1_enabled %}
+        <button class="ai-stats-counter-dot-{{ ai_gen_id }} active" data-index="0" aria-label="Go to slide 1"></button>
+      {% endif %}
+      {% if block.settings.stat_2_enabled %}
+        <button class="ai-stats-counter-dot-{{ ai_gen_id }}" data-index="1" aria-label="Go to slide 2"></button>
+      {% endif %}
+      {% if block.settings.stat_3_enabled %}
+        <button class="ai-stats-counter-dot-{{ ai_gen_id }}" data-index="2" aria-label="Go to slide 3"></button>
+      {% endif %}
+      {% if block.settings.stat_4_enabled %}
+        <button class="ai-stats-counter-dot-{{ ai_gen_id }}" data-index="3" aria-label="Go to slide 4"></button>
+      {% endif %}
+    </div>
+  </div>
+</stats-counter-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class StatsCounter{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.hasAnimated = false;
+      }
+
+      connectedCallback() {
+        this.items = this.querySelectorAll('.ai-stats-counter-item-{{ ai_gen_id }}');
+        this.slider = this.querySelector('.ai-stats-counter-slider-{{ ai_gen_id }}');
+        this.dots = this.querySelectorAll('.ai-stats-counter-dot-{{ ai_gen_id }}');
+
+        this.setupIntersectionObserver();
+        this.setupSlider();
+      }
+
+      setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !this.hasAnimated) {
+              this.animateCounters();
+              this.hasAnimated = true;
+            }
+          });
+        }, { threshold: 0.5 });
+
+        observer.observe(this);
+      }
+
+      animateCounters() {
+        this.items.forEach((item) => {
+          const target = parseInt(item.getAttribute('data-target'));
+          const counter = item.querySelector('[data-counter]');
+          const duration = {{ block.settings.animation_duration }};
+          const increment = target / (duration / 16);
+          let current = 0;
+
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              counter.textContent = Math.floor(current);
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
+            }
+          };
+
+          updateCounter();
+        });
+      }
+
+      setupSlider() {
+        if (window.innerWidth > 749) return;
+
+        this.dots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index'));
+            this.goToSlide(index);
+          });
+        });
+
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        this.slider.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        });
+
+        this.slider.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+        });
+
+        this.slider.addEventListener('touchend', () => {
+          if (!isDragging) return;
+          isDragging = false;
+
+          const diff = startX - currentX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0 && this.currentSlide < this.items.length - 1) {
+              this.goToSlide(this.currentSlide + 1);
+            } else if (diff < 0 && this.currentSlide > 0) {
+              this.goToSlide(this.currentSlide - 1);
+            }
+          }
+        });
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        const offset = -index * 100;
+        this.slider.style.transform = `translateX(${offset}%)`;
+
+        this.dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    customElements.define('stats-counter-{{ ai_gen_id }}', StatsCounter{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Statistics counter",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f6f6f6"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number color",
+      "default": "#262626"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#262626"
+    },
+    {
+      "type": "color",
+      "id": "pagination_color",
+      "label": "Pagination color",
+      "default": "#262626"
+    },
+    {
+      "type": "range",
+      "id": "logo_size",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo size",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 24,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Number size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Description size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "min": 500,
+      "max": 3000,
+      "step": 50,
+      "unit": "ms",
+      "label": "Animation duration",
+      "default": 2000
+    },
+    {
+      "type": "header",
+      "content": "Statistic 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "stat_1_enabled",
+      "label": "Enable statistic 1",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "stat_1_logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "stat_1_number",
+      "min": 0,
+      "max": 5000,
+      "step": 50,
+      "label": "Number",
+      "default": 500
+    },
+    {
+      "type": "text",
+      "id": "stat_1_description",
+      "label": "Description",
+      "default": "Happy customers"
+    },
+    {
+      "type": "header",
+      "content": "Statistic 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "stat_2_enabled",
+      "label": "Enable statistic 2",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "stat_2_logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "stat_2_number",
+      "min": 0,
+      "max": 5000,
+      "step": 50,
+      "label": "Number",
+      "default": 1000
+    },
+    {
+      "type": "text",
+      "id": "stat_2_description",
+      "label": "Description",
+      "default": "Products sold"
+    },
+    {
+      "type": "header",
+      "content": "Statistic 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "stat_3_enabled",
+      "label": "Enable statistic 3",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "stat_3_logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "stat_3_number",
+      "min": 0,
+      "max": 5000,
+      "step": 50,
+      "label": "Number",
+      "default": 250
+    },
+    {
+      "type": "text",
+      "id": "stat_3_description",
+      "label": "Description",
+      "default": "Five star reviews"
+    },
+    {
+      "type": "header",
+      "content": "Statistic 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "stat_4_enabled",
+      "label": "Enable statistic 4",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "stat_4_logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "stat_4_number",
+      "min": 0,
+      "max": 5000,
+      "step": 50,
+      "label": "Number",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "id": "stat_4_description",
+      "label": "Description",
+      "default": "Countries served"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Statistics counter"
+    }
+  ]
+}
+{% endschema %}
