@@ -1,0 +1,68 @@
+{{ 'xc-about.css' | asset_url | stylesheet_tag }}
+<div class="section section--page-width">
+    <div class="about-content">
+        {% for block in section.blocks %}
+            <div class="about-item {% cycle 'about-item--left', 'about-item--right' %}">
+                {% if block.settings.title %}
+                <div class="about-item__top">
+                    
+                        <h4 class="about-item__title">{{ block.settings.title }}</h4>
+                        <div class="about-item__line"></div>
+                   
+                    </div>
+                {% endif %}
+                {% if block.settings.description %}
+                <div class="about-item__description">{{ block.settings.description }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    
+</div>
+{% schema %}
+    {
+        "name": "XC About",
+        "class": "padding-section about",
+        "tag": "section",
+        "max_blocks": 2,
+        "blocks": [
+            {
+                "type": "item",
+                "name": "Item",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "description",
+                        "label": "Description"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "XC About",
+                "blocks": [
+                    {
+                        "type": "item",
+                        "settings": {
+                            "title": "Чому Ми",
+                            "description": "Ми об’єднали фахівців, які щодня допомагають клієнтам знайти ідеальний автомобіль без стресу та переплат.<br><br>Для нас важливо не просто доставити авто — ми прагнемо зробити увесь процес комфортним, зрозумілим і приємним."
+                        }
+                    },
+                    {
+                        "type": "item",
+                        "settings": {
+                            "title": "Наш підхід",
+                            "description": "Ми віримо, що прозорість, професіоналізм і людяність — це основа успішної співпраці. Команда Atlas Auto — це люди, які живуть своєю справою і завжди доводять кожен проєкт до ідеалу."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

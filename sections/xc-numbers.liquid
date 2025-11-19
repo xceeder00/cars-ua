@@ -1,0 +1,148 @@
+{{ 'xc-numbers.css' | asset_url | stylesheet_tag }}
+<div class="section section--page-width">
+    <div class="numbers-container swiper" data-swiper="numbers-{{ section.id }}">
+        <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+            <div class="numbers-item swiper-slide">
+                <div class="numbers-item__title">
+                <img src="{{ section.settings.logo | image_url }}" alt="{{ section.settings.logo.alt }}" width="100" height="100">
+                <div class="numbers-item__number" data-number="{{ block.settings.number }}"><span></span>+</div>
+                </div>
+                <p class="numbers-item__description">{{ block.settings.description }}</p>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="footer-blocks-pagination swiper-pagination-dots"></div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('[data-swiper="numbers-{{ section.id }}"]', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            speed: 1500,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '[data-swiper="numbers-{{ section.id }}"] .swiper-pagination-dots',
+                clickable: true,
+                type: 'bullets',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    pagination: {
+                        disable: true,
+                       
+                    },
+                }
+            }
+        });
+    
+        const items = document.querySelectorAll('[data-number]');
+        let hasAnimated = false;
+
+        animateCounters();
+           
+
+        function animateCounters() {
+         hasAnimated = true;
+            items.forEach((item) => {
+            const target = parseInt(item.dataset.number);
+            const counter = item.querySelector('span');
+            const duration = 1500;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+                } else {
+                counter.textContent = target;
+                }
+            };
+
+            updateCounter();
+            });
+        }
+        
+    });
+    
+
+
+</script>
+{% schema %}
+{
+    "name": "XC Numbers",
+    "tag": "section",
+    "class": "numbers padding-section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+        }
+    ],
+    "blocks": [
+      {
+        "name": "XC Number",
+        "type": "xc_number",
+        "settings": [
+            {
+                "type": "text",
+                "id": "number",
+                "label": "Number"
+            },
+            {
+                "type": "textarea",
+                "id": "description",
+                "label": "Description"
+            }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "XC Numbers",
+        "blocks": [
+          {
+            "type": "xc_number",
+            "settings": {
+                "number": "1000",
+                "description": "Щасливих власників нових автівок"
+            }
+          },
+          {
+            "type": "xc_number",
+            "settings": {
+                "number": "30",
+                "description": "Підібраних авто щомісяця для найвибагливіших клієнтів"
+            }
+          },
+          {
+            "type": "xc_number",
+            "settings": {
+                "number": "5",
+                "description": "Років командної та результативної роботи"
+            }
+          },
+          {
+            "type": "xc_number",
+            "settings": {
+                "number": "500",
+                "description": "Автівок доставлено швидше запланових дат"
+            }
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}

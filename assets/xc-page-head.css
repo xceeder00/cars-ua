@@ -11,6 +11,7 @@
     padding-block: 16px;
     padding: 32px;
     border-radius: 12px;
+    margin-block: 16px;
   }
 }
 .page-head__wrapper:before {

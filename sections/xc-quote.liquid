@@ -1,0 +1,66 @@
+{{ 'xc-quote.css' | asset_url | stylesheet_tag }}
+<div class="section section--page-width">
+
+        <div class="quote-content">
+            {% if section.settings.image %}
+                <div class="quote-image">
+                    <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt }}" loading="lazy">
+                </div>
+            {% endif %}
+            {% if section.settings.author %}
+             <p class="quote-content__author">
+               
+                    {{ section.settings.author }}
+                </p>
+            {% endif %}
+            {% if section.settings.author_position %}
+                <p class="quote-content__author-position">
+                    {{ section.settings.author_position }}
+                </p>
+            {% endif %}
+            {% if section.settings.quote %}
+                <div class="quote-content__text">
+                    {{ section.settings.quote }}
+                </div>
+            {% endif %}
+           
+        </div>
+    
+</div>
+{% schema %}
+    {
+        "name": "XC Quote",
+        "class": "padding-section quote-section",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "richtext",
+                "id": "quote",
+                "label": "Quote",
+                "default": "<p><strong>Наш пріоритет<strong> - довіра і результат, яким можна пишатися.</strong><br>Ми цінуємо час наших клієнтів і завжди доводимо справу до кінця.</p>"
+            },
+            {
+                "type": "text",
+                "id": "author",
+                "label": "Author",
+                "default": "Імя ти Прізвище"
+            },
+            {
+                "type": "text",
+                "id": "author_position",
+                "label": "Author Position",
+                "default": "Засновник"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ],
+        "presets": [
+            {
+                "name": "XC Quote"
+            }
+        ]
+    }
+{% endschema %}

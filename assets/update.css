@@ -362,6 +362,9 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   justify-content: center;
   gap: 10px;
 }
+.swiper-pagination-lock {
+  display: none !important;
+}
 .swiper-pagination-bullet {
   background: rgba(38, 38, 38, 0.2) !important;
   width: 26px;

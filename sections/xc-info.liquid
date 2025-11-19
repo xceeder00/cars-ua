@@ -1,0 +1,135 @@
+{{ 'xc-info.css' | asset_url | stylesheet_tag }}
+<div class="section section--page-width">
+    <div class="info-content {% if section.settings.image_position == 'right' %}info-content--reverse{% endif %}">
+        {% if section.settings.image %}
+            <div class="info-content__image">
+                {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'info-content__image-img', alt: section.settings.image.alt, loading: 'lazy' }}
+            </div>
+        {% endif %}
+        
+        <div class="info-content__text">
+            {% if section.settings.title %}
+                <h2 class="info-content__title">{{ section.settings.title }}</h2>
+            {% endif %}
+            
+            {% if section.settings.description %}
+                <div class="info-content__description">{{ section.settings.description }}</div>
+            {% endif %}
+            
+            {% if section.blocks.size > 0 %}
+                <ul class="info-content__list">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'usp' and block.settings.text != blank %}
+                            <li class="info-content__list-item">
+                                <span class="info-content__list-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                        <path d="M8.76685 0.122039C8.92957 0.284757 8.92957 0.548576 8.76685 0.711295L3.48907 5.98907C3.32635 6.15179 3.06254 6.15179 2.89982 5.98907L0.122039 3.21129C-0.0406796 3.04858 -0.0406796 2.78476 0.122039 2.62204C0.284757 2.45932 0.548576 2.45932 0.711295 2.62204L3.19444 5.10519L8.1776 0.122039C8.34031 -0.0406796 8.60413 -0.0406796 8.76685 0.122039Z" fill="#262626"/>
+                                    </svg>
+                                </span>
+                                <span class="info-content__list-text">{{ block.settings.text }}</span>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            
+            {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+                <a href="{{ section.settings.button_url }}" class="info-content__button">
+                    {{ section.settings.button_text }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "XC Info",
+    "class": "padding-section info",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "select",
+            "id": "image_position",
+            "label": "Image Position",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Дилерські послуги"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Ми здійснюємо повний цикл імпорту та продажу автомобілів, включно з перевіркою історії, доставкою, митним оформленням і сертифікацією. Авто під ключ без зайвих клопотів.</p>"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Дізнатися більше"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "usp",
+            "name": "USP Item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Text",
+                    "default": "Прямі поставки з офіційних аукціонів"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "XC Info",
+            "blocks": [
+                {
+                    "type": "usp",
+                    "settings": {
+                        "text": "Прямі поставки з офіційних аукціонів"
+                    }
+                },
+                {
+                    "type": "usp",
+                    "settings": {
+                        "text": "Повне документальне супроводження"
+                    }
+                },
+                {
+                    "type": "usp",
+                    "settings": {
+                        "text": "Контроль якості та походження авто"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
