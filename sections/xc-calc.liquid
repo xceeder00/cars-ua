@@ -1,0 +1,1094 @@
+{{ 'xc-calc.css' | asset_url | stylesheet_tag }}
+<div class="section section--page-width">
+
+    <div class="calc__wrapper">
+        <div class="calc__left">
+            <div class="calc__title">
+                {{ section.settings.title }}
+            </div>
+            <form id="auto-calculator" class="calc__form">
+                <div class="calc__form-group">
+                <div class="calc__dropdown">
+                    <div class="calc__dropdown-container">
+                        <span class="calc__dropdown-title">Тип транспортного засобу</span>
+                        <span class="calc__dropdown-toggle">Оберіть</span>
+                        <div class="calc__dropdown-list-container">
+                            <input type="hidden" class="calc__input" name="vehicle-type" value="">
+                            <input type="hidden" class="calc__input" name="price-for-transportation" value="">
+                            <ul class="calc__dropdown-list">
+                                <li class="calc__type-transport-li" data-value="1" data-price-transport="900">Легковик</li>
+                                <li class="calc__type-transport-li" data-value="1" data-price-transport="950">Кросовер</li>
+                                <li class="calc__type-transport-li" data-value="1" data-price-transport="1000">Позашляховик</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc__dropdown">
+                    <div class="calc__dropdown-container">
+                        <span class="calc__dropdown-title">Рік випуску</span>
+                        <span class="calc__dropdown-toggle">Оберіть</span>
+                        <div class="calc__dropdown-list-container">
+                            <input type="hidden" class="calc__input" name="year" value="">
+                            <ul class="calc__dropdown-list">
+                                {% for year in (2000..2025) reversed %}
+                                    <li data-value="{{ year }}">{{ year }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div>
+               
+                <div class="calc__form-group">
+                <div class="calc__dropdown calc__dropdown--motor">
+                    <div class="calc__dropdown-container">
+                        <span class="calc__dropdown-title">Тип двигуна</span>
+                        <span class="calc__dropdown-toggle calc__dropdown-toggle--motor calc__dropdown-toggle--selected">Бензиновий</span>
+                        <div class="calc__dropdown-list-container">
+                            <input type="hidden" class="calc__input" name="motor" value="0">
+                            <ul class="calc__dropdown-list" data-list="motor">
+                                <li data-id="motor-0-0" data-value="0">Бензиновий</li>
+                                <li data-id="motor-1-1" data-value="1">Дизельний</li>
+                                <li data-id="motor-0-2" data-value="0">Гібрид (бензин)</li>
+                                <li data-id="motor-0-3" data-value="0">Гібрид (дизель)</li>
+                                <li data-id="motor-3-4" data-value="3">Електро</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc__dropdown">
+                    <div class="calc__dropdown-container">
+                        <span class="calc__dropdown-title">Об'єм двигуна</span>
+                        <div class="calc__input-container">
+                            <input type="text" autocomplete="off" class="calc__dropdown-toggle calc__capacity-toggle" name="capacity-toggle-input" value="" id="capacity-toggle-input" placeholder="Оберіть">
+                            <span class="calc__error-msg">Невірне значення</span>
+                        </div>
+                        <div class="calc__dropdown-list-container">
+                            <input type="hidden" class="calc__input" name="capacity" value="">
+                            <ul class="calc__dropdown-list calc__dropdown-list--capacity">
+                                {% assign capacities = '0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.0,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6.0,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7.0,7.1,7.2,7.3,7.4,7.5,7.6,7.7,7.8,7.9,8.0,8.1,8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9.0,9.1,9.2,9.3,9.4,9.5,9.6,9.7,9.8,9.9,10.0' | split: ',' %}
+                                {% for cap in capacities %}
+                                    <li class="calc__capacity-toggle-li" data-value="{{ cap }}">{{ cap }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="calc__form-group">
+                <div class="calc__range">
+                    <label for="battery_volume">Об'єм батареї</label>
+                    <input type="number" onmousewheel="return false;" onwheel="return false;" autocomplete="off" name="battery_volume" id="battery-volume" class="calc__battery-volume calc__input calc__input--disabled" step="1" min="10" placeholder="Оберіть" disabled>
+                </div>
+
+                <div class="calc__price">
+                    <label for="cost">Вартість ($)</label>
+                    <input type="number" onmousewheel="return false;" onwheel="return false;" autocomplete="off" name="cost" id="cost" class="calc__cost calc__input" step="1" min="10" placeholder="Y USD">
+                </div>
+                </div>
+                <div class="calc__form-group">
+
+                <div class="calc__dropdown">
+                    <div class="calc__dropdown-container">
+                        <span class="calc__dropdown-title">Аукціонний збір:</span>
+                        <span class="calc__dropdown-toggle calc__dropdown-toggle--selected">Сopart</span>
+                        <div class="calc__dropdown-list-container">
+                            <input type="hidden" class="calc__input" name="auction-fee" value="10">
+                            <input type="hidden" class="calc__input" name="auction-min" value="260">
+                            <ul class="calc__dropdown-list">
+                                <li class="calc__auction-item" data-auction-min="260" data-auction-fee="10">Сopart</li>
+                                <li class="calc__auction-item" data-auction-min="320" data-auction-fee="15">IAAI</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc__dropdown">
+                    <div class="calc__dropdown-container">
+                        <span class="calc__dropdown-title">Доставка по США:</span>
+                        <div class="calc__input-container">
+                            <input type="text" autocomplete="off" class="calc__dropdown-toggle calc__dropdown-toggle--selected" placeholder="Оберіть" name="delivery_usa_input_autocomplete" value="">
+                            <span class="calc__error-msg">Невірне значення</span>
+                        </div>
+                        <div class="calc__dropdown-list-container">
+                            <input type="hidden" class="calc__input" name="delivery_in_the_usa" value="550">
+                            <input type="hidden" class="calc__input" name="delivery_from_the_usa" value="Abilene,HOU">
+                            <ul class="calc__dropdown-list calc__dropdown-list--delivery">
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Abilene,HOU" data-c="550">Abilene-HOU</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Adelanto,LA" data-c="475">Adelanto-LA</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Albany,NY" data-c="450">Albany-NY</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Albuquerque,HOU" data-c="750">Albuquerque-HOU</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Houston,HOU" data-c="300">Houston-HOU</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Los Angeles,LA" data-c="375">Los Angeles-LA</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="New York,NY" data-c="400">New York-NY</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Miami,MIA" data-c="325">Miami-MIA</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Seattle,SEATLE" data-c="400">Seattle-SEATLE</li>
+                                <li class="calc__delivery-item calc__delivery-item--copart" data-location="Chicago,CHI" data-c="325">Chicago-CHI</li>
+                                <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Abilene,HOU" data-c="550">Abilene-HOU</li>
+                                <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Los Angeles,LA" data-c="375">Los Angeles-LA</li>
+                                <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="New York,NY" data-c="400">New York-NY</li>
+                                <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Miami,MIA" data-c="325">Miami-MIA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <input type="submit" value="Calculate the cost" class="calc__btn">
+                 <input type="hidden" class="calc__dependence-inp" name="dependence-inp" value="">
+            </form>
+        </div>
+
+        <div class="calc__right">
+            <div class="calc__title">
+                {{ section.settings.title_right_block }}
+            </div>
+            <div class="calc__calculation">
+                <div class="calc__calculation-content">
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">Аукціонний збір:</p>
+                        <span class="calc__calculation-price calc__auction-fee-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">Доставка по США:</p>
+                        <span class="calc__calculation-price calc__delivery-usa-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">Доставка з США:<span class="calc__delivery-from-usa-location"></span></p>
+                        <span class="calc__calculation-price calc__delivery-from-usa-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">Відвантаження з порту Клайпеда:</p>
+                        <span class="calc__calculation-price calc__shipping-klaip-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">Доставка Клайпеда - Львів:</p>
+                        <span class="calc__calculation-price calc__delivery-klaip-lviv-price">0 $</span>
+                    </div>
+                        <div class="calc__calculation-item">
+                            <p class="calc__calculation-label">Проходження кордону та спецтранспорт:</p>
+                            <span class="calc__calculation-price calc__crossing-the-border-price">0 $</span>
+                        </div>
+                        <div class="calc__calculation-item">
+                            <p class="calc__calculation-label">Документи</p>
+                            <span class="calc__calculation-price calc__international-documents-price">0 $</span>
+                        </div>
+                        <div class="calc__calculation-item">
+                            <p class="calc__calculation-label">Погрузка в Литві</p>
+                            <span class="calc__calculation-price calc__car-loading-in-lithuania-price">0 $</span>
+                        </div>
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">Акциз:</p>
+                        <span class="calc__calculation-price calc__excise-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">Ввізне мито:</p>
+                        <span class="calc__calculation-price calc__import-duty-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item">
+                        <p class="calc__calculation-label">ПДВ:</p>
+                        <span class="calc__calculation-price calc__vat-price">0 $</span>
+                    </div>
+                        <div class="calc__calculation-item">
+                            <p class="calc__calculation-label">Брокерські послуги:</p>
+                            <span class="calc__calculation-price calc__brokerage-services-price">0 $</span>
+                        </div>
+                        <div class="calc__calculation-item">
+                            <p class="calc__calculation-label">Комісія AtlasAuto:</p>
+                            <span class="calc__calculation-price calc__izi-commission-price">0 $</span>
+                        </div>
+                    <div class="calc__calculation-item calc__calculation-item--dependence calc__calculation-item--hidden">
+                        <p class="calc__calculation-label">Небезпечний вантаж:</p>
+                        <span class="calc__calculation-price calc__dangerous-goods-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item calc__calculation-item--dependence calc__calculation-item--hidden">
+                        <p class="calc__calculation-label">Фінансова гарантія:</p>
+                        <span class="calc__calculation-price calc__financial-guarantee-price">0 $</span>
+                    </div>
+                    <div class="calc__calculation-item calc__calculation-item--total">
+                        <h5 class="calc__calculation-total-label">Всього:</h5>
+                        <span class="calc__calculation-total-price">50 $</span>
+                    </div>
+                </div>
+                <div class="calc__calculation-note">
+                    <p class="calc__calculation-note-text">{{ section.settings.calculation_note }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<input type="hidden" class="calc__input" name="dangerous_goods" value="0" data-value="{{ section.settings.dangerous_goods }}">
+<input type="hidden" class="calc__input" name="financial_guarantee" value="0" data-value="100">
+<input type="hidden" class="calc__input" name="brokerage_services" value="{{ section.settings.brokerage_services }}">
+<input type="hidden" class="calc__input" name="atlas_commission" value="{{ section.settings.atlas_commission }}">
+<input type="hidden" class="calc__input" name="shipping_klaip" value="{{ section.settings.shipping_klaip }}">
+<input type="hidden" class="calc__input" name="delivery_klaip_lviv" value="{{ section.settings.delivery_klaip_lviv }}">
+<input type="hidden" class="calc__input" name="crossing_the_border" value="{{ section.settings.crossing_the_border }}">
+<input type="hidden" class="calc__input" name="international_documents" value="{{ section.settings.international_documents }}">
+<input type="hidden" class="calc__input" name="car_loading_in_lithuania" value="{{ section.settings.car_loading_in_lithuania }}">
+
+<script>
+(function() {
+  'use strict';
+
+  const API_BASE_URL = 'https://www.mdoffice.com.ua/api/api_paid.auto';
+  const API_KEY = {{ section.settings.api_key | json }};
+
+  // Utility functions
+  function $(selector, context = document) {
+    return context.querySelector(selector);
+  }
+
+  function $$(selector, context = document) {
+    return Array.from(context.querySelectorAll(selector));
+  }
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+
+  // Calculate tax function
+  function calculateTax(amount) {
+    const amt = parseFloat(amount) || 0;
+    if (amt >= 0 && amt < 50) return 25.0 + 160;
+    if (amt < 100) return 45.0 + 160;
+    if (amt < 200) return 80.0 + 160 + 49;
+    if (amt < 300) return 120.0 + 160 + 49;
+    if (amt < 350) return 120.0 + 160 + 49;
+    if (amt < 400) return 120.0 + 160 + 49;
+    if (amt < 450) return 160.0 + 160 + 49;
+    if (amt < 500) return 160.0 + 160 + 49;
+    if (amt < 550) return 185.0 + 160 + 59;
+    if (amt < 600) return 185.0 + 160 + 59;
+    if (amt < 700) return 210.0 + 160 + 59;
+    if (amt < 800) return 230.0 + 160 + 59;
+    if (amt < 900) return 250.0 + 160 + 59;
+    if (amt < 1000) return 275.0 + 160 + 59;
+    if (amt < 1200) return 430;
+    if (amt < 1300) return 425;
+    if (amt < 1400) return 475;
+    if (amt < 1500) return 480;
+    if (amt < 1600) return 490;
+    if (amt < 1700) return 505;
+    if (amt < 1800) return 515;
+    if (amt < 2000) return 525;
+    if (amt < 2400) return 555;
+    if (amt < 2500) return 580;
+    if (amt < 3000) return 600;
+    if (amt < 3500) return 650;
+    if (amt < 4000) return 700;
+    if (amt < 4500) return 800;
+    if (amt < 5000) return 825;
+    if (amt < 5500) return 850;
+    if (amt < 6000) return 850;
+    if (amt < 6500) return 875;
+    if (amt < 7000) return 875;
+    if (amt < 7500) return 900;
+    if (amt < 8000) return 900;
+    if (amt < 8500) return 925;
+    if (amt < 9000) return 925;
+    if (amt < 10000) return 925;
+    if (amt < 10500) return 950;
+    if (amt < 11000) return 950;
+    if (amt < 11500) return 950;
+    if (amt < 12000) return 960;
+    if (amt <= 12499.99) return 975;
+    if (amt <= 12999.99) return 990;
+    if (amt <= 14999.99) return 990;
+    return Math.round(amt * 0.063 + 149);
+  }
+
+  function getYear(year) {
+    const date = new Date();
+    const ageDiff = date.getFullYear() - parseInt(year);
+    if (ageDiff === 0) return 0;
+    if (ageDiff > 0 && ageDiff <= 5) return 1;
+    if (ageDiff > 5) return 2;
+    return 0;
+  }
+
+  function portCalculation(port) {
+    const portMap = {
+      'HOU': 1000,
+      'LA': 1575,
+      'SEATLE': 1875,
+      'NY': 850,
+      'CHI': 1000,
+      'CAL': 1575,
+      'SAV': 850,
+      'MIA': 900,
+      'MON-CA': 1300
+    };
+    const price = portMap[port] || 0;
+    const priceEl = $('.calc__delivery-from-usa-price');
+    if (priceEl) {
+      priceEl.textContent = price.toLocaleString() + ' $';
+    }
+  }
+
+  function dynamicCalculation() {
+    const dependenceVal = $('.calc__dependence-inp')?.value || '';
+    const dependenceItems = $$('.calc__calculation-item--dependence');
+    const dangerousGoodsInput = $('input[name="dangerous_goods"]');
+    const financialGuaranteeInput = $('input[name="financial_guarantee"]');
+
+    if (dependenceVal === 'motor-3-4') {
+      dependenceItems.forEach(item => item.classList.remove('calc__calculation-item--hidden'));
+      if (dangerousGoodsInput) dangerousGoodsInput.value = dangerousGoodsInput.dataset.value || '0';
+      if (financialGuaranteeInput) financialGuaranteeInput.value = financialGuaranteeInput.dataset.value || '0';
+    } else if (dependenceVal === 'motor-0-2' || dependenceVal === 'motor-0-3') {
+      dependenceItems.forEach(item => item.classList.add('calc__calculation-item--hidden'));
+      const dangerousItem = $('.calc__calculation-item--dependence-dangerous');
+      if (dangerousItem) dangerousItem.classList.remove('calc__calculation-item--hidden');
+      if (dangerousGoodsInput) dangerousGoodsInput.value = dangerousGoodsInput.dataset.value || '0';
+    } else {
+      dependenceItems.forEach(item => item.classList.add('calc__calculation-item--hidden'));
+      if (dangerousGoodsInput) dangerousGoodsInput.value = '0';
+      if (financialGuaranteeInput) financialGuaranteeInput.value = '0';
+    }
+
+    let shouldCallMdOfficeCalculation = false;
+    const inputs = $$('.calc__input');
+
+    inputs.forEach(input => {
+      const inputValue = input.value;
+      const inputName = input.name;
+
+      if (inputValue !== '') {
+        if (inputName === 'delivery_in_the_usa') {
+          const textEl = $('.calc__delivery-usa-price');
+          if (textEl) textEl.textContent = inputValue + ' $';
+        } else if (inputName === 'delivery_from_the_usa') {
+          const port = inputValue.split(',');
+          if (port[1]) portCalculation(port[1]);
+          const textEl = $('.calc__delivery-from-usa-location');
+          if (textEl) textEl.textContent = inputValue;
+        } else if (inputName === 'cost') {
+          const textEl = $('.calc__auction-fee-price');
+          if (textEl) textEl.textContent = calculateTax(inputValue).toLocaleString() + ' $';
+          shouldCallMdOfficeCalculation = true;
+        } else if (['year', 'motor', 'capacity', 'battery_volume'].includes(inputName)) {
+          shouldCallMdOfficeCalculation = true;
+        } else {
+          const className = `.calc__${inputName.replace(/_/g, '-')}-price`;
+          const textEl = $(className);
+          if (textEl) textEl.textContent = inputValue + ' $';
+        }
+      }
+    });
+
+    let totalSum = 0;
+    $$('.calc__calculation-price:not(.calc__calculation-total-price)').forEach(el => {
+      const text = el.textContent;
+      const numericValue = parseFloat(text.replace(/[^0-9.-]+/g, '')) || 0;
+      totalSum += numericValue;
+    });
+
+    const costInput = $('.calc__cost');
+    const cost = costInput?.value || '0';
+    let formattedTotalSum;
+
+    if (cost) {
+      formattedTotalSum = (parseInt(cost) + totalSum).toLocaleString();
+    } else {
+      formattedTotalSum = totalSum.toLocaleString();
+    }
+
+    const totalPriceEl = $('.calc__calculation-total-price');
+    if (totalPriceEl) {
+      totalPriceEl.textContent = formattedTotalSum + ' $';
+    }
+
+    if (shouldCallMdOfficeCalculation) {
+      mdOfficeCalculation();
+    }
+  }
+
+  function mdOfficeCalculation() {
+    const costInput = $('.calc__cost');
+    const yearInput = $('input[name="year"]');
+    const motorInput = $('input[name="motor"]');
+    const capacityInput = $('input[name="capacity"]');
+    const batteryVolume = $('input[name="battery_volume"]');
+
+    if (!costInput?.value || !yearInput?.value || !motorInput?.value || (!capacityInput?.value && !batteryVolume?.value)) {
+      return;
+    }
+
+    const motor = motorInput.value;
+    const capacity = motor === '3' ? batteryVolume.value : (parseFloat(capacityInput.value) * 1000);
+    const cost = costInput.value;
+    const costNum = parseInt(cost) + calculateTax(cost) + 2000;
+    const user = 0;
+    const year = motor === '3' ? new Date().getFullYear() : yearInput.value;
+    const age = getYear(year);
+    const currency = 'USD';
+
+    const queryString = `motor=${motor}&capacity=${capacity}&cost=${costNum}&user=${user}&year=${year}&currency=${currency}&age=${age}&key=${API_KEY}`;
+    const fullUrl = `${API_BASE_URL}?${queryString}`;
+
+    fetch(fullUrl)
+      .then(response => response.json())
+      .then(data => {
+        const curDollar = data.currency_value;
+        const exciseEl = $('.calc__excise-price');
+        if (exciseEl) {
+          exciseEl.textContent = Math.round(data.payments['2'].sum_value / curDollar).toLocaleString() + ' $';
+        }
+
+        const vatEl = $('.calc__vat-price');
+        const importDutyEl = $('.calc__import-duty-price');
+
+        if (motor === '3') {
+          if (vatEl) vatEl.textContent = '0 $';
+          if (importDutyEl) importDutyEl.textContent = '0 $';
+        } else {
+          if (vatEl) vatEl.textContent = Math.round(data.payments['3'].sum_value / curDollar).toLocaleString() + ' $';
+          if (importDutyEl) importDutyEl.textContent = Math.round(data.payments['1'].sum_value / curDollar).toLocaleString() + ' $';
+        }
+
+        let totalSum = 0;
+        $$('.calc__calculation-price:not(.calc__calculation-total-price)').forEach(el => {
+          const text = el.textContent;
+          const numericValue = parseFloat(text.replace(/[^0-9.-]+/g, '')) || 0;
+          totalSum += numericValue;
+        });
+
+        const cost = costInput.value || '0';
+        const formattedTotalSum = (parseInt(cost) + totalSum).toLocaleString();
+        const totalPriceEl = $('.calc__calculation-total-price');
+        if (totalPriceEl) {
+          totalPriceEl.textContent = formattedTotalSum + ' $';
+        }
+      })
+      .catch(error => {
+        console.error('AJAX error:', error);
+      });
+  }
+
+  ready(function() {
+    // Initialize first selections
+    const firstAuctionItem = $('.calc__auction-item');
+    const firstDelItem = $('.calc__delivery-item--copart');
+    
+    if (firstAuctionItem) {
+      setTimeout(() => {
+        firstAuctionItem.click();
+        if (firstDelItem) firstDelItem.click();
+      }, 100);
+    }
+
+    const firstItemEng = $('.calc__dropdown-list[data-list="motor"] li[data-value="0"]');
+    const motorToggle = $('.calc__dropdown-toggle--motor');
+    const motorInput = $('input[name="motor"]');
+
+    if (firstItemEng && motorToggle && motorInput) {
+      motorToggle.classList.add('calc__dropdown-toggle--selected');
+      motorToggle.textContent = firstItemEng.textContent;
+      motorInput.value = firstItemEng.dataset.value;
+    }
+
+    // Auction item click
+    $$('.calc__auction-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const dataAuction = this.textContent.trim();
+        const iaaiItems = $$('.calc__delivery-item--iaai');
+        const copartItems = $$('.calc__delivery-item--copart');
+
+        if (dataAuction === 'Сopart') {
+          iaaiItems.forEach(el => el.classList.add('calc__delivery-item--hide'));
+          copartItems.forEach(el => el.classList.remove('calc__delivery-item--hide'));
+        } else {
+          iaaiItems.forEach(el => el.classList.remove('calc__delivery-item--hide'));
+          copartItems.forEach(el => el.classList.add('calc__delivery-item--hide'));
+        }
+      });
+    });
+
+    // Dropdown toggle
+    $$('.calc__dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const container = this.closest('.calc__dropdown-container');
+        const dropdownList = container?.querySelector('.calc__dropdown-list');
+        const inputContainer = container?.querySelector('.calc__input-container');
+
+        if (this.classList.contains('calc__dropdown-toggle--active')) {
+          this.classList.remove('calc__dropdown-toggle--active');
+          dropdownList?.classList.remove('calc__dropdown-list--active');
+          inputContainer?.classList.remove('calc__input-container--active');
+        } else {
+          $$('.calc__dropdown-toggle').forEach(t => t.classList.remove('calc__dropdown-toggle--active'));
+          $$('.calc__dropdown-list').forEach(l => l.classList.remove('calc__dropdown-list--active'));
+          $$('.calc__input-container').forEach(c => c.classList.remove('calc__input-container--active'));
+
+          this.classList.add('calc__dropdown-toggle--active');
+          dropdownList?.classList.add('calc__dropdown-list--active');
+          inputContainer?.classList.add('calc__input-container--active');
+        }
+      });
+    });
+
+    // Dropdown list item click
+    $$('.calc__dropdown-list').forEach(list => {
+      list.addEventListener('click', function(e) {
+        if (e.target.tagName === 'LI') {
+          e.stopPropagation();
+          const li = e.target;
+          const container = li.closest('.calc__dropdown-container');
+          const trigger = container?.querySelector('.calc__dropdown-toggle');
+          const hiddenInput = container?.querySelector('input[type="hidden"]');
+          const selectedValue = li.dataset.value;
+
+          if (trigger) {
+            trigger.textContent = li.textContent;
+            trigger.classList.remove('calc__dropdown-toggle--active');
+            trigger.classList.add('calc__dropdown-toggle--selected');
+          }
+
+          container?.querySelector('.calc__dropdown-list')?.classList.remove('calc__dropdown-list--active');
+          $$('.calc__input-container').forEach(c => c.classList.remove('calc__input-container--active'));
+
+          if (selectedValue !== undefined && hiddenInput) {
+            hiddenInput.value = selectedValue;
+            dynamicCalculation();
+          }
+        }
+      });
+    });
+
+    // Click outside to close dropdowns
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.calc__dropdown-container')) {
+        $$('.calc__dropdown-toggle').forEach(t => t.classList.remove('calc__dropdown-toggle--active'));
+        $$('.calc__dropdown-list').forEach(l => l.classList.remove('calc__dropdown-list--active'));
+        $$('.calc__input-container').forEach(c => c.classList.remove('calc__input-container--active'));
+      }
+    });
+
+    // Cost input
+    const costInput = $('input[name="cost"]');
+    if (costInput) {
+      costInput.addEventListener('input', function(e) {
+        dynamicCalculation();
+        if (this.value.length > 6) {
+          this.value = this.value.slice(0, 6);
+        }
+      });
+    }
+
+    // Battery volume input
+    const batteryInput = $('input[name="battery_volume"]');
+    if (batteryInput) {
+      batteryInput.addEventListener('input', function() {
+        dynamicCalculation();
+      });
+    }
+
+    // Delivery autocomplete
+    const deliveryAutocomplete = $('input[name="delivery_usa_input_autocomplete"]');
+    if (deliveryAutocomplete) {
+      let optionSelected = false;
+
+      deliveryAutocomplete.addEventListener('input', function() {
+        const errorMsg = this.nextElementSibling;
+        if (errorMsg) errorMsg.classList.remove('calc__error-msg--active');
+        this.classList.remove('calc__input--error');
+
+        const searchText = this.value.toLowerCase();
+        $$('.calc__delivery-item:not(.calc__delivery-item--hide)').forEach(item => {
+          const location = (item.dataset.location || '').toLowerCase();
+          if (location.includes(searchText)) {
+            item.classList.remove('calc__delivery-item--autocomplete-hide');
+          } else {
+            item.classList.add('calc__delivery-item--autocomplete-hide');
+          }
+        });
+      });
+
+      deliveryAutocomplete.addEventListener('click', function() {
+        this.dataset.placeholder = this.value;
+        this.value = '';
+      });
+
+      deliveryAutocomplete.addEventListener('keydown', function(e) {
+        if (e.keyCode === 13) {
+          const selectedOption = $('.calc__delivery-item:not(.calc__delivery-item--autocomplete-hide):not(.calc__delivery-item--hide)');
+          if (selectedOption) {
+            selectedOption.click();
+            optionSelected = true;
+          }
+        }
+      });
+
+      deliveryAutocomplete.addEventListener('blur', function() {
+        if (!optionSelected) {
+          this.classList.add('calc__input--error');
+          const errorMsg = this.nextElementSibling;
+          if (errorMsg) errorMsg.classList.add('calc__error-msg--active');
+        }
+        optionSelected = false;
+      });
+    }
+
+    // Capacity autocomplete
+    const capacityAutocomplete = $('input[name="capacity-toggle-input"]');
+    if (capacityAutocomplete) {
+      let optionSelected = false;
+
+      capacityAutocomplete.addEventListener('input', function(e) {
+        const errorMsg = this.nextElementSibling;
+        if (errorMsg) errorMsg.classList.remove('calc__error-msg--active');
+        this.classList.remove('calc__input--error');
+
+        let inputValue = this.value.replace(/[^0-9.]/g, '');
+        this.value = inputValue;
+
+        const searchText = inputValue.toLowerCase();
+        $$('.calc__capacity-toggle-li').forEach(item => {
+          const data = (item.dataset.value || '').toString().toLowerCase();
+          if (data.includes(searchText)) {
+            item.classList.remove('calc__delivery-item--autocomplete-hide');
+          } else {
+            item.classList.add('calc__delivery-item--autocomplete-hide');
+          }
+        });
+      });
+
+      capacityAutocomplete.addEventListener('keydown', function(e) {
+        if (e.keyCode === 13) {
+          const selectedOption = $('.calc__capacity-toggle-li:not(.calc__delivery-item--autocomplete-hide)');
+          if (selectedOption) {
+            selectedOption.click();
+            optionSelected = true;
+          }
+        }
+      });
+
+      capacityAutocomplete.addEventListener('blur', function() {
+        if (!optionSelected) {
+          this.classList.add('calc__input--error');
+          const errorMsg = this.nextElementSibling;
+          if (errorMsg) errorMsg.classList.add('calc__error-msg--active');
+        }
+        optionSelected = false;
+      });
+    }
+
+    // Capacity toggle li click
+    $$('.calc__capacity-toggle-li').forEach(item => {
+      item.addEventListener('click', function() {
+        const value = this.dataset.value;
+        const input = $('input[name="capacity-toggle-input"]');
+        const hiddenInput = $('input[name="capacity"]');
+        if (input) {
+          input.value = value;
+          input.classList.remove('calc__input--error');
+          const errorMsg = input.nextElementSibling;
+          if (errorMsg) errorMsg.classList.remove('calc__error-msg--active');
+        }
+        if (hiddenInput) hiddenInput.value = value;
+      });
+    });
+
+    // Engine type change
+    $$('.calc__dropdown-list[data-list="motor"] li').forEach(item => {
+      item.addEventListener('click', function() {
+        const newValue = this.dataset.value;
+        const dependenceValue = this.dataset.id;
+        const dependenceInput = $('.calc__dependence-inp');
+        const engineTypeInput = $('[name="motor"]');
+        const batteryVolumeInput = $('#battery-volume');
+        const capacityToggle = $('.calc__capacity-toggle');
+        const capacityInput = $('input[name="capacity"]');
+
+        if (dependenceInput) dependenceInput.value = dependenceValue || '';
+        if (engineTypeInput) engineTypeInput.value = newValue;
+
+        if (newValue === '3') {
+          if (batteryVolumeInput) {
+            batteryVolumeInput.disabled = false;
+            batteryVolumeInput.removeAttribute('disabled');
+          }
+          if (capacityToggle) {
+            capacityToggle.classList.add('calc__capacity-toggle--disabled');
+            capacityToggle.textContent = '---';
+          }
+          if (capacityInput) {
+            capacityInput.value = '';
+            capacityInput.classList.add('calc__input--disabled');
+          }
+        } else {
+          if (batteryVolumeInput) {
+            batteryVolumeInput.value = '';
+            batteryVolumeInput.disabled = true;
+          }
+          if (capacityToggle) {
+            capacityToggle.classList.remove('calc__capacity-toggle--disabled');
+          }
+          if (capacityInput) {
+            capacityInput.classList.remove('calc__input--disabled');
+          }
+        }
+      });
+    });
+
+    // Initial engine type check
+    const engineTypeInput = $('[name="motor"]');
+    const batteryVolumeInput = $('#battery-volume');
+    if (engineTypeInput && batteryVolumeInput) {
+      const initialEngineType = parseInt(engineTypeInput.value);
+      if (initialEngineType !== 3) {
+        batteryVolumeInput.disabled = true;
+      } else {
+        batteryVolumeInput.disabled = false;
+      }
+    }
+
+    // Delivery item click
+    let deliveryClickCount = 0;
+    let shouldCallDynamicCalculation = false;
+
+    $$('.calc__delivery-item').forEach(item => {
+      item.addEventListener('click', function() {
+        deliveryClickCount++;
+        const cValue = this.dataset.c;
+        const locationValue = this.dataset.location;
+        const autocompleteInput = $('input[name="delivery_usa_input_autocomplete"]');
+        const deliveryInUsaInput = $('input[name="delivery_in_the_usa"]');
+        const deliveryFromUsaInput = $('input[name="delivery_from_the_usa"]');
+
+        if (autocompleteInput) {
+          autocompleteInput.classList.remove('calc__input--error');
+          const errorMsg = autocompleteInput.nextElementSibling;
+          if (errorMsg) errorMsg.classList.remove('calc__error-msg--active');
+        }
+
+        if (deliveryInUsaInput) deliveryInUsaInput.value = cValue || '';
+        if (deliveryFromUsaInput) deliveryFromUsaInput.value = locationValue || '';
+        if (autocompleteInput) autocompleteInput.value = locationValue || '';
+
+        if (deliveryClickCount === 2 || shouldCallDynamicCalculation) {
+          dynamicCalculation();
+          if (deliveryClickCount === 2) {
+            shouldCallDynamicCalculation = true;
+          }
+        }
+      });
+    });
+
+    // Type transport click
+    $$('.calc__type-transport-li').forEach(item => {
+      item.addEventListener('click', function() {
+        $$('.calc__type-transport-li').forEach(li => li.classList.remove('calc__type-transport-li--selected'));
+        this.classList.add('calc__type-transport-li--selected');
+        const priceForTransp = this.dataset.priceTransport;
+        const priceEl = $('.calc__delivery-klaip-lviv-price');
+        if (priceEl && priceForTransp) {
+          priceEl.textContent = priceForTransp + ' $';
+        }
+      });
+    });
+
+    // Auction item click
+    let auctionClickCount = 0;
+    let shouldCallAuctionDynamicCalculation = false;
+
+    $$('.calc__auction-item').forEach(item => {
+      item.addEventListener('click', function() {
+        auctionClickCount++;
+        const mValue = this.dataset.auctionMin;
+        const cValue = this.dataset.auctionFee;
+        const auctionFeeInput = $('input[name="auction-fee"]');
+        const auctionMinInput = $('input[name="auction-min"]');
+
+        if (auctionFeeInput) auctionFeeInput.value = cValue || '';
+        if (auctionMinInput) auctionMinInput.value = mValue || '';
+
+        if (auctionClickCount === 2 || shouldCallAuctionDynamicCalculation) {
+          dynamicCalculation();
+          if (auctionClickCount === 2) {
+            shouldCallAuctionDynamicCalculation = true;
+          }
+        }
+      });
+    });
+
+    // Form submit
+    const form = $('#auto-calculator');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const inputData = {};
+        let hasEmptyInputs = false;
+
+        $$('input[type="text"], input[type="number"]:not([disabled]), input[type="hidden"]:not(.calc__input--disabled)').forEach(input => {
+          const inputValue = input.value;
+          const inputName = input.name;
+
+          if (!inputValue) {
+            input.classList.add('calc__input--empty');
+            const dropdown = input.closest('.calc__dropdown');
+            if (dropdown) {
+              dropdown.querySelector('.calc__dropdown-toggle')?.classList.add('calc__dropdown-toggle--empty');
+              dropdown.querySelector('.calc__dropdown-container')?.classList.add('calc__dropdown-container--empty');
+            }
+            const price = input.closest('.calc__price');
+            if (price) price.classList.add('calc__price--empty');
+            const range = input.closest('.calc__range');
+            if (range) range.classList.add('calc__range--empty');
+            hasEmptyInputs = true;
+          } else {
+            const dropdown = input.closest('.calc__dropdown');
+            if (dropdown) {
+              dropdown.querySelector('.calc__dropdown-toggle')?.classList.remove('calc__dropdown-toggle--empty');
+              dropdown.querySelector('.calc__dropdown-container')?.classList.remove('calc__dropdown-container--empty');
+            }
+            const price = input.closest('.calc__price');
+            if (price) price.classList.remove('calc__price--empty');
+            const range = input.closest('.calc__range');
+            if (range) range.classList.remove('calc__range--empty');
+            input.classList.remove('calc__input--empty');
+          }
+
+          inputData[inputName] = inputValue;
+        });
+
+        if (hasEmptyInputs) {
+          return;
+        }
+
+        const motor = inputData['motor'];
+        const capacity = motor == 3 ? inputData['battery_volume'] : (inputData['capacity'] * 1000);
+        const cost = inputData['cost'];
+        const costNum = parseInt(inputData['cost']) + calculateTax(cost) + 2000;
+        const user = 0;
+        const year = motor == 3 ? new Date().getFullYear() : inputData['year'];
+        const age = getYear(year);
+        const currency = 'USD';
+
+        const queryString = `motor=${motor}&capacity=${capacity}&cost=${costNum}&user=${user}&year=${year}&currency=${currency}&age=${age}&key=${API_KEY}`;
+        const fullUrl = `${API_BASE_URL}?${queryString}`;
+
+        fetch(fullUrl)
+          .then(response => response.json())
+          .then(data => {
+            const curDollar = data.currency_value;
+            const exciseEl = $('.calc__excise-price');
+            if (exciseEl) {
+              exciseEl.textContent = Math.round(data.payments['2'].sum_value / curDollar).toLocaleString() + ' $';
+            }
+
+            if (inputData['motor'] == 3) {
+              const vatEl = $('.calc__vat-price');
+              const importDutyEl = $('.calc__import-duty-price');
+              if (vatEl) vatEl.textContent = '0 $';
+              if (importDutyEl) importDutyEl.textContent = '0 $';
+            } else {
+              const vatEl = $('.calc__vat-price');
+              const importDutyEl = $('.calc__import-duty-price');
+              if (vatEl) vatEl.textContent = Math.round(data.payments['3'].sum_value / curDollar).toLocaleString() + ' $';
+              if (importDutyEl) importDutyEl.textContent = Math.round(data.payments['1'].sum_value / curDollar).toLocaleString() + ' $';
+            }
+
+            const deliveryFromUsaLocationEl = $('.calc__delivery-from-usa-location');
+            if (deliveryFromUsaLocationEl) deliveryFromUsaLocationEl.textContent = inputData['delivery_from_the_usa'];
+
+            const auctionFeePriceEl = $('.calc__auction-fee-price');
+            if (auctionFeePriceEl) auctionFeePriceEl.textContent = calculateTax(cost).toLocaleString() + ' $';
+
+            const brokerageServicesEl = $('input[name="brokerage_services"]');
+            const brokeragePriceEl = $('.calc__brokerage-services-price');
+            if (brokerageServicesEl && brokeragePriceEl) {
+              brokeragePriceEl.textContent = parseInt(brokerageServicesEl.value).toLocaleString() + ' $';
+            }
+
+            const atlasCommissionEl = $('input[name="atlas_commission"]');
+            const commissionPriceEl = $('.calc__atlas-commission-price');
+            if (atlasCommissionEl && commissionPriceEl) {
+              commissionPriceEl.textContent = parseInt(atlasCommissionEl.value).toLocaleString() + ' $';
+            }
+
+            const shippingKlaipEl = $('input[name="shipping_klaip"]');
+            const shippingKlaipPriceEl = $('.calc__shipping-klaip-price');
+            if (shippingKlaipEl && shippingKlaipPriceEl) {
+              shippingKlaipPriceEl.textContent = parseInt(shippingKlaipEl.value).toLocaleString() + ' $';
+            }
+
+            const selectedTransport = $('.calc__type-transport-li--selected');
+            const deliveryKlaipLvivPriceEl = $('.calc__delivery-klaip-lviv-price');
+            if (selectedTransport && deliveryKlaipLvivPriceEl) {
+              deliveryKlaipLvivPriceEl.textContent = parseInt(selectedTransport.dataset.priceTransport).toLocaleString() + ' $';
+            }
+
+            const crossingBorderEl = $('input[name="crossing_the_border"]');
+            const crossingBorderPriceEl = $('.calc__crossing-the-border-price');
+            if (crossingBorderEl && crossingBorderPriceEl) {
+              crossingBorderPriceEl.textContent = parseInt(crossingBorderEl.value).toLocaleString() + ' $';
+            }
+
+            const internationalDocumentsEl = $('input[name="international_documents"]');
+            const documentsPriceEl = $('.calc__international-documents-price');
+            if (internationalDocumentsEl && documentsPriceEl) {
+              documentsPriceEl.textContent = parseInt(internationalDocumentsEl.value).toLocaleString() + ' $';
+            }
+
+            const carLoadingEl = $('input[name="car_loading_in_lithuania"]');
+            const loadingLithuaniaPriceEl = $('.calc__car-loading-in-lithuania-price');
+            if (carLoadingEl && loadingLithuaniaPriceEl) {
+              loadingLithuaniaPriceEl.textContent = parseInt(carLoadingEl.value).toLocaleString() + ' $';
+            }
+
+            const deliveryInUsaPriceEl = $('.calc__delivery-usa-price');
+            if (deliveryInUsaPriceEl) {
+              deliveryInUsaPriceEl.textContent = parseInt(inputData['delivery_in_the_usa']).toLocaleString() + ' $';
+            }
+
+            const port = inputData['delivery_from_the_usa'].split(',');
+            if (port[1]) portCalculation(port[1]);
+
+            let totalSum = 0;
+            $$('.calc__calculation-price:not(.calc__calculation-total-price)').forEach(el => {
+              const text = el.textContent;
+              const numericValue = parseFloat(text.replace(/[^0-9.-]+/g, '')) || 0;
+              totalSum += numericValue;
+            });
+
+            const formattedTotalSum = (parseInt(cost) + totalSum).toLocaleString();
+            const totalPriceEl = $('.calc__calculation-total-price');
+            if (totalPriceEl) {
+              totalPriceEl.textContent = formattedTotalSum + ' $';
+            }
+          })
+          .catch(error => {
+            console.error('AJAX error:', error);
+          });
+      });
+    }
+
+    // Initialize calculation with default values
+    setTimeout(() => {
+      // Set default values for hidden inputs display
+      const hiddenInputs = {
+        'brokerage_services': '.calc__brokerage-services-price',
+        'atlas_commission': '.calc__atlas-commission-price',
+        'shipping_klaip': '.calc__shipping-klaip-price',
+        'crossing_the_border': '.calc__crossing-the-border-price',
+        'international_documents': '.calc__international-documents-price',
+        'car_loading_in_lithuania': '.calc__car-loading-in-lithuania-price'
+      };
+
+      Object.keys(hiddenInputs).forEach(inputName => {
+        const input = $(`input[name="${inputName}"]`);
+        const priceEl = $(hiddenInputs[inputName]);
+        if (input && priceEl && input.value) {
+          priceEl.textContent = parseInt(input.value).toLocaleString() + ' $';
+        }
+      });
+
+      dynamicCalculation();
+    }, 200);
+  });
+})();
+</script>
+
+{% schema %}
+    {
+        "name": "XC Calc",
+        "class": "xc-calc padding-section",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title left block",
+                "default": "Вхідні дані"
+            },
+            {
+                "type": "text",
+                "id": "title_right_block",
+                "label": "Title right block",
+                "default": "Розрахунок"
+            },
+            {
+              "type": "text",
+              "id": "api_key",
+              "label": "API Key",
+              "default": "bOWWtrwfIHW5Ru2mVKZpq8C4KkkURtTs3fMTk5fo"
+            },
+            {
+              "type": "header",
+              "content": "Calcualtions"
+            },
+            {
+              "type": "text",
+              "id": "port_calculation",
+              "label": "dangerous_goods",
+              "default": "200"
+            },
+            {
+              "type": "text",
+              "id": "financial_guarantee",
+              "label": "financial_guarantee",
+              "default": "100"
+            },
+            {
+              "type": "text",
+              "id": "brokerage_services",
+              "label": "brokerage_services",
+              "default": "300"
+            },
+            {
+              "type": "text",
+              "id": "atlas_commission",
+              "label": "atlas_commission",
+              "default": "600"
+            },
+            {
+              "type": "text",
+              "id": "shipping_klaip",
+              "label": "shipping_klaip",
+              "default": "100"
+            },
+            {
+              "type": "text",
+              "id": "crossing_the_border",
+              "label": "crossing_the_border",
+              "default": "200"
+            },
+            {
+              "type": "text",
+              "id": "international_documents",
+              "label": "international_documents",
+              "default": "300"
+            },
+            {
+              "type": "text",
+              "id": "car_loading_in_lithuania",
+              "label": "car_loading_in_lithuania",
+              "default": "400"
+            },
+            {
+              "type": "richtext",
+              "id": "calculation_note",
+              "label": "calculation_note",
+              "default": "<p>Підсумкова вартість складається з вартості лота (включаючи збори і комісії), доставки авто до порту країни призначення і розмитнення. Розрахунки є попередніми. Залишить заявку нижче для отримання точного прорахунку.</p>"
+            }
+        ],
+       
+        "presets": [
+            {
+                "name": "XC Calc"
+            }
+        ]
+    }
+{% endschema %}
