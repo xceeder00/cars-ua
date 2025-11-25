@@ -8,9 +8,9 @@
     gap: 40px;
     align-items: flex-start;
 
-    @media (max-width: 768px) {
+    @include tablet {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 16px;
     }
   }
 
@@ -21,19 +21,32 @@
     padding: 80px;
     position: sticky;
     top: 100px;
-    
+    @include tablet {
+      position: static;
+      padding: 32px;
+      border-radius: 12px;
+    }
     .calc__title{
         color: #262626;
         font-size: 24px;
         font-weight: 700;
         line-height: 120%;
         margin-bottom: 32px;
+        @include tablet {
+          font-size: 20px;
+          margin-bottom: 24px;
+        }
     }
   }
   &__right {
     border-radius: 24px;
     background: #262626;
     padding: 80px;
+     @include tablet {
+      position: static;
+      padding: 32px;
+      border-radius: 12px;
+    }
   }
   &__title {
     color: #E8EBE8;
@@ -41,6 +54,10 @@
     font-weight: 700;
     line-height: 120%;
     margin-bottom: 16px;
+     @include tablet {
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
   }
   &__form {
     display: flex;
@@ -50,6 +67,10 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap:16px;
+      @include tablet {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
   }
   &__dropdown {
@@ -273,7 +294,7 @@
     }
   }
 
-  
+
   &__btn {
     display: none!important;
     padding: 1rem 2rem;
