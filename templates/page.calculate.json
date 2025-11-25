@@ -18,6 +18,17 @@
         "image": "shopify://shop_images/bedda5c28ac544b0680b599984efc0587cb29d1f.jpg"
       }
     },
+    "xc_block_pWJnEz": {
+      "type": "xc-block",
+      "name": "XC Block",
+      "settings": {
+        "label": "ВСЕ ВКЛЮЧЕНО",
+        "label_color": "#80ff00",
+        "heading": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>",
+        "description": "Комплексний супровід без зайвих турбот. Ваше авто мрії - швидко та безпечно.",
+        "button_text": "Замовити дзвінок"
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -69,6 +80,7 @@
   },
   "order": [
     "xc_page_head_CXGwiN",
+    "xc_block_pWJnEz",
     "main"
   ]
 }
