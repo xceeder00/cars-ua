@@ -18,6 +18,14 @@
         "image": "shopify://shop_images/bedda5c28ac544b0680b599984efc0587cb29d1f.jpg"
       }
     },
+    "xc_calc_9V6PVh": {
+      "type": "xc-calc",
+      "name": "XC Calc",
+      "settings": {
+        "title": "Вхідні дані",
+        "title_right_block": "Розрахунок"
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -69,6 +77,7 @@
   },
   "order": [
     "xc_page_head_CXGwiN",
+    "xc_calc_9V6PVh",
     "main"
   ]
 }

@@ -127,7 +127,7 @@
   display: block;
 }
 .calc__dropdown-list li {
-  padding: 16px;
+  padding: 12px;
   cursor: pointer;
   color: rgba(38, 38, 38, 0.8);
   font-size: 14px;
