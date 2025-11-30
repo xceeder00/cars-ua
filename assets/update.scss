@@ -317,7 +317,19 @@ h4{
             border: 1px solid #262626;
         }
     }
+    &--tertiary{
+        background-color: #000;
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+        &:hover{
+            background-color: $c-accent;
+            color: #000;
+            box-shadow: 0 8px 20px rgba(128, 255, 0, 0.3);
+        }
+    }
 }
+
 
 
 
@@ -591,3 +603,11 @@ header-menu .menu-list__link{
     }
 }
 
+html {
+  scroll-padding-top: 100px; /* висота вашого хедера */
+}
+
+/* або */
+body {
+  scroll-padding-top: 100px;
+}

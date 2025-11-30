@@ -137,31 +137,30 @@
                 font-size: 14px;
             }
         }
-        
-        &__button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            background: #262626;
-            color: #FFFFFF;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1;
-            transition: opacity 0.3s ease;
-            width: fit-content;
+        // &__button {
+        //     display: inline-flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     padding: 16px 32px;
+        //     background: #262626;
+        //     color: #FFFFFF;
+        //     text-decoration: none;
+        //     border-radius: 8px;
+        //     font-size: 16px;
+        //     font-weight: 500;
+        //     line-height: 1;
+        //     transition: opacity 0.3s ease;
+        //     width: fit-content;
             
-            @include tablet {
-                padding: 14px 28px;
-                font-size: 14px;
-            }
+        //     @include tablet {
+        //         padding: 14px 28px;
+        //         font-size: 14px;
+        //     }
             
-            &:hover {
-                opacity: 0.8;
-            }
-        }
+        //     &:hover {
+        //         opacity: 0.8;
+        //     }
+        // }
     }
 }
 

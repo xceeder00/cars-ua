@@ -85,7 +85,7 @@
 
                 <div class="calc__price">
                     <label for="cost">Вартість ($)</label>
-                    <input type="number" onmousewheel="return false;" onwheel="return false;" autocomplete="off" name="cost" id="cost" class="calc__cost calc__input" step="1" min="10" placeholder="Y USD">
+                    <input type="number" onmousewheel="return false;" onwheel="return false;" autocomplete="off" name="cost" id="cost" class="calc__cost calc__input" step="1" min="10" placeholder="USD">
                 </div>
                 </div>
                 <div class="calc__form-group">
@@ -197,7 +197,7 @@
                         </div>
                         <div class="calc__calculation-item">
                             <p class="calc__calculation-label">Комісія AtlasAuto:</p>
-                            <span class="calc__calculation-price calc__izi-commission-price">0 $</span>
+                            <span class="calc__calculation-price calc__atlas-commission-price">0 $</span>
                         </div>
                     <div class="calc__calculation-item calc__calculation-item--dependence calc__calculation-item--hidden">
                         <p class="calc__calculation-label">Небезпечний вантаж:</p>
@@ -224,7 +224,7 @@
 <input type="hidden" class="calc__input" name="dangerous_goods" value="0" data-value="{{ section.settings.dangerous_goods }}">
 <input type="hidden" class="calc__input" name="financial_guarantee" value="0" data-value="100">
 <input type="hidden" class="calc__input" name="brokerage_services" value="{{ section.settings.brokerage_services }}">
-<input type="hidden" class="calc__input" name="atlas_commission" value="{{ section.settings.atlas_commission }}">
+<input type="hidden" class="calc__input" name="atlas_commission" value="{{ section.settings.atlas_commission | default: 600 }}">
 <input type="hidden" class="calc__input" name="shipping_klaip" value="{{ section.settings.shipping_klaip }}">
 <input type="hidden" class="calc__input" name="delivery_klaip_lviv" value="{{ section.settings.delivery_klaip_lviv }}">
 <input type="hidden" class="calc__input" name="crossing_the_border" value="{{ section.settings.crossing_the_border }}">

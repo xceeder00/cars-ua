@@ -131,28 +131,3 @@
     font-size: 14px;
   }
 }
-.info-content__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 32px;
-  background: #262626;
-  color: #FFFFFF;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1;
-  transition: opacity 0.3s ease;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-@media (max-width: 999px) {
-  .info-content__button {
-    padding: 14px 28px;
-    font-size: 14px;
-  }
-}
-.info-content__button:hover {
-  opacity: 0.8;
-}

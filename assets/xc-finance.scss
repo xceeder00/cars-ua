@@ -1,0 +1,249 @@
+@import 'main';
+
+.xc-finance {
+    &__wrapper {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+        @include tablet {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+  
+    &__summary {
+        background-color: #E8E9E8;
+        border-radius: 24px;
+        padding: 100px 64px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        // @media (max-width: 992px) {
+        // flex: 1;
+        // width: 100%;
+        // }
+
+        @include tablet{
+            padding: 32px 24px;
+            gap: 16px;
+        }
+        &-label {
+            color: rgba(0, 11, 2, 0.60);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 160%;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            @include tablet{
+                font-size: 14px;
+            }
+            
+        }
+        &-amount {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 20px;
+            @include tablet{
+                gap: 8px;
+            }
+            
+        }
+        &-value {
+            color: #262626;
+            text-align: center;
+            font-size: 100px;
+            font-weight: 400;
+            line-height: 100%;
+            @include tablet{
+                font-size: 56px;
+            }
+        }
+        &-currency {
+            font-size: 100px;
+            font-weight: 400;
+            line-height: 100%;
+            @include tablet{
+                font-size: 56px;
+            }
+        }
+        &-secondary {
+            color: #000B02;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 160%; /* 25.6px */
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+        &-total {
+            margin-top: auto;
+            color: #000B02;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 160%;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            @include tablet{
+                margin-top: 16px;
+            }
+        }
+    }
+ 
+    &__config {
+        padding: 40px 80px;
+        @include tablet{
+            padding: 0;
+        }
+        .xc-finance__title, .xc-finance__description{
+           @include mobile{
+            display: none;
+           }
+        }
+    }
+
+    &__title {
+        margin-bottom: 24px;
+        @include tablet{
+            font-size: 24px!important;
+        }
+    }
+
+
+    &__description {
+        color: rgba(38, 38, 38, 0.80);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 160%;
+        margin-bottom: 24px;
+        @include tablet{
+            font-size: 14px!important;
+            margin-bottom: 24px!important;
+        }
+    }
+
+    // Slider Group
+    &__slider-group {
+        margin-bottom: 24px;
+
+        &:last-of-type {
+        margin-bottom: 32px;
+        }
+    }
+
+    &__slider-label {
+        display: block;
+        color: rgba(38, 38, 38, 0.80);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 160%;
+    }
+
+    &__slider-value {
+        font-weight: 600;
+    }
+
+    &__slider-wrapper {
+        position: relative;
+        padding: 16px 0 0;
+    }
+
+    &__slider {
+        width: 100%;
+        height: 6px;
+        border-radius: 12px;
+        background: $c-accent;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+        position: relative;
+        z-index: 2;
+        &:hover{
+            background: $c-accent;
+        }
+        &::-webkit-slider-thumb{
+                appearance: none;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #90F209;
+               box-shadow:
+                0 0 0 8px rgba(144, 242, 9, .25), // soft square-ish glow
+                0 0 0 2px #90F209;                // crisp edge if you want it
+                cursor: pointer;
+                transition: transform 0.2s ease;
+            }
+            &::-moz-range-thumb{
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                border: 7px solid #fff;
+                background: $c-accent;
+                 box-shadow:
+                    0 0 0 8px rgba(144, 242, 9, .25),
+                    0 0 0 2px #90F209;
+                cursor: pointer;
+                transition: transform 0.2s ease;
+            }
+            // &:hover::-webkit-slider-thumb,
+            // &:hover::-moz-range-thumb{
+            //     transform: scale(1.05);
+            // }
+    }
+
+
+    // Slider track background (green progress)
+    &__slider-wrapper {
+        position: relative;
+
+        &::before {
+        content: '';
+        position: absolute;
+        top: 26px;
+        left: 0;
+        height: 6px;
+        background: $c-accent;
+        border-radius: 12px 0 0 12px;
+        z-index: 3;
+        // transition: width 0.2s ease;
+        pointer-events: none;
+        }
+
+        &[data-slider="credit-amount"]::before {
+        width: calc((var(--credit-amount, 5000) - var(--min-amount, 1500)) / (var(--max-amount, 20000) - var(--min-amount, 1500)) * 100%);
+        }
+
+        &[data-slider="loan-term"]::before {
+        width: calc((var(--loan-term, 24) - var(--min-term, 12)) / (var(--max-term, 84) - var(--min-term, 12)) * 100%);
+        }
+    }
+
+    &__slider-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+    }
+
+    &__slider-label-min,
+    &__slider-label-max {
+        color: rgba(38, 38, 38, 0.80);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 160%;
+    }
+
+    &__mobile{
+        display: none;
+        @include tablet{
+            display: block;
+        }
+    }
+    
+
+}
+
+

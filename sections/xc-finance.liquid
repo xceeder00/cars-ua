@@ -1,0 +1,379 @@
+{{ 'xc-finance.css' | asset_url | stylesheet_tag }}
+
+<div class="section section--page-width" id="{{ section.settings.section_id }}">
+    <div class="xc-finance__mobile">
+        <h2 class="xc-finance__title h4">{{ section.settings.title }}</h2>
+        <p class="xc-finance__description">{{ section.settings.description }}</p>
+    </div>
+    <div class="xc-finance__wrapper">
+      <!-- Left Side: Payment Summary -->
+        <div class="xc-finance__summary">
+           
+            <div class="xc-finance__summary-label">{{ section.settings.left_top_text }}</div>
+            <div class="xc-finance__summary-amount">
+                <span class="xc-finance__summary-value" id="monthly-payment-usd">280.50</span>
+                <span class="xc-finance__summary-currency">$</span>
+            </div>
+            <div class="xc-finance__summary-amount-secondary" id="monthly-payment-uah">10,400 UAH</div>
+            <div class="xc-finance__summary-total">
+                {{ section.settings.left_bottom_text }} <span id="total-cost-usd">5,400</span> $
+            </div>
+           
+        </div>
+
+      
+        <div class="xc-finance__config">
+            <h2 class="xc-finance__title h4">{{ section.settings.title }}</h2>
+            <p class="xc-finance__description">{{ section.settings.description }}</p>
+
+            <!-- Credit Amount Slider -->
+            <div class="xc-finance__slider-group">
+            <label class="xc-finance__slider-label">
+                Сума кредиту: <span class="xc-finance__slider-value" id="credit-amount-value">5,000</span> $
+            </label>
+            <div class="xc-finance__slider-wrapper" data-slider="credit-amount">
+                <input 
+                type="range" 
+                id="credit-amount-slider" 
+                class="xc-finance__slider" 
+                min="{{ section.settings.min_loan_amount | default: 1500 }}" 
+                max="{{ section.settings.max_loan_amount | default: 20000 }}" 
+                step="100" 
+                value="{{ section.settings.default_loan_amount | default: 5000 }}"
+                />
+                <div class="xc-finance__slider-labels">
+                <span class="xc-finance__slider-label-min">$<span class="xc-finance__slider-label-value" data-min-amount>{{ section.settings.min_loan_amount | default: 1500 }}</span></span>
+                <span class="xc-finance__slider-label-max">$<span class="xc-finance__slider-label-value" data-max-amount>{{ section.settings.max_loan_amount | default: 20000 }}</span></span>
+                                                        </div>
+                                                    </div>      
+                                                            </div>
+
+            <!-- Loan Term Slider -->
+            <div class="xc-finance__slider-group">
+            <label class="xc-finance__slider-label">
+                Термін кредитування: <span class="xc-finance__slider-value" id="loan-term-value">24</span> міс.
+            </label>
+            <div class="xc-finance__slider-wrapper" data-slider="loan-term">
+                <input 
+                type="range" 
+                id="loan-term-slider" 
+                class="xc-finance__slider" 
+                min="{{ section.settings.min_loan_term | default: 12 }}" 
+                max="{{ section.settings.max_loan_term | default: 84 }}" 
+                step="1" 
+                value="{{ section.settings.default_loan_term | default: 24 }}"
+                />
+                <div class="xc-finance__slider-labels">
+                <span class="xc-finance__slider-label-min">{{ section.settings.min_loan_term | default: 12 }} міс.</span>
+                <span class="xc-finance__slider-label-max">{{ section.settings.max_loan_term | default: 84 }} міс.</span>
+                                                        </div>
+                                                    </div>
+                        </div>
+
+            <!-- Action Button -->
+            <a href="{{ section.settings.button_url }}" class="xc-finance__button button btn btn--tertiary">
+            {{ section.settings.button_text }}
+            </a>
+        </div>
+    </div>
+</div>
+                    
+
+<script>
+(function() {
+  'use strict';
+
+  /**
+   * Configuration based on OTP Bank car loan rates
+   * Source: https://www.otpbank.com.ua/privateclients/crediting/car/
+   * 
+   * - Real Annual Interest Rate: 35.95% to 42.66% (default: 38%)
+   * - One-Time Commission: 2.99% of loan amount
+   * - Loan Term: 12-84 months (1-7 years)
+   * - Loan Amount: Configurable via section settings
+   * 
+   * The commission is included in the loan amount (added to principal)
+   */
+  const ANNUAL_INTEREST_RATE = {{ section.settings.interest_rate | default: 38.0 }} / 100;
+  const ONE_TIME_COMMISSION_RATE = {{ section.settings.commission_rate | default: 2.99 }} / 100;
+  const MIN_LOAN_AMOUNT = {{ section.settings.min_loan_amount | default: 1500 }};
+  const MAX_LOAN_AMOUNT = {{ section.settings.max_loan_amount | default: 20000 }};
+  const MIN_LOAN_TERM = {{ section.settings.min_loan_term | default: 12 }};
+  const MAX_LOAN_TERM = {{ section.settings.max_loan_term | default: 84 }};
+  
+  // Currency conversion variables
+  let exchangeRate = 42.0; // Default fallback rate (UAH to USD) - updated based on OTP Bank rates
+  let monthlyPaymentUSD = 280.50;
+  let totalCostUSD = 5400;
+  let creditAmount = {{ section.settings.default_loan_amount | default: 5000 }};
+  let loanTerm = {{ section.settings.default_loan_term | default: 24 }};
+  let oneTimeCommission = 0;
+
+  // Fetch exchange rate from NBU API
+  function fetchExchangeRate() {
+    fetch('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=USD&json')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.length > 0 && data[0].rate) {
+          exchangeRate = data[0].rate;
+          updateCurrencyDisplay();
+        }
+      })
+      .catch(error => {
+        console.warn('Failed to fetch exchange rate, using default:', error);
+        updateCurrencyDisplay();
+      });
+  }
+
+  // Calculate monthly payment using annuity formula
+  // Based on OTP Bank: Real Annual Interest Rate 35.95% - 42.66%
+  function calculatePayment() {
+    const principal = creditAmount;
+    const months = loanTerm;
+    
+    // Calculate one-time commission (2.99% of loan amount)
+    oneTimeCommission = principal * ONE_TIME_COMMISSION_RATE;
+    
+    // Add commission to principal (commission included in loan)
+    const totalPrincipal = principal + oneTimeCommission;
+    
+    // Monthly interest rate
+    const monthlyRate = ANNUAL_INTEREST_RATE / 12;
+    
+    // Annuity payment formula: P * (r(1+r)^n) / ((1+r)^n - 1)
+    if (monthlyRate > 0 && months > 0) {
+      const numerator = monthlyRate * Math.pow(1 + monthlyRate, months);
+      const denominator = Math.pow(1 + monthlyRate, months) - 1;
+      monthlyPaymentUSD = totalPrincipal * (numerator / denominator);
+                } else {
+      monthlyPaymentUSD = totalPrincipal / months;
+    }
+
+    // Total cost = monthly payment * months (includes principal + interest + commission)
+    totalCostUSD = monthlyPaymentUSD * months;
+
+    updateDisplay();
+  }
+
+  // Update currency display
+  function updateCurrencyDisplay() {
+    const monthlyPaymentUAH = monthlyPaymentUSD * exchangeRate;
+    const monthlyPaymentUAHFormatted = Math.round(monthlyPaymentUAH).toLocaleString('uk-UA');
+    
+    document.getElementById('monthly-payment-uah').textContent = monthlyPaymentUAHFormatted + ' UAH';
+  }
+
+  // Update all displays
+  function updateDisplay() {
+    document.getElementById('monthly-payment-usd').textContent = monthlyPaymentUSD.toFixed(2);
+    document.getElementById('total-cost-usd').textContent = Math.round(totalCostUSD).toLocaleString('en-US');
+    document.getElementById('credit-amount-value').textContent = creditAmount.toLocaleString('en-US');
+    document.getElementById('loan-term-value').textContent = loanTerm;
+    
+    updateCurrencyDisplay();
+  }
+
+  // Format number with commas
+  function formatNumber(num) {
+    return num.toLocaleString('en-US');
+  }
+
+  // Update slider progress
+  function updateSliderProgress() {
+    const creditWrapper = document.querySelector('[data-slider="credit-amount"]');
+    const termWrapper = document.querySelector('[data-slider="loan-term"]');
+    
+    if (creditWrapper) {
+      creditWrapper.style.setProperty('--credit-amount', creditAmount);
+      creditWrapper.style.setProperty('--min-amount', MIN_LOAN_AMOUNT);
+      creditWrapper.style.setProperty('--max-amount', MAX_LOAN_AMOUNT);
+    }
+    
+    if (termWrapper) {
+      termWrapper.style.setProperty('--loan-term', loanTerm);
+      termWrapper.style.setProperty('--min-term', MIN_LOAN_TERM);
+      termWrapper.style.setProperty('--max-term', MAX_LOAN_TERM);
+    }
+  }
+
+  // Initialize default values from sliders
+  function initDefaultValues() {
+    const creditSlider = document.getElementById('credit-amount-slider');
+    const termSlider = document.getElementById('loan-term-slider');
+    
+    if (creditSlider) {
+      creditAmount = parseInt(creditSlider.value);
+    }
+    
+    if (termSlider) {
+      loanTerm = parseInt(termSlider.value);
+    }
+  }
+
+  // Initialize sliders
+  function initSliders() {
+    const creditSlider = document.getElementById('credit-amount-slider');
+    const termSlider = document.getElementById('loan-term-slider');
+
+    // Credit amount slider
+    if (creditSlider) {
+      creditSlider.addEventListener('input', function(e) {
+        creditAmount = parseInt(e.target.value);
+        updateSliderProgress();
+        calculatePayment();
+      });
+    }
+
+    // Loan term slider
+    if (termSlider) {
+      termSlider.addEventListener('input', function(e) {
+        loanTerm = parseInt(e.target.value);
+        updateSliderProgress();
+        calculatePayment();
+      });
+    }
+
+    // Initial calculation and progress update
+    updateSliderProgress();
+    calculatePayment();
+  }
+
+  // Expose variables for debugging (optional)
+  window.xcFinanceCalc = {
+    getCreditAmount: () => creditAmount,
+    getLoanTerm: () => loanTerm,
+    getMonthlyPayment: () => monthlyPaymentUSD,
+    getTotalCost: () => totalCostUSD,
+    getExchangeRate: () => exchangeRate,
+    getInterestRate: () => ANNUAL_INTEREST_RATE * 100,
+    getCommissionRate: () => ONE_TIME_COMMISSION_RATE * 100
+  };
+
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initDefaultValues();
+      fetchExchangeRate();
+      initSliders();
+    });
+            } else {
+    initDefaultValues();
+    fetchExchangeRate();
+    initSliders();
+  }
+})();
+    </script>
+
+{% schema %}
+{
+    "name": "XC Finance",
+    "class": "padding-section xc-finance",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Кредитування"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description",
+            "default": "Atlas Auto пропонує зручну програму кредитування на автомобілі з США, Кореї, ЄС та Китаю."
+        },
+        {
+            "type": "text",
+            "id": "left_top_text",
+            "label": "Left Top Text",
+      "default": "ЩОМІСЯЧНИЙ ПЛАТІЖ"
+        },
+        {
+            "type": "text",
+            "id": "left_bottom_text",
+            "label": "Left Bottom Text",
+      "default": "ЗАГАЛЬНА ВАРТІСТЬ КРЕДИТУ:"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Дізнатися умови"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        },
+        
+        {
+            "type": "text",
+            "id": "section_id",
+            "label": "Section ID",
+            "default": "finance"
+        },
+        {
+            "type": "number",
+            "id": "interest_rate",
+            "label": "Annual Interest Rate (%)",
+            "default": 38,
+            "info": "Real Annual Interest Rate (35.95% - 42.66% based on OTP Bank). Default: 38%"
+        },
+        {
+            "type": "number",
+            "id": "commission_rate",
+            "label": "One-Time Commission Rate (%)",
+            "default": 3,
+            "info": "One-time commission rate (OTP Bank: 3%)"
+        },
+        {
+            "type": "number",
+            "id": "min_loan_amount",
+            "label": "Minimum Loan Amount (USD)",
+            "default": 1500,
+            "info": "Minimum credit amount in USD"
+        },
+        {
+            "type": "number",
+            "id": "max_loan_amount",
+            "label": "Maximum Loan Amount (USD)",
+            "default": 20000,
+            "info": "Maximum credit amount in USD"
+        },
+        {
+            "type": "number",
+            "id": "min_loan_term",
+            "label": "Minimum Loan Term (months)",
+            "default": 12,
+            "info": "Minimum loan term in months"
+        },
+        {
+            "type": "number",
+            "id": "max_loan_term",
+            "label": "Maximum Loan Term (months)",
+            "default": 84,
+            "info": "Maximum loan term in months (7 years = 84 months based on OTP Bank)"
+        },
+        {
+            "type": "number",
+            "id": "default_loan_amount",
+            "label": "Default Loan Amount (USD)",
+            "default": 5000,
+            "info": "Default credit amount"
+        },
+        {
+            "type": "number",
+            "id": "default_loan_term",
+            "label": "Default Loan Term (months)",
+            "default": 24,
+            "info": "Default loan term"
+        }
+        ],
+    "presets": [
+        {
+            "name": "XC Finance"
+        }
+    ]
+}
+{% endschema %}

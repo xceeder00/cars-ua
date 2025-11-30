@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body .shopify-section-group-footer-group {
   margin-inline: 24px;
   border-top-right-radius: 24px;
@@ -325,6 +326,17 @@ body .shopify-section-group-footer-group .footer-bottom-legal a:hover {
   color: #262626;
   border: 1px solid #262626;
 }
+.btn--tertiary {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn--tertiary:hover {
+  background-color: #90F209;
+  color: #000;
+  box-shadow: 0 8px 20px rgba(128, 255, 0, 0.3);
+}
 
 .circle-btn {
   display: flex;
@@ -594,4 +606,13 @@ header-menu .menu-list__link {
   --header-center:1fr!important;
   --header-left: 200px!important;
   --header-right: 200px!important;
+}
+
+html {
+  scroll-padding-top: 100px; /* висота вашого хедера */
+}
+
+/* або */
+body {
+  scroll-padding-top: 100px;
 }
