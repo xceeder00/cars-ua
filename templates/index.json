@@ -676,7 +676,7 @@
           "settings": {
             "title": "Підбір авто",
             "image": "shopify://shop_images/Rectangle_11924.png",
-            "button_link": "shopify://pages/services"
+            "button_link": "/pages/services#selection"
           }
         },
         "service_XpiYFK": {
@@ -684,7 +684,7 @@
           "settings": {
             "title": "Дилерські послуги",
             "image": "shopify://shop_images/Rectangle_11925.png",
-            "button_link": "shopify://pages/services"
+            "button_link": "/pages/services#dealer"
           }
         },
         "service_Ya38H6": {
@@ -692,7 +692,7 @@
           "settings": {
             "title": "Брокерські послуги",
             "image": "shopify://shop_images/Rectangle_11926.png",
-            "button_link": "shopify://pages/services"
+            "button_link": "/pages/services#broker"
           }
         },
         "service_3zGLhf": {
@@ -700,7 +700,7 @@
           "settings": {
             "title": "Кредитування",
             "image": "shopify://shop_images/Rectangle_11927.png",
-            "button_link": "shopify://pages/services"
+            "button_link": "/pages/services#finance"
           }
         },
         "service_L83pGW": {
@@ -708,7 +708,7 @@
           "settings": {
             "title": "Сертифікація",
             "image": "shopify://shop_images/Rectangle_11928.png",
-            "button_link": "shopify://pages/services"
+            "button_link": "/pages/services#certification"
           }
         }
       },
