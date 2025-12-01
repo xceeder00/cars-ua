@@ -1,5 +1,5 @@
 .product-grid {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 @media (max-width: 1280px) {
   .product-grid {
@@ -57,7 +57,7 @@
 
 .pc {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.08);
   background-color: #fff;
   border-radius: 8px;
@@ -70,17 +70,11 @@
   }
 }
 .pc__image {
-  aspect-ratio: 1;
-  width: 50%;
+  aspect-ratio: 4/3;
 }
 @media (max-width: 1440px) {
   .pc__image {
     aspect-ratio: unset;
-  }
-}
-@media (max-width: 750px) {
-  .pc__image {
-    width: 100%;
   }
 }
 .pc__image img {
@@ -90,16 +84,14 @@
      object-fit: cover;
 }
 .pc__content {
-  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 32px;
+  padding: 24px;
 }
 @media (max-width: 750px) {
   .pc__content {
     padding: 24px;
-    width: 100%;
   }
 }
 .pc__title h4 {

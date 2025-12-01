@@ -1,0 +1,30 @@
+.xc-product{
+    .product-information--media-left{
+            grid-template-columns: 1.5fr 1fr!important;
+    }
+    .product-information{
+        &__media{
+            padding-right: 0!important;
+        }
+    }
+    .product-details{
+        padding-inline: 48px!important;
+    }
+    .slideshow-control{
+        --thumbnail-width:96px!important;
+        aspect-ratio: 4/3!important;
+        border: 1px solid transparent;
+        &:is([aria-selected='true']){
+            border: 1px solid #000!important;
+            outline: none;
+        }
+       
+    }
+    .slideshow-controls__thumbnails{
+        padding-inline: 5px!important;
+    }
+    .dialog-thumbnails-list__thumbnail{
+        aspect-ratio: 4/3!important;
+    }
+    
+}
