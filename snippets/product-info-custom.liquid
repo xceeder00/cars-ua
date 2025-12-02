@@ -1,15 +1,16 @@
 <div class="xc-product__info">
-    <h1 class="xc-product__info-title">{{ product.title }}</h1>
+    <h1 class="xc-product__info-title h3">{{ product.title }}</h1>
     <div class="xc-product__info-price">
         <span class="xc-product__info-price-box">{{ product.price | money_without_trailing_zeros }}</span>
         {% if product.metafields.custom.vin != blank %}
-            <span class="xc-product__info-price-vin">VIN: {{product.metafields.custom.vin}}</span>
+            <span class="xc-product__info-price-vin"><span>VIN:</span> {{product.metafields.custom.vin}}</span>
         {% endif %}
     </div>
+    <hr>
     <div class="xc-product__info-features">
         <div class="pc__info">
                 {% if product.metafields.custom.fuel != blank %}
-                <div class="pc__info-item">
+                <div class="pc__info-item" title="Топліво">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <mask id="mask0_491_357" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="3" width="11" height="14">
                             <path d="M14.9993 3.3335H4.16602V16.6668H14.9993V3.3335Z" fill="white"/>
@@ -22,7 +23,7 @@
                 </div>
                 {% endif %}
                 {% if product.metafields.custom.year != blank %}
-                <div class="pc__info-item">
+                <div class="pc__info-item" title="Рік випуску">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <mask id="mask0_491_386" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="3" width="13" height="14">
                             <path d="M16.026 3.3335H4.35938V16.6668H16.026V3.3335Z" fill="white"/>
@@ -38,7 +39,7 @@
                 </div>
                 {% endif %}
                 {% if product.metafields.custom.engine != blank %}
-                <div class="pc__info-item">
+                <div class="pc__info-item" title="Об'єм двигуна">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M16.6673 9.16667V12.5C16.6673 12.6105 16.6234 12.7165 16.5453 12.7947C16.4672 12.8727 16.3612 12.9167 16.2507 12.9167C16.1402 12.9167 16.0342 12.8727 15.956 12.7947C15.8779 12.7165 15.834 12.6105 15.834 12.5V11.25H15.0007V12.0833C15.0007 12.3043 14.9128 12.5163 14.7566 12.6726C14.6003 12.8288 14.3883 12.9167 14.1673 12.9167H13.5064L11.6673 14.7557C11.5902 14.8334 11.4984 14.8951 11.3973 14.937C11.2962 14.9789 11.1877 15.0003 11.0782 15H7.67304C7.56357 15.0003 7.45512 14.9789 7.35399 14.937C7.25287 14.8951 7.16108 14.8334 7.08398 14.7557L5.24492 12.9167C5.1672 12.8396 5.10558 12.7477 5.06365 12.6467C5.02172 12.5455 5.0003 12.4371 5.00065 12.3276V11.25H4.16732V12.5C4.16732 12.6105 4.12342 12.7165 4.04528 12.7947C3.96714 12.8727 3.86116 12.9167 3.75065 12.9167C3.64014 12.9167 3.53416 12.8727 3.45603 12.7947C3.37788 12.7165 3.33398 12.6105 3.33398 12.5V9.16667C3.33398 9.05617 3.37788 8.95017 3.45603 8.872C3.53416 8.79392 3.64014 8.75 3.75065 8.75C3.86116 8.75 3.96714 8.79392 4.04528 8.872C4.12342 8.95017 4.16732 9.05617 4.16732 9.16667V10.4167H5.00065V7.5C5.00065 7.27898 5.08845 7.06702 5.24473 6.91074C5.40101 6.75447 5.61297 6.66667 5.83398 6.66667H9.16732V5.83333H7.91732C7.80681 5.83333 7.70083 5.78943 7.62269 5.71129C7.54455 5.63316 7.50065 5.52718 7.50065 5.41667C7.50065 5.30616 7.54455 5.20018 7.62269 5.12204C7.70083 5.0439 7.80681 5 7.91732 5H11.2507C11.3612 5 11.4672 5.0439 11.5453 5.12204C11.6234 5.20018 11.6673 5.30616 11.6673 5.41667C11.6673 5.52718 11.6234 5.63316 11.5453 5.71129C11.4672 5.78943 11.3612 5.83333 11.2507 5.83333H10.0007V6.66667H11.0782C11.1877 6.66632 11.2962 6.68773 11.3973 6.72967C11.4984 6.7716 11.5902 6.83322 11.6673 6.91094L13.5064 8.75H14.1673C14.3883 8.75 14.6003 8.83783 14.7566 8.99408C14.9128 9.15033 15.0007 9.36233 15.0007 9.58333V10.4167H15.834V9.16667C15.834 9.05617 15.8779 8.95017 15.956 8.872C16.0342 8.79392 16.1402 8.75 16.2507 8.75C16.3612 8.75 16.4672 8.79392 16.5453 8.872C16.6234 8.95017 16.6673 9.05617 16.6673 9.16667Z" fill="#262626"/>
                         <mask id="mask0_491_367" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="6" y="8" width="6" height="6">
@@ -52,7 +53,7 @@
                 </div>
                 {% endif %}
                 {% if product.metafields.custom.gearbox != blank %}
-                <div class="pc__info-item">
+                <div class="pc__info-item" title="Коробка передач">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <mask id="mask0_491_399" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="3" width="12" height="14">
                             <path d="M15.8327 3.3335H4.16602V16.6668H15.8327V3.3335Z" fill="white"/>
@@ -72,7 +73,7 @@
                 </div>
                 {% endif %}
                 {% if product.metafields.custom.mileage != blank %}
-                <div class="pc__info-item">
+                <div class="pc__info-item" title="Пробіг">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M7.22181 5.28434C7.33317 5.00087 7.60669 4.81445 7.91125 4.81445H12.0868C12.3913 4.81445 12.6648 5.00087 12.7762 5.28434L16.2683 14.1732C16.4592 14.6592 16.1009 15.1848 15.5788 15.1848H4.41919C3.89709 15.1848 3.53884 14.6592 3.72974 14.1732L7.22181 5.28434Z" fill="#262626"/>
                         <path d="M9.42486 4.81445H10.5771L11.4824 15.1848H8.51953L9.42486 4.81445Z" fill="white"/>
@@ -83,7 +84,7 @@
                 </div>
                 {% endif %}
                 {% if product.metafields.custom.drive != blank %}
-                <div class="pc__info-item">
+                <div class="pc__info-item" title="Привід">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <mask id="mask0_491_416" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="3" width="12" height="14">
                             <path d="M15.8327 3.3335H4.16602V16.6668H15.8327V3.3335Z" fill="white"/>
