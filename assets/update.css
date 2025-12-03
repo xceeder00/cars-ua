@@ -616,3 +616,64 @@ html {
 body {
   scroll-padding-top: 100px;
 }
+
+.form-modal {
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.16) !important;
+  border-radius: 24px !important;
+  background: #FFF !important;
+  --modal-width: 570px!important;
+}
+.form-modal__wrapper {
+  width: 100%;
+  padding: 48px;
+}
+.form-modal__product {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+.form-modal__product-top {
+  font-size: 24px;
+  color: #000B02;
+  font-weight: 700;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.form-modal__product-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.form-modal__product-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.form-modal__product-info {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.form-modal__product-info-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-modal__product-info-info-text-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+.form-modal__form {
+  margin-block: 16px !important;
+}
+.form-modal__phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

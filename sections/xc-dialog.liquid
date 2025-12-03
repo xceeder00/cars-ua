@@ -1,0 +1,79 @@
+
+<dialog-component
+    id="form-modal-common"
+    class="search-modal "
+    {{ block.shopify_attributes }}
+    >
+    <dialog
+        ref="dialog"
+        on:click="/closeDialogOnClickOutside"
+        on:keydown="/closeDialogOnEscapePress"
+        class="search-modal__content dialog-modal form-modal"
+        scroll-lock
+        aria-labelledby="search-modal-heading"
+    >
+    <div class="form-modal__wrapper">
+       
+        <div class="form-modal__product-top">
+                {{ section.settings.title }}
+                <button
+                type="button"
+                class="button predictive-search__close-modal-button"
+                aria-label="{{ 'accessibility.close_dialog' | t }}"
+                on:click="dialog-component/closeDialog"
+                ref="closeModalButton"
+            >
+                <span class="svg-wrapper">
+                {{ 'icon-close.svg' | inline_asset_content }}
+                </span>
+            </button>
+        </div>
+            
+        <div class="form-modal__form">
+            Form would be here
+        </div>
+        <a href="tel:{{ section.settings.phone_number }}" class="form-modal__phone">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6927 10.388C10.3836 10.6971 9.90969 10.7696 9.52236 10.5672C8.65669 10.1148 7.86092 9.53184 7.16445 8.83537C6.46796 8.13888 5.88505 7.34309 5.43264 6.47744C5.23021 6.0901 5.30276 5.61618 5.61179 5.30714L6.50406 4.41488L5.97348 3H3.33315C3.23704 3 3.16109 3.03891 3.11591 3.08567C3.0754 3.1276 3.0621 3.17 3.06765 3.21972C3.1821 4.24552 3.44059 5.25217 3.83714 6.20952C4.38994 7.5441 5.2002 8.75673 6.22164 9.77818C7.24309 10.7996 8.45571 11.6099 9.79028 12.1627C10.7476 12.5592 11.7543 12.8177 12.7801 12.9322C12.8298 12.9377 12.8722 12.9244 12.9141 12.8839C12.9609 12.8387 12.9998 12.7628 12.9998 12.6667V10.0264L11.5849 9.49578L10.6927 10.388ZM9.98555 9.68094L10.9537 8.71278C11.1848 8.48171 11.5296 8.40702 11.8356 8.52177L13.4591 9.13058C13.7843 9.25255 13.9998 9.56349 13.9998 9.91086V12.6667C13.9998 13.4031 13.401 14.0077 12.6692 13.926C11.5501 13.8012 10.452 13.5192 9.40759 13.0866C7.95169 12.4835 6.62884 11.5996 5.51453 10.4853C4.40023 9.37098 3.51632 8.04811 2.91326 6.5922C2.48067 5.54782 2.19867 4.44966 2.07381 3.3306C1.99216 2.59876 2.59677 2 3.33315 2H6.08898C6.43635 2 6.74729 2.21548 6.86926 2.54073L7.47807 4.16424C7.59281 4.47022 7.51813 4.81502 7.28705 5.0461L6.3189 6.01425C6.72453 6.79038 7.24713 7.50384 7.87155 8.12826C8.49598 8.75268 9.20942 9.27531 9.98555 9.68094Z" fill="#000B02"/>
+                </svg>
+            <span>{{ section.settings.phone_label }}</span>
+        </a>
+        </div>
+    </dialog>
+</dialog-component>
+
+{% schema %}
+    {
+        "name": "XC Dialog",
+        "settings": [
+            {
+                "type": "text",
+                "id": "phone_label",
+                "label": "Phone Label",
+                "default": "Зателефонувати зараз"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Замовити дзвінок"
+            },
+            {
+                "type": "text",
+                "id": "phone_number",
+                "label": "Phone Number",
+                "default": "+380671234567"
+            }
+    ],
+    "presets": [
+        {
+            "name": "XC Dialog",
+            "settings": {
+                "phone_label": "Зателефонувати зараз",
+                "title": "Замовити дзвінок",
+                "phone_number": "+380671234567"
+            }
+        }
+    ]
+  }
+{% endschema %}

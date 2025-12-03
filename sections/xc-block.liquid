@@ -21,9 +21,9 @@
         {% endif %}
         
         {% if section.settings.button_text != blank %}
-          <a href="{{ section.settings.button_link }}" class="xc-block__button btn--primary btn">
+          <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="xc-block__button btn--primary btn">
             {{ section.settings.button_text }}
-          </a>
+          </button>
         {% endif %}
       </div>
     </div>

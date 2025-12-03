@@ -60,7 +60,7 @@
                 <div class="reviews__description">{{ section.settings.description }}</div>
             {% endif %}
             {% if section.settings.button_text != blank %}
-            <a href="{{ section.settings.button_url }}" class="reviews__button btn--primary btn">{{ section.settings.button_text }}</a>
+           <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="reviews__button btn--primary btn">{{ section.settings.button_text }}</button>
             {% endif %}
         </div>
     </div>

@@ -9,7 +9,7 @@
                 <div class="slider-info__description">{{ section.settings.description }}</div>
             {% endif %}
             {% if section.settings.button_text != blank %}
-            <a href="{{ section.settings.button_url }}" class="slider-info__button btn--primary btn">{{ section.settings.button_text }}</a>
+           <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="slider-info__button btn--primary btn">{{ section.settings.button_text }}</button>
             {% endif %}
         </div>
         <div class="slider-info__left">

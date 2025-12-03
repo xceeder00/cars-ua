@@ -169,6 +169,7 @@
     .dialog-thumbnails-list__thumbnail{
         aspect-ratio: 4/3!important;
     }
+
     &__info{
         display: flex;
         flex-direction: column;
@@ -176,7 +177,15 @@
         &-title{
             color: $c-main;
             margin-bottom: 0;
+            @include tablet{
+                font-size: 28px;
+            }
         }
+
+
+
+
+        
         &-price{
             display: flex;
             justify-content: space-between;
@@ -215,6 +224,9 @@
                 display: flex;
                 gap: 10px;
                 align-items: center;
+                @include tablet{
+                    font-size: 14px;
+                }
             }
         }
         &-description{
@@ -223,10 +235,21 @@
             font-weight: 400;
             line-height: 160%; /* 22.4px */
         }
+
         &-buttons{
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
+            margin-top: 8px;
+            @include mobile{
+                flex-direction: column;
+            }
+            .btn{
+                @include mobile{
+                    width: 100%;
+                }
+            }
+
             span{
                 display: inline-flex;
                 align-items: center;
@@ -237,7 +260,14 @@
                 line-height: 160%;
                 border-radius: 32px;
                 background: rgba(179, 249, 41, 0.10);
-                padding: 10px 24px; /* 22.4px */
+                padding: 10px 24px; 
+                @include mobile{
+                    width: 100%;
+                    background-color: transparent;
+                    justify-content: center;
+                    padding: 0;
+
+                }
             }
         }
     }

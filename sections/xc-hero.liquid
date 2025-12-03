@@ -22,7 +22,7 @@
                     {% endif %}
                     <div class="hero__slide-buttons">
                         {% if block.settings.button_text != blank and block.settings.button_link != blank %}
-                        <a href="{{ block.settings.button_link }}" class="hero__slide-button btn btn--primary">{{ block.settings.button_text }}</a>
+                        <button class="hero__slide-button btn btn--primary"  aria-haspopup="dialog"  on:click="#form-modal-common/showDialog">{{ block.settings.button_text }}</button>
                         {% endif %}
                         {% if block.settings.label != blank %}
                             <div class="hero__slide-label">

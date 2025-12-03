@@ -33,10 +33,10 @@
                 </ul>
             {% endif %}
             
-            {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-                <a href="{{ section.settings.button_url }}" class="info-content__button button btn btn--tertiary">
+            {% if section.settings.button_text != blank %}
+                <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="info-content__button button btn btn--tertiary">
                     {{ section.settings.button_text }}
-                </a>
+                </button>
             {% endif %}
         </div>
     </div>
