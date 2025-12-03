@@ -11,6 +11,15 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "xc_dialog_ttrWfi": {
+      "type": "xc-dialog",
+      "name": "XC Dialog",
+      "settings": {
+        "phone_label": "Зателефонувати зараз",
+        "title": "Замовити дзвінок",
+        "phone_number": "+380671234567"
+      }
+    },
     "section_HbtWUE": {
       "type": "section",
       "blocks": {
@@ -629,6 +638,7 @@
     }
   },
   "order": [
+    "xc_dialog_ttrWfi",
     "section_HbtWUE",
     "footer_blocks_RjFwbY",
     "footer_m9NzUG"

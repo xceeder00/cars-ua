@@ -487,6 +487,7 @@
             "text_Y4hetC": {
               "type": "text",
               "name": "t:names.text",
+              "disabled": true,
               "settings": {
                 "text": "<p>year</p>",
                 "width": "fit-content",
