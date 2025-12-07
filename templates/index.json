@@ -64,7 +64,7 @@
           "type": "column",
           "settings": {
             "title": "Авто в наявності",
-            "image": "shopify://shop_images/Frame_138.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_1.webp",
             "link": "shopify://collections/stock"
           }
         },
@@ -72,7 +72,7 @@
           "type": "column",
           "settings": {
             "title": "Авто в дорозі",
-            "image": "shopify://shop_images/Frame_138_1.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_2.webp",
             "link": "shopify://collections/shipping"
           }
         },
@@ -80,7 +80,7 @@
           "type": "column",
           "settings": {
             "title": "Калькулятор",
-            "image": "shopify://shop_images/Frame_138_2.png",
+            "image": "shopify://shop_images/Nav_Icon_3.webp",
             "link": "shopify://pages/calculator"
           }
         },
@@ -88,7 +88,7 @@
           "type": "column",
           "settings": {
             "title": "Послуги",
-            "image": "shopify://shop_images/Frame_138_3.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_4.webp",
             "link": "shopify://pages/services"
           }
         },
@@ -96,7 +96,7 @@
           "type": "column",
           "settings": {
             "title": "Відслідкувати авто",
-            "image": "shopify://shop_images/Frame_138_4.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_5.webp",
             "link": "shopify://pages/tracking"
           }
         }
