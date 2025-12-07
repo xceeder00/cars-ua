@@ -15,7 +15,25 @@
       "settings": {
         "title": "{{ page.title }}",
         "description": "{{ page.content }}",
-        "image": "shopify://shop_images/bedda5c28ac544b0680b599984efc0587cb29d1f.jpg"
+        "image": "shopify://shop_images/Calculate.webp"
+      }
+    },
+    "xc_calc_9V6PVh": {
+      "type": "xc-calc",
+      "name": "XC Calc",
+      "settings": {
+        "title": "Вхідні дані",
+        "title_right_block": "Розрахунок",
+        "api_key": "bOWWtrwfIHW5Ru2mVKZpq8C4KkkURtTs3fMTk5fo",
+        "port_calculation": "200",
+        "financial_guarantee": "100",
+        "brokerage_services": "300",
+        "atlas_commission": "600",
+        "shipping_klaip": "100",
+        "crossing_the_border": "200",
+        "international_documents": "300",
+        "car_loading_in_lithuania": "400",
+        "calculation_note": "<p>Підсумкова вартість складається з вартості лота (включаючи збори і комісії), доставки авто до порту країни призначення і розмитнення. Розрахунки є попередніми. Залишить заявку нижче для отримання точного прорахунку.</p>"
       }
     },
     "xc_block_pWJnEz": {
@@ -27,14 +45,6 @@
         "heading": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>",
         "description": "Комплексний супровід без зайвих турбот. Ваше авто мрії - швидко та безпечно.",
         "button_text": "Замовити дзвінок"
-      }
-    },
-    "xc_calc_9V6PVh": {
-      "type": "xc-calc",
-      "name": "XC Calc",
-      "settings": {
-        "title": "Вхідні дані",
-        "title_right_block": "Розрахунок"
       }
     },
     "main": {
@@ -90,7 +100,6 @@
     "xc_page_head_CXGwiN",
     "xc_calc_9V6PVh",
     "xc_block_pWJnEz",
-    
     "main"
   ]
 }
