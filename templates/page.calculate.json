@@ -14,8 +14,9 @@
       "name": "XC Page Head",
       "settings": {
         "title": "{{ page.title }}",
-        "description": "{{ page.content }}",
-        "image": "shopify://shop_images/Calculate.webp"
+        "description": "<p>{{ page.content }}</p>",
+        "image": "shopify://shop_images/Calculate.webp",
+        "mobile_image": "shopify://shop_images/Calculate_M.webp"
       }
     },
     "xc_calc_9V6PVh": {
