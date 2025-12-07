@@ -3,7 +3,7 @@
     <div class="columns__wrapper">
         {% for block in section.blocks %}
             <a href="{{ block.settings.link }}" class="columns__item">
-                <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="columns__item-image">
+                <img src="{{ block.settings.image | image_url: width: 300 }}" alt="{{ block.settings.image.alt }}" class="columns__item-image">
                  <span class="columns__item-title">{{ block.settings.title }}
                     {%- render 'icon', icon: 'chevron-right' -%}
                  </span>
