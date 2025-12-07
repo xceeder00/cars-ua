@@ -17,7 +17,7 @@
           "settings": {
             "title": "<p>Авто твоєї мрії з <br/><strong>гарантією якості</strong> та прозорістю угоди</p>",
             "text": "Допоможемо підібрати автомобіль з фіксованою ціною, супроводом і доставкою прямо до тебе.",
-            "image": "shopify://shop_images/Slide_1_Image.png",
+            "image": "shopify://shop_images/Hero_Slide_1_2.webp",
             "mobile_image": "shopify://shop_images/Hero_Slide_1_M.webp",
             "button_text": "Підібрати авто",
             "button_link": "#",
@@ -29,7 +29,7 @@
           "settings": {
             "title": "<p>Авто в Наявності</p>",
             "text": "Готові до продажу автомобілі, які вже пройшли  всі етапи імпорту, перевірок і підготовки. Обирай, переглядай, купуй.",
-            "image": "shopify://shop_images/Slide_2.png",
+            "image": "shopify://shop_images/Hero_Slide_2_1.webp",
             "mobile_image": "shopify://shop_images/Hero_Slide_2_M.webp",
             "button_text": "Вибрати авто",
             "button_link": "#",
@@ -41,7 +41,7 @@
           "settings": {
             "title": "<p>Дилерські послуги</p>",
             "text": "Ми здійснюємо повний цикл імпорту та продажу автомобілів, включно з перевіркою історії, доставкою, митним оформленням і сертифікацією. Авто під ключ без зайвих клопотів.",
-            "image": "shopify://shop_images/Slide_6.png",
+            "image": "shopify://shop_images/Hero_Slide_3_1.webp",
             "mobile_image": "shopify://shop_images/Hero_Slide_3_M.webp",
             "button_text": "Дізнатись більше",
             "button_link": "#",
