@@ -50,6 +50,11 @@
   display: flex;
   gap: 16px;
 }
+@media (max-width: 750px) {
+  .choose__steps-pagination {
+    width: 100%;
+  }
+}
 .choose__steps-pagination-button {
   width: 48px;
   height: 6px;
@@ -62,6 +67,12 @@
 }
 .choose__steps-pagination-button.is-active {
   background-color: #90F209;
+}
+@media (max-width: 750px) {
+  .choose__steps-pagination-button {
+    width: unset;
+    flex: 1;
+  }
 }
 .choose__steps-body {
   position: relative;
@@ -139,6 +150,11 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
+@media (max-width: 750px) {
+  .choose__step-list {
+    gap: 8px;
+  }
+}
 .choose__step-list-item {
   position: relative;
   border-radius: 12px;
@@ -150,6 +166,12 @@
   gap: 16px;
   cursor: pointer;
   transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+@media (max-width: 750px) {
+  .choose__step-list-item {
+    padding: 8px;
+    gap: 8px;
+  }
 }
 .choose__step-list-item input {
   position: absolute;

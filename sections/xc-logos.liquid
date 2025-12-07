@@ -2,11 +2,35 @@
 <div class="section section--page-width">
     <h2 class="logos__title">{{ section.settings.title }}</h2>
     <div class="logos__wrapper">
-        {% for block in section.blocks %}
-            <div class="logos__item">
-                <img src="{{ block.settings.logo | image_url }}" alt="{{ block.settings.logo.alt }}" class="logos__item-image">
-            </div>
-        {% endfor %}
+        <div class="logos__marquee">
+            {% for block in section.blocks %}
+                <div class="logos__item">
+                    <img src="{{ block.settings.logo | image_url }}" alt="{{ block.settings.logo.alt }}" class="logos__item-image">
+                </div>
+            {% endfor %}
+            {% for block in section.blocks %}
+                <div class="logos__item">
+                    <img src="{{ block.settings.logo | image_url }}" alt="{{ block.settings.logo.alt }}" class="logos__item-image">
+                </div>
+            {% endfor %}
+            {% for block in section.blocks %}
+                <div class="logos__item">
+                    <img src="{{ block.settings.logo | image_url }}" alt="{{ block.settings.logo.alt }}" class="logos__item-image">
+                </div>
+            {% endfor %}
+            {% for block in section.blocks %}
+                <div class="logos__item">
+                    <img src="{{ block.settings.logo | image_url }}" alt="{{ block.settings.logo.alt }}" class="logos__item-image">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="logos__desktop-items">
+            {% for block in section.blocks %}
+                <div class="logos__item">
+                    <img src="{{ block.settings.logo | image_url }}" alt="{{ block.settings.logo.alt }}" class="logos__item-image">
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% schema %}

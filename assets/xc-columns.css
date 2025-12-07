@@ -1,11 +1,5 @@
 .columns {
   padding-bottom: 40px;
-  margin-inline: 24px;
-}
-@media (max-width: 750px) {
-  .columns {
-    margin-inline: 16px;
-  }
 }
 .columns__wrapper {
   display: grid;

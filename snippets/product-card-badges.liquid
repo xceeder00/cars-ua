@@ -29,11 +29,11 @@
       {%- endif -%}
     </div>
   {%- endif -%} {% endcomment %}
-  {%  if product.metafields.custom.year != blank %}
+  {% comment %} {%  if product.metafields.custom.year != blank %}
     <div class="product-badges__badge product-badges__badge--rectangle" style="background: #fff; color: #000;">
       {{ product.metafields.custom.year }}
     </div>
-  {% endif %}
+  {% endif %} {% endcomment %}
 </div>
 
 {% stylesheet %}

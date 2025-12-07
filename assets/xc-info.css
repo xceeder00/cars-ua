@@ -48,10 +48,13 @@
 .info-content__text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 24px;
+  padding-inline: 80px;
 }
 @media (max-width: 999px) {
   .info-content__text {
+    padding-inline: 0;
     gap: 20px;
     order: 2;
   }

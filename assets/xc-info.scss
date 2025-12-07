@@ -50,13 +50,17 @@
         &__text {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: 24px;
+            padding-inline: 80px;
             
             @include tablet {
+                padding-inline: 0;
                 gap: 20px;
                 order: 2;
             }
         }
+        
         
         &__title {
             font-size: 32px;

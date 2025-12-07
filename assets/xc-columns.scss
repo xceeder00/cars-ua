@@ -2,10 +2,9 @@
 
 .columns{
     padding-bottom: 40px;
-    margin-inline: 24px;
-    @include mobile{
-        margin-inline: 16px;
-    }
+    // @include mobile{
+    //     margin-inline: 16px;
+    // }
     &__wrapper{
         display: grid;
         grid-template-columns: repeat(5, 1fr);

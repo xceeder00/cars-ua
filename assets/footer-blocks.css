@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  min-height: 280px;
+  min-height: 180px;
   width: 100%;
 
 }
@@ -111,7 +111,7 @@
   }
 
   .footer-block-title {
-    font-size: 20px;
+    font-size: 24px!important;
     margin-bottom: 16px;
   }
 

@@ -1,14 +1,17 @@
 @import 'main';
 
 .hero{
-    margin: 24px;
+    --full-page-grid-with-margins: var(--full-page-grid-margin) minmax(0, var(--full-page-grid-central-column-width)) var(--full-page-grid-margin);
+    margin-block: 24px;
     @include mobile{
-        margin: 16px;
+        margin-block: 16px;
     }
+    
     &__wrapper{
         border-radius: 24px;
         overflow: hidden;
         position: relative;
+        width: 100%;
         @include mobile{
             border-radius: 12px;
         }

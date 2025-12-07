@@ -46,6 +46,9 @@
         &-pagination{
             display: flex;
             gap: 16px;
+            @include mobile{
+               width: 100%;
+            }
             &-button{
                 width: 48px;
                 height: 6px;
@@ -57,6 +60,10 @@
                 pointer-events: none;
                 &.is-active{
                     background-color: $c-accent;
+                }
+                @include mobile{
+                    width: unset;
+                    flex: 1;
                 }
             }
         }
@@ -128,6 +135,9 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
+            @include mobile{
+               gap: 8px;
+            }
             &-item{
                 position: relative;
                 border-radius: 12px;
@@ -139,6 +149,10 @@
                 gap: 16px;
                 cursor: pointer;
                 transition: background 0.3s ease, box-shadow 0.3s ease;
+                @include mobile{
+                    padding: 8px;
+                    gap: 8px;
+                }
                 input{
                     position: absolute;
                     inset: 0;
