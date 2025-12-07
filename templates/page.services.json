@@ -15,7 +15,8 @@
       "settings": {
         "title": "{{ page.title }}",
         "description": "{{ page.content }}",
-        "image": "shopify://shop_images/Services.webp"
+        "image": "shopify://shop_images/Services.webp",
+        "mobile_image": "shopify://shop_images/Services_M.webp"
       }
     },
     "xc_info_gJbrWh": {
