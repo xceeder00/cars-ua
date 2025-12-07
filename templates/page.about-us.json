@@ -15,7 +15,8 @@
       "settings": {
         "title": "{{ page.title }}",
         "description": "{{ page.content }}",
-        "image": "shopify://shop_images/35471392547b86295dbb8bd73a9301e2cbab223b.png"
+        "image": "shopify://shop_images/About_Us.webp",
+        "mobile_image": "shopify://shop_images/About_Us_M.webp"
       }
     },
     "xc_numbers_3Wgx6T": {

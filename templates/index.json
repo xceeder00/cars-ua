@@ -18,7 +18,7 @@
             "title": "<p>Авто твоєї мрії з <br/><strong>гарантією якості</strong> та прозорістю угоди</p>",
             "text": "Допоможемо підібрати автомобіль з фіксованою ціною, супроводом і доставкою прямо до тебе.",
             "image": "shopify://shop_images/Slide_1_Image.png",
-            "mobile_image": "shopify://shop_images/image_2_ae387855-7d08-40f5-b6cf-965b1a589aa1.png",
+            "mobile_image": "shopify://shop_images/Hero_Slide_1_M.webp",
             "button_text": "Підібрати авто",
             "button_link": "#",
             "label": "Гарантія фіксованої вартості"
@@ -30,7 +30,7 @@
             "title": "<p>Авто в Наявності</p>",
             "text": "Готові до продажу автомобілі, які вже пройшли  всі етапи імпорту, перевірок і підготовки. Обирай, переглядай, купуй.",
             "image": "shopify://shop_images/Slide_2.png",
-            "mobile_image": "shopify://shop_images/image_3_318541fc-df2c-498f-9c6e-a81f55afb414.png",
+            "mobile_image": "shopify://shop_images/Hero_Slide_2_M.webp",
             "button_text": "Вибрати авто",
             "button_link": "#",
             "label": "Наявність торгу"
@@ -42,7 +42,7 @@
             "title": "<p>Дилерські послуги</p>",
             "text": "Ми здійснюємо повний цикл імпорту та продажу автомобілів, включно з перевіркою історії, доставкою, митним оформленням і сертифікацією. Авто під ключ без зайвих клопотів.",
             "image": "shopify://shop_images/Slide_6.png",
-            "mobile_image": "shopify://shop_images/image_4_a540e1dc-31e1-4b2c-97d3-f7e06bedf9bd.png",
+            "mobile_image": "shopify://shop_images/Hero_Slide_3_M.webp",
             "button_text": "Дізнатись більше",
             "button_link": "#",
             "label": ""
@@ -64,7 +64,7 @@
           "type": "column",
           "settings": {
             "title": "Авто в наявності",
-            "image": "shopify://shop_images/Frame_138.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_1.webp",
             "link": "shopify://collections/stock"
           }
         },
@@ -72,7 +72,7 @@
           "type": "column",
           "settings": {
             "title": "Авто в дорозі",
-            "image": "shopify://shop_images/Frame_138_1.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_2.webp",
             "link": "shopify://collections/shipping"
           }
         },
@@ -80,7 +80,7 @@
           "type": "column",
           "settings": {
             "title": "Калькулятор",
-            "image": "shopify://shop_images/Frame_138_2.png",
+            "image": "shopify://shop_images/Nav_Icon_3.webp",
             "link": "shopify://pages/calculator"
           }
         },
@@ -88,7 +88,7 @@
           "type": "column",
           "settings": {
             "title": "Послуги",
-            "image": "shopify://shop_images/Frame_138_3.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_4.webp",
             "link": "shopify://pages/services"
           }
         },
@@ -96,7 +96,7 @@
           "type": "column",
           "settings": {
             "title": "Відслідкувати авто",
-            "image": "shopify://shop_images/Frame_138_4.png",
+            "image": "shopify://shop_images/Nav_Bar_Icon_5.webp",
             "link": "shopify://pages/tracking"
           }
         }
