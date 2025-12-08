@@ -17,7 +17,7 @@
           "settings": {
             "title": "<p>Авто твоєї мрії з <br/><strong>гарантією якості</strong> та прозорістю угоди</p>",
             "text": "Допоможемо підібрати автомобіль з фіксованою ціною, супроводом і доставкою прямо до тебе.",
-            "image": "shopify://shop_images/Slide_1_Image.png",
+            "image": "shopify://shop_images/Hero_Slide_1_2.webp",
             "mobile_image": "shopify://shop_images/Hero_Slide_1_M.webp",
             "button_text": "Підібрати авто",
             "button_link": "#",
@@ -29,7 +29,7 @@
           "settings": {
             "title": "<p>Авто в Наявності</p>",
             "text": "Готові до продажу автомобілі, які вже пройшли  всі етапи імпорту, перевірок і підготовки. Обирай, переглядай, купуй.",
-            "image": "shopify://shop_images/Slide_2.png",
+            "image": "shopify://shop_images/Hero_Slide_2_1.webp",
             "mobile_image": "shopify://shop_images/Hero_Slide_2_M.webp",
             "button_text": "Вибрати авто",
             "button_link": "#",
@@ -41,7 +41,7 @@
           "settings": {
             "title": "<p>Дилерські послуги</p>",
             "text": "Ми здійснюємо повний цикл імпорту та продажу автомобілів, включно з перевіркою історії, доставкою, митним оформленням і сертифікацією. Авто під ключ без зайвих клопотів.",
-            "image": "shopify://shop_images/Slide_6.png",
+            "image": "shopify://shop_images/Hero_Slide_3_1.webp",
             "mobile_image": "shopify://shop_images/Hero_Slide_3_M.webp",
             "button_text": "Дізнатись більше",
             "button_link": "#",
@@ -165,7 +165,7 @@
           "settings": {
             "title": "Пошук та повна перевірка авто",
             "description": "Детальна перевірка через CARFAX і AutoCheck. Ви отримуєте достовірну інформацію про пробіг, стан і історію авто - без сюрпризів та ризиків.",
-            "image": "shopify://shop_images/4576155_2_1.png"
+            "image": "shopify://shop_images/Service_Slide_1.webp"
           }
         },
         "slide_XUN99x": {
@@ -181,7 +181,7 @@
           "settings": {
             "title": "Швидка та безпечна доставка",
             "description": "Ми забезпечуємо повний контроль за транспортуванням авто до України.Тільки перевірені перевізники, чіткі терміни та постійне відстеження.",
-            "image": "shopify://shop_images/690259ef310d26d65ee0224212c82594eecc57df.jpg"
+            "image": "shopify://shop_images/Service_Slide_3.webp"
           }
         },
         "slide_TdHwQT": {
@@ -189,7 +189,7 @@
           "settings": {
             "title": "Якісний ремонт в найкоротші терміни",
             "description": "Atlas Auto співпрацює лише з перевіреними сервісами та сертифікованими майстрами. Ви отримаєте ідеально відновлене авто у найкоротші терміни.",
-            "image": "shopify://shop_images/e5223766cdcd5648be3eeeec9ec3de1760ed63b6.jpg"
+            "image": "shopify://shop_images/Service_Slide_4.webp"
           }
         },
         "slide_RWENYp": {
@@ -197,7 +197,7 @@
           "settings": {
             "title": "Сертифікація та постановка на облік",
             "description": "Після доставки автомобіля в Україну ми проводимо перевірку технічного стану, оформлення сертифікату, українських документів і постановку на облік.",
-            "image": "shopify://shop_images/e1ace8769068358bcd27f2decb4d361c5bfe751e.jpg"
+            "image": "shopify://shop_images/Service_Slide_5.webp"
           }
         }
       },
