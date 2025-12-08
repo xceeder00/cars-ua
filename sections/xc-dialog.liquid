@@ -2,7 +2,7 @@
 <dialog-component
     id="form-modal-common"
     class="search-modal "
-    {{ block.shopify_attributes }}
+    {{ section.shopify_attributes }}
     >
     <dialog
         ref="dialog"
@@ -30,7 +30,302 @@
         </div>
             
         <div class="form-modal__form">
-            Form would be here
+            <div id="AaHF3cFVQNTAzR0wvZ__forms_inline_XL4D6n" data-form-root="true" data-forms-id="forms-root-782257" data-forms-text-color="#202020" data-forms-button-background-color="#90F209" data-forms-button-label-color="#262626" data-forms-links-color="#1878b9" data-forms-errors-color="#e02229" data-forms-text-alignment="center" data-forms-alignment="center" data-forms-padding-top="0" data-forms-padding-right="0" data-forms-padding-bottom="0" data-forms-padding-left="0" style="--inline-container-min-height: 125px">
+                {% comment %} <shopify-forms-embed id="app-embed" style="display: block;"></shopify-forms-embed> {% endcomment %}
+            </div>
+            
+            <script>
+                // Store the data-label value when button is clicked
+                let formSourceLabel = null;
+                
+                // Intercept button clicks to capture data-label
+                document.addEventListener('click', function(e) {
+                    // Find button that opens this dialog
+                    const button = e.target.closest('button[on\\:click*="form-modal-common/showDialog"]');
+                    if (button) {
+                        // Get data-label if it exists
+                        const label = button.getAttribute('data-label');
+                        if (label) {
+                            formSourceLabel = label;
+                        } else {
+                            // If no data-label, try to get from parent or use a default
+                            formSourceLabel = null;
+                        }
+                    }
+                }, true);
+                
+                // Set value to "Секція звідки прийшла форма" field and hide it
+                (function() {
+                    function setFieldValueAndHide() {
+                        const formEmbed = document.querySelector('#app-embed');
+                        if (!formEmbed) return false;
+                        
+                        const shadowRoot = formEmbed.shadowRoot;
+                        if (!shadowRoot) return false;
+                        
+                        // First, inject CSS to hide the field and style the form
+                        if (!shadowRoot.querySelector('style[data-hide-custom-field]')) {
+                            const style = document.createElement('style');
+                            style.setAttribute('data-hide-custom-field', 'true');
+                            style.textContent = `
+                                /* Hide field by data-testid - most reliable */
+                                [data-testid="field-custom#block"] {
+                                    display: none !important;
+                                }
+                                /* Hide label */
+                                label[for="label-custom#block"],
+                                label[id="label-custom#block"] {
+                                    display: none !important;
+                                }
+                                /* Hide container that contains our field */
+                                ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#block"]),
+                                ._formFieldContainer_1mxsl_5:has(input[id="custom#block"]) {
+                                    display: none !important;
+                                }
+                                
+                                /* Input styling */
+                                ._formInputField_nag3b_7,
+                                ._formPhoneInputField_piv1u_17,
+                                input[type="text"],
+                                input[type="tel"],
+                                input[type="email"] {
+                                    border: 1px solid rgba(0, 46, 9, 0.12) !important;
+                                    border-radius: 8px !important;
+                                    box-shadow: none !important;
+                                    padding: 10px 16px !important;
+                                    color: #000B02 !important;
+                                    font-size: 16px !important;
+                                    font-style: normal !important;
+                                    font-weight: 400 !important;
+                                    line-height: 160% !important; /* 25.6px */
+                                }
+                                
+                                /* Label styling: Make it relative and position before input */
+                                ._formFieldContainer_1mxsl_5 {
+                                    position: relative !important;
+                                    display: flex !important;
+                                    flex-direction: column !important;
+                                    margin-bottom: 24px !important;
+                                }
+                                
+                                ._formInputFieldLabel_1mxsl_38,
+                                label._formInputFieldLabel_1mxsl_38 {
+                                    position: relative !important;
+                                    top: 0 !important;
+                                    left: 0 !important;
+                                    transform: none !important;
+                                    order: -1 !important;
+                                    margin-bottom: 8px !important;
+                                    color: rgba(0, 11, 2, 0.50) !important;
+                                    font-size: 14px !important;
+                                    font-style: normal !important;
+                                    font-weight: 400 !important;
+                                    line-height: 160% !important; /* 22.4px */
+                                }
+                            `;
+                            shadowRoot.appendChild(style);
+                        }
+                        
+                        // Also inject form styling CSS separately to ensure it applies
+                        if (!shadowRoot.querySelector('style[data-form-styling]')) {
+                            const formStyle = document.createElement('style');
+                            formStyle.setAttribute('data-form-styling', 'true');
+                            formStyle.textContent = `
+                                /* Input styling */
+                                input._formInputField_nag3b_7,
+                                input._formPhoneInputField_piv1u_17,
+                                input[type="text"],
+                                input[type="tel"] {
+                                    border: 1px solid rgba(0, 46, 9, 0.12) !important;
+                                    border-radius: 8px !important;
+                                    box-shadow: none !important;
+                                    padding: 10px 16px !important;
+                                    color: #000B02 !important;
+                                    font-size: 16px !important;
+                                    font-style: normal !important;
+                                    font-weight: 400 !important;
+                                    line-height: 160% !important; /* 25.6px */
+                                }
+                                
+                                /* Make labels relative and position them before inputs */
+                                ._formFieldContainer_1mxsl_5 {
+                                    display: flex !important;
+                                    flex-direction: column !important;
+                                    margin-bottom: 24px !important;
+                                }
+                                
+                                ._formFieldContainer_1mxsl_5 label {
+                                    position: relative !important;
+                                    top: 0 !important;
+                                    left: 0 !important;
+                                    transform: none !important;
+                                    order: -1 !important;
+                                    margin-bottom: 8px !important;
+                                    color: rgba(0, 11, 2, 0.50) !important;
+                                    font-size: 14px !important;
+                                    font-style: normal !important;
+                                    font-weight: 400 !important;
+                                    line-height: 160% !important; /* 22.4px */
+                                }
+                                
+                                /* Form gap */
+                                form._formFieldset_cit2d_82 {
+                                    gap: 0 !important;
+                                }
+                                
+                                /* Form container max-width */
+                                ._inline_1q1d2_47 ._formContainer_1q1d2_30 {
+                                    max-width: 100% !important;
+                                }
+                                
+                                /* Phone input container alignment */
+                                ._formPhoneInputContainer_piv1u_6 {
+                                    display: flex !important;
+                                    align-items: center !important;
+                                    gap: 0 !important;
+                                    margin-bottom: 24px !important;
+                                }
+                                
+                                ._formPhoneInputContainer_piv1u_6 .phone-country-selector {
+                                    display: flex !important;
+                                    align-items: center !important;
+                                }
+                                
+                                ._formPhoneInputContainer_piv1u_6 ._formFieldContainer_1mxsl_5 {
+                                    flex: 1 !important;
+                                    margin-bottom: 0 !important;
+                                }
+                                
+                                /* Remove box-shadow from all form elements */
+                                ._formFieldContainer_1mxsl_5,
+                                ._formPhoneInputContainer_piv1u_6,
+                                .phone-country-selector,
+                                button._selectToggle_12thd_25 {
+                                    box-shadow: none !important;
+                                }
+                                
+                                /* Hide country selector container */
+                                ._selectContainer_12thd_6,
+                                .phone-country-selector {
+                                    display: none !important;
+                                }
+                                
+                                /* Button styling */
+                                button._formSubmitButton_cit2d_96,
+                                button[type="submit"],
+                                button[data-testid="btn-form-submit"] {
+                                    border-radius: 32px !important;
+                                    color: #000B02 !important;
+                                    font-size: 14px !important;
+                                    font-style: normal !important;
+                                    font-weight: 600 !important;
+                                    line-height: 140% !important; /* 19.6px */
+                                    letter-spacing: 0.28px !important;
+                                }
+                            `;
+                            shadowRoot.appendChild(formStyle);
+                        }
+                        
+                        // Find by data-testid (most reliable)
+                        const field = shadowRoot.querySelector('[data-testid="field-custom#block"]');
+                        if (field) {
+                            // Set value if we have formSourceLabel
+                            if (formSourceLabel) {
+                                field.value = formSourceLabel;
+                                field.dispatchEvent(new Event('input', { bubbles: true }));
+                                field.dispatchEvent(new Event('change', { bubbles: true }));
+                            }
+                            
+                            // Find and hide container
+                            const container = field.closest('._formFieldContainer_1mxsl_5');
+                            if (container) {
+                                container.style.display = 'none';
+                                container.style.visibility = 'hidden';
+                                container.style.height = '0';
+                                container.style.overflow = 'hidden';
+                                return true;
+                            }
+                        }
+                        
+                        // Fallback: Find all containers and check by text content
+                        const containers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
+                        for (let i = 0; i < containers.length; i++) {
+                            const container = containers[i];
+                            const text = container.textContent || '';
+                            
+                            if (text.includes('Секція звідки прийшла форма')) {
+                                const fieldInContainer = container.querySelector('input[type="text"]');
+                                if (fieldInContainer) {
+                                    // Set value
+                                    if (formSourceLabel) {
+                                        fieldInContainer.value = formSourceLabel;
+                                        fieldInContainer.dispatchEvent(new Event('input', { bubbles: true }));
+                                        fieldInContainer.dispatchEvent(new Event('change', { bubbles: true }));
+                                    }
+                                    
+                                    // Hide container
+                                    container.style.display = 'none';
+                                    container.style.visibility = 'hidden';
+                                    container.style.height = '0';
+                                    container.style.overflow = 'hidden';
+                                    return true;
+                                }
+                            }
+                        }
+                        
+                        return false;
+                    }
+                    
+                    // Try immediately and multiple times
+                    const attempts = [0, 100, 300, 500, 800, 1000, 1500, 2000, 3000];
+                    attempts.forEach(function(delay) {
+                        setTimeout(setFieldValueAndHide, delay);
+                    });
+                    
+                    // Watch for dialog open
+                    const dialog = document.querySelector('#form-modal-common dialog');
+                    if (dialog) {
+                        const observer = new MutationObserver(function() {
+                            if (dialog.hasAttribute('open')) {
+                                // Try to set value and hide when dialog opens
+                                setTimeout(setFieldValueAndHide, 100);
+                                setTimeout(setFieldValueAndHide, 300);
+                                setTimeout(setFieldValueAndHide, 600);
+                                setTimeout(setFieldValueAndHide, 1000);
+                                setTimeout(setFieldValueAndHide, 1500);
+                            } else {
+                                // Clear the label when dialog closes
+                                formSourceLabel = null;
+                            }
+                        });
+                        observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
+                    }
+                    
+                    // Watch for shadow root content changes
+                    const formEmbed = document.querySelector('#app-embed');
+                    if (formEmbed) {
+                        const shadowObserver = new MutationObserver(function() {
+                            setTimeout(setFieldValueAndHide, 50);
+                        });
+                        
+                        // Wait for shadow root to be available
+                        const checkShadowRoot = setInterval(function() {
+                            if (formEmbed.shadowRoot) {
+                                shadowObserver.observe(formEmbed.shadowRoot, { 
+                                    childList: true, 
+                                    subtree: true 
+                                });
+                                clearInterval(checkShadowRoot);
+                            }
+                        }, 100);
+                        
+                        // Stop checking after 5 seconds
+                        setTimeout(function() {
+                            clearInterval(checkShadowRoot);
+                        }, 5000);
+                    }
+                })();
+            </script>
         </div>
         <a href="tel:{{ section.settings.phone_number }}" class="form-modal__phone">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -60,7 +60,7 @@
                 <div class="reviews__description">{{ section.settings.description }}</div>
             {% endif %}
             {% if section.settings.button_text != blank %}
-           <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="reviews__button btn--primary btn">{{ section.settings.button_text }}</button>
+           <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="reviews__button btn--primary btn" data-label="{{ section.settings.form_label }}">{{ section.settings.button_text }}</button>
             {% endif %}
         </div>
     </div>
@@ -118,6 +118,12 @@
               "type": "url",
               "id": "button_url",
               "label": "Button URL"
+            },
+            {
+              "type": "text",
+              "id": "form_label",
+              "label": "Form Label",
+              "default": "Відгуки"
             }
         ],
         "blocks": [

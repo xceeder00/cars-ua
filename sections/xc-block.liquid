@@ -21,7 +21,7 @@
         {% endif %}
         
         {% if section.settings.button_text != blank %}
-          <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="xc-block__button btn--primary btn">
+          <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="xc-block__button btn--primary btn" data-label="{{ section.settings.form_label }}">
             {{ section.settings.button_text }}
           </button>
         {% endif %}
@@ -78,6 +78,12 @@
       "label": "Button Text",
       "default": "Замовити дзвінок"
     },
+    {
+      "type": "text",
+      "id": "form_label",
+      "label": "Form Label",
+      "default": "Комплексний підхід/все включено"
+    }
 
   ],
   "presets": [

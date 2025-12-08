@@ -34,7 +34,7 @@
             {% endif %}
             
             {% if section.settings.button_text != blank %}
-                <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="info-content__button button btn btn--tertiary">
+                <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="info-content__button button btn btn--tertiary" data-label="{{ section.settings.form_label }}">
                     {{ section.settings.button_text }}
                 </button>
             {% endif %}
@@ -94,6 +94,12 @@
         {   "type": "text",
             "id": "section_id",
             "label": "Section ID"
+        },
+        {
+            "type": "text",
+            "id": "form_label",
+            "label": "Form Label",
+            "default": "Дилерські послуги"
         }
     ],
     "blocks": [

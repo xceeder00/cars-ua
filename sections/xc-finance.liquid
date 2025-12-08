@@ -71,7 +71,7 @@
                         </div>
 
             <!-- Action Button -->
-             <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="xc-finance__button button btn btn--tertiary">
+             <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="xc-finance__button button btn btn--tertiary" data-label="{{ section.settings.form_label }}">
             {{ section.settings.button_text }}
             </button>
         </div>
@@ -368,6 +368,12 @@
             "label": "Default Loan Term (months)",
             "default": 24,
             "info": "Default loan term"
+        },
+        {
+            "type": "text",
+            "id": "form_label",
+            "label": "Form Label",
+            "default": "Кредитування"
         }
         ],
     "presets": [
