@@ -217,6 +217,7 @@
     padding: 0;
   }
 }
-.xc-product .product-media{
+
+.xc-product .product-media {
   aspect-ratio: 4/3 !important;
 }

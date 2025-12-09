@@ -109,7 +109,7 @@
         {{ product.description }}
     </div>
     <div class="xc-product__info-buttons">
-        <button  class="btn btn--primary btn--small"  aria-haspopup="dialog"  on:click="#form-modal/showDialog">{{ section.settings.cta_label }}</button>
+        <button  class="btn btn--primary btn--small"  aria-haspopup="dialog"  on:click="#form-modal/showDialog" data-label="Авто" data-vin="{{ product.metafields.custom.vin }}" data-title="{{ product.title }}" >{{ section.settings.cta_label }}</button>
             <span > <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M16.4833 6.01655C16.7274 6.26063 16.7274 6.65636 16.4833 6.90044L8.56662 14.8171C8.32254 15.0612 7.92681 15.0612 7.68273 14.8171L3.51607 10.6504C3.27199 10.4064 3.27199 10.0106 3.51607 9.76655C3.76014 9.52248 4.15587 9.52248 4.39995 9.76655L8.12467 13.4913L15.5994 6.01655C15.8435 5.77248 16.2392 5.77248 16.4833 6.01655Z" fill="#262626"/>
             </svg>{{ section.settings.guarantee_label }}</span>
@@ -163,7 +163,9 @@
             </div>
         </div>
         <div class="form-modal__form">
-            Form would be here
+            <div id="AaHF3cFVQNTAzR0wvZ__forms_inline_XL4D6n" data-form-root="true" data-forms-id="forms-root-783671" data-forms-text-color="#202020" data-forms-button-background-color="#90F209" data-forms-button-label-color="#262626" data-forms-links-color="#1878b9" data-forms-errors-color="#e02229" data-forms-text-alignment="center" data-forms-alignment="center" data-forms-padding-top="0" data-forms-padding-right="0" data-forms-padding-bottom="0" data-forms-padding-left="0" style="--inline-container-min-height: 125px">
+                {% comment %} <shopify-forms-embed id="app-embed" style="display: block;"></shopify-forms-embed> {% endcomment %}
+            </div>
         </div>
         <a href="tel:{{ section.settings.phone_number }}" class="form-modal__phone">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

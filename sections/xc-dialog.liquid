@@ -83,6 +83,26 @@
                                     display: none !important;
                                 }
                                 
+                                /* Hide VIN and Auto fields */
+                                [data-testid="field-custom#vin"],
+                                [data-testid="field-custom#auto"] {
+                                    display: none !important;
+                                }
+                                
+                                label[for="label-custom#vin"],
+                                label[id="label-custom#vin"],
+                                label[for="label-custom#auto"],
+                                label[id="label-custom#auto"] {
+                                    display: none !important;
+                                }
+                                
+                                ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#vin"]),
+                                ._formFieldContainer_1mxsl_5:has(input[id="custom#vin"]),
+                                ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#auto"]),
+                                ._formFieldContainer_1mxsl_5:has(input[id="custom#auto"]) {
+                                    display: none !important;
+                                }
+                                
                                 /* Input styling */
                                 ._formInputField_nag3b_7,
                                 ._formPhoneInputField_piv1u_17,
@@ -226,7 +246,9 @@
                             shadowRoot.appendChild(formStyle);
                         }
                         
-                        // Find by data-testid (most reliable)
+                        let foundAny = false;
+                        
+                        // Find and hide custom#block field
                         const field = shadowRoot.querySelector('[data-testid="field-custom#block"]');
                         if (field) {
                             // Set value if we have formSourceLabel
@@ -243,37 +265,77 @@
                                 container.style.visibility = 'hidden';
                                 container.style.height = '0';
                                 container.style.overflow = 'hidden';
-                                return true;
+                                foundAny = true;
+                            }
+                        }
+                        
+                        // Find and hide custom#vin field (VIN)
+                        const fieldVin = shadowRoot.querySelector('[data-testid="field-custom#vin"]');
+                        if (fieldVin) {
+                            const container = fieldVin.closest('._formFieldContainer_1mxsl_5');
+                            if (container) {
+                                container.style.display = 'none';
+                                container.style.visibility = 'hidden';
+                                container.style.height = '0';
+                                container.style.overflow = 'hidden';
+                                foundAny = true;
+                            }
+                        }
+                        
+                        // Find and hide custom#auto field (Авто)
+                        const fieldAuto = shadowRoot.querySelector('[data-testid="field-custom#auto"]');
+                        if (fieldAuto) {
+                            const container = fieldAuto.closest('._formFieldContainer_1mxsl_5');
+                            if (container) {
+                                container.style.display = 'none';
+                                container.style.visibility = 'hidden';
+                                container.style.height = '0';
+                                container.style.overflow = 'hidden';
+                                foundAny = true;
                             }
                         }
                         
                         // Fallback: Find all containers and check by text content
-                        const containers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
-                        for (let i = 0; i < containers.length; i++) {
-                            const container = containers[i];
-                            const text = container.textContent || '';
-                            
-                            if (text.includes('Секція звідки прийшла форма')) {
-                                const fieldInContainer = container.querySelector('input[type="text"]');
-                                if (fieldInContainer) {
-                                    // Set value
-                                    if (formSourceLabel) {
-                                        fieldInContainer.value = formSourceLabel;
-                                        fieldInContainer.dispatchEvent(new Event('input', { bubbles: true }));
-                                        fieldInContainer.dispatchEvent(new Event('change', { bubbles: true }));
+                        if (!foundAny) {
+                            const containers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
+                            for (let i = 0; i < containers.length; i++) {
+                                const container = containers[i];
+                                const text = container.textContent || '';
+                                
+                                if (text.includes('Секція звідки прийшла форма')) {
+                                    const fieldInContainer = container.querySelector('input[type="text"]');
+                                    if (fieldInContainer) {
+                                        // Set value
+                                        if (formSourceLabel) {
+                                            fieldInContainer.value = formSourceLabel;
+                                            fieldInContainer.dispatchEvent(new Event('input', { bubbles: true }));
+                                            fieldInContainer.dispatchEvent(new Event('change', { bubbles: true }));
+                                        }
+                                        
+                                        // Hide container
+                                        container.style.display = 'none';
+                                        container.style.visibility = 'hidden';
+                                        container.style.height = '0';
+                                        container.style.overflow = 'hidden';
+                                        foundAny = true;
                                     }
-                                    
-                                    // Hide container
+                                } else if (text.includes('VIN')) {
                                     container.style.display = 'none';
                                     container.style.visibility = 'hidden';
                                     container.style.height = '0';
                                     container.style.overflow = 'hidden';
-                                    return true;
+                                    foundAny = true;
+                                } else if (text.includes('Авто')) {
+                                    container.style.display = 'none';
+                                    container.style.visibility = 'hidden';
+                                    container.style.height = '0';
+                                    container.style.overflow = 'hidden';
+                                    foundAny = true;
                                 }
                             }
                         }
                         
-                        return false;
+                        return foundAny;
                     }
                     
                     // Try immediately and multiple times
