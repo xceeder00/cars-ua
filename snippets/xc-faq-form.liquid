@@ -1,0 +1,170 @@
+<div id="faq-form" data-form-root="true" data-forms-id="forms-root-783749" data-forms-text-color="#202020" data-forms-button-background-color="#90F209" data-forms-button-label-color="#262626" data-forms-links-color="#1878b9" data-forms-errors-color="#e02229" data-forms-text-alignment="center" data-forms-alignment="center" data-forms-padding-top="0" data-forms-padding-right="0" data-forms-padding-bottom="0" data-forms-padding-left="0" style="--inline-container-min-height: 125px">
+</div>
+
+<script>
+  (function() {
+    // styles + hide custom field inside shadow DOM of FAQ form
+    function styleFaqForm() {
+      const formContainer = document.querySelector('[data-forms-id="forms-root-783749"]');
+      if (!formContainer) return false;
+
+      const formEmbed = formContainer.querySelector('shopify-forms-embed');
+      if (!formEmbed || !formEmbed.shadowRoot) return false;
+      const shadowRoot = formEmbed.shadowRoot;
+
+      // inject CSS once
+      if (!shadowRoot.querySelector('style[data-faq-form-styling]')) {
+        const style = document.createElement('style');
+        style.setAttribute('data-faq-form-styling', 'true');
+        style.textContent = `
+          /* Hide "Секція звідки прийшла форма" if present */
+          [data-testid="field-custom#block"] { display: none !important; }
+          label[for="label-custom#block"], label[id="label-custom#block"] { display: none !important; }
+          ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#block"]),
+          ._formFieldContainer_1mxsl_5:has(input[id="custom#block"]) { display: none !important; }
+
+          /* Inputs */
+          ._formInputField_nag3b_7,
+          ._formPhoneInputField_piv1u_17,
+          textarea,
+          input[type="text"],
+          input[type="tel"],
+          input[type="email"] {
+            border: 1px solid rgba(0, 46, 9, 0.12) !important;
+            border-radius: 8px !important;
+            box-shadow: none !important;
+            padding: 10px 16px !important;
+            color: #000B02 !important;
+            font-size: 16px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: 160% !important;
+          }
+
+          /* Labels */
+          ._formFieldContainer_1mxsl_5 {
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+            margin-bottom: 16px !important;
+            width: 100% !important;
+          }
+          ._formInputFieldLabel_1mxsl_38,
+          label._formInputFieldLabel_1mxsl_38,
+          label[id^="label-"],
+          label[for^="label-"] {
+            display: block !important;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            order: -1 !important;
+            margin-bottom: 8px !important;
+            color: rgba(0, 0, 0, 0.6) !important;
+            font-size: 14px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: 160% !important;
+          }
+          label[style*="top"] { top: 0 !important; }
+
+          /* Layout: first two fields inline on wide screens */
+          form._formFieldset_cit2d_82 {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 16px !important;
+          }
+          /* first two fields inline, others full width */
+          form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(1),
+          form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(2) {
+            grid-column: auto !important;
+          }
+          form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(n+3) {
+            grid-column: 1 / -1 !important;
+          }
+          /* Ensure text area spans full width */
+          textarea,
+          ._textArea_17mgw_1 {
+            grid-column: 1 / -1 !important;
+            min-height: 96px !important;
+          }
+
+          /* Phone block tweaks */
+          ._formPhoneInputContainer_piv1u_6 {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            margin: 0 !important;
+          }
+          ._selectContainer_12thd_6,
+          .phone-country-selector {
+            display: none !important;
+          }
+
+          /* Button style (black pill) */
+          button._formSubmitButton_cit2d_96,
+          button[type="submit"],
+          button[data-testid="btn-form-submit"] {
+            border-radius: 9999px !important;
+            background: #000 !important;
+            color: #fff !important;
+            padding: 12px 32px !important;
+            font-size: 14px !important;
+            font-style: normal !important;
+            font-weight: 600 !important;
+            line-height: 140% !important;
+            letter-spacing: 0.28px !important;
+            width: fit-content !important;
+          }
+        `;
+        shadowRoot.appendChild(style);
+      }
+
+      // remove inline styles from labels
+      shadowRoot.querySelectorAll('label._formInputFieldLabel_1mxsl_38').forEach((label) => {
+        if (label.style.top) label.style.top = '0';
+        if (label.style.transform) label.style.transform = 'none';
+        if (label.style.position && label.style.position !== 'relative') label.style.position = 'relative';
+        label.style.display = 'block';
+      });
+
+      // hide field by text content if still visible
+      const containers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
+      containers.forEach((container) => {
+        const text = (container.textContent || '').trim();
+        if (text.includes('Секція звідки прийшла форма')) {
+          container.style.display = 'none';
+          container.style.visibility = 'hidden';
+          container.style.height = '0';
+          container.style.overflow = 'hidden';
+        }
+      });
+
+      return true;
+    }
+
+    // retries
+    const attempts = [0, 100, 300, 500, 800, 1000, 1500, 2000, 3000];
+    attempts.forEach((d) => setTimeout(styleFaqForm, d));
+
+    // observe container and shadow root
+    const formContainer = document.querySelector('[data-forms-id="forms-root-783749"]');
+    if (formContainer) {
+      const containerObserver = new MutationObserver(() => setTimeout(styleFaqForm, 50));
+      containerObserver.observe(formContainer, { childList: true, subtree: true });
+
+      const checkFormEmbed = setInterval(() => {
+        const formEmbed = formContainer.querySelector('shopify-forms-embed');
+        if (formEmbed && formEmbed.shadowRoot) {
+          const shadowObserver = new MutationObserver(() => setTimeout(styleFaqForm, 50));
+          shadowObserver.observe(formEmbed.shadowRoot, { childList: true, subtree: true });
+          setTimeout(styleFaqForm, 50);
+          setTimeout(styleFaqForm, 200);
+          setTimeout(styleFaqForm, 500);
+          clearInterval(checkFormEmbed);
+        }
+      }, 100);
+      setTimeout(() => clearInterval(checkFormEmbed), 10000);
+    }
+  })();
+</script>
