@@ -164,8 +164,208 @@
         </div>
         <div class="form-modal__form">
             <div id="AaHF3cFVQNTAzR0wvZ__forms_inline_XL4D6n" data-form-root="true" data-forms-id="forms-root-783671" data-forms-text-color="#202020" data-forms-button-background-color="#90F209" data-forms-button-label-color="#262626" data-forms-links-color="#1878b9" data-forms-errors-color="#e02229" data-forms-text-alignment="center" data-forms-alignment="center" data-forms-padding-top="0" data-forms-padding-right="0" data-forms-padding-bottom="0" data-forms-padding-left="0" style="--inline-container-min-height: 125px">
-                {% comment %} <shopify-forms-embed id="app-embed" style="display: block;"></shopify-forms-embed> {% endcomment %}
             </div>
+            
+            <script>
+                // Capture data attributes from product CTA button
+                let productSourceLabel = null;
+                let productSourceVin = null;
+                let productSourceTitle = null;
+
+                document.addEventListener('click', function(e) {
+                    const button = e.target.closest('button[on\\:click*="form-modal/showDialog"]');
+                    if (button) {
+                        productSourceLabel = button.getAttribute('data-label') || null;
+                        productSourceVin = button.getAttribute('data-vin') || null;
+                        productSourceTitle = button.getAttribute('data-title') || null;
+                    }
+                }, true);
+
+                (function() {
+                    function styleAndHide() {
+                        const formContainer = document.querySelector('[data-forms-id="forms-root-783671"]');
+                        if (!formContainer) return false;
+
+                        let formEmbed = formContainer.querySelector('shopify-forms-embed');
+                        if (!formEmbed || !formEmbed.shadowRoot) return false;
+
+                        const shadowRoot = formEmbed.shadowRoot;
+
+                        // Inject styling and hiding
+                        if (!shadowRoot.querySelector('style[data-product-form-styling]')) {
+                            const style = document.createElement('style');
+                            style.setAttribute('data-product-form-styling', 'true');
+                            style.textContent = `
+                                /* Hide fields */
+                                [data-testid="field-custom#block"],
+                                [data-testid="field-custom#auto"],
+                                [data-testid="field-custom#vin"] {
+                                    display: none !important;
+                                }
+                                label[for="label-custom#block"],
+                                label[id="label-custom#block"],
+                                label[for="label-custom#auto"],
+                                label[id="label-custom#auto"],
+                                label[for="label-custom#vin"],
+                                label[id="label-custom#vin"] {
+                                    display: none !important;
+                                }
+                                ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#block"]),
+                                ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#auto"]),
+                                ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#vin"]),
+                                ._formFieldContainer_1mxsl_5:has(input[id="custom#block"]),
+                                ._formFieldContainer_1mxsl_5:has(input[id="custom#auto"]),
+                                ._formFieldContainer_1mxsl_5:has(input[id="custom#vin"]) {
+                                    display: none !important;
+                                }
+
+                                /* Inputs */
+                                ._formInputField_nag3b_7,
+                                ._formPhoneInputField_piv1u_17,
+                                input[type="text"],
+                                input[type="tel"],
+                                input[type="email"] {
+                                    border: 1px solid rgba(0, 46, 9, 0.12) !important;
+                                    border-radius: 8px !important;
+                                    box-shadow: none !important;
+                                    padding: 10px 16px !important;
+                                    color: #000B02 !important;
+                                    font-size: 16px !important;
+                                    font-style: normal !important;
+                                    font-weight: 400 !important;
+                                    line-height: 160% !important;
+                                }
+
+                                /* Labels */
+                                ._formFieldContainer_1mxsl_5 {
+                                    position: relative !important;
+                                    display: flex !important;
+                                    flex-direction: column !important;
+                                    margin-bottom: 24px !important;
+                                    width: 100% !important;
+                                }
+                                ._formInputFieldLabel_1mxsl_38,
+                                label._formInputFieldLabel_1mxsl_38,
+                                label[id^="label-"],
+                                label[for^="label-"] {
+                                    position: relative !important;
+                                    top: 0 !important;
+                                    left: 0 !important;
+                                    transform: none !important;
+                                    order: -1 !important;
+                                    margin-bottom: 8px !important;
+                                    color: rgba(0, 11, 2, 0.50) !important;
+                                    font-size: 14px !important;
+                                    font-style: normal !important;
+                                    font-weight: 400 !important;
+                                    line-height: 160% !important;
+                                }
+                                label[style*="top"] { top: 0 !important; }
+
+                                /* Phone container */
+                                ._formPhoneInputContainer_piv1u_6 {
+                                    display: flex !important;
+                                    align-items: center !important;
+                                    gap: 0 !important;
+                                    
+                                }
+                                ._selectContainer_12thd_6,
+                                .phone-country-selector {
+                                    display: none !important;
+                                }
+
+                                /* Form gap */
+                                form._formFieldset_cit2d_82 { gap: 0 !important; }
+
+                                /* Button */
+                                button._formSubmitButton_cit2d_96,
+                                button[type="submit"],
+                                button[data-testid="btn-form-submit"] {
+                                    border-radius: 32px !important;
+                                    color: #000B02 !important;
+                                    font-size: 14px !important;
+                                    font-style: normal !important;
+                                    font-weight: 600 !important;
+                                    line-height: 140% !important;
+                                    letter-spacing: 0.28px !important;
+                                }
+                            `;
+                            shadowRoot.appendChild(style);
+                        }
+
+                        // Remove inline top on labels
+                        const labels = shadowRoot.querySelectorAll('label._formInputFieldLabel_1mxsl_38');
+                        labels.forEach((label) => {
+                            if (label.style.top) label.style.top = '0';
+                            if (label.style.transform) label.style.transform = 'none';
+                            if (label.style.position && label.style.position !== 'relative') label.style.position = 'relative';
+                        });
+
+                        // Set values then hide
+                        const applyValueAndHide = (testId, value) => {
+                            const field = shadowRoot.querySelector(`[data-testid="${testId}"]`);
+                            if (!field) return false;
+                            if (value) {
+                                field.value = value;
+                                field.dispatchEvent(new Event('input', { bubbles: true }));
+                                field.dispatchEvent(new Event('change', { bubbles: true }));
+                            }
+                            const container = field.closest('._formFieldContainer_1mxsl_5');
+                            if (container) {
+                                container.style.display = 'none';
+                                container.style.visibility = 'hidden';
+                                container.style.height = '0';
+                                container.style.overflow = 'hidden';
+                            }
+                            return true;
+                        };
+
+                        applyValueAndHide('field-custom#block', productSourceLabel);
+                        applyValueAndHide('field-custom#auto', productSourceTitle);
+                        applyValueAndHide('field-custom#vin', productSourceVin);
+
+                        return true;
+                    }
+
+                    const attempts = [0, 100, 300, 500, 800, 1000, 1500, 2000, 3000];
+                    attempts.forEach((d) => setTimeout(styleAndHide, d));
+
+                    // Observe dialog open
+                    const dialog = document.querySelector('#form-modal dialog');
+                    if (dialog) {
+                        const obs = new MutationObserver(() => {
+                            if (dialog.hasAttribute('open')) {
+                                [100, 300, 600, 1000, 1500].forEach((d) => setTimeout(styleAndHide, d));
+                            } else {
+                                productSourceLabel = null;
+                                productSourceVin = null;
+                                productSourceTitle = null;
+                            }
+                        });
+                        obs.observe(dialog, { attributes: true, attributeFilter: ['open'] });
+                    }
+
+                    // Observe form container for embed & shadow
+                    const formContainer = document.querySelector('[data-forms-id="forms-root-783671"]');
+                    if (formContainer) {
+                        const containerObserver = new MutationObserver(() => setTimeout(styleAndHide, 50));
+                        containerObserver.observe(formContainer, { childList: true, subtree: true });
+
+                        const checkFormEmbed = setInterval(() => {
+                            const formEmbed = formContainer.querySelector('shopify-forms-embed');
+                            if (formEmbed && formEmbed.shadowRoot) {
+                                const shadowObserver = new MutationObserver(() => setTimeout(styleAndHide, 50));
+                                shadowObserver.observe(formEmbed.shadowRoot, { childList: true, subtree: true });
+                                setTimeout(styleAndHide, 50);
+                                setTimeout(styleAndHide, 200);
+                                setTimeout(styleAndHide, 500);
+                                clearInterval(checkFormEmbed);
+                            }
+                        }, 100);
+                        setTimeout(() => clearInterval(checkFormEmbed), 10000);
+                    }
+                })();
+            </script>
         </div>
         <a href="tel:{{ section.settings.phone_number }}" class="form-modal__phone">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

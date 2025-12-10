@@ -57,7 +57,16 @@
                 // Set value to "Секція звідки прийшла форма" field and hide it
                 (function() {
                     function setFieldValueAndHide() {
-                        const formEmbed = document.querySelector('#app-embed');
+                        // Try to find form container by data-forms-id
+                        const formContainer = document.querySelector('[data-forms-id="forms-root-782257"]');
+                        if (!formContainer) return false;
+                        
+                        // Try to find shopify-forms-embed inside container (might be created dynamically)
+                        let formEmbed = formContainer.querySelector('shopify-forms-embed');
+                        if (!formEmbed) {
+                            // Try to find by ID as fallback
+                            formEmbed = document.querySelector('#app-embed');
+                        }
                         if (!formEmbed) return false;
                         
                         const shadowRoot = formEmbed.shadowRoot;
@@ -126,6 +135,7 @@
                                     display: flex !important;
                                     flex-direction: column !important;
                                     margin-bottom: 24px !important;
+                                    width: 100% !important;
                                 }
                                 
                                 ._formInputFieldLabel_1mxsl_38,
@@ -172,6 +182,7 @@
                                     display: flex !important;
                                     flex-direction: column !important;
                                     margin-bottom: 24px !important;
+                                    width: 100% !important;
                                 }
                                 
                                 ._formFieldContainer_1mxsl_5 label {
@@ -203,7 +214,7 @@
                                     display: flex !important;
                                     align-items: center !important;
                                     gap: 0 !important;
-                                    margin-bottom: 24px !important;
+                                    
                                 }
                                 
                                 ._formPhoneInputContainer_piv1u_6 .phone-country-selector {
@@ -213,7 +224,7 @@
                                 
                                 ._formPhoneInputContainer_piv1u_6 ._formFieldContainer_1mxsl_5 {
                                     flex: 1 !important;
-                                    margin-bottom: 0 !important;
+                                    margin-bottom: 24px !important;
                                 }
                                 
                                 /* Remove box-shadow from all form elements */
@@ -295,7 +306,29 @@
                             }
                         }
                         
-                        // Fallback: Find all containers and check by text content
+                        // Always check for VIN and Авто fields by text content
+                        const allContainers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
+                        for (let i = 0; i < allContainers.length; i++) {
+                            const container = allContainers[i];
+                            const text = container.textContent || '';
+                            
+                            if (text.includes('VIN') && !text.includes('Секція')) {
+                                container.style.display = 'none';
+                                container.style.visibility = 'hidden';
+                                container.style.height = '0';
+                                container.style.overflow = 'hidden';
+                                foundAny = true;
+                            }
+                            if (text.includes('Авто') && !text.includes('Секція')) {
+                                container.style.display = 'none';
+                                container.style.visibility = 'hidden';
+                                container.style.height = '0';
+                                container.style.overflow = 'hidden';
+                                foundAny = true;
+                            }
+                        }
+                        
+                        // Fallback: Find all containers and check by text content (only for custom#block)
                         if (!foundAny) {
                             const containers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
                             for (let i = 0; i < containers.length; i++) {
@@ -319,18 +352,6 @@
                                         container.style.overflow = 'hidden';
                                         foundAny = true;
                                     }
-                                } else if (text.includes('VIN')) {
-                                    container.style.display = 'none';
-                                    container.style.visibility = 'hidden';
-                                    container.style.height = '0';
-                                    container.style.overflow = 'hidden';
-                                    foundAny = true;
-                                } else if (text.includes('Авто')) {
-                                    container.style.display = 'none';
-                                    container.style.visibility = 'hidden';
-                                    container.style.height = '0';
-                                    container.style.overflow = 'hidden';
-                                    foundAny = true;
                                 }
                             }
                         }
@@ -364,27 +385,41 @@
                     }
                     
                     // Watch for shadow root content changes
-                    const formEmbed = document.querySelector('#app-embed');
-                    if (formEmbed) {
-                        const shadowObserver = new MutationObserver(function() {
+                    const formContainer = document.querySelector('[data-forms-id="forms-root-782257"]');
+                    if (formContainer) {
+                        const containerObserver = new MutationObserver(function() {
                             setTimeout(setFieldValueAndHide, 50);
                         });
                         
-                        // Wait for shadow root to be available
-                        const checkShadowRoot = setInterval(function() {
-                            if (formEmbed.shadowRoot) {
+                        containerObserver.observe(formContainer, { 
+                            childList: true, 
+                            subtree: true 
+                        });
+                        
+                        // Check for shopify-forms-embed periodically
+                        const checkFormEmbed = setInterval(function() {
+                            const formEmbed = formContainer.querySelector('shopify-forms-embed');
+                            if (formEmbed && formEmbed.shadowRoot) {
+                                const shadowObserver = new MutationObserver(function() {
+                                    setTimeout(setFieldValueAndHide, 50);
+                                });
+                                
                                 shadowObserver.observe(formEmbed.shadowRoot, { 
                                     childList: true, 
                                     subtree: true 
                                 });
-                                clearInterval(checkShadowRoot);
+                                
+                                // Try to update immediately after shadow root is found
+                                setTimeout(setFieldValueAndHide, 50);
+                                setTimeout(setFieldValueAndHide, 200);
+                                setTimeout(setFieldValueAndHide, 500);
+                                clearInterval(checkFormEmbed);
                             }
                         }, 100);
                         
-                        // Stop checking after 5 seconds
                         setTimeout(function() {
-                            clearInterval(checkShadowRoot);
-                        }, 5000);
+                            clearInterval(checkFormEmbed);
+                        }, 10000);
                     }
                 })();
             </script>

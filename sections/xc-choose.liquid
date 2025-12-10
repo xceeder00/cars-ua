@@ -22,20 +22,7 @@
       </div>
     </div>
     <hr>
-    {% form 'customer', id: 'choose__step-form-3', class: 'choose__form' %}
-        <input
-            type="hidden"
-            name="customer[email]"
-            data-xc-contact-email
-            value="pending@example.invalid"
-            />
-      {% if form.errors %}
-        <div data-choose-initial-step="3"></div>
-        ne success
-      {% elsif form.posted_successfully? %}
-        success
-        <div data-choose-initial-step="3"></div>
-      {% endif %}
+   <div class="choose__form">      
       <input type="hidden" name="form_type" value="choose-step-form">
       <div class="choose__steps-body">
         <div class="choose__step is-active" data-step="1">
@@ -121,47 +108,8 @@
                 </p>
               </div>
               <div class="choose__form-card-body">
-                {% if form.errors %}
-                  <div class="choose__form-status choose__form-status--error" role="alert">
-                    {% for field in form.errors %}
-                      <p>{{ form.errors.translated_fields[field] | default: field | capitalize }}: {{ form.errors.messages[field] }}</p>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                {% if form.posted_successfully? %}
-                  <div class="choose__form-status choose__form-status--success" role="status">
-                    <span class="svg-wrapper icon-success">
-                      {{ 'icon-checkmark.svg' | inline_asset_content }}
-                    </span>
-                    <p>Дякуємо! Ми вже обробляємо вашу заявку.</p>
-                  </div>
-                {% endif %}
-                <div class="choose__form-fields">
-                  <label class="choose__form-field" for="ChooseName-{{ section.id }}">
-                    <span class="choose__form-label">Введіть імʼя</span>
-                    <input
-                      id="ChooseName-{{ section.id }}"
-                      class="choose__form-input"
-                      type="text"
-                      name="contact[first_name]"
-                      placeholder="Микола Київський"
-                      required
-                    >
-                  </label>
-                  <label class="choose__form-field" for="ChoosePhone-{{ section.id }}">
-                    <span class="choose__form-label">Введіть Ваш телефон</span>
-                    <input
-                      id="ChoosePhone-{{ section.id }}"
-                      class="choose__form-input"
-                      type="tel"
-                      name="contact[phone]"
-                      placeholder="+380 | XXX XX XX"
-                      required
-                    >
-                  </label>
-                  
-                  <input type="hidden" name="contact[tags]" value="newsletter">
-                </div>
+                    <div id="AaHF3cFVQNTAzR0wvZ__forms_inline_XL4D6n" data-form-root="true" data-forms-id="forms-root-783686" data-forms-text-color="#202020" data-forms-button-background-color="#90F209" data-forms-button-label-color="#262626" data-forms-links-color="#1878b9" data-forms-errors-color="#e02229" data-forms-text-alignment="center" data-forms-alignment="center" data-forms-padding-top="0" data-forms-padding-right="0" data-forms-padding-bottom="0" data-forms-padding-left="0" style="--inline-container-min-height: 125px">
+                    </div>
               </div>
             </div>
           </div>
@@ -169,13 +117,13 @@
             <button class="choose__step-footer-button circle-btn" type="button" data-step-btn="2" aria-label="Попередній крок">
               {% render 'icon', icon: 'chevron-left' %}
             </button>
-            <button class="choose__step-footer-button btn btn--primary" type="submit">
+            {% comment %} <button class="choose__step-footer-button btn btn--primary" type="submit">
               {{ section.settings.send_btn_label }}
-            </button>
+            </button> {% endcomment %}
           </div>
         </div>
       </div>
-    {% endform %}
+     </div>
   </div>
 </div>
 <script>
@@ -205,6 +153,274 @@
 
     const currencySymbol = (section.dataset.currencySymbol || '').trim();
     const numberFormatter = new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    
+    // Store selected values for form
+    let selectedBodyType = null;
+    let selectedPrice = null;
+
+    // Function to update form fields in Shadow DOM
+    function updateFormFields() {
+      // Try to find form container by data-forms-id
+      const formContainer = document.querySelector('[data-forms-id="forms-root-783686"]');
+      if (!formContainer) return false;
+      
+      // Try to find shopify-forms-embed inside container (might be created dynamically)
+      let formEmbed = formContainer.querySelector('shopify-forms-embed');
+      if (!formEmbed) {
+        // Try to find by ID
+        formEmbed = document.querySelector('#app-embed-choose');
+      }
+      if (!formEmbed) {
+        // Try to find any shopify-forms-embed in the container
+        formEmbed = formContainer.querySelector('shopify-forms-embed');
+      }
+      
+      if (!formEmbed) return false;
+      
+      const shadowRoot = formEmbed.shadowRoot;
+      if (!shadowRoot) return false;
+      
+      // Inject CSS styles for the form and hide field
+      if (!shadowRoot.querySelector('style[data-choose-form-styling]')) {
+        const formStyle = document.createElement('style');
+        formStyle.setAttribute('data-choose-form-styling', 'true');
+        formStyle.textContent = `
+          /* Hide field "Секція звідки прийшла форма" */
+          [data-testid="field-custom#block"] {
+            display: none !important;
+          }
+          label[for="label-custom#block"],
+          label[id="label-custom#block"] {
+            display: none !important;
+          }
+          ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#block"]),
+          ._formFieldContainer_1mxsl_5:has(input[id="custom#block"]) {
+            display: none !important;
+          }
+          
+          /* Hide fields "Тип Кузову" and "Ціна" */
+          [data-testid="field-custom#type"],
+          [data-testid="field-custom#price"] {
+            display: none !important;
+          }
+          label[for="label-custom#type"],
+          label[id="label-custom#type"],
+          label[for="label-custom#price"],
+          label[id="label-custom#price"] {
+            display: none !important;
+          }
+          ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#type"]),
+          ._formFieldContainer_1mxsl_5:has(input[id="custom#type"]),
+          ._formFieldContainer_1mxsl_5:has([data-testid="field-custom#price"]),
+          ._formFieldContainer_1mxsl_5:has(input[id="custom#price"]) {
+            display: none !important;
+          }
+          
+          /* Input styling */
+          ._formInputField_nag3b_7,
+          ._formPhoneInputField_piv1u_17,
+          input[type="text"],
+          input[type="tel"],
+          input[type="email"] {
+            border: 1px solid rgba(0, 46, 9, 0.12) !important;
+            border-radius: 8px !important;
+            box-shadow: none !important;
+            padding: 10px 16px !important;
+            color: #000B02 !important;
+            font-size: 16px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: 160% !important;
+          }
+          
+          /* Label styling */
+          ._formFieldContainer_1mxsl_5 {
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+            margin-bottom: 24px !important;
+            width: 100% !important;
+          }
+          
+          ._formInputFieldLabel_1mxsl_38,
+          label._formInputFieldLabel_1mxsl_38,
+          label[id^="label-"],
+          label[for^="label-"] {
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            order: -1 !important;
+            margin-bottom: 8px !important;
+            color: rgba(0, 11, 2, 0.50) !important;
+            font-size: 14px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: 160% !important;
+          }
+          
+          /* Remove inline styles from labels */
+          label[style*="top"] {
+            top: 0 !important;
+          }
+          
+          /* Form container width */
+          ._inline_1q1d2_47 ._formContainer_1q1d2_30 {
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+          
+          /* Phone input container */
+          ._formPhoneInputContainer_piv1u_6 {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0 !important;
+            
+          }
+          
+          ._selectContainer_12thd_6,
+          .phone-country-selector {
+            display: none !important;
+          }
+          
+          /* Form gap */
+          form._formFieldset_cit2d_82 {
+            gap: 0 !important;
+          }
+          
+          /* Button styling */
+          button._formSubmitButton_cit2d_96 {
+            border-radius: 32px !important;
+            color: #000B02 !important;
+            font-size: 14px !important;
+            font-style: normal !important;
+            font-weight: 600 !important;
+            line-height: 140% !important;
+            letter-spacing: 0.28px !important;
+          }
+        `;
+        shadowRoot.appendChild(formStyle);
+      }
+      
+      let updated = false;
+      
+      // Remove inline styles from labels
+      const labels = shadowRoot.querySelectorAll('label._formInputFieldLabel_1mxsl_38');
+      labels.forEach(function(label) {
+        if (label.style.top) {
+          label.style.top = '0';
+        }
+        if (label.style.position && label.style.position !== 'relative') {
+          label.style.position = 'relative';
+        }
+        if (label.style.transform) {
+          label.style.transform = 'none';
+        }
+      });
+      
+      // Find and hide "Секція звідки прийшла форма" field
+      const fieldBlock = shadowRoot.querySelector('[data-testid="field-custom#block"]');
+      if (fieldBlock) {
+        const container = fieldBlock.closest('._formFieldContainer_1mxsl_5');
+        if (container) {
+          container.style.display = 'none';
+          container.style.visibility = 'hidden';
+          container.style.height = '0';
+          container.style.overflow = 'hidden';
+          updated = true;
+        }
+      }
+      
+      // Find and hide "Тип Кузову" field
+      const fieldType = shadowRoot.querySelector('[data-testid="field-custom#type"]');
+      if (fieldType) {
+        // Set value first
+        if (selectedBodyType) {
+          fieldType.value = selectedBodyType;
+          fieldType.dispatchEvent(new Event('input', { bubbles: true }));
+          fieldType.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        // Then hide
+        const container = fieldType.closest('._formFieldContainer_1mxsl_5');
+        if (container) {
+          container.style.display = 'none';
+          container.style.visibility = 'hidden';
+          container.style.height = '0';
+          container.style.overflow = 'hidden';
+          updated = true;
+        }
+      }
+      
+      // Find and hide "Ціна" field
+      const fieldPrice = shadowRoot.querySelector('[data-testid="field-custom#price"]');
+      if (fieldPrice) {
+        // Set value first
+        if (selectedPrice !== null) {
+          fieldPrice.value = selectedPrice;
+          fieldPrice.dispatchEvent(new Event('input', { bubbles: true }));
+          fieldPrice.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        // Then hide
+        const container = fieldPrice.closest('._formFieldContainer_1mxsl_5');
+        if (container) {
+          container.style.display = 'none';
+          container.style.visibility = 'hidden';
+          container.style.height = '0';
+          container.style.overflow = 'hidden';
+          updated = true;
+        }
+      }
+      
+      // Find all containers and check by text content (fallback)
+      const containers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
+      for (let i = 0; i < containers.length; i++) {
+        const container = containers[i];
+        const text = container.textContent || '';
+        const fieldInContainer = container.querySelector('input[type="text"]');
+        
+        // Hide "Секція звідки прийшла форма" field
+        if (text.includes('Секція звідки прийшла форма')) {
+          container.style.display = 'none';
+          container.style.visibility = 'hidden';
+          container.style.height = '0';
+          container.style.overflow = 'hidden';
+          updated = true;
+          continue;
+        }
+        
+        // Hide "Тип Кузову" field
+        if (text.includes('Тип Кузову')) {
+          if (fieldInContainer && selectedBodyType) {
+            fieldInContainer.value = selectedBodyType;
+            fieldInContainer.dispatchEvent(new Event('input', { bubbles: true }));
+            fieldInContainer.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+          container.style.display = 'none';
+          container.style.visibility = 'hidden';
+          container.style.height = '0';
+          container.style.overflow = 'hidden';
+          updated = true;
+          continue;
+        }
+        
+        // Hide "Ціна" field
+        if (text.includes('Ціна')) {
+          if (fieldInContainer && selectedPrice !== null) {
+            fieldInContainer.value = selectedPrice;
+            fieldInContainer.dispatchEvent(new Event('input', { bubbles: true }));
+            fieldInContainer.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+          container.style.display = 'none';
+          container.style.visibility = 'hidden';
+          container.style.height = '0';
+          container.style.overflow = 'hidden';
+          updated = true;
+          continue;
+        }
+      }
+      
+      return updated;
+    }
 
     const setActiveStep = (targetStep) => {
       if (targetStep < 1 || targetStep > steps.length) return;
@@ -221,6 +437,14 @@
         button.classList.toggle('is-active', stepIndex === currentStep);
       });
       stepsBody.style.height = '';
+      
+      // Update form fields when step 3 is activated
+      if (targetStep === 3) {
+        const attempts = [100, 300, 500, 800, 1000, 1500, 2000, 3000, 4000, 5000];
+        attempts.forEach(function(delay) {
+          setTimeout(updateFormFields, delay);
+        });
+      }
     };
 
     const accentColor = (getComputedStyle(section).getPropertyValue('--choose-accent') || '').trim() || '#7ED321';
@@ -230,6 +454,9 @@
       if (!sliderOutput) return;
       const formattedNumber = numberFormatter.format(Number(value));
       sliderOutput.textContent = currencySymbol ? `${formattedNumber} ${currencySymbol}` : formattedNumber;
+      // Update selectedPrice for form
+      selectedPrice = currencySymbol ? `${formattedNumber} ${currencySymbol}` : formattedNumber;
+      updateFormFields();
     };
 
     const updateSliderTrack = (value) => {
@@ -257,24 +484,96 @@
       setActiveStep(targetStep);
     });
 
+    // Get initial body type value and set up listeners
     typeInputs.forEach((input) => {
-      input.addEventListener('change', () => {
+      if (input.checked) {
+        selectedBodyType = input.value;
+      }
+      
+      input.addEventListener('change', function() {
+        selectedBodyType = this.value;
         setActiveStep(2);
+        // Try to update form fields after change
+        setTimeout(updateFormFields, 100);
+        setTimeout(updateFormFields, 300);
+        setTimeout(updateFormFields, 500);
       });
     });
 
     if (sliderInput) {
+      // Set initial price value
+      const formattedNumber = numberFormatter.format(Number(sliderInput.value));
+      selectedPrice = currencySymbol ? `${formattedNumber} ${currencySymbol}` : formattedNumber;
+      
       updateSliderValue(sliderInput.value);
       updateSliderTrack(sliderInput.value);
       sliderInput.addEventListener('input', (event) => {
         updateSliderValue(event.target.value);
         updateSliderTrack(event.target.value);
+        // Try to update form fields after input
+        setTimeout(updateFormFields, 100);
+        setTimeout(updateFormFields, 300);
+        setTimeout(updateFormFields, 500);
       });
       sliderInput.addEventListener('change', (event) => {
         updateSliderValue(event.target.value);
         updateSliderTrack(event.target.value);
+        // Try to update form fields after change
+        setTimeout(updateFormFields, 100);
+        setTimeout(updateFormFields, 300);
+        setTimeout(updateFormFields, 500);
       });
     }
+
+    // Watch for form embed and update fields
+    (function() {
+      const attempts = [0, 100, 300, 500, 800, 1000, 1500, 2000, 3000, 4000, 5000];
+      attempts.forEach(function(delay) {
+        setTimeout(updateFormFields, delay);
+      });
+      
+      // Watch for form container and shadow root
+      const formContainer = document.querySelector('[data-forms-id="forms-root-783686"]');
+      if (formContainer) {
+        const containerObserver = new MutationObserver(function() {
+          setTimeout(updateFormFields, 50);
+          setTimeout(updateFormFields, 150);
+          setTimeout(updateFormFields, 300);
+        });
+        
+        containerObserver.observe(formContainer, { 
+          childList: true, 
+          subtree: true 
+        });
+        
+        // Check for shopify-forms-embed periodically
+        const checkFormEmbed = setInterval(function() {
+          const formEmbed = formContainer.querySelector('shopify-forms-embed');
+          if (formEmbed && formEmbed.shadowRoot) {
+            const shadowObserver = new MutationObserver(function() {
+              setTimeout(updateFormFields, 50);
+              setTimeout(updateFormFields, 150);
+              setTimeout(updateFormFields, 300);
+            });
+            
+            shadowObserver.observe(formEmbed.shadowRoot, { 
+              childList: true, 
+              subtree: true 
+            });
+            
+            // Try to update immediately after shadow root is found
+            setTimeout(updateFormFields, 50);
+            setTimeout(updateFormFields, 200);
+            setTimeout(updateFormFields, 500);
+            setTimeout(updateFormFields, 1000);
+          }
+        }, 100);
+        
+        setTimeout(function() {
+          clearInterval(checkFormEmbed);
+        }, 10000);
+      }
+    })();
 
     setActiveStep(currentStep);
   });
