@@ -185,7 +185,7 @@
         const formStyle = document.createElement('style');
         formStyle.setAttribute('data-choose-form-styling', 'true');
         formStyle.textContent = `
-          /* Hide field "Секція звідки прийшла форма" */
+          
           [data-testid="field-custom#block"] {
             display: none !important;
           }
@@ -386,6 +386,12 @@
         
         // Hide "Секція звідки прийшла форма" field
         if (text.includes('Секція звідки прийшла форма')) {
+          // Set value first
+          if (fieldInContainer) {
+            fieldInContainer.value = 'Форма Підбору';
+            fieldInContainer.dispatchEvent(new Event('input', { bubbles: true }));
+            fieldInContainer.dispatchEvent(new Event('change', { bubbles: true }));
+          }
           container.style.display = 'none';
           container.style.visibility = 'hidden';
           container.style.height = '0';

@@ -6,7 +6,7 @@
             <div class="hero__slide swiper-slide">
                 <picture>
                     {% if block.settings.mobile_image != blank %}
-                        <source srcset="{{ block.settings.mobile_image | image_url }}" media="(max-width: 768px)">
+                        <source srcset="{{ block.settings.mobile_image | image_url: width: 600 }}" media="(max-width: 768px)">
                     {% endif %}
                     {% if block.settings.image != blank %}
                     <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="hero__slide-image">

@@ -77,6 +77,9 @@
                             const style = document.createElement('style');
                             style.setAttribute('data-hide-custom-field', 'true');
                             style.textContent = `
+                                [data-testid="app-router"] {
+                                    display: block !important;
+                                }
                                 /* Hide field by data-testid - most reliable */
                                 [data-testid="field-custom#block"] {
                                     display: none !important;
@@ -163,6 +166,9 @@
                             formStyle.textContent = `
 
                                 /* Input styling */
+                                [data-testid="app-router"] {
+                                    display: block !important;
+                                }
                                 input._formInputField_nag3b_7,
                                 input._formPhoneInputField_piv1u_17,
                                 input[type="text"],

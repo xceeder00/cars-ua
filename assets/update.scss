@@ -628,6 +628,10 @@ body {
        
         width: 100%;
         padding: 48px;
+        @incldue mobile{
+            width: 100%;
+  padding: 32px;
+        }
     }
     &__product{
         display: flex;
