@@ -22,7 +22,7 @@
                     {% endif %}
                     <div class="hero__slide-buttons">
                         {% if block.settings.button_text != blank and block.settings.button_link != blank %}
-                        <button class="hero__slide-button btn btn--primary"  aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" data-label="{{ block.settings.form_label }}">{{ block.settings.button_text }}</button>
+                        <button class="hero__slide-button btn btn--primary" aria-label="Замовити дзвінок" aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" data-label="{{ block.settings.form_label }}">{{ block.settings.button_text }}</button>
                         {% endif %}
                         {% if block.settings.label != blank %}
                             <div class="hero__slide-label">

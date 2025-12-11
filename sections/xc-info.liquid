@@ -34,7 +34,7 @@
             {% endif %}
             
             {% if section.settings.button_text != blank %}
-                <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="info-content__button button btn btn--tertiary" data-label="{{ section.settings.form_label }}">
+                <button aria-haspopup="dialog" aria-label="Замовити дзвінок"  on:click="#form-modal-common/showDialog" class="info-content__button button btn btn--tertiary" data-label="{{ section.settings.form_label }}">
                     {{ section.settings.button_text }}
                 </button>
             {% endif %}

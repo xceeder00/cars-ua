@@ -21,7 +21,7 @@
         {% endif %}
         
         {% if section.settings.button_text != blank %}
-          <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="xc-block__button btn--primary btn" data-label="{{ section.settings.form_label }}">
+          <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" aria-label="Замовити дзвінок" class="xc-block__button btn--primary btn" data-label="{{ section.settings.form_label }}">
             {{ section.settings.button_text }}
           </button>
         {% endif %}

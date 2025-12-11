@@ -3,7 +3,7 @@
     <h2 class="subtitle">{{ section.settings.title }}</h2>
     <div class="xc-service__list">
         {% for block in section.blocks %}
-            <a href="{{ block.settings.button_link | default: '#' }}" class="xc-service__item" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.button_link | default: '#' }}" title="{{ block.settings.title }}" class="xc-service__item" {{ block.shopify_attributes }}>
                 {% if block.settings.image %}
                 {{ block.settings.image | image_url: width: 800 | image_tag: class: 'xc-service__item-image', alt: block.settings.title, loading: 'lazy' }}
                 {% endif %}

@@ -90,7 +90,7 @@
             <button class="choose__step-footer-button circle-btn" type="button" data-step-btn="1" aria-label="Попередній крок">
               {% render 'icon', icon: 'chevron-left' %}
             </button>
-            <button class="choose__step-footer-button btn btn--primary" type="button" data-step-btn="3">
+            <button class="choose__step-footer-button btn btn--primary" type="button" data-step-btn="3" aria-label="Наступний крок">
               {{ section.settings.next_btn_label }}
             </button>
           </div>
@@ -321,6 +321,12 @@
       // Find and hide "Секція звідки прийшла форма" field
       const fieldBlock = shadowRoot.querySelector('[data-testid="field-custom#block"]');
       if (fieldBlock) {
+        // Set value first
+        fieldBlock.value = 'Форма Підбору';
+        fieldBlock.dispatchEvent(new Event('input', { bubbles: true }));
+        fieldBlock.dispatchEvent(new Event('change', { bubbles: true }));
+        
+        // Then hide
         const container = fieldBlock.closest('._formFieldContainer_1mxsl_5');
         if (container) {
           container.style.display = 'none';

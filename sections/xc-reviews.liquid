@@ -42,11 +42,11 @@
                     {% endfor %}
                 </div>
                 <div class="swiper-main-pagination">
-                    <button class="swiper-btn swiper-btn--prev circle-btn" type="button">
+                    <button class="swiper-btn swiper-btn--prev circle-btn" type="button" aria-label="Попередній слайд">
                         {%- render 'icon', icon: 'chevron-left' -%}
                     </button>
                     <div class="swiper-pagination"></div>
-                    <button class="swiper-btn swiper-btn--next circle-btn" type="button">
+                    <button class="swiper-btn swiper-btn--next circle-btn" type="button" aria-label="Наступний слайд">
                         {%- render 'icon', icon: 'chevron-right' -%}
                     </button>
                 </div>
@@ -60,7 +60,7 @@
                 <div class="reviews__description">{{ section.settings.description }}</div>
             {% endif %}
             {% if section.settings.button_text != blank %}
-           <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" class="reviews__button btn--primary btn" data-label="{{ section.settings.form_label }}">{{ section.settings.button_text }}</button>
+           <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" aria-label="Замовити дзвінок" class="reviews__button btn--primary btn" data-label="{{ section.settings.form_label }}">{{ section.settings.button_text }}</button>
             {% endif %}
         </div>
     </div>

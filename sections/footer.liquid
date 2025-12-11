@@ -48,13 +48,13 @@
         <div class="footer-bottom-top">
             <div class="footer-bottom-social">
                 {% if section.settings.insta-link != blank %}
-                    <a href="{{ section.settings.insta-link }}" target="_blank">
+                    <a href="{{ section.settings.insta-link }}" title="Instagram" target="_blank">
                      <img src="{{ 'LogoInstagram.svg' | asset_url }}" alt="{{ block.settings.title }}"  width="24" height="24">
                       Instagram
                     </a>
                 {% endif %}
                 {% if section.settings.facebook-link != blank %}
-                    <a href="{{ section.settings.facebook-link }}" target="_blank">
+                    <a href="{{ section.settings.facebook-link }}" title="Facebook" target="_blank">
                         <img src="{{ 'LogoFacebook.svg' | asset_url }}" alt="{{ block.settings.title }}"  width="24" height="24">
                         Facebook
                     </a>
@@ -65,7 +65,7 @@
                
                 <ul class="list-unstyled">
                     {% for link in section.settings.menu_legal.links %}
-                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        <li><a title="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
                     {% endfor %}
                 </ul>
               
