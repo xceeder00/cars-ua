@@ -62,9 +62,6 @@
        object-fit: cover;
    
    
-    picture{
-      height: 100%
-    }
     &::after{
       content: '';
         width: 100%;
