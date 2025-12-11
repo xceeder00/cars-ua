@@ -77,6 +77,9 @@
                             const style = document.createElement('style');
                             style.setAttribute('data-hide-custom-field', 'true');
                             style.textContent = `
+                                [data-testid="app-router"] {
+                                    display: block !important;
+                                }
                                 /* Hide field by data-testid - most reliable */
                                 [data-testid="field-custom#block"] {
                                     display: none !important;

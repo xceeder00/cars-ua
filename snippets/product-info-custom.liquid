@@ -196,6 +196,9 @@
                             const style = document.createElement('style');
                             style.setAttribute('data-product-form-styling', 'true');
                             style.textContent = `
+                                [data-testid="app-router"] {
+                                    display: block !important;
+                                }
                                 /* Hide fields */
                                 [data-testid="field-custom#block"],
                                 [data-testid="field-custom#auto"],
