@@ -60,7 +60,7 @@
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
-   
+    aspect-ratio: 370/210;
    
     &::after{
       content: '';
