@@ -18,10 +18,11 @@
             "title": "<p>Авто твоєї мрії з <br/><strong>гарантією якості</strong> та прозорістю угоди</p>",
             "text": "Допоможемо підібрати автомобіль з фіксованою ціною, супроводом і доставкою прямо до тебе.",
             "image": "shopify://shop_images/Hero_Slide_1_2.webp",
-            "mobile_image": "shopify://shop_images/Hero_Slide_1_M.webp",
+            "mobile_image": "shopify://shop_images/image_2_ae387855-7d08-40f5-b6cf-965b1a589aa1.png",
             "button_text": "Підібрати авто",
             "button_link": "#",
-            "label": "Гарантія фіксованої вартості"
+            "label": "Гарантія фіксованої вартості",
+            "form_label": "hero-banner"
           }
         },
         "slide_9gcBNw": {
@@ -30,10 +31,11 @@
             "title": "<p>Авто в Наявності</p>",
             "text": "Готові до продажу автомобілі, які вже пройшли  всі етапи імпорту, перевірок і підготовки. Обирай, переглядай, купуй.",
             "image": "shopify://shop_images/Hero_Slide_2_1.webp",
-            "mobile_image": "shopify://shop_images/Hero_Slide_2_M.webp",
+            "mobile_image": "shopify://shop_images/image_3_318541fc-df2c-498f-9c6e-a81f55afb414.png",
             "button_text": "Вибрати авто",
             "button_link": "#",
-            "label": "Наявність торгу"
+            "label": "Наявність торгу",
+            "form_label": "hero-banner"
           }
         },
         "slide_VfpicD": {
@@ -42,10 +44,11 @@
             "title": "<p>Дилерські послуги</p>",
             "text": "Ми здійснюємо повний цикл імпорту та продажу автомобілів, включно з перевіркою історії, доставкою, митним оформленням і сертифікацією. Авто під ключ без зайвих клопотів.",
             "image": "shopify://shop_images/Hero_Slide_3_1.webp",
-            "mobile_image": "shopify://shop_images/Hero_Slide_3_M.webp",
+            "mobile_image": "shopify://shop_images/image_4_a540e1dc-31e1-4b2c-97d3-f7e06bedf9bd.png",
             "button_text": "Дізнатись більше",
             "button_link": "#",
-            "label": ""
+            "label": "",
+            "form_label": "hero-banner"
           }
         }
       },
@@ -213,7 +216,8 @@
         "title": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>",
         "description": "Повний супровід від підбору авто до сертифікації - швидко, безпечно, вигідно.",
         "button_text": "Замовити дзвінок",
-        "button_url": ""
+        "button_url": "",
+        "form_label": "Комплексний підхід"
       }
     },
     "product_list_fa6P9H": {
@@ -610,7 +614,8 @@
         "title": "Відгуки тих, хто вже оновив своє авто",
         "description": "Ми допомагаємо кожному клієнту знайти ідеальне авто без стресу, ризиків і зайвих переплат. Сотні задоволених власників уже насолоджуються своїми машинами, отриманими з нашою допомогою. Ти можеш стати наступним!<br><br>Обери комфорт, надійність і чесний сервіс — довір свій вибір професіоналам.",
         "button_text": "Залишити відгук",
-        "button_url": "#"
+        "button_url": "#",
+        "form_label": "Відгуки"
       }
     },
     "xc_choose_YPtk9t": {
@@ -733,7 +738,8 @@
         "label_color": "#80ff00",
         "heading": "<p>Комплексний підхід, що <strong>гарантує</strong> результат</p>",
         "description": "Комплексний супровід без зайвих турбот. Ваше авто мрії - швидко та безпечно.",
-        "button_text": "Замовити дзвінок"
+        "button_text": "Замовити дзвінок",
+        "form_label": "Комплексний підхід/все включено"
       }
     }
   },
