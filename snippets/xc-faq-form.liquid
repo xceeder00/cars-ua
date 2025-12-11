@@ -52,7 +52,9 @@
           ._formInputFieldLabel_1mxsl_38,
           label._formInputFieldLabel_1mxsl_38,
           label[id^="label-"],
-          label[for^="label-"] {
+          label[for^="label-"],
+          label[id="label-custom#question"],
+          label[for="label-custom#question"] {
             display: block !important;
             position: relative !important;
             top: 0 !important;
@@ -60,19 +62,82 @@
             transform: none !important;
             order: -1 !important;
             margin-bottom: 8px !important;
-            color: rgba(0, 0, 0, 0.6) !important;
+            color: rgba(0, 11, 2, 0.50) !important;
             font-size: 14px !important;
             font-style: normal !important;
             font-weight: 400 !important;
             line-height: 160% !important;
+            visibility: visible !important;
+            opacity: 1 !important;
           }
           label[style*="top"] { top: 0 !important; }
+          
+          /* Ensure textarea label is visible - more specific selectors */
+          ._formFieldContainer_1mxsl_5:has(textarea) label,
+          ._formFieldContainer_1mxsl_5:has(._textArea_17mgw_1) label,
+          ._formFieldContainer_1mxsl_5:has(textarea[name="custom#question"]) label,
+          label[id="label-custom#question"],
+          label[for="label-custom#question"],
+          label[for="label-custom#question"]._formInputFieldLabel_1mxsl_38,
+          label[aria-labelledby*="custom#question"] {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            order: -1 !important;
+            margin-bottom: 8px !important;
+            height: auto !important;
+            width: auto !important;
+            overflow: visible !important;
+            color: rgba(0, 11, 2, 0.50) !important;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            line-height: 160% !important;
+          }
+          
+          /* Force textarea container to show label */
+          ._formFieldContainer_1mxsl_5:has(textarea),
+          ._formFieldContainer_1mxsl_5:has(._textArea_17mgw_1) {
+            display: flex !important;
+            flex-direction: column !important;
+          }
+          
+          /* Remove background-color from ::before pseudo-element */
+          ._formFieldContainer_1mxsl_5:has(textarea)::before,
+          ._formFieldContainer_1mxsl_5:has(._textArea_17mgw_1)::before {
+            background-color: transparent !important;
+            background: none !important;
+          }
+          
+          /* Make sure no label is hidden */
+          label {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
 
+          /* Form container width */
+          ._inline_1q1d2_47 ._formContainer_1q1d2_30,
+          ._formContainer_1q1d2_30 {
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+          
+          /* App router block */
+          [data-testid="app-router"] {
+            display: block !important;
+          }
+          
           /* Layout: first two fields inline on wide screens */
           form._formFieldset_cit2d_82 {
             display: grid !important;
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
             gap: 16px !important;
+            width: 100% !important;
+            max-width: 100% !important;
           }
           /* first two fields inline, others full width */
           form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(1),
@@ -81,6 +146,31 @@
           }
           form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(n+3) {
             grid-column: 1 / -1 !important;
+          }
+          
+          /* Mobile: all fields in one column */
+          @media (max-width: 767px) {
+            form._formFieldset_cit2d_82 {
+              grid-template-columns: 1fr !important;
+              width: 100% !important;
+              max-width: 100% !important;
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+            form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(1),
+            form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(2),
+            form._formFieldset_cit2d_82 ._formFieldContainer_1mxsl_5:nth-of-type(n+3) {
+              grid-column: 1 / -1 !important;
+              width: 100% !important;
+              max-width: 100% !important;
+            }
+            ._inline_1q1d2_47 ._formContainer_1q1d2_30,
+            ._formContainer_1q1d2_30 {
+              width: 100% !important;
+              max-width: 100% !important;
+              margin: 0 !important;
+              padding: 0 !important;
+            }
           }
           /* Ensure text area spans full width */
           textarea,
@@ -120,12 +210,110 @@
         shadowRoot.appendChild(style);
       }
 
-      // remove inline styles from labels
-      shadowRoot.querySelectorAll('label._formInputFieldLabel_1mxsl_38').forEach((label) => {
+      // remove inline styles from labels and ensure visibility
+      shadowRoot.querySelectorAll('label._formInputFieldLabel_1mxsl_38, label[id^="label-"], label[for^="label-"], label').forEach((label) => {
         if (label.style.top) label.style.top = '0';
         if (label.style.transform) label.style.transform = 'none';
         if (label.style.position && label.style.position !== 'relative') label.style.position = 'relative';
         label.style.display = 'block';
+        label.style.visibility = 'visible';
+        label.style.opacity = '1';
+      });
+      
+      // Find textarea and its label - aggressive approach
+      const textarea = shadowRoot.querySelector('textarea[name="custom#question"], ._textArea_17mgw_1, textarea');
+      if (textarea) {
+        const textareaContainer = textarea.closest('._formFieldContainer_1mxsl_5');
+        
+        // Find label by various methods
+        let textareaLabel = null;
+        
+        // Method 1: By ID
+        textareaLabel = shadowRoot.querySelector('label[id="label-custom#question"]');
+        
+        // Method 2: By for attribute
+        if (!textareaLabel) {
+          textareaLabel = shadowRoot.querySelector('label[for="label-custom#question"]');
+        }
+        
+        // Method 3: In same container
+        if (!textareaLabel && textareaContainer) {
+          textareaLabel = textareaContainer.querySelector('label');
+        }
+        
+        // Method 4: By aria-labelledby
+        if (!textareaLabel) {
+          const ariaLabelId = textarea.getAttribute('aria-labelledby');
+          if (ariaLabelId) {
+            textareaLabel = shadowRoot.querySelector('#' + ariaLabelId);
+          }
+        }
+        
+        // Method 5: Find by text content "Запитайте нас"
+        if (!textareaLabel) {
+          const allLabels = shadowRoot.querySelectorAll('label');
+          allLabels.forEach((label) => {
+            if (label.textContent && label.textContent.includes('Запитайте нас')) {
+              textareaLabel = label;
+            }
+          });
+        }
+        
+        // Method 6: Find any label near textarea
+        if (!textareaLabel && textareaContainer) {
+          const allLabelsInContainer = textareaContainer.querySelectorAll('label');
+          if (allLabelsInContainer.length > 0) {
+            textareaLabel = allLabelsInContainer[allLabelsInContainer.length - 1];
+          }
+        }
+        
+        if (textareaLabel) {
+          // Remove all inline styles that might hide it
+          textareaLabel.removeAttribute('style');
+          
+          // Force all styles with !important via setProperty
+          textareaLabel.style.setProperty('display', 'block', 'important');
+          textareaLabel.style.setProperty('visibility', 'visible', 'important');
+          textareaLabel.style.setProperty('opacity', '1', 'important');
+          textareaLabel.style.setProperty('position', 'relative', 'important');
+          textareaLabel.style.setProperty('top', '0', 'important');
+          textareaLabel.style.setProperty('left', '0', 'important');
+          textareaLabel.style.setProperty('transform', 'none', 'important');
+          textareaLabel.style.setProperty('height', 'auto', 'important');
+          textareaLabel.style.setProperty('width', 'auto', 'important');
+          textareaLabel.style.setProperty('overflow', 'visible', 'important');
+          textareaLabel.style.setProperty('margin-bottom', '8px', 'important');
+          textareaLabel.style.setProperty('order', '-1', 'important');
+          textareaLabel.style.setProperty('color', 'rgba(0, 11, 2, 0.50)', 'important');
+          textareaLabel.style.setProperty('font-size', '14px', 'important');
+          textareaLabel.style.setProperty('font-weight', '400', 'important');
+          textareaLabel.style.setProperty('line-height', '160%', 'important');
+          
+          // Also ensure container shows it
+          if (textareaContainer) {
+            textareaContainer.style.setProperty('display', 'flex', 'important');
+            textareaContainer.style.setProperty('flex-direction', 'column', 'important');
+            
+            // Move label before textarea if needed
+            if (textareaContainer.contains(textareaLabel) && textareaContainer.contains(textarea)) {
+              const labelPos = Array.from(textareaContainer.children).indexOf(textareaLabel);
+              const textareaPos = Array.from(textareaContainer.children).indexOf(textarea);
+              if (labelPos > textareaPos) {
+                textareaContainer.insertBefore(textareaLabel, textarea);
+              }
+            }
+          }
+        }
+      }
+      
+      // Also try to find and show all labels that might be hidden
+      const allLabels = shadowRoot.querySelectorAll('label');
+      allLabels.forEach((label) => {
+        if (label.textContent && (label.textContent.includes('Запитайте нас') || label.textContent.includes('question'))) {
+          label.style.setProperty('display', 'block', 'important');
+          label.style.setProperty('visibility', 'visible', 'important');
+          label.style.setProperty('opacity', '1', 'important');
+        }
       });
 
       // hide field by text content if still visible

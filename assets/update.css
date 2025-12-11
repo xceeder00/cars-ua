@@ -734,3 +734,7 @@ body {
 .card-gallery {
   --gallery-aspect-ratio: 4/3!important;
 }
+
+.group-block-content div:has(#faq-form) {
+  width: 100%;
+}
