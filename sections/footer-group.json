@@ -160,7 +160,7 @@
                     "text_f9qBtp": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                        "text": "<p>Так, ми обовʼязково перевіряємо історію кожного автомобіля за VIN-кодом: участь у ДТП, пробіг, кількість власників, сервісне обслуговування та юридичну чистоту.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -199,7 +199,7 @@
                     "text_393a6w": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "text": "<p>У середньому доставка займає від 4 до 8 тижнів залежно від країни купівлі, типу транспорту та митного оформлення.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -238,7 +238,7 @@
                     "text_Mddq4A": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "text": "<p>Так, ми допомагаємо з оформленням авто в кредит або лізинг у партнерських фінансових установах на вигідних умовах.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -277,7 +277,7 @@
                     "text_MjNmtV": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "text": "<p>Ми працюємо за офіційним договором, надаємо повну прозорість процесу, фінансову звітність на кожному етапі та супроводжуємо клієнта до моменту отримання авто.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
