@@ -39,6 +39,8 @@
             font-style: normal !important;
             font-weight: 400 !important;
             line-height: 160% !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
           }
 
           /* Labels */
@@ -186,6 +188,13 @@
             align-items: center !important;
             gap: 8px !important;
             margin: 0 !important;
+            width: 100% !important;
+          }
+          
+          /* Phone input field container */
+          ._formPhoneInputContainer_piv1u_6 ._formFieldContainer_1mxsl_5 {
+            flex: 1 !important;
+            width: 100% !important;
           }
           ._selectContainer_12thd_6,
           .phone-country-selector {
@@ -206,6 +215,86 @@
             line-height: 140% !important;
             letter-spacing: 0.28px !important;
             width: fit-content !important;
+          }
+
+          /* Error messages styling */
+          output[role="alert"],
+          output[role="alert"] *,
+          ._formError_1mxsl_21 {
+            display: block !important;
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            transform: none !important;
+            margin: 0 !important;
+            margin-top: 4px !important;
+            margin-bottom: -16px !important;
+            padding: 0 !important;
+            color: #e02229 !important;
+            font-size: 12px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: 140% !important;
+            text-align: left !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+
+          /* Ensure error messages appear below fields, not beside them */
+          ._formFieldContainer_1mxsl_5:has(output[role="alert"]),
+          ._formPhoneInputContainer_piv1u_6:has(output[role="alert"]) {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+
+          /* Error message that comes after field container (like first_name) */
+          ._formFieldContainer_1mxsl_5 + output[role="alert"],
+          ._formFieldContainer_1mxsl_5._withError_1mxsl_17 + output[role="alert"] {
+            margin-top: 4px !important;
+            margin-bottom: -16px !important;
+            display: block !important;
+            width: 100% !important;
+            grid-column: 1 / -1 !important;
+          }
+
+          /* Error message inside field container */
+          ._formFieldContainer_1mxsl_5 output[role="alert"],
+          ._formPhoneInputContainer_piv1u_6 output[role="alert"] {
+            order: 999 !important;
+            margin-top: 4px !important;
+            margin-bottom: -16px !important;
+          }
+
+          /* Error message in form (general) */
+          form._formFieldset_cit2d_82 output[role="alert"] {
+            grid-column: 1 / -1 !important;
+            margin-top: 4px !important;
+            margin-bottom: -16px !important;
+          }
+          
+          /* Error message after phone container */
+          ._formPhoneInputContainer_piv1u_6 + output[role="alert"] {
+            margin-top: 4px !important;
+            margin-bottom: -16px !important;
+            display: block !important;
+            width: 100% !important;
+            grid-column: 1 / -1 !important;
+          }
+          
+          /* Error message after textarea container */
+          ._formFieldContainer_1mxsl_5:has(textarea) + output[role="alert"] {
+            margin-top: 4px !important;
+            margin-bottom: -16px !important;
+            display: block !important;
+            width: 100% !important;
+            grid-column: 1 / -1 !important;
           }
         `;
         shadowRoot.appendChild(style);
@@ -326,6 +415,39 @@
           container.style.visibility = 'hidden';
           container.style.height = '0';
           container.style.overflow = 'hidden';
+        }
+      });
+
+      // Move error messages inside their field containers
+      const fieldContainers = shadowRoot.querySelectorAll('._formFieldContainer_1mxsl_5');
+      fieldContainers.forEach((container) => {
+        // Find error message that comes right after this container
+        const nextSibling = container.nextElementSibling;
+        if (nextSibling && nextSibling.tagName === 'OUTPUT' && nextSibling.getAttribute('role') === 'alert') {
+          // Move error inside container
+          container.appendChild(nextSibling);
+          // Ensure container has flex-direction column
+          container.style.setProperty('display', 'flex', 'important');
+          container.style.setProperty('flex-direction', 'column', 'important');
+        }
+      });
+
+      // Handle phone input container errors
+      const phoneContainers = shadowRoot.querySelectorAll('._formPhoneInputContainer_piv1u_6');
+      phoneContainers.forEach((container) => {
+        const nextSibling = container.nextElementSibling;
+        if (nextSibling && nextSibling.tagName === 'OUTPUT' && nextSibling.getAttribute('role') === 'alert') {
+          // For phone, we need to find the inner field container or create a wrapper
+          const innerFieldContainer = container.querySelector('._formFieldContainer_1mxsl_5');
+          if (innerFieldContainer) {
+            innerFieldContainer.appendChild(nextSibling);
+            innerFieldContainer.style.setProperty('display', 'flex', 'important');
+            innerFieldContainer.style.setProperty('flex-direction', 'column', 'important');
+          } else {
+            // If no inner container, append to phone container itself
+            container.appendChild(nextSibling);
+            container.style.setProperty('flex-direction', 'column', 'important');
+          }
         }
       });
 
