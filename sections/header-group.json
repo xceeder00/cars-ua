@@ -389,7 +389,7 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
-                "link": "tel:+38096918 77 77",
+                "link": "tel:+380779301010",
                 "open_in_new_tab": false,
                 "placeholder": "",
                 "padding-block-start": 0,
@@ -414,7 +414,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>+380 (96) 918 77 77</p>",
+                    "text": "<p>+380 (77) 930 10 10</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
