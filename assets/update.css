@@ -640,11 +640,11 @@ body {
   width: 100%;
   padding: 48px;
 }
-@media (max-width: 750px) {
+@incldue mobile {
   .form-modal__wrapper {
-  width: 100%;
-  padding: 32px;
-}
+    width: 100%;
+    padding: 32px;
+  }
 }
 .form-modal__product {
   display: flex;
