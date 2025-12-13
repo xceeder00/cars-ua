@@ -329,7 +329,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>example@gmail.com</p>",
+                    "text": "<p>info@atlasauto.com.ua</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
