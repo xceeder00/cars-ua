@@ -209,6 +209,7 @@
 .choose hr {
   color: #D9D9D9;
   width: 100%;
+  opacity: 0.4;
 }
 @media (max-width: 750px) {
   .choose hr {

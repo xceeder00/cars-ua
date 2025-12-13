@@ -188,6 +188,7 @@
 
     hr{
        color: #D9D9D9; 
+       opacity: 0.4;
        width: 100%;
        @include mobile{
         display: none;
