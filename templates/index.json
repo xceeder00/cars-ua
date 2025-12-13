@@ -554,35 +554,36 @@
         "review_JLqjbM": {
           "type": "review",
           "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1.png",
-            "description": "Дякую менеджеру Олегу та всій команді за їх працю. Отримав авто на тиждень раніше запланої дати і не переклатив ні копійки від ціни на сайті. Дякую!",
-            "image": "shopify://shop_images/4576155_2.png",
+            "title": "Гамулець Максим",
+            "avatar": "shopify://shop_images/151567147_4057455754286807_2236407367120176673_n.jpg",
+            "description": "Дуже зручно вибудуваний процес: лише дві зустрічі — спочатку договірстрічі вже забирав сві і аванс, а на другій зуй автомобіль.",
+            "image": "shopify://shop_images/4576155_3.jpg",
             "rating": "5"
           }
         },
         "review_hg4FQP": {
           "type": "review",
           "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1_1.png",
-            "description": "Дякую компанії АтласАвто та окремо менеджеру Олегу. Це було моє перше авто із Америки. Задоволений результатом, рекомендую.",
-            "image": "shopify://shop_images/4576155_2.png",
+            "title": "Святослав Дитюк",
+            "avatar": "shopify://shop_images/362232079_3469353713285703_8963767652055708605_n.jpg",
+            "description": "Юрій як власник компанії справив враження справжнього профі — дуже точно підібрав авто під мої запити, пояснив усі нюанси й ризики. Відчувається великий досвід і відповідальність за результат.",
+            "image": "shopify://shop_images/81964df53487ea77fad64bac0a5a161b.jpg",
             "rating": "5"
           }
         },
         "review_cBkmKQ": {
           "type": "review",
           "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1_2.png",
-            "description": "Дякую за ваш сервіс, я був проінформований про кожен етап та отримував постійні оновлення. Це справді та компанія з якою можна бути спокійно.",
-            "image": "shopify://shop_images/4576155_2.png",
+            "title": "Софія Цегельник",
+            "avatar": "shopify://shop_images/500759988_29844955425151163_5485195970122608814_n.jpg",
+            "description": "Дуже приємний досвід. Все пояснювали людською мовою, завжди були на звʼязку і реально допомагали з вибором. Було спокійно і комфортно від",
+            "image": "shopify://shop_images/4576155_2.jpg",
             "rating": "5"
           }
         },
         "review_DUyKEp": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "Павло Олінік",
             "avatar": "shopify://shop_images/Ellipse_1_3.png",
@@ -593,6 +594,7 @@
         },
         "review_C483Wq": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "Павло Олінік",
             "avatar": "shopify://shop_images/Ellipse_1_4.png",
