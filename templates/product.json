@@ -281,7 +281,11 @@
         "gap": 48,
         "color_scheme": "",
         "padding-block-start": 32,
-        "padding-block-end": 32
+        "padding-block-end": 32,
+        "cta_label": "Забронювати авто",
+        "guarantee_label": "Гарантія фіксованої вартості",
+        "phone_label": "Зателефонувати зараз",
+        "phone_number": "+380779301010"
       }
     },
     "product_recommendations_qggXJq": {
