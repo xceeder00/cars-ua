@@ -20,10 +20,10 @@
                                         </div>
                                     {% endif %}
                                     <div class="reviews__item-top">
-                                        <div class="reviews__item-name">
+                                        <a href="{{block.settings.url }}" class="reviews__item-name">
                                             <span>{{ block.settings.title }}</span>
-                                            <img src="{{ 'logoInstagram.png' | asset_url }}" alt="{{ block.settings.title }}" class="reviews__item-name-img" width="18" height="18">
-                                        </div>
+                                            <img src="{{ 'logoFacebook.png' | asset_url }}" alt="{{ block.settings.title }}" class="reviews__item-name-img" width="18" height="18">
+                                        </a>
                                         <div class="reviews__item-rating">
                                             {% for i in (1..block.settings.rating) %}
                                                 
@@ -152,6 +152,11 @@
                       "type": "image_picker",
                       "id": "image",
                       "label": "Image"
+                    },
+                    {
+                      "type": "url",
+                      "id": "url",
+                      "label": "link"
                     },
                     {
                       "type": "select",
