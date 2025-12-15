@@ -61,9 +61,7 @@ line-height: 120%;
     }
     &__image{
         aspect-ratio: 4/3;
-        @include notebook{
-           aspect-ratio: unset;
-        }
+      
 
         img{
             width: 100%;
