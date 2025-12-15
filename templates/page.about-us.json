@@ -155,40 +155,43 @@
         "form_label": "Комплексний підхід/все включено"
       }
     },
-    "xc_reviews_7pwXAR": {
+    "xc_reviews_dhqRiQ": {
       "type": "xc-reviews",
       "blocks": {
-        "review_RhNgbX": {
+        "review_CkitEi": {
           "type": "review",
           "settings": {
             "title": "Гамулець Максим",
             "avatar": "shopify://shop_images/151567147_4057455754286807_2236407367120176673_n.jpg",
             "description": "Дуже зручно вибудуваний процес: лише дві зустрічі — спочатку договірстрічі вже забирав сві і аванс, а на другій зуй автомобіль.",
             "image": "shopify://shop_images/4576155_3.jpg",
+            "url": "https://www.facebook.com/maxim.hamulets?locale=uk_UA",
             "rating": "5"
           }
         },
-        "review_frcyej": {
+        "review_w4ipt9": {
           "type": "review",
           "settings": {
             "title": "Святослав Дитюк",
             "avatar": "shopify://shop_images/362232079_3469353713285703_8963767652055708605_n.jpg",
             "description": "Юрій як власник компанії справив враження справжнього профі — дуже точно підібрав авто під мої запити, пояснив усі нюанси й ризики. Відчувається великий досвід і відповідальність за результат.",
             "image": "shopify://shop_images/81964df53487ea77fad64bac0a5a161b.jpg",
+            "url": "https://www.facebook.com/sviatoslav.dytiuk?locale=uk_UA",
             "rating": "5"
           }
         },
-        "review_NUTVLT": {
+        "review_z748eU": {
           "type": "review",
           "settings": {
             "title": "Софія Цегельник",
             "avatar": "shopify://shop_images/500759988_29844955425151163_5485195970122608814_n.jpg",
             "description": "Дуже приємний досвід. Все пояснювали людською мовою, завжди були на звʼязку і реально допомагали з вибором. Було спокійно і комфортно від початку до кінця.",
             "image": "shopify://shop_images/4576155_2.jpg",
+            "url": "https://www.facebook.com/sofia.zegelnik?mibextid=wwXIfr&rdid=aEoYHVP49lY4dDiD&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17vhr9GLoh%2F%3Fmibextid%3DwwXIfr#",
             "rating": "5"
           }
         },
-        "review_hpEgXn": {
+        "review_x36KfA": {
           "type": "review",
           "disabled": true,
           "settings": {
@@ -196,10 +199,11 @@
             "avatar": "shopify://shop_images/Ellipse_1_3.png",
             "description": "Вітаю! Дякую Сашку та команді Атлас, ці хлопці справжні професіонали. Стан авто супер, а ціна вийшла нижче ринку.",
             "image": "shopify://shop_images/4576155_2.png",
+            "url": "",
             "rating": "5"
           }
         },
-        "review_VgjQ9T": {
+        "review_yAbQ8i": {
           "type": "review",
           "disabled": true,
           "settings": {
@@ -207,88 +211,18 @@
             "avatar": "shopify://shop_images/Ellipse_1_4.png",
             "description": "Вражений рівнем сервісу та прозорістю! Все чітко, без прихованих платежів. Авто прийшло в чудовому стані. Дякуую за професіоналізм!",
             "image": "shopify://shop_images/4576155_2.png",
+            "url": "",
             "rating": "5"
           }
         }
       },
       "block_order": [
-        "review_RhNgbX",
-        "review_frcyej",
-        "review_NUTVLT",
-        "review_hpEgXn",
-        "review_VgjQ9T"
+        "review_CkitEi",
+        "review_w4ipt9",
+        "review_z748eU",
+        "review_x36KfA",
+        "review_yAbQ8i"
       ],
-      "name": "XC Reviews",
-      "settings": {
-        "title": "Відгуки тих, хто вже оновив своє авто",
-        "description": "Ми допомагаємо кожному клієнту знайти ідеальне авто без стресу, ризиків і зайвих переплат. Сотні задоволених власників уже насолоджуються своїми машинами, отриманими з нашою допомогою. Ти можеш стати наступним!<br><br>Обери комфорт, надійність і чесний сервіс — довір свій вибір професіоналам.",
-        "button_text": "Залишити відгук",
-        "button_url": "#",
-        "form_label": "Відгуки"
-      }
-    },
-    "xc_reviews_bRYfjD": {
-      "type": "xc-reviews",
-      "blocks": {
-        "review_E7GcaL": {
-          "type": "review",
-          "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1.png",
-            "description": "Дякую менеджеру Олегу та всій команді за їх працю. Отримав авто на тиждень раніше запланої дати і не переклатив ні копійки від ціни на сайті. Дякую!",
-            "image": "shopify://shop_images/4576155_2.png",
-            "rating": "5"
-          }
-        },
-        "review_ezf8XN": {
-          "type": "review",
-          "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1_1.png",
-            "description": "Дякую компанії АтласАвто та окремо менеджеру Олегу. Це було моє перше авто із Америки. Задоволений результатом, рекомендую.",
-            "image": "shopify://shop_images/4576155_2.png",
-            "rating": "5"
-          }
-        },
-        "review_AmH8Fb": {
-          "type": "review",
-          "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1_2.png",
-            "description": "Дякую за ваш сервіс, я був проінформований про кожен етап та отримував постійні оновлення. Це справді та компанія з якою можна бути спокійно.",
-            "image": "shopify://shop_images/4576155_2.png",
-            "rating": "5"
-          }
-        },
-        "review_JEJqhj": {
-          "type": "review",
-          "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1_3.png",
-            "description": "Вітаю! Дякую Сашку та команді Атлас, ці хлопці справжні професіонали. Стан авто супер, а ціна вийшла нижче ринку.",
-            "image": "shopify://shop_images/4576155_2.png",
-            "rating": "5"
-          }
-        },
-        "review_tqnrym": {
-          "type": "review",
-          "settings": {
-            "title": "Павло Олінік",
-            "avatar": "shopify://shop_images/Ellipse_1_4.png",
-            "description": "Вражений рівнем сервісу та прозорістю! Все чітко, без прихованих платежів. Авто прийшло в чудовому стані. Дякуую за професіоналізм!",
-            "image": "shopify://shop_images/4576155_2.png",
-            "rating": "5"
-          }
-        }
-      },
-      "block_order": [
-        "review_E7GcaL",
-        "review_ezf8XN",
-        "review_AmH8Fb",
-        "review_JEJqhj",
-        "review_tqnrym"
-      ],
-      "disabled": true,
       "name": "XC Reviews",
       "settings": {
         "title": "Відгуки тих, хто вже оновив своє авто",
@@ -356,8 +290,7 @@
     "xc_about_mqXmhb",
     "xc_logos_jfrzLx",
     "xc_block_pEyAgi",
-    "xc_reviews_7pwXAR",
-    "xc_reviews_bRYfjD",
+    "xc_reviews_dhqRiQ",
     "main"
   ]
 }
