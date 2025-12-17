@@ -70,12 +70,12 @@
 }
 @media (max-width: 750px) {
   .hero__slide-content {
-    max-width: 100%;
+    /* max-width: 100%;
     background: #141D16;
     padding: 0 32px 70px 32px;
     align-items: center;
     text-align: center;
-    flex: 1;
+    flex: 1; */
   }
 }
 .hero__slide-title {
@@ -141,4 +141,15 @@
 .hero__slide-container{
   z-index: 2;
   
+}
+@media (max-width: 750px) {
+  .hero__slide-container{
+   max-width: 100%;
+    background: #141D16;
+    padding: 0 32px 70px 32px;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+
 }
