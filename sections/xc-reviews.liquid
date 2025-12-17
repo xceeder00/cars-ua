@@ -98,7 +98,7 @@
             
         <div class="form-modal__form">
            {% capture submit_button %}
-               <button class="btn btn--primary">Надіслати</button>
+               <button class="btn btn--primary" aria-label="Надіслати" type="button" style="width: 100%">Надіслати</button>
             {% endcapture %}
            {% render 'contact-form', submit_button: submit_button %}
             
