@@ -139,5 +139,6 @@
   bottom: 40px !important;
 }
 .hero__slide-container{
-  @extend .section--page-width;
+  z-index: 2;
+  
 }
