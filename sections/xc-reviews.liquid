@@ -60,11 +60,51 @@
                 <div class="reviews__description">{{ section.settings.description }}</div>
             {% endif %}
             {% if section.settings.button_text != blank %}
-           <button aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" aria-label="Замовити дзвінок" class="reviews__button btn--primary btn" data-label="{{ section.settings.form_label }}">{{ section.settings.button_text }}</button>
+           <button aria-haspopup="dialog"  on:click="#review/showDialog" aria-label="{{ section.settings.button_text }}" class="reviews__button btn--primary btn">{{ section.settings.button_text }}</button>
             {% endif %}
         </div>
     </div>
 </div>
+
+<dialog-component
+    id="review"
+    class="search-modal "
+    {{ section.shopify_attributes }}
+    >
+    <dialog
+        ref="dialog"
+        on:click="/closeDialogOnClickOutside"
+        on:keydown="/closeDialogOnEscapePress"
+        class="search-modal__content dialog-modal form-modal"
+        scroll-lock
+        aria-labelledby="search-modal-heading"
+    >
+    <div class="form-modal__wrapper">
+       
+        <div class="form-modal__product-top">
+              Залишити відгук
+                <button
+                type="button"
+                class="button predictive-search__close-modal-button"
+                aria-label="{{ 'accessibility.close_dialog' | t }}"
+                on:click="dialog-component/closeDialog"
+                ref="closeModalButton"
+            >
+                <span class="svg-wrapper">
+                {{ 'icon-close.svg' | inline_asset_content }}
+                </span>
+            </button>
+        </div>
+            
+        <div class="form-modal__form">
+           
+            
+            
+        </div>
+        
+        </div>
+    </dialog>
+</dialog-component>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         new Swiper('.reviews-swiper', {
