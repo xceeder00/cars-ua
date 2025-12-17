@@ -66,6 +66,11 @@ grid-template-columns: repeat(3, 1fr);
   line-height: 140%;
   letter-spacing: 0.28px;
 }
+@media (max-width: 750px) {
+  .columns__item-title {
+  width: 208px
+  }
+}
 .columns__item-title path {
   transition: fill 0.3s ease;
   fill: rgba(38, 38, 38, 0.5019607843);
