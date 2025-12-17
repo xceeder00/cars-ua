@@ -6,14 +6,18 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 24px;
 }
+@media (max-width: 1100px) {
+grid-template-columns: repeat(3, 1fr);
+}
 @media (max-width: 750px) {
   .columns__wrapper {
-    min-height: 153px;
+    /* min-height: 153px;
     grid-template-columns: unset;
     grid-template-rows: unset;
-    grid: auto/auto-flow 212px;
-    gap: 16px;
-    overflow-x: scroll;
+    grid: auto/auto-flow 212px; */
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    /* overflow-x: scroll;
     padding-bottom: 16px;
     scroll-snap-stop: always;
     scroll-snap-type: x mandatory;
@@ -22,7 +26,7 @@
             user-select: none;
     scrollbar-color: #262626;
     scrollbar-gutter: 16px;
-    scroll-snap-align: start;
+    scroll-snap-align: start; */
   }
 }
 .columns__item {
@@ -37,7 +41,9 @@
 }
 @media (max-width: 750px) {
   .columns__item {
-    padding: 16px;
+    padding: 12px 16px;
+    flex-direction: column;
+    gap: 12px;
   }
 }
 .columns__item:hover svg path {
