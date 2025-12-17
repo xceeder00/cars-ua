@@ -70,6 +70,10 @@ grid-template-columns: repeat(3, 1fr);
   .columns__item-title {
   width: 208px
   }
+  .columns__item-image {
+    width: auto;
+    height: 56px
+  }
 }
 .columns__item-title path {
   transition: fill 0.3s ease;
