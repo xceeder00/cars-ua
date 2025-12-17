@@ -25,28 +25,28 @@
         "xc_number_YWzXK6": {
           "type": "xc_number",
           "settings": {
-            "number": "74",
+            "number": "174",
             "description": "Щасливих власників нових автівок"
           }
         },
         "xc_number_YrT6rC": {
           "type": "xc_number",
           "settings": {
-            "number": "10",
+            "number": "30",
             "description": "Підібраних авто щомісяця для найвибагливіших клієнтів"
           }
         },
         "xc_number_cMLTJJ": {
           "type": "xc_number",
           "settings": {
-            "number": "1",
+            "number": "5",
             "description": "Років командної та результативної роботи"
           }
         },
         "xc_number_MFr6Je": {
           "type": "xc_number",
           "settings": {
-            "number": "35",
+            "number": "89",
             "description": "Автівок доставлено швидше запланових дат"
           }
         }
