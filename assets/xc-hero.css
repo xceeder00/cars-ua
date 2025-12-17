@@ -24,7 +24,7 @@
   position: relative;
   min-height: 540px;
   height: auto;
-  padding: 80px;
+  padding-block: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
