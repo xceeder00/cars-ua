@@ -152,6 +152,7 @@
     align-items: center;
     text-align: center;
     flex: 1;
+    --page-margin: 0;
   }
 
 }
