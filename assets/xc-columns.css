@@ -43,6 +43,7 @@ grid-template-columns: repeat(3, 1fr);
   .columns__item {
     padding: 12px 16px;
     flex-direction: row;
+    justify-content: flex-start;
     gap: 12px;
   }
 }
