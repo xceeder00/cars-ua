@@ -12,26 +12,28 @@
                     <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="hero__slide-image">
                     {% endif %}
                 </picture>
-                {% comment %} <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="hero__slide-image"> {% endcomment %}
-                <div class="hero__slide-content">
-                    {% if block.settings.title != blank %}
-                        <h2 class="hero__slide-title">{{ block.settings.title }}</h2>
-                    {% endif %}
-                    {% if block.settings.text != blank %}
-                        <p class="hero__slide-text">{{ block.settings.text }}</p>
-                    {% endif %}
-                    <div class="hero__slide-buttons">
-                        {% if block.settings.button_text != blank and block.settings.button_link != blank %}
-                        <button class="hero__slide-button btn btn--primary" aria-label="Замовити дзвінок" aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" data-label="{{ block.settings.form_label }}">{{ block.settings.button_text }}</button>
+                <div class="hero__slide-container">
+                    {% comment %} <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="hero__slide-image"> {% endcomment %}
+                    <div class="hero__slide-content">
+                        {% if block.settings.title != blank %}
+                            <h2 class="hero__slide-title">{{ block.settings.title }}</h2>
                         {% endif %}
-                        {% if block.settings.label != blank %}
-                            <div class="hero__slide-label">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M16.4838 6.01655C16.7278 6.26063 16.7278 6.65636 16.4838 6.90044L8.5671 14.8171C8.32303 15.0612 7.9273 15.0612 7.68322 14.8171L3.51655 10.6504C3.27248 10.4064 3.27248 10.0106 3.51655 9.76655C3.76063 9.52248 4.15636 9.52248 4.40044 9.76655L8.12516 13.4913L15.5999 6.01655C15.844 5.77248 16.2397 5.77248 16.4838 6.01655Z" fill="#90F209"/>
-                                </svg>
-                                {{ block.settings.label }}
-                            </div>
+                        {% if block.settings.text != blank %}
+                            <p class="hero__slide-text">{{ block.settings.text }}</p>
                         {% endif %}
+                        <div class="hero__slide-buttons">
+                            {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+                            <button class="hero__slide-button btn btn--primary" aria-label="Замовити дзвінок" aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" data-label="{{ block.settings.form_label }}">{{ block.settings.button_text }}</button>
+                            {% endif %}
+                            {% if block.settings.label != blank %}
+                                <div class="hero__slide-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M16.4838 6.01655C16.7278 6.26063 16.7278 6.65636 16.4838 6.90044L8.5671 14.8171C8.32303 15.0612 7.9273 15.0612 7.68322 14.8171L3.51655 10.6504C3.27248 10.4064 3.27248 10.0106 3.51655 9.76655C3.76063 9.52248 4.15636 9.52248 4.40044 9.76655L8.12516 13.4913L15.5999 6.01655C15.844 5.77248 16.2397 5.77248 16.4838 6.01655Z" fill="#90F209"/>
+                                    </svg>
+                                    {{ block.settings.label }}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

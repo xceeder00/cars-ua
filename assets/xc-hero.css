@@ -138,3 +138,6 @@
   position: absolute;
   bottom: 40px !important;
 }
+.hero__slide-container{
+  @extend .section--page-width;
+}
