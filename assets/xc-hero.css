@@ -1,21 +1,23 @@
 .hero {
   --full-page-grid-with-margins: var(--full-page-grid-margin) minmax(0, var(--full-page-grid-central-column-width)) var(--full-page-grid-margin);
-  margin-block: 24px;
+  margin-block-end: 24px;
+  margin-block-start: -12px
 }
 @media (max-width: 750px) {
   .hero {
-    margin-block: 16px;
+    margin-block-end: 16px;
+     margin-block-start: -12px
   }
 }
 .hero__wrapper {
-  border-radius: 24px;
+  border-radius: 0 0 24px 24px;
   overflow: hidden;
   position: relative;
   width: 100%;
 }
 @media (max-width: 750px) {
   .hero__wrapper {
-    border-radius: 12px;
+    border-radius: 0 0 12px;
   }
 }
 .hero__slide {
