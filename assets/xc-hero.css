@@ -126,6 +126,7 @@
 }
 @media (max-width: 750px) {
   .hero__slide-label {
+    display: none;
     height: auto;
     background: transparent;
     justify-content: center;
