@@ -70,6 +70,8 @@
 }
 @media (max-width: 750px) {
   .hero__slide-content {
+    align-items: center;
+    text-align: center;
     /* max-width: 100%;
     background: #141D16;
     padding: 0 32px 70px 32px;
