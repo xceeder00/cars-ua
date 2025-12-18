@@ -771,7 +771,7 @@ width: 100%;
 .menu-drawer__bottom-links{
   display: grid; 
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 20px;
   margin: 24px 0 32px;
 }
 .menu-drawer__bottom-links a{
