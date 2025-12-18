@@ -500,10 +500,8 @@
                             assign featured_products_collection = null | sort
                           endif
                         -%}
-                        <div class="menu-drawer__bottom">
-                          <a href="#" class="menu-drawer__bottom-call" title="Замовити дзвінок">Замовити Дзвінок</a>
 
-                        </div>
+                        
 
                         {% if featured_collections.size > 0 or featured_products_collection.products_count > 0 %}
                           <div
@@ -605,6 +603,10 @@
           endfor
         endif
       -%}
+      <div class="menu-drawer__bottom">
+                          <a href="#" class="menu-drawer__bottom-call" title="Замовити дзвінок">Замовити Дзвінок</a>
+
+                        </div>
       {% if top_level_featured_collections.size > 0 or top_level_featured_products_collection.products_count > 0 %}
         <div
           class="menu-drawer__featured-content"
