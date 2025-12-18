@@ -746,7 +746,7 @@ body {
 }
 
 .menu-drawer__bottom{
-  padding-inline: 20px;
+  padding: 20px;
 }
 .menu-drawer__bottom-call{
 border-radius: 32px;
@@ -780,7 +780,7 @@ align-items: center;
 gap: 8px;
 color: rgba(232, 235, 232, 0.80);
 
-font-size: 12px;
+font-size: 14px;
 font-style: normal;
 font-weight: 500;
 line-height: 140%; /* 16.8px */
