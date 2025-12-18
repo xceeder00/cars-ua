@@ -8,6 +8,39 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "GlobalContacts",
+    "settings": [
+      {
+        "type": "text",
+        "id": "global_email",
+        "label": "Email",
+        "default": "info@atlasauto.com.ua"
+      },
+      {
+        "type": "text",
+        "id": "global_phone_1",
+        "label": "Phone 1",
+        "default": "+380779301010"
+      },
+      {
+        "type": "text",
+        "id": "global_phone_2",
+        "label": "Phone 1",
+        "default": "+380939301010"
+      },
+      {
+        "type": "text",
+        "id": "global_insta",
+        "label": "Instagram",
+      },
+      {
+        "type": "text",
+        "id": "global_facebook",
+        "label": "Facebook",
+      }
+    ]
+  },
+  {
     "name": "t:names.logo_and_favicon",
     "settings": [
       {
