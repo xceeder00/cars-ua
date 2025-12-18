@@ -632,18 +632,18 @@
               </a>
           </div>
           <div class="menu-drawer__bottom-social">
-             {% if settings.global_insta != blank %}
+             {% comment %} {% if settings.global_insta != blank %} {% endcomment %}
                     <a href="{{ settings.global_insta }}" title="Instagram" target="_blank">
                      <img src="{{ 'LogoInstagram.svg' | asset_url }}" alt="{{ block.settings.title }}"  width="24" height="24">
                       Instagram
                     </a>
-                {% endif %}
-                {% if settings.global_facebook != blank %}
+                {% comment %} {% endif %}
+                {% if settings.global_facebook != blank %} {% endcomment %}
                     <a href="{{ settings.global_facebook }}" title="Facebook" target="_blank">
                         <img src="{{ 'LogoFacebook.svg' | asset_url }}" alt="{{ block.settings.title }}"  width="24" height="24">
                         Facebook
                     </a>
-                {% endif %}
+                {% comment %} {% endif %} {% endcomment %}
           </div>
       </div>
       {% if top_level_featured_collections.size > 0 or top_level_featured_products_collection.products_count > 0 %}
