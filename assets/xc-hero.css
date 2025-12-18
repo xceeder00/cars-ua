@@ -102,7 +102,7 @@
 }
 @media (max-width: 750px) {
   .hero__slide-title {
-  font-size: 28px;
+  font-size: 28px!important;
 }
   .hero__slide-buttons {
     flex-direction: column;
