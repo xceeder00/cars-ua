@@ -115,7 +115,7 @@
                         <div class="calc__dropdown-list-container">
                             <input type="hidden" class="calc__input" name="delivery_in_the_usa" value="550">
                             <input type="hidden" class="calc__input" name="delivery_from_the_usa" value="Abilene,HOU">
-                            <ul class="calc__dropdown-list calc__dropdown-list--delivery">
+                            {% comment %} <ul class="calc__dropdown-list calc__dropdown-list--delivery">
                                 <li class="calc__delivery-item calc__delivery-item--copart" data-location="Abilene,HOU" data-c="550">Abilene-HOU</li>
                                 <li class="calc__delivery-item calc__delivery-item--copart" data-location="Adelanto,LA" data-c="475">Adelanto-LA</li>
                                 <li class="calc__delivery-item calc__delivery-item--copart" data-location="Albany,NY" data-c="450">Albany-NY</li>
@@ -130,7 +130,325 @@
                                 <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Los Angeles,LA" data-c="375">Los Angeles-LA</li>
                                 <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="New York,NY" data-c="400">New York-NY</li>
                                 <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Miami,MIA" data-c="325">Miami-MIA</li>
-                            </ul>
+                            </ul> {% endcomment %}
+                            <ul class="calc__dropdown-list calc__dropdown-list--delivery">
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Glassboro,NJ" data-c="250">Glassboro-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Somerville,NJ" data-c="225">Somerville-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Trenton,NJ" data-c="250">Trenton-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Altoona,NJ" data-c="450">Altoona-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Chambersburg,NJ" data-c="375">Chambersburg-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Harrisburg ,NJ" data-c="325">Harrisburg -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Philadelphia ,NJ" data-c="275">Philadelphia -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Philadelphia East-Sublot,NJ" data-c="275">Philadelphia East-Sublot-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Pittsburgh ,NJ" data-c="475">Pittsburgh -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="North Pittsburgh ,NJ" data-c="475">North Pittsburgh -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="South Pittsburgh ,NJ" data-c="475">South Pittsburgh -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="West Scranton ,NJ" data-c="325">West Scranton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="York Haven,NJ" data-c="325">York Haven-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Baltimore ,NJ" data-c="325">Baltimore -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Baltimore East ,NJ" data-c="350">Baltimore East -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Washington DC ,NJ" data-c="350">Washington DC -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Freetown ,NJ" data-c="375">Freetown -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="North Boston ,NJ" data-c="375">North Boston -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="South Boston ,NJ" data-c="375">South Boston -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="West Warren ,NJ" data-c="375">West Warren -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Hartford ,NJ" data-c="300">Hartford -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Hartford Springfield ,NJ" data-c="325">Hartford Springfield -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Seaford ,NJ" data-c="325">Seaford -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Chicago North,NJ" data-c="625">Chicago North-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Chicago South,NJ" data-c="600">Chicago South-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Peoria ,NJ" data-c="650">Peoria -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Southern Illinois (East St. Louis) ,NJ" data-c="625">Southern Illinois (East St. Louis) -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Wheeling ,NJ" data-c="625">Wheeling -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Cicero,NJ" data-c="600">Cicero-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Dyer ,NJ" data-c="600">Dyer -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Fort Wayne ,NJ" data-c="625">Fort Wayne -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Indianapolis ,NJ" data-c="625">Indianapolis -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Davenport ,NJ" data-c="650">Davenport -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Des Moines ,NJ" data-c="700">Des Moines -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Lyman ,NJ" data-c="500">Lyman -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Detroit ,NJ" data-c="600">Detroit -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Flint ,NJ" data-c="625">Flint -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Ionia ,NJ" data-c="625">Ionia -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Lansing ,NJ" data-c="600">Lansing -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Minneapolis ,NJ" data-c="700">Minneapolis -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Minneapolis North ,NJ" data-c="700">Minneapolis North -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Saint Cloud ,NJ" data-c="700">Saint Cloud -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Candia ,NJ" data-c="400">Candia -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Albany ,NJ" data-c="325">Albany -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Buffalo ,NJ" data-c="525">Buffalo -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Long Island x,NJ" data-c="300">Long Island x-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Long Island ,NJ" data-c="300">Long Island -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Newburgh ,NJ" data-c="475">Newburgh -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Rochester ,NJ" data-c="400">Rochester -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Syracuse ,NJ" data-c="525">Syracuse -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Cleveland East,NJ" data-c="500">Cleveland East-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Cleveland West,NJ" data-c="500">Cleveland West-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Columbus ,NJ" data-c="525">Columbus -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Dayton ,NJ" data-c="350">Dayton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Exeter ,NJ" data-c="550">Exeter -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Burlington ,NJ" data-c="500">Burlington -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Danville ,NJ" data-c="400">Danville -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Fredericksburg ,NJ" data-c="425">Fredericksburg -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Hampton ,NJ" data-c="400">Hampton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Richmond ,NJ" data-c="400">Richmond -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Richmond East ,NJ" data-c="475">Richmond East -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Charleston ,NJ" data-c="700">Charleston -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Appleton ,NJ" data-c="700">Appleton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Madison ,NJ" data-c="650">Madison -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Madison South ,NJ" data-c="650">Madison South -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Milwaukee ,NJ" data-c="675">Milwaukee -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Milwaukee North,NJ" data-c="675">Milwaukee North-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Earlington ,GA" data-c="575">Earlington -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Lexington East ,GA" data-c="575">Lexington East -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Lexington West ,GA" data-c="575">Lexington West -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Louisville ,GA" data-c="575">Louisville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Walton ,GA" data-c="600">Walton -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Birmingham ,GA" data-c="450">Birmingham -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Dothan ,GA" data-c="425">Dothan -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Mobile (Eight Mile),GA" data-c="425">Mobile (Eight Mile)-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location=" Mobile South ,GA" data-c="425"> Mobile South -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Montgomery ,GA" data-c="425">Montgomery -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Tanner ,GA" data-c="450">Tanner -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Atlanta ,GA" data-c="325">Atlanta -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Atlanta North ,GA" data-c="350">Atlanta North -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Atlanta South ,GA" data-c="325">Atlanta South -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Atlanta West ,GA" data-c="325">Atlanta West -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Cartersville ,GA" data-c="350">Cartersville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Fairburn ,GA" data-c="350">Fairburn -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Macon ,GA" data-c="300">Macon -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Savannah ,GA" data-c="200">Savannah -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Tifton ,GA" data-c="300">Tifton -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Fort Pierce ,GA" data-c="400">Fort Pierce -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Jacksonville (North - Copart) ,GA" data-c="275">Jacksonville (North - Copart) -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Miami ,GA" data-c="400">Miami -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Miami North ,GA" data-c="400">Miami North -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Miami South,GA" data-c="400">Miami South-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location=" Ocala ,GA" data-c="350"> Ocala -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Orlando ,GA" data-c="375">Orlando -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Orlando North,GA" data-c="375">Orlando North-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location=" Punta Gorda ,GA" data-c="375"> Punta Gorda -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Punta Gorda South ,GA" data-c="400">Punta Gorda South -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Tallahassee ,GA" data-c="375">Tallahassee -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Tampa South ,GA" data-c="375">Tampa South -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="West Palm Beach ,GA" data-c="400">West Palm Beach -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="China Grove ,GA" data-c="375">China Grove -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Concord ,GA" data-c="375">Concord -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Gastonia ,GA" data-c="375">Gastonia -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Lumberton ,GA" data-c="350">Lumberton -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Mebane ,GA" data-c="375">Mebane -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Mocksville ,GA" data-c="350">Mocksville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Raleigh ,GA" data-c="350">Raleigh -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Raleigh North ,GA" data-c="350">Raleigh North -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Charleston North ,GA" data-c="275">Charleston North -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Columbia ,GA" data-c="275">Columbia -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Spartanburg ,GA" data-c="325">Spartanburg -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Knoxville ,GA" data-c="475">Knoxville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Memphis ,GA" data-c="525">Memphis -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Nashville ,GA" data-c="475">Nashville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Columbia ,GA" data-c="650">Columbia -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Sikeston ,GA" data-c="650">Sikeston -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Springfield ,GA" data-c="650">Springfield -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="St. Louis ,GA" data-c="625">St. Louis -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Columbia ,GA" data-c="650">Columbia -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Jackson,GA" data-c="475">Jackson-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Fayetteville ,TX" data-c="550">Fayetteville -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Little Rock ,TX" data-c="500">Little Rock -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Kansas City ,TX" data-c="600">Kansas City -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Wichita ,TX" data-c="550">Wichita -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Baton Rouge ,TX" data-c="425">Baton Rouge -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="New Orleans ,TX" data-c="425">New Orleans -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Shreveport ,TX" data-c="400">Shreveport -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Oklahoma City ,TX" data-c="475">Oklahoma City -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Tulsa ,TX" data-c="525">Tulsa -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Abilene ,TX" data-c="450">Abilene -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Amarillo ,TX" data-c="475">Amarillo -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Andrews ,TX" data-c="500">Andrews -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Austin ,TX" data-c="325">Austin -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Corpus Christi ,TX" data-c="350">Corpus Christi -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Crashedtoys Dallas ,TX" data-c="375">Crashedtoys Dallas -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Dallas ,TX" data-c="375">Dallas -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Dallas South ,TX" data-c="350">Dallas South -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="El Paso ,TX" data-c="525">El Paso -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Fort Worth ,TX" data-c="325">Fort Worth -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Houston ,TX" data-c="200">Houston -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Houston East ,TX" data-c="200">Houston East -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Longview ,TX" data-c="350">Longview -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Lufkin ,TX" data-c="300">Lufkin -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="McAllen ,TX" data-c="375">McAllen -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="San Antonio (South) ,TX" data-c="350">San Antonio (South) -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Waco ,TX" data-c="325">Waco -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Colorado Springs ,TX" data-c="700">Colorado Springs -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Denver ,TX" data-c="650">Denver -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Denver Central ,TX" data-c="700">Denver Central -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Denver South,TX" data-c="700">Denver South-TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Phoenix ,CA" data-c="425">Phoenix -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Tucson ,CA" data-c="425">Tucson -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Adelanto,CA" data-c="300">Adelanto-CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location=" Antelope ,CA" data-c="450"> Antelope -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Bakersfield ,CA" data-c="300">Bakersfield -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Fresno ,CA" data-c="350">Fresno -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Hayward ,CA" data-c="450">Hayward -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Long Beach ,CA" data-c="200">Long Beach -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Los Angeles ,CA" data-c="200">Los Angeles -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Martinez ,CA" data-c="450">Martinez -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Rancho Cucamonga ,CA" data-c="225">Rancho Cucamonga -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Redding ,CA" data-c="600">Redding -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Sacramento ,CA" data-c="425">Sacramento -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="San Bernardino ,CA" data-c="250">San Bernardino -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="San Diego ,CA" data-c="300">San Diego -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="San Jose ,CA" data-c="450">San Jose -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="South Sacramento ,CA" data-c="450">South Sacramento -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Sun Valley ,CA" data-c="250">Sun Valley -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Vallejo ,CA" data-c="475">Vallejo -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Van Nuys ,CA" data-c="225">Van Nuys -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--copart" data-location="Albuquerque,CA" data-c="650">Albuquerque-CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Avenel ,NJ" data-c="225">Avenel -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Central New Jersey ,NJ" data-c="225">Central New Jersey -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Englishtown ,NJ" data-c="225">Englishtown -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Port Murray ,NJ" data-c="250">Port Murray -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Sayreville ,NJ" data-c="225">Sayreville -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Southern New Jersey ,NJ" data-c="275">Southern New Jersey -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Altoona ,NJ" data-c="450">Altoona -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Bridgeport ,NJ" data-c="275">Bridgeport -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Erie ,NJ" data-c="525">Erie -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Philadelphia ,NJ" data-c="300">Philadelphia -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Pittsburgh ,NJ" data-c="475">Pittsburgh -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Pittsburgh North ,NJ" data-c="475">Pittsburgh North -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Scranton ,NJ" data-c="325">Scranton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="York Springs ,NJ" data-c="325">York Springs -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Baltimore ,NJ" data-c="325">Baltimore -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Dundalk ,NJ" data-c="350">Dundalk -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Laurel ,NJ" data-c="375">Laurel -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Metro DC ,NJ" data-c="325">Metro DC -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Boston-Shirley ,NJ" data-c="375">Boston-Shirley -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Taunton ,NJ" data-c="400">Taunton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Templeton ,NJ" data-c="375">Templeton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Hartford ,NJ" data-c="300">Hartford -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Hartford South ,NJ" data-c="300">Hartford South -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="New Castle ,NJ" data-c="325">New Castle -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Chicago North ,NJ" data-c="625">Chicago North -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Chicago South ,NJ" data-c="625">Chicago South -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Chicago West - Aurora,NJ" data-c="600">Chicago West - Aurora-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Lincoln ,NJ" data-c="650"> Lincoln -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Specialty Division ,NJ" data-c="625">Specialty Division -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="St. Louis ,NJ" data-c="650">St. Louis -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Westchester ,NJ" data-c="650">Westchester -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Indianapolis ,NJ" data-c="600">Indianapolis -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Indianapolis South ,NJ" data-c="625">Indianapolis South -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="South Bend ,NJ" data-c="625">South Bend -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Davenport ,NJ" data-c="675">Davenport -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Des Moines ,NJ" data-c="700">Des Moines -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Clinton ,NJ" data-c="525">Clinton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Gorham ,NJ" data-c="500">Gorham -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Gray ,NJ" data-c="475">Gray -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Detroit ,NJ" data-c="600">Detroit -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Flint,NJ" data-c="600">Flint-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Grand Rapids ,NJ" data-c="625"> Grand Rapids -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Saint Paul ,NJ" data-c="700">Saint Paul -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Manchester ,NJ" data-c="400">Manchester -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Albany ,NJ" data-c="325">Albany -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Buffalo ,NJ" data-c="525">Buffalo -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Long Island ,NJ" data-c="300">Long Island -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Newburgh ,NJ" data-c="300">Newburgh -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Rochester ,NJ" data-c="450">Rochester -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Syracuse ,NJ" data-c="375">Syracuse -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Akron-Canton ,NJ" data-c="525">Akron-Canton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Cincinnati ,NJ" data-c="500">Cincinnati -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Cincinnati South ,NJ" data-c="525">Cincinnati South -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Cleveland ,NJ" data-c="500">Cleveland -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Columbus ,NJ" data-c="500">Columbus -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Dayton ,NJ" data-c="525">Dayton -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Providence ,NJ" data-c="375">Providence -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Burlington,NJ" data-c="550">Burlington-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Culpeper,NJ" data-c="400"> Culpeper-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="North Virginia ,NJ" data-c="375">North Virginia -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Pulaski ,NJ" data-c="475">Pulaski -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Richmond ,NJ" data-c="375">Richmond -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Roanoke ,NJ" data-c="475">Roanoke -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Suffolk ,NJ" data-c="425">Suffolk -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Tidewater ,NJ" data-c="400">Tidewater -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Buckhannon ,NJ" data-c="575">Buckhannon -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Shady Spring ,NJ" data-c="575">Shady Spring -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Milwaukee ,NJ" data-c="650">Milwaukee -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Milwaukee North ,NJ" data-c="675">Milwaukee North -NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Portage,NJ" data-c="675">Portage-NJ</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Ashland ,GA" data-c="650">Ashland -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Bowling Green ,GA" data-c="625">Bowling Green -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Louisville ,GA" data-c="575">Louisville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Louisville North ,GA" data-c="600">Louisville North -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Paducah ,GA" data-c="625">Paducah -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Birmingham ,GA" data-c="450">Birmingham -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Dothan ,GA" data-c="425">Dothan -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Huntsville ,GA" data-c="475">Huntsville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Atlanta East ,GA" data-c="325">Atlanta East -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Atlanta North,GA" data-c="350">Atlanta North-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Atlanta South,GA" data-c="325"> Atlanta South-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Macon ,GA" data-c="300"> Macon -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Savannah ,GA" data-c="225">Savannah -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Clearwater ,GA" data-c="375">Clearwater -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Fort Myers ,GA" data-c="375">Fort Myers -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Fort Pierce ,GA" data-c="400">Fort Pierce -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Miami ,GA" data-c="375">Miami -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Orlando North,GA" data-c="375">Orlando North-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Pensacola ,GA" data-c="425">Pensacola -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Tampa ,GA" data-c="375">Tampa -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Tampa North ,GA" data-c="375">Tampa North -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="West Palm Beach ,GA" data-c="400">West Palm Beach -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Asheville,GA" data-c="425">Asheville-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Charlotte ,GA" data-c="375"> Charlotte -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Greensboro ,GA" data-c="350">Greensboro -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Raleigh ,GA" data-c="350">Raleigh -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Wilmington ,GA" data-c="375">Wilmington -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Charleston ,GA" data-c="275">Charleston -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Greenville ,GA" data-c="350">Greenville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Lexington ,GA" data-c="275">Lexington -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Chattanooga ,GA" data-c="475">Chattanooga -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Knoxville ,GA" data-c="475">Knoxville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Nashville ,GA" data-c="475">Nashville -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Kansas City East,GA" data-c="700">Kansas City East-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Springfield ,GA" data-c="625">Springfield -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Kansas City East ,GA" data-c="675">Kansas City East -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Grenada ,GA" data-c="550">Grenada -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Gulf Coast ,GA" data-c="500">Gulf Coast -GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Jackson,GA" data-c="475">Jackson-GA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Fayetteville,TX" data-c="525">Fayetteville-TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Little Rock ,TX" data-c="500"> Little Rock -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Wichita ,TX" data-c="575">Wichita -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Baton Rouge ,TX" data-c="400">Baton Rouge -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Lafayette ,TX" data-c="375">Lafayette -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="New Orleans ,TX" data-c="425">New Orleans -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="New Orleans East ,TX" data-c="425">New Orleans East -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Shreveport ,TX" data-c="375">Shreveport -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Oklahoma City ,TX" data-c="475">Oklahoma City -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Austin ,TX" data-c="325">Austin -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="El Paso ,TX" data-c="500">El Paso -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Fort Worth,TX" data-c="350">Fort Worth-TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Fort Worth North ,TX" data-c="350"> Fort Worth North -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Houston ,TX" data-c="225">Houston -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Houston North ,TX" data-c="225">Houston North -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Houston South ,TX" data-c="225">Houston South -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Longview ,TX" data-c="325">Longview -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Lubbock ,TX" data-c="525">Lubbock -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="McAllen ,TX" data-c="400">McAllen -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Permian Basin ,TX" data-c="475">Permian Basin -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Colorado Springs ,TX" data-c="675">Colorado Springs -TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Denver East,TX" data-c="700">Denver East-TX</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Phoenix ,CA" data-c="400">Phoenix -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Tucson ,CA" data-c="425">Tucson -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Anaheim ,CA" data-c="250">Anaheim -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Carson ,CA" data-c="225">Carson -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Colton ,CA" data-c="250">Colton -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="East Bay ,CA" data-c="425">East Bay -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Fontana,CA" data-c="250">Fontana-CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" Fremont ,CA" data-c="425"> Fremont -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Fresno,CA" data-c="375">Fresno-CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location=" High Desert ,CA" data-c="275"> High Desert -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Los Angeles South ,CA" data-c="200">Los Angeles South -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="North Hollywood ,CA" data-c="250">North Hollywood -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Perris ,CA" data-c="275">Perris -CA</li>
+                              <li class="calc__delivery-item calc__delivery-item--iaai calc__delivery-item--hide" data-location="Sacramento,CA" data-c="425">Sacramento-CA</li>
+                      </ul>
                         </div>
                     </div>
                 </div>
