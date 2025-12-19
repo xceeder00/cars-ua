@@ -806,3 +806,9 @@ gap: 8px;
   width:24px;
   height: 24px;
 }
+.menu-drawer__logo{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 100px;
+}
