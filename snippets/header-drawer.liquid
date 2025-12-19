@@ -8,7 +8,7 @@
   @param {object} [section] - The section that can be used to provide settings
 
   @example
-  {% render 'header-drawer', linklist: section.settings.menu, class: 'header-drawer--mobile', section:section %}
+  {% render 'header-drawer', linklist: section.settings.menu, class: 'header-drawer--mobile' %}
 {%- enddoc -%}
 
 {% liquid
@@ -85,7 +85,7 @@
         </span>
       </button>
       <div class="menu-drawer__logo">
-        <img src="{{section.settings.logo | image_url: '100x'}}" alt="logo" />
+        <img src="{{ 'https://cdn.shopify.com/s/files/1/0684/4533/9734/files/logo-white.png?v=1762088347' | asset_url }}" alt="logo" />
       </div>
       <nav
         class="menu-drawer__navigation"
