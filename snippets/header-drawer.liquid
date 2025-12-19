@@ -85,12 +85,7 @@
         </span>
       </button>
       <div class="menu-drawer__logo">
-        {% render 'image',
-          image: section.settings.logo,
-          height: section.settings.logo_height,
-          text_fallback: shop.name,
-          style: logo_style
-        %}
+        <img src="{{section.settings.logo | image_url: '100x'}}" alt="logo" />
       </div>
       <nav
         class="menu-drawer__navigation"
