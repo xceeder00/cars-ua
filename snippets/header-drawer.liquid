@@ -607,7 +607,8 @@
         endif
       -%}
       <div class="menu-drawer__bottom">
-          <a href="#" class="menu-drawer__bottom-call" title="Замовити дзвінок">Замовити Дзвінок</a>
+          <button class="menu-drawer__bottom-call" aria-label="Замовити дзвінок" aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" data-label="Меню">Замовити дзвінок</button>
+
           <div class="menu-drawer__bottom-links">
             
               <a href="tel:{{settings.global_phone_1 }}">
