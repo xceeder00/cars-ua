@@ -714,6 +714,10 @@ body {
 }
 .menu-drawer__menu-item-text {
   font-size: 20px !important;
+  color: #E8EBE8;
+}
+menu-drawer__menu-item{
+    color: #E8EBE8!important;
 }
 
 .menu-drawer__featured-content-list-item--product {
