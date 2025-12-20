@@ -33,7 +33,7 @@
             "image": "shopify://shop_images/Hero_Slide_2_1.webp",
             "mobile_image": "shopify://shop_images/image_3_318541fc-df2c-498f-9c6e-a81f55afb414.png",
             "button_text": "Вибрати авто",
-            "button_link": "#",
+            "button_link": "shopify://collections/stock",
             "label": "Наявність торгу",
             "form_label": "hero-banner"
           }
@@ -46,7 +46,7 @@
             "image": "shopify://shop_images/Hero_Slide_3_1.webp",
             "mobile_image": "shopify://shop_images/image_4_a540e1dc-31e1-4b2c-97d3-f7e06bedf9bd.png",
             "button_text": "Дізнатись більше",
-            "button_link": "#",
+            "button_link": "/pages/services#dealer",
             "label": "",
             "form_label": "hero-banner"
           }
