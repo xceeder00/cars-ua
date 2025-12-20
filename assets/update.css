@@ -702,6 +702,11 @@ body {
 }
 .menu-drawer__list-item--flat {
   margin-block-end: 0 !important;
+ border-block-end: 1px solid rgba(232, 235, 232, 0.06);
+
+}
+.menu-drawer__list-item--flat::last-child{
+  border-block-end: 0;
 }
 .menu-drawer__menu-item {
   font-size: 20px;
