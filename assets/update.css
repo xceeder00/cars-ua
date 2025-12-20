@@ -812,3 +812,6 @@ gap: 8px;
   top: 20px;
   width: 94px;
 }
+.menu-drawer__menu-item{
+  padding-block: 16px!important;
+}
