@@ -22,8 +22,14 @@
                             <p class="hero__slide-text">{{ block.settings.text }}</p>
                         {% endif %}
                         <div class="hero__slide-buttons">
-                            {% if block.settings.button_text != blank and block.settings.button_link != blank %}
-                            <button class="hero__slide-button btn btn--primary" aria-label="Замовити дзвінок" aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" data-label="{{ block.settings.form_label }}">{{ block.settings.button_text }}</button>
+                            {% if block.settings.button_text != blank %}
+                                {% if block.settings.button_link != blank %}
+                                    <a href="{{ block.settings.button_link }}" class="hero__slide-button btn btn--primary" >{{ block.settings.button_text }}</a>
+
+                                {% else %}
+                                    <button class="hero__slide-button btn btn--primary" aria-label="Замовити дзвінок" aria-haspopup="dialog"  on:click="#form-modal-common/showDialog" data-label="{{ block.settings.form_label }}">{{ block.settings.button_text }}</button>
+
+                                {% endif %}
                             {% endif %}
                             {% if block.settings.label != blank %}
                                 <div class="hero__slide-label">
