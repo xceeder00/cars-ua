@@ -766,7 +766,7 @@ font-weight: 500;
 line-height: 140%; /* 19.6px */
 letter-spacing: 0.28px;
 width: 100%;
-
+background: transparent;
 }
 .menu-drawer__bottom-links{
   display: grid; 
