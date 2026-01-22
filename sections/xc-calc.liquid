@@ -635,15 +635,19 @@
 
   function portCalculation(port) {
     const portMap = {
+      'NJ':800,
+      'TX':1000,
+      'GA':800,
+      'CA': 1500, 
       'HOU': 1000,
       'LA': 1575,
       'SEATLE': 1875,
       'NY': 850,
       'CHI': 1000,
-      'CA': 1500,
+      
       'SAV': 850,
       'MIA': 900,
-      'NJ':800, 
+      
       'MON-CA': 1300
     };
     const price = portMap[port] || 0;
