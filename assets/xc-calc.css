@@ -18,12 +18,12 @@
   border-radius: 24px;
   background: #E8E9E8;
   padding: 80px;
-  position: sticky;
-  top: 100px;
+  /* position: sticky;
+  top: 100px; */
 }
 @media (max-width: 999px) {
   .calc__left {
-    position: static;
+    /* position: static; */
     padding: 32px;
     border-radius: 12px;
   }
