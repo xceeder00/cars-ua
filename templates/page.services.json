@@ -108,26 +108,40 @@
         "usp_CkpFJ7": {
           "type": "usp",
           "settings": {
-            "text": "Прямі поставки з офіційних аукціонів"
+            "text": "Усі порти США, аукціони Copart, IAAI, Happy Car"
           }
         },
         "usp_Wrzw8a": {
           "type": "usp",
           "settings": {
-            "text": "Повне документальне супроводження"
+            "text": "SWIFT – 1%"
           }
         },
         "usp_bQwjrh": {
           "type": "usp",
           "settings": {
-            "text": "Контроль якості та походження авто"
+            "text": "США, Корея,Китай,ЄС,Канада"
+          }
+        },
+        "usp_YURyTy": {
+          "type": "usp",
+          "settings": {
+            "text": "Аукціонні збори по Лінія А"
+          }
+        },
+        "usp_Fg4rdP": {
+          "type": "usp",
+          "settings": {
+            "text": "Можливість продажу автомобіля в дорозі"
           }
         }
       },
       "block_order": [
         "usp_CkpFJ7",
         "usp_Wrzw8a",
-        "usp_bQwjrh"
+        "usp_bQwjrh",
+        "usp_YURyTy",
+        "usp_Fg4rdP"
       ],
       "name": "XC Info",
       "settings": {
