@@ -219,6 +219,17 @@
             <div class="facets__year-range-wrapper">
               <div class="facets__year-range-slider-container">
                 <div class="facets__year-range-track">
+                  {% liquid
+                    assign year_range = max_year | minus: min_year
+                    if year_range > 0
+                      assign min_percent = selected_min_year | minus: min_year | times: 100 | divided_by: year_range
+                      assign max_percent = selected_max_year | minus: min_year | times: 100 | divided_by: year_range
+                      assign fill_width = max_percent | minus: min_percent
+                    else
+                      assign min_percent = 0
+                      assign fill_width = 100
+                    endif
+                  %}
                   <div 
                     class="facets__year-range-fill" 
                     id="year-range-fill-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
@@ -226,6 +237,7 @@
                     data-max-year="{{ max_year }}"
                     data-selected-min="{{ selected_min_year }}"
                     data-selected-max="{{ selected_max_year }}"
+                    style="left: {{ min_percent }}%; width: {{ fill_width }}%;"
                   ></div>
                   <input
                     type="range"
@@ -1001,8 +1013,19 @@
 {% if is_year_range %}
   <script>
     (function() {
+      const filterId = '{{ sectionId }}-{{ filter.param_name | escape | replace: ".", "-" }}';
+      let initialized = false;
+      let observer = null;
+      
       function initYearRangeSlider() {
-        const filterId = '{{ sectionId }}-{{ filter.param_name | escape | replace: ".", "-" }}';
+        // Prevent multiple initializations
+        if (initialized) {
+          const existingFill = document.getElementById('year-range-fill-' + filterId);
+          if (existingFill && existingFill.style.width && existingFill.style.width !== '0%') {
+            return;
+          }
+        }
+        
         const minInput = document.getElementById('year-range-min-' + filterId);
         const maxInput = document.getElementById('year-range-max-' + filterId);
         const fillElement = document.getElementById('year-range-fill-' + filterId);
@@ -1022,6 +1045,8 @@
           }
           return;
         }
+        
+        initialized = true;
 
         // Get initial values from inputs or data attributes
         let minYear = parseInt(minInput.min);
@@ -1138,6 +1163,55 @@
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initYearRangeSlider);
       }
+      
+      // Listen for filter update events to re-initialize after section updates
+      document.addEventListener('filter:update', function() {
+        initialized = false;
+        setTimeout(initYearRangeSlider, 50);
+        setTimeout(initYearRangeSlider, 200);
+        setTimeout(initYearRangeSlider, 500);
+      });
+      
+      // Use MutationObserver to watch for section updates
+      const sectionElement = document.getElementById('shopify-section-{{ sectionId }}');
+      if (sectionElement) {
+        observer = new MutationObserver(function(mutations) {
+          let shouldReinit = false;
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+              // Check if our slider elements were added
+              const addedFill = Array.from(mutation.addedNodes).some(function(node) {
+                return node.nodeType === 1 && (
+                  node.id === 'year-range-fill-' + filterId ||
+                  node.querySelector && node.querySelector('#year-range-fill-' + filterId)
+                );
+              });
+              if (addedFill) {
+                shouldReinit = true;
+              }
+            }
+          });
+          
+          if (shouldReinit) {
+            initialized = false;
+            setTimeout(initYearRangeSlider, 50);
+            setTimeout(initYearRangeSlider, 200);
+          }
+        });
+        
+        observer.observe(sectionElement, {
+          childList: true,
+          subtree: true
+        });
+      }
+      
+      // Also watch for view transition end (if using view transitions)
+      document.addEventListener('transitionend', function(e) {
+        if (e.target.classList && e.target.classList.contains('product-grid')) {
+          initialized = false;
+          setTimeout(initYearRangeSlider, 100);
+        }
+      });
     })();
   </script>
 {% endif %}
