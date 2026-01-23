@@ -1014,18 +1014,10 @@
   <script>
     (function() {
       const filterId = '{{ sectionId }}-{{ filter.param_name | escape | replace: ".", "-" }}';
-      let initialized = false;
-      let observer = null;
+      let sliderInitialized = false;
+      let eventListenersAttached = false;
       
-      function initYearRangeSlider() {
-        // Prevent multiple initializations
-        if (initialized) {
-          const existingFill = document.getElementById('year-range-fill-' + filterId);
-          if (existingFill && existingFill.style.width && existingFill.style.width !== '0%') {
-            return;
-          }
-        }
-        
+      function initYearRangeSlider(force) {
         const minInput = document.getElementById('year-range-min-' + filterId);
         const maxInput = document.getElementById('year-range-max-' + filterId);
         const fillElement = document.getElementById('year-range-fill-' + filterId);
@@ -1036,17 +1028,22 @@
         const facetInputsComponent = document.getElementById('facet-inputs-component-' + filterId);
 
         if (!minInput || !maxInput || !fillElement || !checkboxes.length) {
-          // Retry if elements aren't ready yet
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initYearRangeSlider);
-          } else {
-            // Try again after a short delay
-            setTimeout(initYearRangeSlider, 100);
-          }
-          return;
+          return false;
         }
         
-        initialized = true;
+        // Always re-initialize if force is true (after section updates)
+        if (!force && eventListenersAttached) {
+          // Check if fill is actually visible
+          const currentFill = document.getElementById('year-range-fill-' + filterId);
+          if (currentFill && currentFill.style.width && 
+              currentFill.style.width !== '0%' && 
+              currentFill.style.width !== '0px' && 
+              currentFill.style.width !== '') {
+            return true;
+          }
+        }
+        
+        eventListenersAttached = true;
 
         // Get initial values from inputs or data attributes
         let minYear = parseInt(minInput.min);
@@ -1135,6 +1132,7 @@
           updateCheckboxes();
         }
 
+        // Attach event listeners (using once: false to allow multiple attachments)
         minInput.addEventListener('input', handleMinInput);
         minInput.addEventListener('change', handleMinInput);
         maxInput.addEventListener('input', handleMaxInput);
@@ -1152,50 +1150,103 @@
           });
         });
         
-        // Also update on window load in case of late rendering
-        window.addEventListener('load', function() {
-          updateFill();
-        });
-      }
-
-      // Initialize immediately and also when DOM is ready
-      initYearRangeSlider();
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initYearRangeSlider);
+        // Set up continuous monitoring to ensure fill stays visible
+        const monitorFill = function() {
+          const currentFill = document.getElementById('year-range-fill-' + filterId);
+          const currentMin = document.getElementById('year-range-min-' + filterId);
+          const currentMax = document.getElementById('year-range-max-' + filterId);
+          
+          if (currentFill && currentMin && currentMax) {
+            const minVal = parseInt(currentMin.value);
+            const maxVal = parseInt(currentMax.value);
+            const minYear = parseInt(currentMin.min);
+            const maxYear = parseInt(currentMin.max);
+            const range = maxYear - minYear;
+            
+            if (range > 0) {
+              const minPercent = ((minVal - minYear) / range) * 100;
+              const maxPercent = ((maxVal - minYear) / range) * 100;
+              const fillWidth = Math.max(0, maxPercent - minPercent);
+              
+              // Always ensure fill is visible - check and fix if needed
+              const currentLeft = currentFill.style.left;
+              const currentWidth = currentFill.style.width;
+              
+              if (!currentLeft || !currentWidth || 
+                  currentWidth === '0%' || currentWidth === '0px' || 
+                  currentWidth === '' || parseFloat(currentWidth) === 0) {
+                currentFill.style.left = minPercent + '%';
+                currentFill.style.width = fillWidth + '%';
+                currentFill.style.display = 'block';
+                currentFill.style.opacity = '1';
+                currentFill.style.visibility = 'visible';
+              }
+            }
+          }
+        };
+        
+        // Monitor every 200ms
+        const monitorInterval = setInterval(monitorFill, 200);
+        
+        // Clear interval when elements are removed
+        const checkElements = setInterval(function() {
+          const fill = document.getElementById('year-range-fill-' + filterId);
+          if (!fill) {
+            clearInterval(monitorInterval);
+            clearInterval(checkElements);
+          }
+        }, 1000);
+        
+        return true;
       }
       
-      // Listen for filter update events to re-initialize after section updates
+      // Global function to reinitialize slider after section updates
+      window['initYearRangeSlider_' + filterId] = function() {
+        eventListenersAttached = false;
+        sliderInitialized = false;
+        // Try multiple times with delays
+        setTimeout(function() { initYearRangeSlider(true); }, 10);
+        setTimeout(function() { initYearRangeSlider(true); }, 100);
+        setTimeout(function() { initYearRangeSlider(true); }, 300);
+        setTimeout(function() { initYearRangeSlider(true); }, 600);
+      };
+
+      // Initialize immediately
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          initYearRangeSlider();
+        });
+      } else {
+        initYearRangeSlider();
+      }
+      
+      // Listen for filter update events
       document.addEventListener('filter:update', function() {
-        initialized = false;
-        setTimeout(initYearRangeSlider, 50);
-        setTimeout(initYearRangeSlider, 200);
-        setTimeout(initYearRangeSlider, 500);
+        window['initYearRangeSlider_' + filterId]();
       });
       
       // Use MutationObserver to watch for section updates
       const sectionElement = document.getElementById('shopify-section-{{ sectionId }}');
       if (sectionElement) {
-        observer = new MutationObserver(function(mutations) {
+        const observer = new MutationObserver(function(mutations) {
           let shouldReinit = false;
           mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-              // Check if our slider elements were added
-              const addedFill = Array.from(mutation.addedNodes).some(function(node) {
-                return node.nodeType === 1 && (
-                  node.id === 'year-range-fill-' + filterId ||
-                  node.querySelector && node.querySelector('#year-range-fill-' + filterId)
-                );
-              });
-              if (addedFill) {
-                shouldReinit = true;
+            if (mutation.type === 'childList') {
+              for (let i = 0; i < mutation.addedNodes.length; i++) {
+                const node = mutation.addedNodes[i];
+                if (node.nodeType === 1) {
+                  if (node.id === 'year-range-fill-' + filterId || 
+                      node.querySelector && node.querySelector('#year-range-fill-' + filterId)) {
+                    shouldReinit = true;
+                    break;
+                  }
+                }
               }
             }
           });
           
           if (shouldReinit) {
-            initialized = false;
-            setTimeout(initYearRangeSlider, 50);
-            setTimeout(initYearRangeSlider, 200);
+            window['initYearRangeSlider_' + filterId]();
           }
         });
         
@@ -1205,13 +1256,28 @@
         });
       }
       
-      // Also watch for view transition end (if using view transitions)
+      // Watch for view transition end
       document.addEventListener('transitionend', function(e) {
-        if (e.target.classList && e.target.classList.contains('product-grid')) {
-          initialized = false;
-          setTimeout(initYearRangeSlider, 100);
+        if (e.target && e.target.classList && e.target.classList.contains('product-grid')) {
+          window['initYearRangeSlider_' + filterId]();
         }
       });
+      
+      // Also watch for any DOMContentLoaded events on the section
+      if (sectionElement) {
+        const sectionObserver = new MutationObserver(function() {
+          const fillEl = document.getElementById('year-range-fill-' + filterId);
+          if (fillEl && (!fillEl.style.width || fillEl.style.width === '0px' || fillEl.style.width === '')) {
+            window['initYearRangeSlider_' + filterId]();
+          }
+        });
+        
+        sectionObserver.observe(sectionElement, {
+          attributes: true,
+          attributeFilter: ['style'],
+          subtree: true
+        });
+      }
     })();
   </script>
 {% endif %}
