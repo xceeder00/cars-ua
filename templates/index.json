@@ -34,7 +34,7 @@
             "mobile_image": "shopify://shop_images/image_3_318541fc-df2c-498f-9c6e-a81f55afb414.png",
             "button_text": "Вибрати авто",
             "button_link": "shopify://collections/stock",
-            "label": "Наявність торгу",
+            "label": "",
             "form_label": "hero-banner"
           }
         },
