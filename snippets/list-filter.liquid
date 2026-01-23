@@ -23,6 +23,39 @@
   if filter.presentation == 'image'
     assign is_image = true
   endif
+
+  assign is_year_range = false
+  if filter.param_name == 'filter.p.m.custom.year'
+    assign is_year_range = true
+    assign min_year = 9999
+    assign max_year = 0
+    for value in filter.values
+      assign year_val = value.value | plus: 0
+      if year_val < min_year
+        assign min_year = year_val
+      endif
+      if year_val > max_year
+        assign max_year = year_val
+      endif
+    endfor
+    assign selected_min_year = min_year
+    assign selected_max_year = max_year
+    if filter.active_values.size > 0
+      assign active_min = 9999
+      assign active_max = 0
+      for active_value in filter.active_values
+        assign year_val = active_value.value | plus: 0
+        if year_val < active_min
+          assign active_min = year_val
+        endif
+        if year_val > active_max
+          assign active_max = year_val
+        endif
+      endfor
+      assign selected_min_year = active_min
+      assign selected_max_year = active_max
+    endif
+  endif
 %}
 
 <accordion-custom
@@ -109,6 +142,9 @@
       >
         {% liquid
           assign has_active_values = false
+          if is_year_range and filter.active_values.size > 0
+            assign has_active_values = true
+          endif
           assign inital_visible_values = 10
           if is_swatch
             assign inital_visible_values = 22
@@ -178,123 +214,125 @@
               endif
             endif
           %}
-          <ul
-            id="filters-list-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
-            class="facets__inputs-list{% if should_use_pills %} facets__inputs-list--grid{% endif %} list-unstyled{% if is_swatch %} facets__inputs-list--swatches{% if show_swatch_label %} facets__inputs-list--swatches-grid{% endif %}{% endif %}{% if is_image %} facets__inputs-list--images{% endif %}"
-            {% if is_swatch %}
-              style="--swatch-columns: {{ swatch_columns }};"
-            {% endif %}
-            {% if is_image %}
-              style="--image-columns: {{ image_columns }};"
-            {% endif %}
-            name="{{ filter.label }}"
-          >
-            {%- for value in filter.values -%}
-              {% liquid
-                assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index | replace: '.', '-' | append: '-' | append: filter_style | append: '-' | append: in_drawer
-                assign is_disabled = false
-                if value.count == 0 and value.active == false
-                  assign is_disabled = true
-                endif
-                assign hidden_class = null
-                if forloop.index > inital_visible_values and render_show_more
-                  assign hidden_class = 'hidden'
-                  if filter_style == 'horizontal'
-                    assign hidden_class = 'mobile:hidden'
-                  endif
-                endif
-              %}
-              <li
-                data-skip-node-update="true"
-                class="facets__inputs-list-item{% if hidden_class %} {{ hidden_class }}{% endif %}"
-                {% if hidden_class %}
-                  ref="showMoreItems[]"
-                {% endif %}
-              >
-                {% if value.active %}
-                  {% assign has_active_values = true %}
-                {% endif %}
-                {% if is_image %}
-                  <fieldset
-                    class="variant-option variant-option--buttons variant-option--images"
-                    aria-label="{{ value.label }}"
-                    on:keydown="#facet-inputs-component-{{ filter.param_name | escape | replace: '.', '-' }}/handleKeyDown"
+          {% if is_year_range %}
+            {%- comment -%} Year Range Slider {%- endcomment -%}
+            <div class="facets__year-range-wrapper">
+              <div class="facets__year-range-slider-container">
+                <div class="facets__year-range-track">
+                  <div 
+                    class="facets__year-range-fill" 
+                    id="year-range-fill-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
+                    data-min-year="{{ min_year }}"
+                    data-max-year="{{ max_year }}"
+                    data-selected-min="{{ selected_min_year }}"
+                    data-selected-max="{{ selected_max_year }}"
+                  ></div>
+                  <input
+                    type="range"
+                    class="facets__year-range-input facets__year-range-input--min"
+                    min="{{ min_year }}"
+                    max="{{ max_year }}"
+                    value="{{ selected_min_year }}"
+                    step="1"
+                    id="year-range-min-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
+                    aria-label="Мінімальний рік"
                   >
-                    <div class="facets__image-wrapper">
-                      {% if value.image %}
-                        {{ value.image | image_url: width: 300 | image_tag: alt: value.alt }}
-                      {% endif %}
-                      {% if is_disabled %}
-                        <svg
-                          aria-hidden="true"
-                          width="100%"
-                          height="100%"
-                          viewBox="0 0 100 100"
-                          preserveAspectRatio="none"
-                        >
-                          <line x1="100" y1="0" x2="0" y2="100" vector-effect="non-scaling-stroke" />
-                        </svg>
-                      {% endif %}
-                    </div>
+                  <input
+                    type="range"
+                    class="facets__year-range-input facets__year-range-input--max"
+                    min="{{ min_year }}"
+                    max="{{ max_year }}"
+                    value="{{ selected_max_year }}"
+                    step="1"
+                    id="year-range-max-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
+                    aria-label="Максимальний рік"
+                  >
+                </div>
+                <div class="facets__year-range-labels">
+                  <span class="facets__year-range-label facets__year-range-label--min" id="year-label-min-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}">{{ selected_min_year }}</span>
+                  <span class="facets__year-range-label facets__year-range-label--max" id="year-label-max-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}">{{ selected_max_year }}</span>
+                </div>
+              </div>
+              {%- comment -%} Hidden checkboxes for all years - will be updated by slider {%- endcomment -%}
+              <ul
+                id="filters-list-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
+                class="facets__inputs-list list-unstyled facets__inputs-list--year-range"
+                name="{{ filter.label }}"
+                style="display: none;"
+              >
+                {%- for value in filter.values -%}
+                  {% liquid
+                    assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index | replace: '.', '-' | append: '-' | append: filter_style | append: '-' | append: in_drawer
+                    assign year_value = value.value | plus: 0
+                    assign is_in_range = false
+                    if year_value >= selected_min_year and year_value <= selected_max_year
+                      assign is_in_range = true
+                    endif
+                  %}
+                  <li data-skip-node-update="true" class="facets__inputs-list-item">
                     <input
-                      tabindex="0"
                       type="checkbox"
                       name="{{ value.param_name }}"
                       value="{{ value.value }}"
-                      aria-label="{{ value.label }}"
                       id="{{ input_id }}"
-                      {% if value.active %}
+                      {% if is_in_range %}
                         checked
                       {% endif %}
-                      {% if is_disabled %}
-                        disabled
-                      {% endif %}
-                      {% if autofocus %}
-                        autofocus
-                      {% endif %}
                       ref="facetInputs[]"
+                      data-year-value="{{ year_value }}"
                     >
-                    <label
-                      class="facets__image-label"
-                      for="{{ input_id }}"
-                      tabindex="-1"
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {% else %}
+            {%- comment -%} Regular checkbox list {%- endcomment -%}
+            <ul
+              id="filters-list-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
+              class="facets__inputs-list{% if should_use_pills %} facets__inputs-list--grid{% endif %} list-unstyled{% if is_swatch %} facets__inputs-list--swatches{% if show_swatch_label %} facets__inputs-list--swatches-grid{% endif %}{% endif %}{% if is_image %} facets__inputs-list--images{% endif %}"
+              {% if is_swatch %}
+                style="--swatch-columns: {{ swatch_columns }};"
+              {% endif %}
+              {% if is_image %}
+                style="--image-columns: {{ image_columns }};"
+              {% endif %}
+              name="{{ filter.label }}"
+            >
+              {%- for value in filter.values -%}
+                {% liquid
+                  assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index | replace: '.', '-' | append: '-' | append: filter_style | append: '-' | append: in_drawer
+                  assign is_disabled = false
+                  if value.count == 0 and value.active == false
+                    assign is_disabled = true
+                  endif
+                  assign hidden_class = null
+                  if forloop.index > inital_visible_values and render_show_more
+                    assign hidden_class = 'hidden'
+                    if filter_style == 'horizontal'
+                      assign hidden_class = 'mobile:hidden'
+                    endif
+                  endif
+                %}
+                <li
+                  data-skip-node-update="true"
+                  class="facets__inputs-list-item{% if hidden_class %} {{ hidden_class }}{% endif %}"
+                  {% if hidden_class %}
+                    ref="showMoreItems[]"
+                  {% endif %}
+                >
+                  {% if value.active %}
+                    {% assign has_active_values = true %}
+                  {% endif %}
+                  {% if is_image %}
+                    <fieldset
+                      class="variant-option variant-option--buttons variant-option--images"
+                      aria-label="{{ value.label }}"
+                      on:keydown="#facet-inputs-component-{{ filter.param_name | escape | replace: '.', '-' }}/handleKeyDown"
                     >
-                      {{- value.label }}
-                    </label>
-                  </fieldset>
-                {% elsif is_swatch %}
-                  <fieldset
-                    class="variant-option variant-option--buttons variant-option--swatches {% if is_disabled %}variant-option--swatches-disabled{% endif %}"
-                    aria-label="{{ value.label }}"
-                    on:keydown="#facet-inputs-component-{{ filter.param_name | escape | replace: '.', '-' }}/handleKeyDown"
-                  >
-                    <label
-                      class="variant-option__button-label variant-option__button-label--has-swatch swatch-rounded"
-                      on:pointerenter="/prefetchPage"
-                      on:pointerleave="/cancelPrefetchPage"
-                    >
-                      <div
-                        class="variant-option__swatch-wrapper"
-                      >
-                        <input
-                          tabindex="0"
-                          type="checkbox"
-                          name="{{ value.param_name }}"
-                          value="{{ value.value }}"
-                          aria-label="{{ value.label }}"
-                          id="{{ input_id }}"
-                          {% if value.active %}
-                            checked
-                          {% endif %}
-                          {% if is_disabled %}
-                            disabled
-                          {% endif %}
-                          {% if autofocus %}
-                            autofocus
-                          {% endif %}
-                          ref="facetInputs[]"
-                        >
-                        {% render 'swatch', swatch: value.swatch, mode: 'filter' %}
+                      <div class="facets__image-wrapper">
+                        {% if value.image %}
+                          {{ value.image | image_url: width: 300 | image_tag: alt: value.alt }}
+                        {% endif %}
                         {% if is_disabled %}
                           <svg
                             aria-hidden="true"
@@ -307,28 +345,13 @@
                           </svg>
                         {% endif %}
                       </div>
-                      <label
-                        class="{% if show_swatch_label %}facets__swatch-label{% else %}hidden{% endif %}"
-                        for="{{ input_id }}"
-                        tabindex="-1"
-                      >
-                        {{- value.label }}
-                      </label>
-                    </label>
-                  </fieldset>
-                {% else %}
-                  {% if should_use_pills %}
-                    <div
-                      class="facets__pill-wrapper"
-                      on:keydown="#facet-inputs-component-{{ filter.param_name | escape | replace: '.', '-' }}/handleKeyDown"
-                    >
                       <input
+                        tabindex="0"
                         type="checkbox"
                         name="{{ value.param_name }}"
                         value="{{ value.value }}"
+                        aria-label="{{ value.label }}"
                         id="{{ input_id }}"
-                        class="facets__pill-input"
-                        data-label="{{ value.label }}"
                         {% if value.active %}
                           checked
                         {% endif %}
@@ -339,44 +362,131 @@
                           autofocus
                         {% endif %}
                         ref="facetInputs[]"
-                        tabindex="-1"
                       >
                       <label
-                        class="facets__pill-label"
+                        class="facets__image-label"
                         for="{{ input_id }}"
-                        tabindex="0"
+                        tabindex="-1"
                       >
                         {{- value.label }}
-                        {% if is_disabled %}
-                          <svg
-                            aria-hidden="true"
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 100 100"
-                            preserveAspectRatio="none"
-                          >
-                            <line x1="100" y1="0" x2="0" y2="100" vector-effect="non-scaling-stroke" />
-                          </svg>
-                        {% endif %}
                       </label>
-                    </div>
+                    </fieldset>
+                  {% elsif is_swatch %}
+                    <fieldset
+                      class="variant-option variant-option--buttons variant-option--swatches {% if is_disabled %}variant-option--swatches-disabled{% endif %}"
+                      aria-label="{{ value.label }}"
+                      on:keydown="#facet-inputs-component-{{ filter.param_name | escape | replace: '.', '-' }}/handleKeyDown"
+                    >
+                      <label
+                        class="variant-option__button-label variant-option__button-label--has-swatch swatch-rounded"
+                        on:pointerenter="/prefetchPage"
+                        on:pointerleave="/cancelPrefetchPage"
+                      >
+                        <div
+                          class="variant-option__swatch-wrapper"
+                        >
+                          <input
+                            tabindex="0"
+                            type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            aria-label="{{ value.label }}"
+                            id="{{ input_id }}"
+                            {% if value.active %}
+                              checked
+                            {% endif %}
+                            {% if is_disabled %}
+                              disabled
+                            {% endif %}
+                            {% if autofocus %}
+                              autofocus
+                            {% endif %}
+                            ref="facetInputs[]"
+                          >
+                          {% render 'swatch', swatch: value.swatch, mode: 'filter' %}
+                          {% if is_disabled %}
+                            <svg
+                              aria-hidden="true"
+                              width="100%"
+                              height="100%"
+                              viewBox="0 0 100 100"
+                              preserveAspectRatio="none"
+                            >
+                              <line x1="100" y1="0" x2="0" y2="100" vector-effect="non-scaling-stroke" />
+                            </svg>
+                          {% endif %}
+                        </div>
+                        <label
+                          class="{% if show_swatch_label %}facets__swatch-label{% else %}hidden{% endif %}"
+                          for="{{ input_id }}"
+                          tabindex="-1"
+                        >
+                          {{- value.label }}
+                        </label>
+                      </label>
+                    </fieldset>
                   {% else %}
-                    {% render 'checkbox',
-                      name: value.param_name,
-                      value: value.value,
-                      label: value.label,
-                      checked: value.active,
-                      id: input_id,
-                      disabled: is_disabled,
-                      inputRef: 'facetInputs[]',
-                      events: 'on:pointerenter="/prefetchPage" on:pointerleave="/cancelPrefetchPage"',
-                      autofocus: autofocus
-                    %}
+                    {% if should_use_pills %}
+                      <div
+                        class="facets__pill-wrapper"
+                        on:keydown="#facet-inputs-component-{{ filter.param_name | escape | replace: '.', '-' }}/handleKeyDown"
+                      >
+                        <input
+                          type="checkbox"
+                          name="{{ value.param_name }}"
+                          value="{{ value.value }}"
+                          id="{{ input_id }}"
+                          class="facets__pill-input"
+                          data-label="{{ value.label }}"
+                          {% if value.active %}
+                            checked
+                          {% endif %}
+                          {% if is_disabled %}
+                            disabled
+                          {% endif %}
+                          {% if autofocus %}
+                            autofocus
+                          {% endif %}
+                          ref="facetInputs[]"
+                          tabindex="-1"
+                        >
+                        <label
+                          class="facets__pill-label"
+                          for="{{ input_id }}"
+                          tabindex="0"
+                        >
+                          {{- value.label }}
+                          {% if is_disabled %}
+                            <svg
+                              aria-hidden="true"
+                              width="100%"
+                              height="100%"
+                              viewBox="0 0 100 100"
+                              preserveAspectRatio="none"
+                            >
+                              <line x1="100" y1="0" x2="0" y2="100" vector-effect="non-scaling-stroke" />
+                            </svg>
+                          {% endif %}
+                        </label>
+                      </div>
+                    {% else %}
+                      {% render 'checkbox',
+                        name: value.param_name,
+                        value: value.value,
+                        label: value.label,
+                        checked: value.active,
+                        id: input_id,
+                        disabled: is_disabled,
+                        inputRef: 'facetInputs[]',
+                        events: 'on:pointerenter="/prefetchPage" on:pointerleave="/cancelPrefetchPage"',
+                        autofocus: autofocus
+                      %}
+                    {% endif %}
                   {% endif %}
-                {% endif %}
-              </li>
-            {%- endfor -%}
-          </ul>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {% endif %}
         </div>
         {% if render_show_more %}
           <button
@@ -780,4 +890,254 @@
   .variant-option--images:not(:has(input:disabled)) .facets__image-label:hover {
     font-weight: 500;
   }
+
+  /* Year Range Slider Styles */
+  .facets__year-range-wrapper {
+    padding: var(--padding-sm) 0;
+  }
+
+  .facets__year-range-slider-container {
+    position: relative;
+    padding: var(--padding-md) 0;
+  }
+
+  .facets__year-range-track {
+    position: relative;
+    height: 6px;
+    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    border-radius: 3px;
+    margin: var(--padding-md) 0;
+  }
+
+  .facets__year-range-fill {
+    position: absolute;
+    height: 100%;
+    background-color: rgb(var(--color-foreground-rgb));
+    border-radius: 3px;
+    transition: left 0.1s ease, width 0.1s ease;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .facets__year-range-input {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    margin: 0;
+    transform: translateY(-50%);
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .facets__year-range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgb(var(--color-foreground-rgb));
+    border: 2px solid rgb(var(--color-background-rgb));
+    cursor: pointer;
+    pointer-events: all;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .facets__year-range-input::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgb(var(--color-foreground-rgb));
+    border: 2px solid rgb(var(--color-background-rgb));
+    cursor: pointer;
+    pointer-events: all;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .facets__year-range-input:focus-visible::-webkit-slider-thumb {
+    outline: var(--focus-outline-width) solid currentcolor;
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  .facets__year-range-input:focus-visible::-moz-range-thumb {
+    outline: var(--focus-outline-width) solid currentcolor;
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  .facets__year-range-input:hover::-webkit-slider-thumb {
+    transform: scale(1.1);
+  }
+
+  .facets__year-range-input:hover::-moz-range-thumb {
+    transform: scale(1.1);
+  }
+
+  .facets__year-range-input--max {
+    z-index: 3;
+  }
+
+  .facets__year-range-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--padding-sm);
+  }
+
+  .facets__year-range-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(var(--color-foreground-rgb));
+  }
 {% endstylesheet %}
+
+{% if is_year_range %}
+  <script>
+    (function() {
+      function initYearRangeSlider() {
+        const filterId = '{{ sectionId }}-{{ filter.param_name | escape | replace: ".", "-" }}';
+        const minInput = document.getElementById('year-range-min-' + filterId);
+        const maxInput = document.getElementById('year-range-max-' + filterId);
+        const fillElement = document.getElementById('year-range-fill-' + filterId);
+        const minLabel = document.getElementById('year-label-min-' + filterId);
+        const maxLabel = document.getElementById('year-label-max-' + filterId);
+        const checkboxesContainer = document.getElementById('filters-list-' + filterId);
+        const checkboxes = checkboxesContainer ? checkboxesContainer.querySelectorAll('input[type="checkbox"]') : [];
+        const facetInputsComponent = document.getElementById('facet-inputs-component-' + filterId);
+
+        if (!minInput || !maxInput || !fillElement || !checkboxes.length) {
+          // Retry if elements aren't ready yet
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initYearRangeSlider);
+          } else {
+            // Try again after a short delay
+            setTimeout(initYearRangeSlider, 100);
+          }
+          return;
+        }
+
+        // Get initial values from inputs or data attributes
+        let minYear = parseInt(minInput.min);
+        let maxYear = parseInt(minInput.max);
+        
+        // Fallback to data attributes if available
+        if (fillElement.dataset.minYear) {
+          minYear = parseInt(fillElement.dataset.minYear);
+        }
+        if (fillElement.dataset.maxYear) {
+          maxYear = parseInt(fillElement.dataset.maxYear);
+        }
+        
+        const range = maxYear - minYear;
+
+        function updateFill() {
+          const minVal = parseInt(minInput.value);
+          const maxVal = parseInt(maxInput.value);
+          
+          if (range === 0) {
+            // If range is 0, show full width
+            fillElement.style.left = '0%';
+            fillElement.style.width = '100%';
+            return;
+          }
+          
+          const minPercent = ((minVal - minYear) / range) * 100;
+          const maxPercent = ((maxVal - minYear) / range) * 100;
+          const fillWidth = Math.max(0, maxPercent - minPercent);
+          
+          // Ensure fill is always visible and properly positioned
+          fillElement.style.left = minPercent + '%';
+          fillElement.style.width = fillWidth + '%';
+          fillElement.style.display = 'block';
+          fillElement.style.opacity = '1';
+          fillElement.style.visibility = 'visible';
+        }
+
+        function updateLabels() {
+          if (minLabel) minLabel.textContent = minInput.value;
+          if (maxLabel) maxLabel.textContent = maxInput.value;
+        }
+
+        function updateCheckboxes() {
+          const minVal = parseInt(minInput.value);
+          const maxVal = parseInt(maxInput.value);
+
+          checkboxes.forEach(function(checkbox) {
+            const yearValue = parseInt(checkbox.getAttribute('data-year-value'));
+            if (yearValue >= minVal && yearValue <= maxVal) {
+              checkbox.checked = true;
+            } else {
+              checkbox.checked = false;
+            }
+          });
+
+          // Trigger filter update
+          if (facetInputsComponent && typeof facetInputsComponent.updateFilters === 'function') {
+            facetInputsComponent.updateFilters();
+          } else if (facetInputsComponent) {
+            // Dispatch change event to trigger updateFilters via the on:change listener
+            const event = new Event('change', { bubbles: true });
+            facetInputsComponent.dispatchEvent(event);
+          }
+        }
+
+        function handleMinInput() {
+          const minVal = parseInt(minInput.value);
+          const maxVal = parseInt(maxInput.value);
+          if (minVal > maxVal) {
+            minInput.value = maxVal;
+          }
+          updateFill();
+          updateLabels();
+          updateCheckboxes();
+        }
+
+        function handleMaxInput() {
+          const minVal = parseInt(minInput.value);
+          const maxVal = parseInt(maxInput.value);
+          if (maxVal < minVal) {
+            maxInput.value = minVal;
+          }
+          updateFill();
+          updateLabels();
+          updateCheckboxes();
+        }
+
+        minInput.addEventListener('input', handleMinInput);
+        minInput.addEventListener('change', handleMinInput);
+        maxInput.addEventListener('input', handleMaxInput);
+        maxInput.addEventListener('change', handleMaxInput);
+
+        // Initialize immediately and ensure fill is visible
+        updateFill();
+        updateLabels();
+        
+        // Force update multiple times to ensure visibility
+        requestAnimationFrame(function() {
+          updateFill();
+          requestAnimationFrame(function() {
+            updateFill();
+          });
+        });
+        
+        // Also update on window load in case of late rendering
+        window.addEventListener('load', function() {
+          updateFill();
+        });
+      }
+
+      // Initialize immediately and also when DOM is ready
+      initYearRangeSlider();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initYearRangeSlider);
+      }
+    })();
+  </script>
+{% endif %}
