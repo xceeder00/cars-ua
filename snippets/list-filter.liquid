@@ -1073,8 +1073,8 @@
           
           if (range === 0) {
             // If range is 0, show full width
-            fillElement.style.left = '0%';
-            fillElement.style.width = '100%';
+            fillElement.style.setProperty('left', '0%', 'important');
+            fillElement.style.setProperty('width', '100%', 'important');
             return;
           }
           
@@ -1082,12 +1082,12 @@
           const maxPercent = ((maxVal - minYear) / range) * 100;
           const fillWidth = Math.max(0, maxPercent - minPercent);
           
-          // Ensure fill is always visible and properly positioned
-          fillElement.style.left = minPercent + '%';
-          fillElement.style.width = fillWidth + '%';
-          fillElement.style.display = 'block';
-          fillElement.style.opacity = '1';
-          fillElement.style.visibility = 'visible';
+          // Ensure fill is always visible and properly positioned - use setProperty with important
+          fillElement.style.setProperty('left', minPercent + '%', 'important');
+          fillElement.style.setProperty('width', fillWidth + '%', 'important');
+          fillElement.style.setProperty('display', 'block', 'important');
+          fillElement.style.setProperty('opacity', '1', 'important');
+          fillElement.style.setProperty('visibility', 'visible', 'important');
         }
 
         function updateLabels() {
@@ -1309,6 +1309,7 @@
       });
       
       // Watch for fill element directly - most aggressive approach
+      // ALWAYS re-apply styles to ensure they're never missing
       const watchFillElement = function() {
         const fillEl = document.getElementById('year-range-fill-' + filterId);
         if (fillEl) {
@@ -1327,21 +1328,19 @@
               const maxPercent = ((maxVal - minYear) / range) * 100;
               const fillWidth = Math.max(0, maxPercent - minPercent);
               
-              const currentWidth = fillEl.style.width;
-              if (!currentWidth || currentWidth === '0%' || currentWidth === '0px' || currentWidth === '') {
-                fillEl.style.left = minPercent + '%';
-                fillEl.style.width = fillWidth + '%';
-                fillEl.style.display = 'block';
-                fillEl.style.opacity = '1';
-                fillEl.style.visibility = 'visible';
-              }
+              // ALWAYS set styles - don't check if they exist, just apply them
+              fillEl.style.setProperty('left', minPercent + '%', 'important');
+              fillEl.style.setProperty('width', fillWidth + '%', 'important');
+              fillEl.style.setProperty('display', 'block', 'important');
+              fillEl.style.setProperty('opacity', '1', 'important');
+              fillEl.style.setProperty('visibility', 'visible', 'important');
             }
           }
         }
       };
       
-      // Watch fill element continuously
-      setInterval(watchFillElement, 100);
+      // Watch fill element continuously - every 50ms to catch updates quickly
+      setInterval(watchFillElement, 50);
       
       // Also watch for any DOMContentLoaded events on the section
       if (sectionElement) {
