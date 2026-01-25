@@ -4,7 +4,8 @@
 
 .xc-ship-track__container {
   position: relative;
-  min-height: 400px;
+  border-radius: var(--border-radius-lg, 1rem);
+  overflow: hidden;
 }
 
 .xc-ship-track__widget-wrapper {
