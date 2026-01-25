@@ -47,11 +47,10 @@
   </div>
 </div>
 
-<script src="https://www.searates.com/container/widget" async></script>
+<script src="https://www.searates.com/container/widget" ></script>
 
 <script>
   (function() {
-    const STORAGE_KEY = 'xc_ship_track_unlocked';
     const sectionId = '{{ section.id }}';
     const formWrapper = document.getElementById('xc-ship-track-form-' + sectionId);
     const root = document.querySelector('.xc-ship-track[data-section-id="' + sectionId + '"]');
@@ -63,14 +62,6 @@
     function showWidget() {
       if (!formWrapper) return;
       formWrapper.classList.remove('xc-ship-track__form-wrapper--visible');
-      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
-    }
-
-    function showForm() {
-      if (!formWrapper) return;
-      formWrapper.classList.add('xc-ship-track__form-wrapper--visible');
-      if (errorEl) errorEl.hidden = true;
-      if (input) input.value = '';
     }
 
     if (form && input) {
@@ -90,12 +81,6 @@
           input.focus();
         }
       });
-    }
-
-    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem(STORAGE_KEY) === '1') {
-      showWidget();
-    } else {
-      showForm();
     }
   })();
 </script>
@@ -131,7 +116,7 @@
       "type": "number",
       "id": "platform",
       "label": "Platform ID",
-      "default": 1
+      "default": 1664462
     },
     {
       "type": "text",
