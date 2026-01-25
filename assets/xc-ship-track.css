@@ -59,10 +59,22 @@
 .xc-ship-track__input-group .field__input {
   flex: 1;
   min-width: 180px;
+border: 1px solid rgba(0, 46, 9, 0.12) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 10px 16px !important;
+    color: #000B02 !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 160% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .xc-ship-track__submit {
   flex-shrink: 0;
+  width: 100%;
 }
 
 @media screen and (max-width: 749px) {
@@ -73,6 +85,7 @@
 
   .xc-ship-track__input-group .field__input,
   .xc-ship-track__submit {
+    
     width: 100%;
     min-width: 0;
   }
