@@ -12,74 +12,63 @@
 <div
   class="xc-ship-track section section--{{ section.settings.section_width }}"
   data-expected-password="{{ expected | escape }}"
-  data-filter-json="{{ filter_json | escape }}"
   data-section-id="{{ section.id }}"
   {{ section.shopify_attributes }}
 >
-  <div class="xc-ship-track__form-wrapper" id="xc-ship-track-form-{{ section.id }}">
-    <form class="xc-ship-track__form" id="xc-ship-track-form-{{ section.id }}" novalidate>
-      <h2 class="xc-ship-track__title h3">{{ title }}</h2>
-      <div class="email-signup__input-group xc-ship-track__input-group">
-        <label for="xc-ship-track-password-{{ section.id }}" class="visually-hidden">
-          {{ placeholder }}
-        </label>
-        <input
-          type="password"
-          id="xc-ship-track-password-{{ section.id }}"
-          class="field__input field__input--button-radius field__input--button-padding"
-          autocomplete="current-password"
-          placeholder="{{ placeholder }}"
-          required
-        >
-        <button type="submit" class="button xc-ship-track__submit">
-          {{ 'actions.submit' | t }}
-        </button>
-      </div>
-      <p class="xc-ship-track__error" id="xc-ship-track-error-{{ section.id }}" hidden aria-live="polite">
-        {{ 'content.wrong_password' | t }}
-      </p>
-    </form>
-  </div>
+  <div class="xc-ship-track__container">
+    <div class="xc-ship-track__widget-wrapper" id="xc-ship-track-widget-{{ section.id }}">
+      <div id="tracking_system_root" data-filter="{{ filter_json }}"></div>
+    </div>
 
-  <div class="xc-ship-track__widget-wrapper" id="xc-ship-track-widget-{{ section.id }}" hidden>
-    <div id="tracking_system_root" data-filter="{{ filter_json }}"></div>
+    <div class="xc-ship-track__form-wrapper xc-ship-track__form-wrapper--visible" id="xc-ship-track-form-{{ section.id }}">
+      <form class="xc-ship-track__form" id="xc-ship-track-form-{{ section.id }}" novalidate>
+        <h2 class="xc-ship-track__title h3">{{ title }}</h2>
+        <div class="email-signup__input-group xc-ship-track__input-group">
+          <label for="xc-ship-track-password-{{ section.id }}" class="visually-hidden">
+            {{ placeholder }}
+          </label>
+          <input
+            type="password"
+            id="xc-ship-track-password-{{ section.id }}"
+            class="field__input field__input--button-radius field__input--button-padding"
+            autocomplete="current-password"
+            placeholder="{{ placeholder }}"
+            required
+          >
+          <button type="submit" class="button xc-ship-track__submit">
+            {{ 'actions.submit' | t }}
+          </button>
+        </div>
+        <p class="xc-ship-track__error" id="xc-ship-track-error-{{ section.id }}" hidden aria-live="polite">
+          {{ 'content.wrong_password' | t }}
+        </p>
+      </form>
+    </div>
   </div>
 </div>
+
+<script src="https://www.searates.com/container/widget" async></script>
 
 <script>
   (function() {
     const STORAGE_KEY = 'xc_ship_track_unlocked';
     const sectionId = '{{ section.id }}';
     const formWrapper = document.getElementById('xc-ship-track-form-' + sectionId);
-    const widgetWrapper = document.getElementById('xc-ship-track-widget-' + sectionId);
+    const root = document.querySelector('.xc-ship-track[data-section-id="' + sectionId + '"]');
+    const expectedPassword = root?.dataset.expectedPassword || '';
     const form = formWrapper?.querySelector('form');
     const input = form?.querySelector('input[type="password"]');
     const errorEl = document.getElementById('xc-ship-track-error-' + sectionId);
-    const root = document.querySelector('.xc-ship-track[data-section-id="' + sectionId + '"]');
-    const expectedPassword = root?.dataset.expectedPassword || '';
-    const filterJson = root?.dataset.filterJson || '{"platform": 1, "lang": "en"}';
-
-    function loadSearatesWidget() {
-      if (document.getElementById('tracking_system_root') && !document.querySelector('script[src*="searates.com/container/widget"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://www.searates.com/container/widget';
-        script.async = true;
-        document.body.appendChild(script);
-      }
-    }
 
     function showWidget() {
-      if (!formWrapper || !widgetWrapper) return;
-      formWrapper.hidden = true;
-      widgetWrapper.hidden = false;
+      if (!formWrapper) return;
+      formWrapper.classList.remove('xc-ship-track__form-wrapper--visible');
       try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
-      loadSearatesWidget();
     }
 
     function showForm() {
-      if (!formWrapper || !widgetWrapper) return;
-      formWrapper.hidden = false;
-      widgetWrapper.hidden = true;
+      if (!formWrapper) return;
+      formWrapper.classList.add('xc-ship-track__form-wrapper--visible');
       if (errorEl) errorEl.hidden = true;
       if (input) input.value = '';
     }
