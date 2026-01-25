@@ -696,6 +696,8 @@
           shouldCallMdOfficeCalculation = true;
         } else if (['year', 'motor', 'capacity', 'battery_volume'].includes(inputName)) {
           shouldCallMdOfficeCalculation = true;
+        } else if (inputName === 'auction-fee' || inputName === 'auction-min') {
+          // auction-fee-price comes from calculateTax(cost), not from these inputs
         } else {
           const className = `.calc__${inputName.replace(/_/g, '-')}-price`;
           const textEl = $(className);
