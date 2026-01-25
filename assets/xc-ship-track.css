@@ -1,0 +1,67 @@
+.xc-ship-track {
+  padding-block: var(--padding-xl, 2rem);
+}
+
+.xc-ship-track__form-wrapper {
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.xc-ship-track__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-md, 1rem);
+}
+
+.xc-ship-track__title {
+  margin: 0;
+  text-align: center;
+}
+
+.xc-ship-track__input-group {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-xs, 0.5rem);
+  align-items: center;
+}
+
+.xc-ship-track__input-group .field__input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.xc-ship-track__submit {
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .xc-ship-track__input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .xc-ship-track__input-group .field__input,
+  .xc-ship-track__submit {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.xc-ship-track__error {
+  margin: 0;
+  color: var(--color-error, #c00);
+  font-size: 0.875em;
+  text-align: center;
+}
+
+.xc-ship-track__widget-wrapper {
+  width: 100%;
+  min-height: 400px;
+}
+
+.xc-ship-track__widget-wrapper #tracking_system_root {
+  width: 100%;
+  min-height: 400px;
+}
