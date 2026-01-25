@@ -284,6 +284,7 @@
         "padding-block-end": 32,
         "cta_label": "Забронювати авто",
         "guarantee_label": "Перевірити кредитування",
+        "guarantee_url": "#",
         "phone_label": "Зателефонувати зараз",
         "phone_number": "+380779301010"
       }
