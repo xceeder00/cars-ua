@@ -16,11 +16,12 @@
   {{ section.shopify_attributes }}
 >
   <div class="xc-ship-track__container">
-    <div class="xc-ship-track__widget-wrapper" id="xc-ship-track-widget-{{ section.id }}">
-      <div id="tracking_system_root" data-filter="{{ filter_json }}"></div>
-    </div>
+    {% comment %} <div class="xc-ship-track__widget-wrapper" id="xc-ship-track-widget-{{ section.id }}"> {% endcomment %}
+      <div id="tracking_system_root" data-filter='{"platform": 1, "lang": "en"}'></div>
+      <script src="https://www.searates.com/container/widget"></script>
+    {% comment %} </div> {% endcomment %}
 
-    <div class="xc-ship-track__form-wrapper xc-ship-track__form-wrapper--visible" id="xc-ship-track-form-{{ section.id }}">
+    {% comment %} <div class="xc-ship-track__form-wrapper xc-ship-track__form-wrapper--visible" id="xc-ship-track-form-{{ section.id }}">
       <form class="xc-ship-track__form" id="xc-ship-track-form-{{ section.id }}" novalidate>
         <h2 class="xc-ship-track__title h3">{{ title }}</h2>
         <div class="email-signup__input-group xc-ship-track__input-group">
@@ -43,13 +44,13 @@
           {{ 'content.wrong_password' | t }}
         </p>
       </form>
-    </div>
+    </div> {% endcomment %}
   </div>
 </div>
 
-<script src="https://www.searates.com/container/widget" ></script>
 
-<script>
+
+{% comment %} <script>
   (function() {
     const sectionId = '{{ section.id }}';
     const formWrapper = document.getElementById('xc-ship-track-form-' + sectionId);
@@ -83,7 +84,7 @@
       });
     }
   })();
-</script>
+</script> {% endcomment %}
 
 {% schema %}
 {
