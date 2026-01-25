@@ -1,6 +1,6 @@
 {%- liquid
-  assign title = section.settings.title | default: 'actions.enter_password' | t
-  assign placeholder = section.settings.placeholder | default: 'placeholders.password' | t
+  assign title = section.settings.title 
+  assign placeholder = section.settings.placeholder 
   assign expected = section.settings.password | strip
   assign platform = section.settings.platform | default: 1664462
   assign lang = section.settings.lang | default: 'en'
@@ -142,7 +142,7 @@
       "type": "number",
       "id": "platform",
       "label": "Platform ID",
-      "default": 1
+      "default": 1664462
     },
     {
       "type": "text",
