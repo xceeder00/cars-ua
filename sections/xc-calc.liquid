@@ -576,6 +576,7 @@
   // Calculate tax function
   function calculateTax(amount) {
     const amt = parseFloat(amount) || 0;
+    console.log(amt)
     if (amt >= 0 && amt < 50) return 25.0 + 160;
     if (amt < 100) return 45.0 + 160;
     if (amt < 200) return 80.0 + 160 + 49;
@@ -621,7 +622,7 @@
     if (amt <= 12499.99) return 975;
     if (amt <= 12999.99) return 990;
     if (amt <= 14999.99) return 990;
-    return Math.round(amt * 0.063 + 149);
+    return Math.round(amt * 0.075 + 149);
   }
 
   function getYear(year) {
