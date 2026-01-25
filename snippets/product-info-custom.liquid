@@ -109,10 +109,12 @@
         {{ product.description }}
     </div>
     <div class="xc-product__info-buttons">
-        <button aria-label="Замовити авто" class="btn btn--primary btn--small"  aria-haspopup="dialog"  on:click="#form-modal/showDialog" data-label="Авто" data-vin="{{ product.metafields.custom.vin }}" data-title="{{ product.title }}" >{{ section.settings.cta_label }}</button>
-            <span > <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.4833 6.01655C16.7274 6.26063 16.7274 6.65636 16.4833 6.90044L8.56662 14.8171C8.32254 15.0612 7.92681 15.0612 7.68273 14.8171L3.51607 10.6504C3.27199 10.4064 3.27199 10.0106 3.51607 9.76655C3.76014 9.52248 4.15587 9.52248 4.39995 9.76655L8.12467 13.4913L15.5994 6.01655C15.8435 5.77248 16.2392 5.77248 16.4833 6.01655Z" fill="#262626"/>
-            </svg>{{ section.settings.guarantee_label }}</span>
+        <button aria-label="Замовити авто" class="btn btn--primary"  aria-haspopup="dialog"  on:click="#form-modal/showDialog" data-label="Авто" data-vin="{{ product.metafields.custom.vin }}" data-title="{{ product.title }}" >{{ section.settings.cta_label }}</button>
+           {% if section.settings.guarantee_label != blank and section.settings.guarantee_url != blank %} 
+                <a class="button btn btn--tertiary" href="{{section.settings.guarantee_url }}" title="{{ section.settings.guarantee_label }}">
+                    {{ section.settings.guarantee_label }}
+                </a>
+            {% endif %} 
     </div>
 </div>
 

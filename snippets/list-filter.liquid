@@ -1005,6 +1005,21 @@
     z-index: 3;
   }
 
+  /* When thumbs overlap: put the draggable one on top */
+  /* At left (min year): max on top → drag right. At right (max year): min on top → drag left. */
+  .facets__year-range-track--overlap-min-top .facets__year-range-input--min {
+    z-index: 4;
+  }
+  .facets__year-range-track--overlap-min-top .facets__year-range-input--max {
+    z-index: 2;
+  }
+  .facets__year-range-track--overlap-max-top .facets__year-range-input--min {
+    z-index: 2;
+  }
+  .facets__year-range-track--overlap-max-top .facets__year-range-input--max {
+    z-index: 4;
+  }
+
   .facets__year-range-labels {
     display: flex;
     justify-content: space-between;
@@ -1070,11 +1085,15 @@
         function updateFill() {
           const minVal = parseInt(minInput.value);
           const maxVal = parseInt(maxInput.value);
+          const track = minInput.closest('.facets__year-range-track');
           
           if (range === 0) {
             // If range is 0, show full width
             fillElement.style.setProperty('left', '0%', 'important');
             fillElement.style.setProperty('width', '100%', 'important');
+            if (track) {
+              track.classList.remove('facets__year-range-track--overlap-min-top', 'facets__year-range-track--overlap-max-top');
+            }
             return;
           }
           
@@ -1088,6 +1107,21 @@
           fillElement.style.setProperty('display', 'block', 'important');
           fillElement.style.setProperty('opacity', '1', 'important');
           fillElement.style.setProperty('visibility', 'visible', 'important');
+          
+          /* When min === max, thumbs overlap. Put the draggable one on top:
+           * - At left (min year): max on top → user drags right.
+           * - At right (max year): min on top → user drags left.
+           * - In middle: min on top → user drags left. */
+          if (track && minVal === maxVal) {
+            track.classList.remove('facets__year-range-track--overlap-min-top', 'facets__year-range-track--overlap-max-top');
+            if (minVal <= minYear) {
+              track.classList.add('facets__year-range-track--overlap-max-top');
+            } else {
+              track.classList.add('facets__year-range-track--overlap-min-top');
+            }
+          } else if (track) {
+            track.classList.remove('facets__year-range-track--overlap-min-top', 'facets__year-range-track--overlap-max-top');
+          }
         }
 
         function updateLabels() {

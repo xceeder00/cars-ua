@@ -79,8 +79,66 @@ const MORPH_OPTIONS = {
     if (node instanceof Component) {
       queueMicrotask(() => node.updatedCallback());
     }
+
+    // Restore facets__year-range-fill styles after morph (they can be lost on section update)
+    if (node instanceof Element && node.classList.contains('facets__year-range-fill')) {
+      const fillId = node.id;
+      queueMicrotask(() => {
+        const fillEl = fillId ? document.getElementById(fillId) : null;
+        if (fillEl) applyYearRangeFillStyles(fillEl);
+      });
+    }
   },
 };
+
+/**
+ * Applies left/width styles to year range fill from sibling range inputs.
+ * @param {Element} fillEl - The .facets__year-range-fill element (live DOM node)
+ */
+export function applyYearRangeFillStyles(fillEl) {
+  const track = fillEl.closest('.facets__year-range-track');
+  if (!track) return;
+
+  const minInput = track.querySelector('.facets__year-range-input--min');
+  const maxInput = track.querySelector('.facets__year-range-input--max');
+  if (!(minInput instanceof HTMLInputElement) || !(maxInput instanceof HTMLInputElement)) return;
+
+  const minVal = parseInt(minInput.value, 10);
+  const maxVal = parseInt(maxInput.value, 10);
+  const minYear = parseInt(minInput.min, 10);
+  const maxYear = parseInt(maxInput.max, 10);
+  const range = maxYear - minYear;
+  if (range <= 0) return;
+
+  const minPercent = ((minVal - minYear) / range) * 100;
+  const maxPercent = ((maxVal - minYear) / range) * 100;
+  const fillWidth = Math.max(0, maxPercent - minPercent);
+
+  if (fillEl instanceof HTMLElement) {
+    fillEl.style.setProperty('left', `${minPercent}%`, 'important');
+    fillEl.style.setProperty('width', `${fillWidth}%`, 'important');
+    fillEl.style.setProperty('display', 'block', 'important');
+    fillEl.style.setProperty('opacity', '1', 'important');
+    fillEl.style.setProperty('visibility', 'visible', 'important');
+  }
+
+  /* When min === max, put the draggable thumb on top: at left → max; at right/middle → min. */
+  track.classList.remove('facets__year-range-track--overlap-min-top', 'facets__year-range-track--overlap-max-top');
+  if (minVal === maxVal) {
+    if (minVal <= minYear) {
+      track.classList.add('facets__year-range-track--overlap-max-top');
+    } else {
+      track.classList.add('facets__year-range-track--overlap-min-top');
+    }
+  }
+}
+
+/**
+ * Applies styles to all year range fills on the page.
+ */
+export function applyAllYearRangeFillStyles() {
+  document.querySelectorAll('.facets__year-range-fill').forEach(applyYearRangeFillStyles);
+}
 
 /**
  * Morphs one DOM tree into another by comparing nodes and applying minimal changes

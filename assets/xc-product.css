@@ -197,7 +197,7 @@
     width: 100%;
   }
 }
-.xc-product__info-buttons span {
+/* .xc-product__info-buttons a {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -210,13 +210,13 @@
   padding: 10px 24px;
 }
 @media (max-width: 750px) {
-  .xc-product__info-buttons span {
+  .xc-product__info-buttons a {
     width: 100%;
     background-color: transparent;
     justify-content: center;
     padding: 0;
   }
-}
+} */
 
 .xc-product .product-media {
   aspect-ratio: 4/3 !important;

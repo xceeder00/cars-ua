@@ -1,4 +1,4 @@
-import { morph } from '@theme/morph';
+import { morph, applyAllYearRangeFillStyles } from '@theme/morph';
 
 /**
  * A class to re-render sections using the Section Rendering API
@@ -48,6 +48,7 @@ class SectionRenderer {
       this.#abortControllersBySectionId.delete(sectionId);
 
       morphSection(sectionId, sectionHTML);
+      queueMicrotask(() => applyAllYearRangeFillStyles());
     }
 
     return sectionHTML;
