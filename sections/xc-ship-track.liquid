@@ -1,0 +1,170 @@
+{%- liquid
+  assign title = section.settings.title | default: 'actions.enter_password' | t
+  assign placeholder = section.settings.placeholder | default: 'placeholders.password' | t
+  assign expected = section.settings.password | strip
+  assign platform = section.settings.platform | default: 1664462
+  assign lang = section.settings.lang | default: 'en'
+  assign filter_json = '{"platform": ' | append: platform | append: ', "lang": "' | append: lang | append: '"}'
+-%}
+
+{{ 'xc-ship-track.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="xc-ship-track section section--{{ section.settings.section_width }}"
+  data-expected-password="{{ expected | escape }}"
+  data-filter-json="{{ filter_json | escape }}"
+  data-section-id="{{ section.id }}"
+  {{ section.shopify_attributes }}
+>
+  <div class="xc-ship-track__form-wrapper" id="xc-ship-track-form-{{ section.id }}">
+    <form class="xc-ship-track__form" id="xc-ship-track-form-{{ section.id }}" novalidate>
+      <h2 class="xc-ship-track__title h3">{{ title }}</h2>
+      <div class="email-signup__input-group xc-ship-track__input-group">
+        <label for="xc-ship-track-password-{{ section.id }}" class="visually-hidden">
+          {{ placeholder }}
+        </label>
+        <input
+          type="password"
+          id="xc-ship-track-password-{{ section.id }}"
+          class="field__input field__input--button-radius field__input--button-padding"
+          autocomplete="current-password"
+          placeholder="{{ placeholder }}"
+          required
+        >
+        <button type="submit" class="button xc-ship-track__submit">
+          {{ 'actions.submit' | t }}
+        </button>
+      </div>
+      <p class="xc-ship-track__error" id="xc-ship-track-error-{{ section.id }}" hidden aria-live="polite">
+        {{ 'content.wrong_password' | t }}
+      </p>
+    </form>
+  </div>
+
+  <div class="xc-ship-track__widget-wrapper" id="xc-ship-track-widget-{{ section.id }}" hidden>
+    <div id="tracking_system_root" data-filter="{{ filter_json }}"></div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const STORAGE_KEY = 'xc_ship_track_unlocked';
+    const sectionId = '{{ section.id }}';
+    const formWrapper = document.getElementById('xc-ship-track-form-' + sectionId);
+    const widgetWrapper = document.getElementById('xc-ship-track-widget-' + sectionId);
+    const form = formWrapper?.querySelector('form');
+    const input = form?.querySelector('input[type="password"]');
+    const errorEl = document.getElementById('xc-ship-track-error-' + sectionId);
+    const root = document.querySelector('.xc-ship-track[data-section-id="' + sectionId + '"]');
+    const expectedPassword = root?.dataset.expectedPassword || '';
+    const filterJson = root?.dataset.filterJson || '{"platform": 1664462, "lang": "en"}';
+
+    function loadSearatesWidget() {
+      if (document.getElementById('tracking_system_root') && !document.querySelector('script[src*="searates.com/container/widget"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://www.searates.com/container/widget';
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    }
+
+    function showWidget() {
+      if (!formWrapper || !widgetWrapper) return;
+      formWrapper.hidden = true;
+      widgetWrapper.hidden = false;
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+      loadSearatesWidget();
+    }
+
+    function showForm() {
+      if (!formWrapper || !widgetWrapper) return;
+      formWrapper.hidden = false;
+      widgetWrapper.hidden = true;
+      if (errorEl) errorEl.hidden = true;
+      if (input) input.value = '';
+    }
+
+    if (form && input) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const value = (input.value || '').trim();
+        if (!expectedPassword) {
+          showWidget();
+          return;
+        }
+        if (value === expectedPassword) {
+          if (errorEl) errorEl.hidden = true;
+          showWidget();
+        } else {
+          if (errorEl) errorEl.hidden = false;
+          input.select();
+          input.focus();
+        }
+      });
+    }
+
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem(STORAGE_KEY) === '1') {
+      showWidget();
+    } else {
+      showForm();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "XC Ship Track",
+  "class": "xc-ship-track-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Заголовок",
+      "default": "Введіть пароль"
+    },
+    {
+      "type": "text",
+      "id": "password",
+      "label": "Пароль",
+      "info": "Пароль для доступу до віджета відстеження. Залиште порожнім, щоб показувати віджет без перевірки."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Placeholder інпута",
+      "default": "Пароль"
+    },
+    {
+      "type": "header",
+      "content": "Searates widget"
+    },
+    {
+      "type": "number",
+      "id": "platform",
+      "label": "Platform ID",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "lang",
+      "label": "Мова (lang)",
+      "default": "en"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Ширина секції",
+      "options": [
+        { "value": "page-width", "label": "Ширина сторінки" },
+        { "value": "full-width", "label": "На всю ширину" }
+      ],
+      "default": "page-width"
+    }
+  ],
+  "presets": [
+    {
+      "name": "XC Ship Track"
+    }
+  ]
+}
+{% endschema %}
