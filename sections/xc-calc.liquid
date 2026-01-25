@@ -573,57 +573,53 @@
     }
   }
 
-  // Calculate tax function
+  // Auction: Copart = auction-min 260, IAAI = 320
+  function getSelectedAuction() {
+    const minInput = $('input[name="auction-min"]');
+    const val = minInput?.value || '260';
+    return val === '320' ? 'iaai' : 'copart';
+  }
+
+  // IAAI Standard Volume Fee table (Licensed Low). Fee = table value + 300. $15k+ = 7.5% + 300.
+  const IAAI_BRACKETS = [
+    [50, 25], [100, 45], [200, 80], [300, 130], [350, 137.5], [400, 145], [450, 175], [500, 185],
+    [550, 205], [600, 210], [700, 240], [800, 270], [900, 295], [1000, 320], [1200, 375], [1300, 395],
+    [1400, 410], [1500, 430], [1600, 445], [1700, 465], [1800, 485], [2000, 510], [2400, 535],
+    [2500, 570], [3000, 610], [3500, 655], [4000, 705], [4500, 725], [5000, 750], [5500, 775],
+    [6000, 800], [6500, 825], [7000, 845], [7500, 880], [8000, 900], [8500, 925], [10000, 945], [15000, 1000]
+  ];
+
+  function getIAAIFee(amt) {
+    if (amt >= 15000) return Math.round(amt * 0.075 * 100) / 100 + 300;
+    for (let i = 0; i < IAAI_BRACKETS.length; i++) {
+      if (amt < IAAI_BRACKETS[i][0]) return IAAI_BRACKETS[i][1] + 300;
+    }
+    return 1000 + 300;
+  }
+
+  // Copart Clean Title fee table (Final Bid Price). Fee = table value + 300. $15k+ = 5.75% + 300.
+  const COPART_BRACKETS = [
+    [50, 1], [100, 1], [200, 25], [300, 50], [350, 75], [400, 75], [450, 110], [500, 110],
+    [550, 125], [600, 130], [700, 140], [800, 155], [900, 170], [1000, 185], [1200, 200], [1300, 225],
+    [1400, 240], [1500, 250], [1600, 260], [1700, 275], [1800, 285], [2000, 300], [2400, 325],
+    [2500, 335], [3000, 350], [3500, 400], [4000, 455], [4500, 600], [5000, 625], [5500, 625],
+    [6000, 625], [6500, 675], [7000, 675], [7500, 675], [8000, 690], [8500, 715], [9000, 715],
+    [10000, 715], [10500, 720], [11000, 720], [11500, 720], [12000, 720], [12500, 720], [15000, 720]
+  ];
+
+  function getCopartFee(amt) {
+    if (amt >= 15000) return Math.round(amt * 0.0575 * 100) / 100 + 300;
+    for (let i = 0; i < COPART_BRACKETS.length; i++) {
+      if (amt < COPART_BRACKETS[i][0]) return COPART_BRACKETS[i][1] + 300;
+    }
+    return 720 + 300;
+  }
+
+  // Calculate tax (auction fee): Copart = getCopartFee; IAAI = getIAAIFee (table + 300)
   function calculateTax(amount) {
-    console.log(1111,amount)
     const amt = parseFloat(amount) || 0;
-    console.log(amt)
-    if (amt >= 0 && amt < 50) return 25.0 + 160;
-    if (amt < 100) return 45.0 + 160;
-    if (amt < 200) return 80.0 + 160 + 49;
-    if (amt < 300) return 120.0 + 160 + 49;
-    if (amt < 350) return 120.0 + 160 + 49;
-    if (amt < 400) return 120.0 + 160 + 49;
-    if (amt < 450) return 160.0 + 160 + 49;
-    if (amt < 500) return 160.0 + 160 + 49;
-    if (amt < 550) return 185.0 + 160 + 59;
-    if (amt < 600) return 185.0 + 160 + 59;
-    if (amt < 700) return 210.0 + 160 + 59;
-    if (amt < 800) return 230.0 + 160 + 59;
-    if (amt < 900) return 250.0 + 160 + 59;
-    if (amt < 1000) return 275.0 + 160 + 59;
-    if (amt < 1200) return 430;
-    if (amt < 1300) return 425;
-    if (amt < 1400) return 475;
-    if (amt < 1500) return 480;
-    if (amt < 1600) return 490;
-    if (amt < 1700) return 505;
-    if (amt < 1800) return 515;
-    if (amt < 2000) return 525;
-    if (amt < 2400) return 555;
-    if (amt < 2500) return 580;
-    if (amt < 3000) return 600;
-    if (amt < 3500) return 650;
-    if (amt < 4000) return 700;
-    if (amt < 4500) return 800;
-    if (amt < 5000) return 825;
-    if (amt < 5500) return 850;
-    if (amt < 6000) return 850;
-    if (amt < 6500) return 875;
-    if (amt < 7000) return 875;
-    if (amt < 7500) return 900;
-    if (amt < 8000) return 900;
-    if (amt < 8500) return 925;
-    if (amt < 9000) return 925;
-    if (amt < 10000) return 925;
-    if (amt < 10500) return 950;
-    if (amt < 11000) return 950;
-    if (amt < 11500) return 950;
-    if (amt < 12000) return 960;
-    if (amt <= 12499.99) return 975;
-    if (amt <= 12999.99) return 990;
-    if (amt <= 14999.99) return 990;
-    return Math.round(amt * 0.075 + 149);
+    const auction = getSelectedAuction();
+    return auction === 'iaai' ? getIAAIFee(amt) : getCopartFee(amt);
   }
 
   function getYear(year) {
