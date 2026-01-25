@@ -57,7 +57,7 @@
     const errorEl = document.getElementById('xc-ship-track-error-' + sectionId);
     const root = document.querySelector('.xc-ship-track[data-section-id="' + sectionId + '"]');
     const expectedPassword = root?.dataset.expectedPassword || '';
-    const filterJson = root?.dataset.filterJson || '{"platform": 1664462, "lang": "en"}';
+    const filterJson = root?.dataset.filterJson || '{"platform": 1, "lang": "en"}';
 
     function loadSearatesWidget() {
       if (document.getElementById('tracking_system_root') && !document.querySelector('script[src*="searates.com/container/widget"]')) {
@@ -142,7 +142,7 @@
       "type": "number",
       "id": "platform",
       "label": "Platform ID",
-      "default": 1664462
+      "default": 1
     },
     {
       "type": "text",
