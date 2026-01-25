@@ -22,7 +22,7 @@
   display: none;
   position: absolute;
   inset: 0;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background: var(--color-background);
   z-index: 1;
