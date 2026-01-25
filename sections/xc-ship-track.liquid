@@ -36,9 +36,14 @@
             placeholder="{{ placeholder }}"
             required
           >
-          <button type="submit" class="button xc-ship-track__submit">
+          <button type="submit" class="btn btn--primary xc-ship-track__submit">
             {{ 'actions.submit' | t }}
           </button>
+          {% if section.settings.btn_url and section.settings.btn_text %}
+            <a href="{{ section.settings.btn_url }}" class="button button btn btn--tertiary">
+              {{ section.settings.btn_text }}
+            </a>
+          {% endif %}
         </div>
         <p class="xc-ship-track__error" id="xc-ship-track-error-{{ section.id }}" hidden aria-live="polite">
           {{ 'content.wrong_password' | t }}
@@ -112,21 +117,19 @@
       "default": "Пароль"
     },
     {
-      "type": "header",
-      "content": "Searates widget"
-    },
-    {
-      "type": "number",
-      "id": "platform",
-      "label": "Platform ID",
-      "default": 1664462
+      "type": "text",
+      "id": "btn_text",
+      "label": "Запросити пароль",
+      "default": "Запросити пароль"
     },
     {
       "type": "text",
-      "id": "lang",
-      "label": "Мова (lang)",
-      "default": "en"
+      "id": "btn_url",
+      "label": "URL кнопки",
+      "default": "tel:+380779301010"
     },
+
+
     {
       "type": "select",
       "id": "section_width",
@@ -136,7 +139,8 @@
         { "value": "full-width", "label": "На всю ширину" }
       ],
       "default": "page-width"
-    }
+    },
+
   ],
   "presets": [
     {
