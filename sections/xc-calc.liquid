@@ -575,6 +575,7 @@
 
   // Calculate tax function
   function calculateTax(amount) {
+    console.log(1111,amount)
     const amt = parseFloat(amount) || 0;
     console.log(amt)
     if (amt >= 0 && amt < 50) return 25.0 + 160;
