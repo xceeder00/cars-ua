@@ -42,6 +42,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--gap-md, 1rem);
+  padding-block-start: 50px;
 }
 
 .xc-ship-track__title {
@@ -73,6 +74,7 @@ border: 1px solid rgba(0, 46, 9, 0.12) !important;
     box-sizing: border-box !important;
 }
 .xc-ship-track__input-group {
+  padding-top: 10px;
   font-size: 14px;
   opacity:0.5;
 }
