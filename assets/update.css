@@ -345,8 +345,8 @@ h3 p, .h3 p {
   box-shadow: 0 8px 20px rgba(128, 255, 0, 0.3);
 }
 .btn--hover-black:hover{
-  background-color: #90F209;
-  color: #262626;
+  background-color: #262626;
+  color: #fff;
   box-shadow: none;
 }
 
