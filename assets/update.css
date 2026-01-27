@@ -1,13 +1,13 @@
 @charset "UTF-8";
 body .shopify-section-group-footer-group {
-  margin-inline: 24px;
+  /* margin-inline: 24px; */
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
   overflow: hidden;
 }
 @media (max-width: 750px) {
   body .shopify-section-group-footer-group {
-    margin-inline: 10px;
+    /* margin-inline: 10px; */
   }
 }
 body .shopify-section-group-footer-group .menu__heading {
