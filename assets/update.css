@@ -285,6 +285,7 @@ h3 p, .h3 p {
   padding: 10px 32px;
   justify-content: center;
   align-items: center;
+  font-family: 'Inter';
   gap: 10px;
   border-radius: 32px;
 }
