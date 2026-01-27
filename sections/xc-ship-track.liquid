@@ -65,6 +65,8 @@
     function showWidget() {
       if (!formWrapper) return;
       formWrapper.classList.remove('xc-ship-track__form-wrapper--visible');
+      document.querySelector('#tracking_system_root').style.position = 'relative';
+      document.querySelector('#tracking_system_root').style.width = '100%';
     }
 
     if (form && input) {
