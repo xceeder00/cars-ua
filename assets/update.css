@@ -5,9 +5,13 @@ body .shopify-section-group-footer-group {
   border-top-left-radius: 24px;
   overflow: hidden;
 }
+
+footer{
+  margin-inline: 24px;
+}
 @media (max-width: 750px) {
-  body .shopify-section-group-footer-group {
-    /* margin-inline: 10px; */
+  footer {
+     margin-inline: 10px;
   }
 }
 body .shopify-section-group-footer-group .menu__heading {
