@@ -37,13 +37,9 @@
             required
           >
           <button type="submit" class="btn btn--primary xc-ship-track__submit">
-            {{ 'actions.submit' | t }}
+            {{ section.settings.btn_text }}
           </button>
-          {% if section.settings.btn_url and section.settings.btn_text %}
-            <a href="{{ section.settings.btn_url }}" class="button button btn btn--tertiary" style="width: 100%;">
-              {{ section.settings.btn_text }}
-            </a>
-          {% endif %}
+          <span>Проблеми зі входом? Зверніться до менеджера, який вас обслуговує</span>
         </div>
         <p class="xc-ship-track__error" id="xc-ship-track-error-{{ section.id }}" hidden aria-live="polite">
           {{ 'content.wrong_password' | t }}
@@ -119,15 +115,10 @@
     {
       "type": "text",
       "id": "btn_text",
-      "label": "Запросити пароль",
-      "default": "Запросити пароль"
+      "label": "Лейбл кнопки",
+      "default": "Продовжити"
     },
-    {
-      "type": "text",
-      "id": "btn_url",
-      "label": "URL кнопки",
-      "default": "tel:+380779301010"
-    },
+    
 
 
     {
