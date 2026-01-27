@@ -69,11 +69,11 @@
       "type": "xc-ship-track",
       "name": "XC Ship Track",
       "settings": {
-        "title": "Введіть пароль",
+        "title": "Введіть клієнтський ідентифікатор",
         "password": "A8420",
-        "placeholder": "Пароль",
-        "btn_text": "Запросити пароль",
-        "btn_url": "tel:+380779301010",
+        "placeholder": "клієнтський ідентифікатор",
+        "btn_text": "",
+        "btn_url": "",
         "section_width": "page-width"
       }
     }
