@@ -6,6 +6,7 @@
   position: relative;
   border-radius: var(--border-radius-lg, 1rem);
   overflow: hidden;
+  background: #fff;
 }
 
 .xc-ship-track__widget-wrapper {
