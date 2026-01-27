@@ -26,6 +26,7 @@
   /* align-items: center; */
   justify-content: center;
   background: #fff;
+  box-shadow: 0 0 16px #00000014;
   z-index: 1;
 }
 
