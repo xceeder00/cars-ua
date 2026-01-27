@@ -348,6 +348,7 @@ h3 p, .h3 p {
   background-color: #262626;
   color: #fff;
   box-shadow: none;
+  transform: translateY(-1px);
 }
 
 .circle-btn {
