@@ -17,7 +17,9 @@
 >
   <div class="xc-ship-track__container">
     <div class="xc-ship-track__widget-wrapper" id="xc-ship-track-widget-{{ section.id }}">
-      <div id="tracking_system_root" data-filter='{"platform": 1, "lang": "en"}'></div>
+      <div id="tracking_system_root" data-filter='{"platform": 1, "lang": "en"}' style="    position: absolute;
+    width: 100%;
+    height: 100%;"></div>
       <script src="https://www.searates.com/container/widget"></script>
     </div>
 
@@ -66,7 +68,7 @@
       if (!formWrapper) return;
       formWrapper.classList.remove('xc-ship-track__form-wrapper--visible');
       document.querySelector('#tracking_system_root').style.position = 'relative';
-      document.querySelector('#tracking_system_root').style.width = '100%';
+      
     }
 
     if (form && input) {
