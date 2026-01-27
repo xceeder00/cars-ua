@@ -620,7 +620,7 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0,
-            "content": "<p><strong>Пн-Cб </strong> <strong>     </strong>10:00 - 18:00<br/><strong>Нд               </strong>10:00 - 15:00</p>"
+            "content": "<p><strong>Пн-Cб </strong> <strong>       </strong>10:00 - 18:00<br/><strong>Нд               </strong>10:00 - 15:00</p>"
           },
           "blocks": {}
         }
