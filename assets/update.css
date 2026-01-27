@@ -301,7 +301,6 @@ h3 p, .h3 p {
   background-color: #90F209;
   color: #262626;
   font-size: 14px;
-  font-weight: 600;
   line-height: 140%;
   letter-spacing: 0.28px;
   border: none;
@@ -325,7 +324,6 @@ h3 p, .h3 p {
   color: rgba(38, 38, 38, 0.5);
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
   line-height: 140%; /* 19.6px */
   letter-spacing: 0.28px;
   text-decoration: none;
