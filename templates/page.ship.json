@@ -14,7 +14,7 @@
       "name": "XC Page Head",
       "settings": {
         "title": "{{ page.title }}",
-        "description": ""
+        "description": "{{ page.content }}"
       }
     },
     "main": {
@@ -72,8 +72,8 @@
         "title": "Введіть пароль",
         "password": "beonti",
         "placeholder": "Пароль",
-        "platform": 1,
-        "lang": "en",
+        "btn_text": "Запросити пароль",
+        "btn_url": "tel:+380779301010",
         "section_width": "page-width"
       }
     }
