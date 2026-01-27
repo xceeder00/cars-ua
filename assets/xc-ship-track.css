@@ -73,7 +73,7 @@ border: 1px solid rgba(0, 46, 9, 0.12) !important;
     width: 100% !important;
     box-sizing: border-box !important;
 }
-.xc-ship-track__input-group {
+.xc-ship-track__input-group span{
   padding-top: 10px;
   font-size: 14px;
   opacity:0.5;
