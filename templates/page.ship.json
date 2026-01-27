@@ -72,8 +72,7 @@
         "title": "Введіть клієнтський ідентифікатор",
         "password": "A8420",
         "placeholder": "клієнтський ідентифікатор",
-        "btn_text": "",
-        "btn_url": "",
+        "btn_text": "Продовжити",
         "section_width": "page-width"
       }
     }
