@@ -111,7 +111,7 @@
     <div class="xc-product__info-buttons">
         <button aria-label="Замовити авто" class="btn btn--primary"  aria-haspopup="dialog"  on:click="#form-modal/showDialog" data-label="Авто" data-vin="{{ product.metafields.custom.vin }}" data-title="{{ product.title }}" >{{ section.settings.cta_label }}</button>
            {% if section.settings.guarantee_label != blank and section.settings.guarantee_url != blank %} 
-                <a class="button btn btn--tertiary btn--hover-black" href="{{section.settings.guarantee_url }}" title="{{ section.settings.guarantee_label }}">
+                <a class="button btn btn--tertiary btn--hover-black" target="_blank"  href="{{section.settings.guarantee_url }}" title="{{ section.settings.guarantee_label }}">
                     {{ section.settings.guarantee_label }}
                 </a>
             {% endif %} 
