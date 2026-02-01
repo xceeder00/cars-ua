@@ -280,22 +280,30 @@
       name: '{{ template }}',
     },
   };
-  window.addEventListener('load', () => {
-  console.log('Load')
-  const input = document.querySelector('input[type="tel"]')
-  if (input) {
-    input.focus({ preventScroll: true })
-    input.blur()
-  }
-  setTimeout(() => {
-  document.querySelectorAll('input').forEach(i => i.blur())
-}, 50)
-})
- document.addEventListener('DOMContentLoaded', ()=>{
-  const input = document.querySelector('input[type="tel"]')
-  if (input) {
-    input.focus({ preventScroll: true })
-    input.blur()
-  }
-});
+
+  (function () {
+  let locked = false
+
+  window.addEventListener('focusin', function (e) {
+    if (locked) return
+
+    const el = e.target
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      locked = true
+
+      // Safari autoscroll fix
+      el.blur()
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto'
+      })
+
+      setTimeout(() => {
+        locked = false
+      }, 100)
+    }
+  }, true)
+})()
 </script>
