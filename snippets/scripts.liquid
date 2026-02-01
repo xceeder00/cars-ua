@@ -282,28 +282,32 @@
   };
 
 (function () {
-  let allowFocus = false
+  let unlocked = false
 
   const unlock = () => {
-    allowFocus = true
-    window.removeEventListener('pointerdown', unlock)
-    window.removeEventListener('keydown', unlock)
+    unlocked = true
+    document.removeEventListener('touchstart', unlock, true)
+    document.removeEventListener('mousedown', unlock, true)
+    document.removeEventListener('keydown', unlock, true)
   }
 
-  window.addEventListener('pointerdown', unlock, { once: true })
-  window.addEventListener('keydown', unlock, { once: true })
+  // user interaction = unlock
+  document.addEventListener('touchstart', unlock, true)
+  document.addEventListener('mousedown', unlock, true)
+  document.addEventListener('keydown', unlock, true)
 
-  window.addEventListener('focusin', (e) => {
-    if (allowFocus) return
+  document.addEventListener('focusin', (e) => {
+    if (unlocked) return
 
     const el = e.target
     if (el.matches('input, textarea, select')) {
       e.preventDefault()
       el.blur()
 
-      // повертаємо сторінку туди, де була
+      // важливо: iOS любить скролити після blur
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     }
   }, true)
 })()
+
 </script>
