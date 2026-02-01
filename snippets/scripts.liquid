@@ -280,4 +280,15 @@
       name: '{{ template }}',
     },
   };
+  window.addEventListener('load', () => {
+  console.log('Load')
+  const input = document.querySelector('input[type="tel"]')
+  if (input) {
+    input.focus({ preventScroll: true })
+    input.blur()
+  }
+  setTimeout(() => {
+  document.querySelectorAll('input').forEach(i => i.blur())
+}, 50)
+})
 </script>
