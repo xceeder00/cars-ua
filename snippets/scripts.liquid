@@ -291,4 +291,11 @@
   document.querySelectorAll('input').forEach(i => i.blur())
 }, 50)
 })
+ document.addEventListener('DOMContentLoaded', ()=>{
+  const input = document.querySelector('input[type="tel"]')
+  if (input) {
+    input.focus({ preventScroll: true })
+    input.blur()
+  }
+}));
 </script>
