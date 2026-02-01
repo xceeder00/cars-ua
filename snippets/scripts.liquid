@@ -282,32 +282,40 @@
   };
 
 (function () {
-  let unlocked = false
+  let scrollY = 0
+  let locked = true
 
-  const unlock = () => {
-    unlocked = true
-    document.removeEventListener('touchstart', unlock, true)
-    document.removeEventListener('mousedown', unlock, true)
-    document.removeEventListener('keydown', unlock, true)
+  const lockScroll = () => {
+    scrollY = window.scrollY
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.width = '100%'
   }
 
-  // user interaction = unlock
-  document.addEventListener('touchstart', unlock, true)
-  document.addEventListener('mousedown', unlock, true)
-  document.addEventListener('keydown', unlock, true)
+  const unlockScroll = () => {
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.width = ''
+    window.scrollTo(0, scrollY)
+  }
 
-  document.addEventListener('focusin', (e) => {
-    if (unlocked) return
+  // 🔒 lock одразу
+  lockScroll()
 
-    const el = e.target
-    if (el.matches('input, textarea, select')) {
-      e.preventDefault()
-      el.blur()
+  // ⏱ даємо Shopify Forms змонтуватися
+  setTimeout(() => {
+    locked = false
+    unlockScroll()
+  }, 800)
 
-      // важливо: iOS любить скролити після blur
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-    }
-  }, true)
+  // 🧠 safety: якщо юзер клікнув раніше
+  window.addEventListener('touchstart', () => {
+    if (!locked) return
+    locked = false
+    unlockScroll()
+  }, { once: true })
+
 })()
+
 
 </script>
