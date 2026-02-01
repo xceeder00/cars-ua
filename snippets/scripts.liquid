@@ -281,39 +281,29 @@
     },
   };
 
-  (function () {
-  let locked = false
+(function () {
+  let allowFocus = false
 
-  window.addEventListener('focusin', function (e) {
-    if (locked) return
+  const unlock = () => {
+    allowFocus = true
+    window.removeEventListener('pointerdown', unlock)
+    window.removeEventListener('keydown', unlock)
+  }
+
+  window.addEventListener('pointerdown', unlock, { once: true })
+  window.addEventListener('keydown', unlock, { once: true })
+
+  window.addEventListener('focusin', (e) => {
+    if (allowFocus) return
 
     const el = e.target
-    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-      locked = true
-
-      // Safari autoscroll fix
+    if (el.matches('input, textarea, select')) {
+      e.preventDefault()
       el.blur()
 
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'auto'
-      })
-
-      setTimeout(() => {
-        locked = false
-      }, 100)
+      // повертаємо сторінку туди, де була
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     }
   }, true)
 })()
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-
-if (isSafari) {
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.activeElement?.blur()
-      window.scrollTo(0, 0)
-    }, 50)
-  })
-}
 </script>
