@@ -494,4 +494,10 @@ export function updateAllHeaderCustomProperties() {
 updateAllHeaderCustomProperties();
 
 
-document.addEventListener('Dom')
+window.addEventListener('load', () => {
+  const input = document.querySelector('input[type="tel"]')
+  if (input) {
+    input.focus({ preventScroll: true })
+    input.blur()
+  }
+})
