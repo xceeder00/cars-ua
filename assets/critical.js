@@ -492,3 +492,6 @@ export function updateAllHeaderCustomProperties() {
 
 // Run both functions on page load
 updateAllHeaderCustomProperties();
+
+
+document.addEventListener('Dom')
