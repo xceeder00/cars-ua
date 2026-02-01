@@ -280,42 +280,4 @@
       name: '{{ template }}',
     },
   };
-console.log(11111111111111);
-(function () {
-  let scrollY = 0
-  let locked = true
-
-  const lockScroll = () => {
-    scrollY = window.scrollY
-    document.body.style.position = 'fixed'
-    document.body.style.top = `-${scrollY}px`
-    document.body.style.width = '100%'
-  }
-
-  const unlockScroll = () => {
-    document.body.style.position = ''
-    document.body.style.top = ''
-    document.body.style.width = ''
-    window.scrollTo(0, scrollY)
-  }
-
-  // 🔒 lock одразу
-  lockScroll()
-
-  // ⏱ даємо Shopify Forms змонтуватися
-  setTimeout(() => {
-    locked = false
-    unlockScroll()
-  }, 800)
-
-  // 🧠 safety: якщо юзер клікнув раніше
-  window.addEventListener('touchstart', () => {
-    if (!locked) return
-    locked = false
-    unlockScroll()
-  }, { once: true })
-
-})()
-
-
 </script>
