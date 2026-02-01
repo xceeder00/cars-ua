@@ -500,4 +500,7 @@ window.addEventListener('load', () => {
     input.focus({ preventScroll: true })
     input.blur()
   }
+  setTimeout(() => {
+  document.querySelectorAll('input').forEach(i => i.blur())
+}, 50)
 })
