@@ -588,7 +588,15 @@
     [1400, 410], [1500, 430], [1600, 445], [1700, 465], [1800, 485], [2000, 510], [2400, 535],
     [2500, 570], [3000, 610], [3500, 655], [4000, 705], [4500, 725], [5000, 750], [5500, 775],
     [6000, 800], [6500, 825], [7000, 845], [7500, 880], [8000, 900], [8500, 925], [10000, 945], [15000, 1000]
-  ]; {% endcomment %}
+  ]; 
+    function getIAAIFee(amt) {
+    if (amt >= 15000) return Math.round(amt * 0.075 * 100) / 100 + 300;
+    for (let i = 0; i < IAAI_BRACKETS.length; i++) {
+      if (amt < IAAI_BRACKETS[i][0]) return IAAI_BRACKETS[i][1] + 300;
+    }
+    return 1000 + 300;
+  }
+  {% endcomment %}
 const IAAI_BRACKETS = [
     [50, 1], [100, 1], [200, 25], [300, 50], [350, 75], [400, 75], [450, 110], [500, 110],
     [550, 125], [600, 130], [700, 140], [800, 155], [900, 170], [1000, 185], [1200, 200], [1300, 225],
@@ -598,11 +606,11 @@ const IAAI_BRACKETS = [
     [10000, 715], [10500, 720], [11000, 720], [11500, 720], [12000, 720], [12500, 720], [15000, 720]
   ];
   function getIAAIFee(amt) {
-    if (amt >= 15000) return Math.round(amt * 0.075 * 100) / 100 + 300;
-    for (let i = 0; i < IAAI_BRACKETS.length; i++) {
-      if (amt < IAAI_BRACKETS[i][0]) return IAAI_BRACKETS[i][1] + 300;
+     if (amt >= 15000) return Math.round(amt * 0.0575 * 100) / 100 + 300;
+    for (let i = 0; i < COPART_BRACKETS.length; i++) {
+      if (amt < COPART_BRACKETS[i][0]) return COPART_BRACKETS[i][1] + 300;
     }
-    return 1000 + 300;
+    return 720 + 300;
   }
 
   // Copart Clean Title fee table (Final Bid Price). Fee = table value + 300. $15k+ = 5.75% + 300.
