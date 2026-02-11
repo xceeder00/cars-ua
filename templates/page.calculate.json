@@ -28,10 +28,10 @@
         "api_key": "0Ogeb6pSsW8vm7jOFghbVAxOUCjwfPQT5qZ6KfaV",
         "port_calculation": "200",
         "financial_guarantee": "100",
-        "brokerage_services": "300",
-        "atlas_commission": "600",
+        "brokerage_services": "280",
+        "atlas_commission": "500",
         "shipping_klaip": "100",
-        "crossing_the_border": "200",
+        "crossing_the_border": "150",
         "international_documents": "300",
         "car_loading_in_lithuania": "400",
         "calculation_note": "<p>Підсумкова вартість складається з вартості лота (включаючи збори і комісії), доставки авто до порту країни призначення і розмитнення. Розрахунки є попередніми. Залишить заявку нижче для отримання точного прорахунку.</p>"
